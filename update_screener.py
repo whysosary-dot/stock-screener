@@ -102,68 +102,96 @@ def fetch_all_stocks_fdr():
     return all_stocks
 
 
-def fetch_3month_ago_prices_fdr(target_date, tickers):
-    """FDR DataReader로 필터 통과 종목의 3개월 전 종가 수집"""
-    three_months_ago = target_date - datetime.timedelta(days=95)  # 여유분
-    start_str = three_months_ago.strftime("%Y-%m-%d")
-    target_3m = target_date - datetime.timedelta(days=90)
-    end_str = (target_3m + datetime.timedelta(days=5)).strftime("%Y-%m-%d")
+def fetch_historical_prices_fdr(target_date, tickers):
+    """FDR DataReader로 1/2/3개월 전 종가를 한 번에 수집
+    Returns: {ticker: {30: price, 60: price, 90: price}}
+    """
+    start_str = (target_date - datetime.timedelta(days=100)).strftime("%Y-%m-%d")
+    end_str = target_date.strftime("%Y-%m-%d")
 
-    print(f"\n[FDR] 3개월 전 종가 수집 ({len(tickers)}개 종목)")
-    prices = {}
+    print(f"\n[FDR] 1/2/3개월 전 종가 수집 ({len(tickers)}개 종목)")
+    result = {}
     errors = 0
+
+    targets = {
+        30: target_date - datetime.timedelta(days=30),
+        60: target_date - datetime.timedelta(days=60),
+        90: target_date - datetime.timedelta(days=90),
+    }
 
     for ticker in tickers:
         try:
             df = fdr.DataReader(ticker, start_str, end_str)
-            if not df.empty:
-                prices[ticker] = int(df.iloc[-1]["Close"])
+            if df.empty:
+                continue
+            prices = {}
+            for days, tgt in targets.items():
+                # 해당 날짜 이전의 가장 가까운 거래일 종가
+                mask = df.index <= tgt.strftime("%Y-%m-%d")
+                if mask.any():
+                    prices[days] = int(df.loc[mask].iloc[-1]["Close"])
+            if prices:
+                result[ticker] = prices
         except Exception:
             errors += 1
 
-    print(f"  수집 완료: {len(prices)}/{len(tickers)}개 (오류 {errors})")
-    return prices
+    print(f"  수집 완료: {len(result)}/{len(tickers)}개 (오류 {errors})")
+    return result
 
 
-def fetch_3month_ago_prices_pykrx(target_date, tickers):
-    """pykrx fallback: 전종목 한 방에 3개월 전 종가 수집"""
-    three_months_ago = target_date - datetime.timedelta(days=90)
-    wd = three_months_ago.weekday()
-    if wd == 5:
-        three_months_ago -= datetime.timedelta(days=1)
-    elif wd == 6:
-        three_months_ago -= datetime.timedelta(days=2)
+def fetch_historical_prices_pykrx(target_date, tickers):
+    """pykrx fallback: 1/2/3개월 전 종가 수집"""
+    targets = {
+        30: target_date - datetime.timedelta(days=30),
+        60: target_date - datetime.timedelta(days=60),
+        90: target_date - datetime.timedelta(days=90),
+    }
 
-    date_str = three_months_ago.strftime("%Y%m%d")
-    print(f"\n[pykrx] 3개월 전({date_str}) 종가 수집")
-    prices = {}
+    result = {}
+    for days, tgt in targets.items():
+        # 주말 보정
+        wd = tgt.weekday()
+        if wd == 5:
+            tgt -= datetime.timedelta(days=1)
+        elif wd == 6:
+            tgt -= datetime.timedelta(days=2)
 
-    for market in ["KOSPI", "KOSDAQ"]:
-        try:
-            df = stock.get_market_ohlcv_by_ticker(date_str, market=market)
-            for ticker in df.index:
-                close = int(df.loc[ticker, "종가"])
-                if close > 0:
-                    prices[ticker] = close
-            print(f"  [{market}] {len(prices)} 누적")
-        except Exception as e:
-            print(f"  [{market}] 3개월전 pykrx 오류: {e}")
+        date_str = tgt.strftime("%Y%m%d")
+        print(f"\n[pykrx] {days}일 전({date_str}) 종가 수집")
 
-    return prices
+        for market in ["KOSPI", "KOSDAQ"]:
+            try:
+                df = stock.get_market_ohlcv_by_ticker(date_str, market=market)
+                for ticker in df.index:
+                    close = int(df.loc[ticker, "종가"])
+                    if close > 0:
+                        if ticker not in result:
+                            result[ticker] = {}
+                        result[ticker][days] = close
+            except Exception as e:
+                print(f"  [{market}] {days}일전 pykrx 오류: {e}")
+
+    return result
 
 
-def enrich_3month_return(all_stocks, prices_3m_ago):
-    """전종목에 three_month_return 필드 추가"""
-    enriched = 0
-    for s in all_stocks:
-        old_price = prices_3m_ago.get(s["ticker"])
-        if old_price and old_price > 0:
-            ret = round((s["close"] - old_price) / old_price * 100, 1)
-            s["three_month_return"] = ret
-            enriched += 1
-        else:
-            s["three_month_return"] = None
-    print(f"[3개월 수익률] {enriched}/{len(all_stocks)}개 종목 계산 완료")
+def enrich_returns(stocks, historical_prices):
+    """1/2/3개월 수익률 필드 추가"""
+    field_map = {30: "one_month_return", 60: "two_month_return", 90: "three_month_return"}
+    counts = {30: 0, 60: 0, 90: 0}
+
+    for s in stocks:
+        hist = historical_prices.get(s["ticker"], {})
+        for days, field in field_map.items():
+            old_price = hist.get(days)
+            if old_price and old_price > 0:
+                ret = round((s["close"] - old_price) / old_price * 100, 1)
+                s[field] = ret
+                counts[days] += 1
+            else:
+                s[field] = None
+
+    total = len(stocks)
+    print(f"[수익률 계산] 1개월 {counts[30]}/{total}, 2개월 {counts[60]}/{total}, 3개월 {counts[90]}/{total}")
 
 
 def fetch_all_stocks_pykrx(date_str):
@@ -399,16 +427,16 @@ def main():
     filtered = apply_filters(all_stocks)
     print(f"\n[필터] {len(filtered)}개 종목 통과 (거래대금 {DEFAULT_FILTERS['min_trading_value']:,}억↑)")
 
-    # 3.5) 필터 통과 종목만 3개월 수익률 계산
+    # 3.5) 필터 통과 종목 1/2/3개월 수익률 계산
     filtered_tickers = [s["ticker"] for s in filtered]
     if HAS_FDR:
-        prices_3m = fetch_3month_ago_prices_fdr(target, filtered_tickers)
+        hist_prices = fetch_historical_prices_fdr(target, filtered_tickers)
     elif HAS_PYKRX:
-        prices_3m = fetch_3month_ago_prices_pykrx(target, filtered_tickers)
+        hist_prices = fetch_historical_prices_pykrx(target, filtered_tickers)
     else:
-        prices_3m = {}
-    if prices_3m:
-        enrich_3month_return(filtered, prices_3m)
+        hist_prices = {}
+    if hist_prices:
+        enrich_returns(filtered, hist_prices)
 
     # 4) 하이라이트
     highlights = generate_highlights(filtered)
