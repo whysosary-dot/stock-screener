@@ -165,6 +165,46 @@ input[type="range"]::-webkit-slider-thumb {
   box-shadow: 0 0 10px rgba(0, 102, 255, 0.3);
 }
 
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-row input[type="range"] { flex: 1; }
+
+.filter-num {
+  width: 80px;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-align: right;
+  background: rgba(0, 102, 255, 0.04);
+  outline: none;
+  flex-shrink: 0;
+  -moz-appearance: textfield;
+}
+
+.filter-num::-webkit-inner-spin-button,
+.filter-num::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.filter-num:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0, 102, 255, 0.15);
+}
+
+.filter-unit {
+  font-size: 12px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
 /* ─── Main ─── */
 .main {
   max-width: 1200px;
@@ -532,21 +572,33 @@ input[type="range"]::-webkit-slider-thumb {
         <span>거래대금 최소</span>
         <span class="filter-value" id="tvLabel">2,000억</span>
       </div>
-      <input type="range" id="filterTV" min="1000" max="10000" step="100" value="2000">
+      <div class="filter-row">
+        <input type="range" id="filterTV" min="0" max="10000" step="100" value="2000">
+        <input type="number" class="filter-num" id="filterTVNum" min="0" max="10000" step="100" value="2000">
+        <span class="filter-unit">억</span>
+      </div>
     </div>
     <div class="filter-item">
       <div class="filter-label">
         <span>등락률 최소</span>
         <span class="filter-value" id="crLabel">-30%</span>
       </div>
-      <input type="range" id="filterCR" min="-30" max="30" step="0.5" value="-30">
+      <div class="filter-row">
+        <input type="range" id="filterCR" min="-30" max="30" step="0.5" value="-30">
+        <input type="number" class="filter-num" id="filterCRNum" min="-30" max="30" step="0.5" value="-30">
+        <span class="filter-unit">%</span>
+      </div>
     </div>
     <div class="filter-item">
       <div class="filter-label">
         <span>시총 최대</span>
         <span class="filter-value" id="mcLabel">2,000조</span>
       </div>
-      <input type="range" id="filterMC" min="5000" max="20000000" step="50000" value="20000000">
+      <div class="filter-row">
+        <input type="range" id="filterMC" min="5000" max="20000000" step="50000" value="20000000">
+        <input type="number" class="filter-num" id="filterMCNum" min="5000" max="20000000" step="1000" value="20000000">
+        <span class="filter-unit">억</span>
+      </div>
     </div>
   </div>
   </div><!-- /.filters-wrap -->
@@ -748,26 +800,36 @@ function setupFilters() {
   const tvSlider = document.getElementById('filterTV');
   const crSlider = document.getElementById('filterCR');
   const mcSlider = document.getElementById('filterMC');
+  const tvNum = document.getElementById('filterTVNum');
+  const crNum = document.getElementById('filterCRNum');
+  const mcNum = document.getElementById('filterMCNum');
 
-  tvSlider.addEventListener('input', () => {
-    document.getElementById('tvLabel').textContent = Number(tvSlider.value).toLocaleString() + '억';
-    applyFilters();
-    renderAll();
-  });
+  function updateTV(val) {
+    document.getElementById('tvLabel').textContent = Number(val).toLocaleString() + '억';
+    applyFilters(); renderAll();
+  }
 
-  crSlider.addEventListener('input', () => {
-    const v = Number(crSlider.value);
+  function updateCR(val) {
+    const v = Number(val);
     document.getElementById('crLabel').textContent = (v >= 0 ? '+' : '') + v + '%';
-    applyFilters();
-    renderAll();
-  });
+    applyFilters(); renderAll();
+  }
 
-  mcSlider.addEventListener('input', () => {
-    const val = Number(mcSlider.value);
-    document.getElementById('mcLabel').textContent = val >= 10000 ? Math.round(val / 10000).toLocaleString() + '조' : val.toLocaleString() + '억';
-    applyFilters();
-    renderAll();
-  });
+  function updateMC(val) {
+    const v = Number(val);
+    document.getElementById('mcLabel').textContent = v >= 10000 ? Math.round(v / 10000).toLocaleString() + '조' : v.toLocaleString() + '억';
+    applyFilters(); renderAll();
+  }
+
+  // 슬라이더 → 숫자 입력 동기화
+  tvSlider.addEventListener('input', () => { tvNum.value = tvSlider.value; updateTV(tvSlider.value); });
+  crSlider.addEventListener('input', () => { crNum.value = crSlider.value; updateCR(crSlider.value); });
+  mcSlider.addEventListener('input', () => { mcNum.value = mcSlider.value; updateMC(mcSlider.value); });
+
+  // 숫자 입력 → 슬라이더 동기화
+  tvNum.addEventListener('input', () => { tvSlider.value = tvNum.value; updateTV(tvNum.value); });
+  crNum.addEventListener('input', () => { crSlider.value = crNum.value; updateCR(crNum.value); });
+  mcNum.addEventListener('input', () => { mcSlider.value = mcNum.value; updateMC(mcNum.value); });
 }
 
 
