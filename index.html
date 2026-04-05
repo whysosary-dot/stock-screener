@@ -6,19 +6,19 @@
 <title>KOSPI/KOSDAQ 급등 스크리닝</title>
 <style>
 :root {
-  --bg: #0a0e17;
-  --card: #131a2b;
-  --card-hover: #1a2440;
-  --accent: #00d4aa;
-  --accent2: #5b8def;
-  --red: #ff4757;
-  --orange: #ffa502;
-  --text: #e8eaf0;
-  --text-dim: #7a8599;
-  --border: #1e293b;
-  --up: #00d4aa;
-  --down: #ff4757;
-  --limit-up: #ff6b35;
+  --bg: #f5f7fa;
+  --card: #ffffff;
+  --card-hover: #f0f4ff;
+  --accent: #0066ff;
+  --accent2: #4a6cf7;
+  --red: #e53e3e;
+  --orange: #dd6b20;
+  --text: #1a202c;
+  --text-dim: #718096;
+  --border: #e2e8f0;
+  --up: #e53e3e;
+  --down: #3182ce;
+  --limit-up: #e53e3e;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,7 +33,7 @@ body {
 
 /* ─── Header ─── */
 .header {
-  background: linear-gradient(135deg, #0f1629 0%, #1a1f3a 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
   border-bottom: 1px solid var(--border);
   padding: 24px 32px;
   position: sticky;
@@ -52,14 +52,12 @@ body {
 .header h1 {
   font-size: 22px;
   font-weight: 700;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #1a202c;
 }
 
 .date-badge {
-  background: rgba(0, 212, 170, 0.1);
-  border: 1px solid rgba(0, 212, 170, 0.3);
+  background: rgba(0, 102, 255, 0.08);
+  border: 1px solid rgba(0, 102, 255, 0.3);
   padding: 6px 16px;
   border-radius: 20px;
   font-size: 14px;
@@ -87,7 +85,7 @@ body {
 }
 
 .filter-item {
-  background: rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.02);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 14px 18px;
@@ -126,7 +124,7 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background: var(--accent);
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 212, 170, 0.4);
+  box-shadow: 0 0 10px rgba(0, 102, 255, 0.3);
 }
 
 /* ─── Main ─── */
@@ -156,13 +154,13 @@ input[type="range"]::-webkit-slider-thumb {
 
 .stock-card:hover {
   background: var(--card-hover);
-  border-color: rgba(0, 212, 170, 0.3);
+  border-color: rgba(0, 102, 255, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
 .stock-card.limit-up {
-  border-color: rgba(255, 107, 53, 0.4);
+  border-color: rgba(229, 62, 62, 0.4);
 }
 
 .stock-card.limit-up::before {
@@ -170,7 +168,7 @@ input[type="range"]::-webkit-slider-thumb {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: rgba(255, 107, 53, 0.15);
+  background: rgba(229, 62, 62, 0.08);
   color: var(--limit-up);
   padding: 4px 12px;
   border-radius: 12px;
@@ -198,7 +196,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .stock-market {
-  background: rgba(91, 141, 239, 0.15);
+  background: rgba(74, 108, 247, 0.1);
   color: var(--accent2);
   padding: 3px 10px;
   border-radius: 8px;
@@ -207,13 +205,13 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .stock-market.kosdaq {
-  background: rgba(255, 165, 2, 0.15);
+  background: rgba(221, 107, 32, 0.1);
   color: var(--orange);
 }
 
 .card-sector {
   display: inline-block;
-  background: rgba(255,255,255,0.05);
+  background: rgba(0,0,0,0.04);
   padding: 4px 12px;
   border-radius: 8px;
   font-size: 13px;
@@ -229,7 +227,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .metric {
-  background: rgba(255,255,255,0.02);
+  background: rgba(0,0,0,0.02);
   border-radius: 10px;
   padding: 12px;
 }
@@ -258,7 +256,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* 뉴스 */
 .card-news {
-  background: rgba(91, 141, 239, 0.08);
+  background: rgba(74, 108, 247, 0.06);
   border-left: 3px solid var(--accent2);
   padding: 10px 14px;
   border-radius: 0 8px 8px 0;
@@ -286,8 +284,8 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .companion-tag {
-  background: rgba(0, 212, 170, 0.08);
-  border: 1px solid rgba(0, 212, 170, 0.2);
+  background: rgba(0, 102, 255, 0.06);
+  border: 1px solid rgba(0, 102, 255, 0.2);
   padding: 4px 10px;
   border-radius: 8px;
   font-size: 12px;
@@ -296,7 +294,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* ─── Highlights ─── */
 .highlights {
-  background: linear-gradient(135deg, rgba(91, 141, 239, 0.08), rgba(0, 212, 170, 0.08));
+  background: linear-gradient(135deg, rgba(74, 108, 247, 0.05), rgba(0, 102, 255, 0.03));
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 24px;
@@ -313,7 +311,7 @@ input[type="range"]::-webkit-slider-thumb {
 .highlight-item {
   padding: 8px 0;
   font-size: 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
   line-height: 1.8;
 }
 
@@ -346,7 +344,7 @@ input[type="range"]::-webkit-slider-thumb {
   justify-content: space-between;
   padding: 6px 0;
   font-size: 13px;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(0,0,0,0.02);
 }
 
 .sector-stock:last-child { border: none; }
@@ -379,7 +377,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .sort-btn {
-  background: rgba(255,255,255,0.05);
+  background: rgba(0,0,0,0.04);
   border: 1px solid var(--border);
   color: var(--text-dim);
   padding: 8px 16px;
@@ -390,7 +388,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .sort-btn:hover, .sort-btn.active {
-  background: rgba(0, 212, 170, 0.1);
+  background: rgba(0, 102, 255, 0.08);
   border-color: var(--accent);
   color: var(--accent);
 }
@@ -449,7 +447,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .history-date-btn {
-  background: rgba(255,255,255,0.05);
+  background: rgba(0,0,0,0.04);
   border: 1px solid var(--border);
   color: var(--text-dim);
   padding: 6px 14px;
@@ -460,7 +458,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .history-date-btn:hover, .history-date-btn.active {
-  background: rgba(0, 212, 170, 0.1);
+  background: rgba(0, 102, 255, 0.08);
   border-color: var(--accent);
   color: var(--accent);
 }
