@@ -1,14 +1,34 @@
 {
   "date": "2026-04-06",
-  "generated_at": "2026-04-06T00:39:31.002718",
+  "generated_at": "2026-04-06T00:42:12.647635",
   "filter_defaults": {
     "min_trading_value": 1000,
     "min_change_rate": -30.0,
     "max_change_rate": 30.0,
-    "max_market_cap": 2000000
+    "max_market_cap": 20000000
   },
-  "total_filtered": 50,
+  "total_filtered": 52,
   "stocks": [
+    {
+      "ticker": "005930",
+      "name": "삼성전자",
+      "market": "KOSPI",
+      "close": 186200,
+      "volume": 20194447,
+      "trading_value": 37447.0,
+      "market_cap": 11022366.0,
+      "change_rate": 4.37
+    },
+    {
+      "ticker": "000660",
+      "name": "SK하이닉스",
+      "market": "KOSPI",
+      "close": 876000,
+      "volume": 2927164,
+      "trading_value": 25647.0,
+      "market_cap": 6243273.0,
+      "change_rate": 5.54
+    },
     {
       "ticker": "010170",
       "name": "대한광통신",
@@ -513,11 +533,11 @@
   "highlights": [
     "🚀 상한가: HD현대에너지솔루션(+30.0%)",
     "🚀 상한가: 광전자(+29.88%)",
-    "💰 거래대금 TOP3: 대한광통신(9471억), LIG넥스원(7963억), SK이터닉스(7347억)",
+    "💰 거래대금 TOP3: 삼성전자(37447억), SK하이닉스(25647억), 대한광통신(9471억)",
     "🔥 급등(+15%↑) 8개 종목 — 시장 과열 주의"
   ],
   "all_stocks_summary": {
-    "kospi_count": 37,
+    "kospi_count": 39,
     "kosdaq_count": 13,
     "total_kospi": 950,
     "total_kosdaq": 1824,
