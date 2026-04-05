@@ -1,6 +1,6 @@
 {
   "date": "2026-04-06",
-  "generated_at": "2026-04-06T00:26:42.281890",
+  "generated_at": "2026-04-06T00:27:45.077710",
   "filter_defaults": {
     "min_trading_value": 2000,
     "min_change_rate": 10.0,
@@ -18,9 +18,22 @@
       "market_cap": 19809.0,
       "change_rate": 25.89,
       "three_month_return": null,
-      "sector": "기타",
+      "sector": "통신장비",
       "news": "",
-      "companions": []
+      "companions": [
+        {
+          "name": "한국첨단소재",
+          "change_rate": 30.0
+        },
+        {
+          "name": "CS",
+          "change_rate": 29.96
+        },
+        {
+          "name": "옵티시스",
+          "change_rate": 21.62
+        }
+      ]
     },
     {
       "ticker": "475150",
@@ -32,9 +45,14 @@
       "market_cap": 23234.0,
       "change_rate": 24.0,
       "three_month_return": null,
-      "sector": "기타",
+      "sector": "에너지장비및서비스",
       "news": "",
-      "companions": []
+      "companions": [
+        {
+          "name": "에스에너지",
+          "change_rate": 29.95
+        }
+      ]
     },
     {
       "ticker": "011930",
@@ -46,9 +64,18 @@
       "market_cap": 7091.0,
       "change_rate": 25.27,
       "three_month_return": null,
-      "sector": "기타",
+      "sector": "반도체와반도체장비",
       "news": "",
-      "companions": []
+      "companions": [
+        {
+          "name": "레이저쎌",
+          "change_rate": 21.4
+        },
+        {
+          "name": "알파칩스",
+          "change_rate": 20.63
+        }
+      ]
     },
     {
       "ticker": "322000",
@@ -60,9 +87,14 @@
       "market_cap": 21403.0,
       "change_rate": 30.0,
       "three_month_return": null,
-      "sector": "기타",
+      "sector": "에너지장비및서비스",
       "news": "",
-      "companions": []
+      "companions": [
+        {
+          "name": "에스에너지",
+          "change_rate": 29.95
+        }
+      ]
     },
     {
       "ticker": "0010F0",
@@ -74,9 +106,14 @@
       "market_cap": 1011.0,
       "change_rate": 13.66,
       "three_month_return": null,
-      "sector": "기타",
+      "sector": "화학",
       "news": "",
-      "companions": []
+      "companions": [
+        {
+          "name": "후성",
+          "change_rate": 28.53
+        }
+      ]
     },
     {
       "ticker": "028050",
@@ -88,7 +125,7 @@
       "market_cap": 79478.0,
       "change_rate": 15.53,
       "three_month_return": null,
-      "sector": "기타",
+      "sector": "건설",
       "news": "",
       "companions": []
     },
@@ -102,7 +139,7 @@
       "market_cap": 29020.0,
       "change_rate": 10.13,
       "three_month_return": null,
-      "sector": "기타",
+      "sector": "건설",
       "news": "",
       "companions": []
     }
@@ -220,6 +257,8 @@
     }
   ],
   "highlights": [
+    "🔥 에너지장비및서비스 테마 집중 — 2개 (SK이터닉스, HD현대에너지솔루션)",
+    "🔥 건설 테마 집중 — 2개 (삼성E&A, DL이앤씨)",
     "🚀 상한가: HD현대에너지솔루션(+30.0%)",
     "⚡ 에너지/건설 관련주 동반 급등 — HD현대에너지솔루션, 삼성E&A, DL이앤씨"
   ],

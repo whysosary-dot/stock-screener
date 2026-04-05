@@ -205,18 +205,18 @@ def fetch_naver_sector(ticker):
     try:
         url = f"https://finance.naver.com/item/main.naver?code={ticker}"
         resp = requests.get(url, headers=HEADERS, timeout=5)
-        # 업종 링크
-        match = re.search(r'class="sub_tit"[^>]*>\s*<a[^>]*>([^<]+)</a>', resp.text)
-        if match:
-            return match.group(1).strip()
-        # 대체
+        # 패턴 1: 업종 <a> 태그
         for pattern in [
+            r'업종[^<]*<a[^>]*>([^<]+)</a>',
+            r'class="sub_tit"[^>]*>\s*<a[^>]*>([^<]+)</a>',
             r'업종\s*</th>\s*<td[^>]*>\s*<a[^>]*>([^<]+)</a>',
             r'sise_industry\.naver\?type_code=[^"]*"[^>]*>([^<]+)<',
         ]:
-            m = re.search(pattern, resp.text)
+            m = re.search(pattern, resp.text, re.DOTALL)
             if m:
-                return m.group(1).strip()
+                sector = m.group(1).strip()
+                if sector and len(sector) < 30:
+                    return sector
     except Exception:
         pass
     return None
