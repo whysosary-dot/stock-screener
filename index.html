@@ -76,6 +76,44 @@ body {
 .stats-row span { display: flex; align-items: center; gap: 6px; }
 .stats-row .count { color: var(--accent); font-weight: 700; font-size: 16px; }
 
+/* ─── Filter Toggle ─── */
+.filter-toggle {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0,0,0,0.02);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--text-dim);
+  cursor: pointer;
+  margin-bottom: 12px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.filter-toggle .arrow {
+  transition: transform 0.25s ease;
+  font-size: 12px;
+}
+
+.filter-toggle .arrow.open { transform: rotate(180deg); }
+
+.filters-wrap {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+}
+
+.filters-wrap.collapsed {
+  max-height: 0 !important;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .filter-toggle { display: flex; }
+}
+
 /* ─── Filters ─── */
 .filters {
   display: grid;
@@ -480,7 +518,14 @@ input[type="range"]::-webkit-slider-thumb {
     <span>업데이트: <span id="updateTime">-</span></span>
   </div>
 
+  <!-- Filter Toggle (모바일) -->
+  <div class="filter-toggle" id="filterToggle" onclick="toggleFilters()">
+    <span>🔧 필터 조건 조절</span>
+    <span class="arrow open" id="filterArrow">▼</span>
+  </div>
+
   <!-- Filters -->
+  <div class="filters-wrap" id="filtersWrap">
   <div class="filters">
     <div class="filter-item">
       <div class="filter-label">
@@ -504,6 +549,7 @@ input[type="range"]::-webkit-slider-thumb {
       <input type="range" id="filterMC" min="5000" max="500000" step="5000" value="300000">
     </div>
   </div>
+  </div><!-- /.filters-wrap -->
 </div>
 
 <!-- ─── Main Content ─── -->
@@ -651,8 +697,25 @@ const SAMPLE_DATA = {
 };
 
 
+// ─── Filter Toggle ───
+function toggleFilters() {
+  const wrap = document.getElementById('filtersWrap');
+  const arrow = document.getElementById('filterArrow');
+  wrap.classList.toggle('collapsed');
+  arrow.classList.toggle('open');
+}
+
+// 모바일에서 기본 접힘
+function initFilterToggle() {
+  if (window.innerWidth <= 768) {
+    document.getElementById('filtersWrap').classList.add('collapsed');
+    document.getElementById('filterArrow').classList.remove('open');
+  }
+}
+
 // ─── Init ───
 document.addEventListener('DOMContentLoaded', () => {
+  initFilterToggle();
   loadData();
   setupFilters();
   setupSort();
