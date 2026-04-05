@@ -1,6 +1,6 @@
 {
   "date": "2026-04-06",
-  "generated_at": "2026-04-06T00:44:12.819953",
+  "generated_at": "2026-04-06T00:49:41.530420",
   "filter_defaults": {
     "min_trading_value": 1000,
     "min_change_rate": -30.0,
@@ -17,7 +17,8 @@
       "volume": 20194447,
       "trading_value": 37447.0,
       "market_cap": 11022366.0,
-      "change_rate": 4.37
+      "change_rate": 4.37,
+      "three_month_return": 34.0
     },
     {
       "ticker": "000660",
@@ -27,7 +28,8 @@
       "volume": 2927164,
       "trading_value": 25647.0,
       "market_cap": 6243273.0,
-      "change_rate": 5.54
+      "change_rate": 5.54,
+      "three_month_return": 17.7
     },
     {
       "ticker": "010170",
@@ -37,7 +39,8 @@
       "volume": 76311778,
       "trading_value": 9471.0,
       "market_cap": 19809.0,
-      "change_rate": 25.89
+      "change_rate": 25.89,
+      "three_month_return": 282.6
     },
     {
       "ticker": "079550",
@@ -47,7 +50,8 @@
       "volume": 946418,
       "trading_value": 7963.0,
       "market_cap": 189200.0,
-      "change_rate": 9.69
+      "change_rate": 9.69,
+      "three_month_return": 58.7
     },
     {
       "ticker": "475150",
@@ -57,7 +61,8 @@
       "volume": 11359132,
       "trading_value": 7347.0,
       "market_cap": 23234.0,
-      "change_rate": 24.0
+      "change_rate": 24.0,
+      "three_month_return": 231.9
     },
     {
       "ticker": "011930",
@@ -67,7 +72,8 @@
       "volume": 193360440,
       "trading_value": 6556.0,
       "market_cap": 7091.0,
-      "change_rate": 25.27
+      "change_rate": 25.27,
+      "three_month_return": 124.7
     },
     {
       "ticker": "322000",
@@ -77,7 +83,8 @@
       "volume": 3337733,
       "trading_value": 5907.0,
       "market_cap": 21403.0,
-      "change_rate": 30.0
+      "change_rate": 30.0,
+      "three_month_return": 254.5
     },
     {
       "ticker": "047040",
@@ -87,7 +94,8 @@
       "volume": 32764212,
       "trading_value": 5646.0,
       "market_cap": 69866.0,
-      "change_rate": 2.25
+      "change_rate": 2.25,
+      "three_month_return": 345.9
     },
     {
       "ticker": "003280",
@@ -97,7 +105,8 @@
       "volume": 124803310,
       "trading_value": 5299.0,
       "market_cap": 9833.0,
-      "change_rate": -8.5
+      "change_rate": -8.5,
+      "three_month_return": 155.1
     },
     {
       "ticker": "009830",
@@ -107,7 +116,8 @@
       "volume": 10292583,
       "trading_value": 4084.0,
       "market_cap": 67124.0,
-      "change_rate": 9.69
+      "change_rate": 9.69,
+      "three_month_return": 49.6
     },
     {
       "ticker": "0010F0",
@@ -117,7 +127,8 @@
       "volume": 41494781,
       "trading_value": 3902.0,
       "market_cap": 1011.0,
-      "change_rate": 13.66
+      "change_rate": 13.66,
+      "three_month_return": null
     },
     {
       "ticker": "000250",
@@ -127,7 +138,8 @@
       "volume": 621768,
       "trading_value": 3884.0,
       "market_cap": 152004.0,
-      "change_rate": 6.4
+      "change_rate": 6.4,
+      "three_month_return": 162.9
     },
     {
       "ticker": "009150",
@@ -137,7 +149,8 @@
       "volume": 831535,
       "trading_value": 3765.0,
       "market_cap": 340603.0,
-      "change_rate": 9.35
+      "change_rate": 9.35,
+      "three_month_return": 71.4
     },
     {
       "ticker": "050890",
@@ -147,7 +160,8 @@
       "volume": 21465663,
       "trading_value": 3548.0,
       "market_cap": 9903.0,
-      "change_rate": 8.16
+      "change_rate": 8.16,
+      "three_month_return": 122.7
     },
     {
       "ticker": "329180",
@@ -157,7 +171,8 @@
       "volume": 743866,
       "trading_value": 3526.0,
       "market_cap": 503289.0,
-      "change_rate": 9.23
+      "change_rate": 9.23,
+      "three_month_return": -21.3
     },
     {
       "ticker": "028050",
@@ -167,7 +182,8 @@
       "volume": 7790091,
       "trading_value": 3139.0,
       "market_cap": 79478.0,
-      "change_rate": 15.53
+      "change_rate": 15.53,
+      "three_month_return": 64.8
     },
     {
       "ticker": "005380",
@@ -177,7 +193,8 @@
       "volume": 659219,
       "trading_value": 3119.0,
       "market_cap": 964409.0,
-      "change_rate": 1.18
+      "change_rate": 1.18,
+      "three_month_return": 28.7
     },
     {
       "ticker": "006400",
@@ -187,7 +204,8 @@
       "volume": 692098,
       "trading_value": 3051.0,
       "market_cap": 353368.0,
-      "change_rate": -1.02
+      "change_rate": -1.02,
+      "three_month_return": 63.9
     },
     {
       "ticker": "100090",
@@ -197,7 +215,8 @@
       "volume": 10066236,
       "trading_value": 3041.0,
       "market_cap": 18868.0,
-      "change_rate": 6.53
+      "change_rate": 6.53,
+      "three_month_return": 41.8
     },
     {
       "ticker": "012450",
@@ -207,7 +226,8 @@
       "volume": 193653,
       "trading_value": 2805.0,
       "market_cap": 747154.0,
-      "change_rate": 2.26
+      "change_rate": 2.26,
+      "three_month_return": 19.4
     },
     {
       "ticker": "272210",
@@ -217,7 +237,8 @@
       "volume": 1927511,
       "trading_value": 2604.0,
       "market_cap": 255797.0,
-      "change_rate": 4.8
+      "change_rate": 4.8,
+      "three_month_return": 76.1
     },
     {
       "ticker": "024060",
@@ -227,7 +248,8 @@
       "volume": 11186609,
       "trading_value": 2462.0,
       "market_cap": 3300.0,
-      "change_rate": 1.62
+      "change_rate": 1.62,
+      "three_month_return": 74.6
     },
     {
       "ticker": "0007J0",
@@ -237,7 +259,8 @@
       "volume": 6418073,
       "trading_value": 2441.0,
       "market_cap": 2584.0,
-      "change_rate": -6.81
+      "change_rate": -6.81,
+      "three_month_return": null
     },
     {
       "ticker": "034020",
@@ -247,7 +270,8 @@
       "volume": 2522536,
       "trading_value": 2434.0,
       "market_cap": 618782.0,
-      "change_rate": 3.21
+      "change_rate": 3.21,
+      "three_month_return": 14.7
     },
     {
       "ticker": "375500",
@@ -257,7 +281,8 @@
       "volume": 2963265,
       "trading_value": 2274.0,
       "market_cap": 29020.0,
-      "change_rate": 10.13
+      "change_rate": 10.13,
+      "three_month_return": 82.5
     },
     {
       "ticker": "032820",
@@ -267,7 +292,8 @@
       "volume": 10584637,
       "trading_value": 2241.0,
       "market_cap": 36957.0,
-      "change_rate": 4.6
+      "change_rate": 4.6,
+      "three_month_return": 444.8
     },
     {
       "ticker": "005935",
@@ -277,7 +303,8 @@
       "volume": 1817737,
       "trading_value": 2234.0,
       "market_cap": 1015072.0,
-      "change_rate": 4.89
+      "change_rate": 4.89,
+      "three_month_return": 20.8
     },
     {
       "ticker": "402340",
@@ -287,7 +314,8 @@
       "volume": 457740,
       "trading_value": 2191.0,
       "market_cap": 637981.0,
-      "change_rate": 2.88
+      "change_rate": 2.88,
+      "three_month_return": 12.2
     },
     {
       "ticker": "064350",
@@ -297,7 +325,8 @@
       "volume": 985634,
       "trading_value": 2045.0,
       "market_cap": 229199.0,
-      "change_rate": 4.22
+      "change_rate": 4.22,
+      "three_month_return": -4.1
     },
     {
       "ticker": "066970",
@@ -307,7 +336,8 @@
       "volume": 1052347,
       "trading_value": 1731.0,
       "market_cap": 67101.0,
-      "change_rate": 2.97
+      "change_rate": 2.97,
+      "three_month_return": 54.5
     },
     {
       "ticker": "100790",
@@ -317,7 +347,8 @@
       "volume": 6089624,
       "trading_value": 1730.0,
       "market_cap": 14583.0,
-      "change_rate": 6.6
+      "change_rate": 6.6,
+      "three_month_return": 94.7
     },
     {
       "ticker": "112610",
@@ -327,7 +358,8 @@
       "volume": 2288237,
       "trading_value": 1721.0,
       "market_cap": 32430.0,
-      "change_rate": 18.49
+      "change_rate": 18.49,
+      "three_month_return": 93.7
     },
     {
       "ticker": "042660",
@@ -337,7 +369,8 @@
       "volume": 1301116,
       "trading_value": 1638.0,
       "market_cap": 392209.0,
-      "change_rate": 7.29
+      "change_rate": 7.29,
+      "three_month_return": -4.8
     },
     {
       "ticker": "046970",
@@ -347,7 +380,8 @@
       "volume": 20818290,
       "trading_value": 1627.0,
       "market_cap": 3375.0,
-      "change_rate": 4.05
+      "change_rate": 4.05,
+      "three_month_return": 463.3
     },
     {
       "ticker": "196170",
@@ -357,7 +391,8 @@
       "volume": 434877,
       "trading_value": 1609.0,
       "market_cap": 195666.0,
-      "change_rate": 3.84
+      "change_rate": 3.84,
+      "three_month_return": -28.5
     },
     {
       "ticker": "476830",
@@ -367,7 +402,8 @@
       "volume": 826030,
       "trading_value": 1536.0,
       "market_cap": 25666.0,
-      "change_rate": -7.44
+      "change_rate": -7.44,
+      "three_month_return": -5.0
     },
     {
       "ticker": "015760",
@@ -377,7 +413,8 @@
       "volume": 3757544,
       "trading_value": 1519.0,
       "market_cap": 258712.0,
-      "change_rate": -2.3
+      "change_rate": -2.3,
+      "three_month_return": -18.4
     },
     {
       "ticker": "047050",
@@ -387,7 +424,8 @@
       "volume": 1805281,
       "trading_value": 1505.0,
       "market_cap": 149710.0,
-      "change_rate": 7.04
+      "change_rate": 7.04,
+      "three_month_return": 74.7
     },
     {
       "ticker": "006800",
@@ -397,7 +435,8 @@
       "volume": 2222259,
       "trading_value": 1413.0,
       "market_cap": 350405.0,
-      "change_rate": 2.44
+      "change_rate": 2.44,
+      "three_month_return": 133.9
     },
     {
       "ticker": "042700",
@@ -407,7 +446,8 @@
       "volume": 528858,
       "trading_value": 1365.0,
       "market_cap": 247812.0,
-      "change_rate": 1.56
+      "change_rate": 1.56,
+      "three_month_return": 47.5
     },
     {
       "ticker": "035420",
@@ -417,7 +457,8 @@
       "volume": 659137,
       "trading_value": 1305.0,
       "market_cap": 309784.0,
-      "change_rate": 0.87
+      "change_rate": 0.87,
+      "three_month_return": -22.2
     },
     {
       "ticker": "000720",
@@ -427,7 +468,8 @@
       "volume": 840917,
       "trading_value": 1275.0,
       "market_cap": 168259.0,
-      "change_rate": 1.55
+      "change_rate": 1.55,
+      "three_month_return": 99.3
     },
     {
       "ticker": "005490",
@@ -437,7 +479,8 @@
       "volume": 351485,
       "trading_value": 1239.0,
       "market_cap": 281242.0,
-      "change_rate": 1.91
+      "change_rate": 1.91,
+      "three_month_return": 14.3
     },
     {
       "ticker": "010140",
@@ -447,7 +490,8 @@
       "volume": 4444306,
       "trading_value": 1238.0,
       "market_cap": 245520.0,
-      "change_rate": 3.72
+      "change_rate": 3.72,
+      "three_month_return": -2.6
     },
     {
       "ticker": "010820",
@@ -457,7 +501,8 @@
       "volume": 14055100,
       "trading_value": 1217.0,
       "market_cap": 4453.0,
-      "change_rate": 24.9
+      "change_rate": 24.9,
+      "three_month_return": 124.6
     },
     {
       "ticker": "086520",
@@ -467,7 +512,8 @@
       "volume": 827157,
       "trading_value": 1177.0,
       "market_cap": 192123.0,
-      "change_rate": -0.63
+      "change_rate": -0.63,
+      "three_month_return": 60.8
     },
     {
       "ticker": "033790",
@@ -477,7 +523,8 @@
       "volume": 11104904,
       "trading_value": 1127.0,
       "market_cap": 6967.0,
-      "change_rate": 9.52
+      "change_rate": 9.52,
+      "three_month_return": 91.4
     },
     {
       "ticker": "010060",
@@ -487,7 +534,8 @@
       "volume": 499507,
       "trading_value": 1119.0,
       "market_cap": 42848.0,
-      "change_rate": 11.95
+      "change_rate": 11.95,
+      "three_month_return": 125.7
     },
     {
       "ticker": "047810",
@@ -497,7 +545,8 @@
       "volume": 588024,
       "trading_value": 1084.0,
       "market_cap": 177990.0,
-      "change_rate": -0.87
+      "change_rate": -0.87,
+      "three_month_return": 21.9
     },
     {
       "ticker": "017900",
@@ -507,7 +556,8 @@
       "volume": 25962440,
       "trading_value": 1066.0,
       "market_cap": 2581.0,
-      "change_rate": 29.88
+      "change_rate": 29.88,
+      "three_month_return": 143.2
     },
     {
       "ticker": "373220",
@@ -517,7 +567,8 @@
       "volume": 254074,
       "trading_value": 1021.0,
       "market_cap": 932490.0,
-      "change_rate": -1.48
+      "change_rate": -1.48,
+      "three_month_return": 9.8
     },
     {
       "ticker": "009540",
@@ -527,14 +578,16 @@
       "volume": 267498,
       "trading_value": 1002.0,
       "market_cap": 265399.0,
-      "change_rate": 6.99
+      "change_rate": 6.99,
+      "three_month_return": -16.1
     }
   ],
   "highlights": [
     "🚀 상한가: HD현대에너지솔루션(+30.0%)",
     "🚀 상한가: 광전자(+29.88%)",
     "💰 거래대금 TOP3: 삼성전자(37447억), SK하이닉스(25647억), 대한광통신(9471억)",
-    "🔥 급등(+15%↑) 8개 종목 — 시장 과열 주의"
+    "🔥 급등(+15%↑) 8개 종목 — 시장 과열 주의",
+    "⚠️ 단기 급등 지속 종목 (추격 주의): 대한광통신 (3개월 +282.6%, 오늘 +25.89%), SK이터닉스 (3개월 +231.9%, 오늘 +24.0%), 신성이엔지 (3개월 +124.7%, 오늘 +25.27%), HD현대에너지솔루션 (3개월 +254.5%, 오늘 +30.0%), 퍼스텍 (3개월 +124.6%, 오늘 +24.9%), OCI홀딩스 (3개월 +125.7%, 오늘 +11.95%), 광전자 (3개월 +143.2%, 오늘 +29.88%)"
   ],
   "all_stocks_summary": {
     "kospi_count": 39,

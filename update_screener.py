@@ -102,6 +102,70 @@ def fetch_all_stocks_fdr():
     return all_stocks
 
 
+def fetch_3month_ago_prices_fdr(target_date, tickers):
+    """FDR DataReader로 필터 통과 종목의 3개월 전 종가 수집"""
+    three_months_ago = target_date - datetime.timedelta(days=95)  # 여유분
+    start_str = three_months_ago.strftime("%Y-%m-%d")
+    target_3m = target_date - datetime.timedelta(days=90)
+    end_str = (target_3m + datetime.timedelta(days=5)).strftime("%Y-%m-%d")
+
+    print(f"\n[FDR] 3개월 전 종가 수집 ({len(tickers)}개 종목)")
+    prices = {}
+    errors = 0
+
+    for ticker in tickers:
+        try:
+            df = fdr.DataReader(ticker, start_str, end_str)
+            if not df.empty:
+                prices[ticker] = int(df.iloc[-1]["Close"])
+        except Exception:
+            errors += 1
+
+    print(f"  수집 완료: {len(prices)}/{len(tickers)}개 (오류 {errors})")
+    return prices
+
+
+def fetch_3month_ago_prices_pykrx(target_date, tickers):
+    """pykrx fallback: 전종목 한 방에 3개월 전 종가 수집"""
+    three_months_ago = target_date - datetime.timedelta(days=90)
+    wd = three_months_ago.weekday()
+    if wd == 5:
+        three_months_ago -= datetime.timedelta(days=1)
+    elif wd == 6:
+        three_months_ago -= datetime.timedelta(days=2)
+
+    date_str = three_months_ago.strftime("%Y%m%d")
+    print(f"\n[pykrx] 3개월 전({date_str}) 종가 수집")
+    prices = {}
+
+    for market in ["KOSPI", "KOSDAQ"]:
+        try:
+            df = stock.get_market_ohlcv_by_ticker(date_str, market=market)
+            for ticker in df.index:
+                close = int(df.loc[ticker, "종가"])
+                if close > 0:
+                    prices[ticker] = close
+            print(f"  [{market}] {len(prices)} 누적")
+        except Exception as e:
+            print(f"  [{market}] 3개월전 pykrx 오류: {e}")
+
+    return prices
+
+
+def enrich_3month_return(all_stocks, prices_3m_ago):
+    """전종목에 three_month_return 필드 추가"""
+    enriched = 0
+    for s in all_stocks:
+        old_price = prices_3m_ago.get(s["ticker"])
+        if old_price and old_price > 0:
+            ret = round((s["close"] - old_price) / old_price * 100, 1)
+            s["three_month_return"] = ret
+            enriched += 1
+        else:
+            s["three_month_return"] = None
+    print(f"[3개월 수익률] {enriched}/{len(all_stocks)}개 종목 계산 완료")
+
+
 def fetch_all_stocks_pykrx(date_str):
     """pykrx fallback"""
     print("\n[pykrx] 데이터 수집 시작")
@@ -211,6 +275,17 @@ def generate_highlights(filtered_stocks):
     sharp_fall = [s for s in filtered_stocks if s["change_rate"] <= -10]
     if len(sharp_fall) >= 3:
         highlights.append("⚠️ 급락(-10%↓) " + str(len(sharp_fall)) + "개 종목 — 투매 경계")
+
+    # 3개월 급등 + 오늘도 급등 (추격 주의)
+    momentum = [s for s in filtered_stocks
+                if s.get("three_month_return") and s["three_month_return"] >= 100
+                and s["change_rate"] >= 10]
+    if momentum:
+        names = ", ".join(
+            s["name"] + " (3개월 +" + str(s["three_month_return"]) + "%, 오늘 +" + str(s["change_rate"]) + "%)"
+            for s in momentum
+        )
+        highlights.append("⚠️ 단기 급등 지속 종목 (추격 주의): " + names)
 
     return highlights
 
@@ -323,6 +398,17 @@ def main():
     # 3) 필터 (거래대금 2000억↑, 시총 2000조↓)
     filtered = apply_filters(all_stocks)
     print(f"\n[필터] {len(filtered)}개 종목 통과 (거래대금 {DEFAULT_FILTERS['min_trading_value']:,}억↑)")
+
+    # 3.5) 필터 통과 종목만 3개월 수익률 계산
+    filtered_tickers = [s["ticker"] for s in filtered]
+    if HAS_FDR:
+        prices_3m = fetch_3month_ago_prices_fdr(target, filtered_tickers)
+    elif HAS_PYKRX:
+        prices_3m = fetch_3month_ago_prices_pykrx(target, filtered_tickers)
+    else:
+        prices_3m = {}
+    if prices_3m:
+        enrich_3month_return(filtered, prices_3m)
 
     # 4) 하이라이트
     highlights = generate_highlights(filtered)
