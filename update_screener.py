@@ -37,7 +37,7 @@ DATA_JSON = SCRIPT_DIR / "data.json"
 
 # HTML 슬라이더 기본값 (프론트엔드에서 사용자 조절 가능)
 DEFAULT_FILTERS = {
-    "min_trading_value": 2000,       # 거래대금 최소 (억원)
+    "min_trading_value": 1000,       # 거래대금 최소 (억원)
     "min_change_rate": -30.0,        # 등락률 최소 (%)
     "max_change_rate": 30.0,         # 등락률 최대 (%)
     "max_market_cap": 2000000,       # 시총 최대 (억원 = 2000조)
