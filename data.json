@@ -1,149 +1,17 @@
 {
-  "date": "2026-04-03",
-  "generated_at": "2026-04-03T16:30:00",
+  "date": "2026-04-06",
+  "generated_at": "2026-04-06T00:00:07.904976",
   "filter_defaults": {
     "min_trading_value": 2000,
-    "min_change_rate": 10,
+    "min_change_rate": 10.0,
     "max_market_cap": 300000
   },
-  "total_filtered": 7,
+  "total_filtered": 0,
+  "stocks": [],
+  "highlights": [],
   "all_stocks_summary": {
-    "kospi_count": 935,
-    "kosdaq_count": 1720,
-    "total": 2655
-  },
-  "stocks": [
-    {
-      "ticker": "010170",
-      "name": "대한광통신",
-      "market": "KOSDAQ",
-      "sector": "통신장비",
-      "close": 12740,
-      "trading_value": 9471,
-      "market_cap": 20000,
-      "change_rate": 25.9,
-      "three_month_return": 297.5,
-      "news": "코스닥...삼천당제약 · 알테오젠 · 삼현 · 대한광통신 '껑충'",
-      "companions": [
-        {"name": "한국첨단소재", "change_rate": 30.0},
-        {"name": "CS", "change_rate": 30.0},
-        {"name": "옵티시스", "change_rate": 21.6},
-        {"name": "머큐리", "change_rate": 17.8}
-      ]
-    },
-    {
-      "ticker": "475150",
-      "name": "SK이터닉스",
-      "market": "KOSPI",
-      "sector": "에너지장비및서비스",
-      "close": 68200,
-      "trading_value": 7347,
-      "market_cap": 23000,
-      "change_rate": 24.0,
-      "three_month_return": 222.5,
-      "news": "고체산화물 연료전지(SOFC) 관련주, '미소천사' SK이터닉스·LS머트리얼...",
-      "companions": [
-        {"name": "HD현대에너지솔루션", "change_rate": 30.0},
-        {"name": "에스에너지", "change_rate": 29.9},
-        {"name": "씨에스윈드", "change_rate": 18.5},
-        {"name": "태웅", "change_rate": 14.3}
-      ]
-    },
-    {
-      "ticker": "011930",
-      "name": "신성이엔지",
-      "market": "KOSPI",
-      "sector": "반도체와반도체장비",
-      "close": 3445,
-      "trading_value": 6556,
-      "market_cap": 7000,
-      "change_rate": 25.3,
-      "three_month_return": 106.8,
-      "news": "박수진의 머니워치 종전 기대 vs 긴장 고조…코스피 5300선 회복",
-      "companions": [
-        {"name": "레이저쎌", "change_rate": 21.4},
-        {"name": "알파칩스", "change_rate": 20.6},
-        {"name": "에이디테크놀로지", "change_rate": 16.8},
-        {"name": "리노공업", "change_rate": 11.4}
-      ]
-    },
-    {
-      "ticker": "322000",
-      "name": "HD현대에너지솔루션",
-      "market": "KOSPI",
-      "sector": "에너지장비및서비스",
-      "close": 191100,
-      "trading_value": 5907,
-      "market_cap": 21000,
-      "change_rate": 30.0,
-      "three_month_return": 230.1,
-      "news": "상한가 종목 HD현대에너지솔루션-광전자 이어 한국첨단소재-에스에너...",
-      "companions": [
-        {"name": "에스에너지", "change_rate": 29.9},
-        {"name": "SK이터닉스", "change_rate": 24.0},
-        {"name": "씨에스윈드", "change_rate": 18.5},
-        {"name": "태웅", "change_rate": 14.3}
-      ]
-    },
-    {
-      "ticker": "0010F0",
-      "name": "보원케미칼",
-      "market": "KOSDAQ",
-      "sector": "화학",
-      "close": 9070,
-      "trading_value": 3902,
-      "market_cap": 1000,
-      "change_rate": 13.7,
-      "three_month_return": null,
-      "news": "상대강도과열 종목 계양전기우 세아제강지주 보원케미칼 '왕성한 식욕...",
-      "companions": [
-        {"name": "후성", "change_rate": 28.5},
-        {"name": "OCI홀딩스", "change_rate": 11.9},
-        {"name": "동성화인텍", "change_rate": 9.1},
-        {"name": "OCI", "change_rate": 6.9}
-      ]
-    },
-    {
-      "ticker": "028050",
-      "name": "삼성E&A",
-      "market": "KOSPI",
-      "sector": "건설",
-      "close": 40550,
-      "trading_value": 3139,
-      "market_cap": 79000,
-      "change_rate": 15.5,
-      "three_month_return": 66.5,
-      "news": "삼성E&A 주가 장중 16%대 급등, 이란 재건 기대감에 건설주 강세",
-      "companions": [
-        {"name": "DL이앤씨", "change_rate": 10.1},
-        {"name": "코오롱글로벌", "change_rate": 9.1},
-        {"name": "DL이앤씨우", "change_rate": 8.5},
-        {"name": "DL이앤씨2우(전환)", "change_rate": 7.7}
-      ]
-    },
-    {
-      "ticker": "375500",
-      "name": "DL이앤씨",
-      "market": "KOSPI",
-      "sector": "건설",
-      "close": 75000,
-      "trading_value": 2274,
-      "market_cap": 29000,
-      "change_rate": 10.1,
-      "three_month_return": 81.4,
-      "news": "DL이앤씨 주주 코페르닉글로벌인베스터스, DL이앤씨 주식등의 수 67만58...",
-      "companions": [
-        {"name": "삼성E&A", "change_rate": 15.5},
-        {"name": "코오롱글로벌", "change_rate": 9.1},
-        {"name": "DL이앤씨우", "change_rate": 8.5},
-        {"name": "DL이앤씨2우(전환)", "change_rate": 7.7}
-      ]
-    }
-  ],
-  "highlights": [
-    "🔥 에너지장비및서비스 테마 집중 — 필터 통과 종목 2개 (SK이터닉스, HD현대에너지솔루션)",
-    "🔥 건설 테마 집중 — 필터 통과 종목 2개 (삼성E&A, DL이앤씨)",
-    "🚀 상한가 종목: HD현대에너지솔루션(+30.0%)",
-    "⚠️ 단기 급등 지속 종목 (추격 주의): 대한광통신 (3개월 +297.5%, 오늘 +25.9%), SK이터닉스 (3개월 +222.5%, 오늘 +24.0%), 신성이엔지 (3개월 +106.8%, 오늘 +25.3%), HD현대에너지솔루션 (3개월 +230.1%, 오늘 +30.0%)"
-  ]
+    "kospi_count": 0,
+    "kosdaq_count": 0,
+    "total": 0
+  }
 }
