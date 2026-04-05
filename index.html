@@ -537,16 +537,16 @@ input[type="range"]::-webkit-slider-thumb {
     <div class="filter-item">
       <div class="filter-label">
         <span>등락률 최소</span>
-        <span class="filter-value" id="crLabel">+10%</span>
+        <span class="filter-value" id="crLabel">-30%</span>
       </div>
-      <input type="range" id="filterCR" min="0" max="30" step="0.5" value="10">
+      <input type="range" id="filterCR" min="-30" max="30" step="0.5" value="-30">
     </div>
     <div class="filter-item">
       <div class="filter-label">
         <span>시총 최대</span>
-        <span class="filter-value" id="mcLabel">30조</span>
+        <span class="filter-value" id="mcLabel">2,000조</span>
       </div>
-      <input type="range" id="filterMC" min="5000" max="500000" step="5000" value="300000">
+      <input type="range" id="filterMC" min="5000" max="2000000" step="5000" value="2000000">
     </div>
   </div>
   </div><!-- /.filters-wrap -->
@@ -754,14 +754,15 @@ function setupFilters() {
   });
 
   crSlider.addEventListener('input', () => {
-    document.getElementById('crLabel').textContent = '+' + crSlider.value + '%';
+    const v = Number(crSlider.value);
+    document.getElementById('crLabel').textContent = (v >= 0 ? '+' : '') + v + '%';
     applyFilters();
     renderAll();
   });
 
   mcSlider.addEventListener('input', () => {
     const val = Number(mcSlider.value);
-    document.getElementById('mcLabel').textContent = val >= 10000 ? (val / 10000).toFixed(1) + '조' : val.toLocaleString() + '억';
+    document.getElementById('mcLabel').textContent = val >= 10000 ? Math.round(val / 10000).toLocaleString() + '조' : val.toLocaleString() + '억';
     applyFilters();
     renderAll();
   });
