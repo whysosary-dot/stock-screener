@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-KOSPI/KOSDAQ 급등 스크리닝 봇
-- FinanceDataReader(KRX 원본 데이터) + pykrx fallback
-- 네이버 금융에서 섹터/뉴스 보강
+KOSPI/KOSDAQ 스크리닝 봇 (경량 버전)
+- FinanceDataReader(KRX 원본) + pykrx fallback
+- 크롤링 없음 → FDR 데이터만으로 완결
 - data.json 생성 → Git 자동 푸시
 """
 
@@ -11,9 +11,6 @@ import os
 import sys
 import subprocess
 import datetime
-import time
-import re
-import requests
 from pathlib import Path
 
 # ─── 라이브러리 import ───
@@ -37,36 +34,28 @@ if not HAS_FDR and not HAS_PYKRX:
 # ─── 설정 ───
 SCRIPT_DIR = Path(__file__).parent.resolve()
 DATA_JSON = SCRIPT_DIR / "data.json"
-OUTPUT_HTML = SCRIPT_DIR / "index.html"
 
+# HTML 슬라이더 기본값 (프론트엔드에서 사용자 조절 가능)
 DEFAULT_FILTERS = {
-    "min_trading_value": 2000,   # 거래대금 최소 (억원)
-    "min_change_rate": 10.0,     # 등락률 최소 (%)
-    "max_market_cap": 300000,    # 시총 최대 (억원 = 30조)
+    "min_trading_value": 2000,       # 거래대금 최소 (억원)
+    "min_change_rate": -30.0,        # 등락률 최소 (%)
+    "max_change_rate": 30.0,         # 등락률 최대 (%)
+    "max_market_cap": 2000000,       # 시총 최대 (억원 = 2000조)
 }
-
-HEADERS = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"}
 
 
 # ═══════════════════════════════════════════
-#   1. 데이터 수집 (FDR 우선, pykrx fallback)
+#   1. 데이터 수집
 # ═══════════════════════════════════════════
 
 def get_trading_date():
     """최근 거래일 추정"""
     today = datetime.date.today()
-    weekday = today.weekday()
-    if weekday == 5:       # 토
+    wd = today.weekday()
+    if wd == 5:
         return today - datetime.timedelta(days=1)
-    elif weekday == 6:     # 일
+    elif wd == 6:
         return today - datetime.timedelta(days=2)
-    elif weekday == 0:
-        # 월요일: 장 시작 전이면 금요일 데이터
-        now = datetime.datetime.now()
-        if now.hour < 16:  # 16시 이전이면 아직 장 마감 전
-            # FDR은 현재 시점 데이터를 줌 → 장중이면 오늘, 아니면 전일
-            pass
-        return today
     return today
 
 
@@ -85,14 +74,13 @@ def fetch_all_stocks_fdr():
                 close = row.get("Close", 0)
                 change_rate = row.get("ChagesRatio", 0)
                 volume = row.get("Volume", 0)
-                amount = row.get("Amount", 0)       # 거래대금 (원)
-                marcap = row.get("Marcap", 0)        # 시가총액 (원)
+                amount = row.get("Amount", 0)
+                marcap = row.get("Marcap", 0)
 
                 if not code or not name or close == 0:
                     continue
 
-                # 원 → 억원 변환
-                trading_value = amount / 1e8
+                trading_value = amount / 1e8   # 원 → 억원
                 market_cap = marcap / 1e8
 
                 all_stocks.append({
@@ -104,7 +92,6 @@ def fetch_all_stocks_fdr():
                     "trading_value": round(trading_value, 0),
                     "market_cap": round(market_cap, 0),
                     "change_rate": round(float(change_rate), 2),
-                    "three_month_return": None,
                 })
                 count += 1
 
@@ -152,7 +139,6 @@ def fetch_all_stocks_pykrx(date_str):
                         "trading_value": round(trading_value, 0),
                         "market_cap": round(market_cap, 0),
                         "change_rate": round(change_rate, 2),
-                        "three_month_return": None,
                     })
                     count += 1
                 except Exception:
@@ -166,184 +152,79 @@ def fetch_all_stocks_pykrx(date_str):
 
 
 def fetch_all_stocks(date_str):
-    """FDR 우선 시도 → 실패 시 pykrx fallback"""
-    all_stocks = []
-
+    """FDR 우선 → pykrx fallback"""
     if HAS_FDR:
         all_stocks = fetch_all_stocks_fdr()
+        if all_stocks:
+            return all_stocks
 
-    if not all_stocks and HAS_PYKRX:
-        print("[FDR 데이터 없음 → pykrx fallback]")
-        all_stocks = fetch_all_stocks_pykrx(date_str)
+    if HAS_PYKRX:
+        print("[FDR 실패 → pykrx fallback]")
+        return fetch_all_stocks_pykrx(date_str)
 
-    if not all_stocks:
-        print("[ERROR] 모든 데이터 소스 실패")
-
-    return all_stocks
+    return []
 
 
 # ═══════════════════════════════════════════
-#   2. 필터 & 섹터/뉴스 보강
+#   2. 필터 & 하이라이트
 # ═══════════════════════════════════════════
 
 def apply_filters(all_stocks, filters=None):
-    """필터 조건 적용"""
+    """거래대금 기준만으로 필터 (등락률/시총은 프론트엔드에서 조절)"""
     if filters is None:
         filters = DEFAULT_FILTERS
-    filtered = []
-    for s in all_stocks:
-        if (s["trading_value"] >= filters["min_trading_value"] and
-            s["change_rate"] >= filters["min_change_rate"] and
-            0 < s["market_cap"] <= filters["max_market_cap"]):
-            filtered.append(s)
+    filtered = [
+        s for s in all_stocks
+        if s["trading_value"] >= filters["min_trading_value"]
+        and 0 < s["market_cap"] <= filters["max_market_cap"]
+    ]
     filtered.sort(key=lambda x: x["trading_value"], reverse=True)
     return filtered
 
 
-def fetch_naver_sector(ticker):
-    """네이버 금융에서 업종(섹터) 정보"""
-    try:
-        url = f"https://finance.naver.com/item/main.naver?code={ticker}"
-        resp = requests.get(url, headers=HEADERS, timeout=5)
-        # 패턴 1: 업종 <a> 태그
-        for pattern in [
-            r'업종[^<]*<a[^>]*>([^<]+)</a>',
-            r'class="sub_tit"[^>]*>\s*<a[^>]*>([^<]+)</a>',
-            r'업종\s*</th>\s*<td[^>]*>\s*<a[^>]*>([^<]+)</a>',
-            r'sise_industry\.naver\?type_code=[^"]*"[^>]*>([^<]+)<',
-        ]:
-            m = re.search(pattern, resp.text, re.DOTALL)
-            if m:
-                sector = m.group(1).strip()
-                if sector and len(sector) < 30:
-                    return sector
-    except Exception:
-        pass
-    return None
-
-
-def fetch_naver_news(ticker):
-    """네이버 금융 최신 뉴스 제목"""
-    try:
-        url = f"https://finance.naver.com/item/news.naver?code={ticker}"
-        resp = requests.get(url, headers=HEADERS, timeout=5)
-        matches = re.findall(r'class="tit">\s*<a[^>]*title="([^"]+)"', resp.text)
-        if matches:
-            return matches[0][:80]
-    except Exception:
-        pass
-    return None
-
-
-def enrich_filtered_stocks(filtered_stocks, all_stocks):
-    """필터 통과 종목에 섹터/뉴스/동반상승 추가"""
-    if not filtered_stocks:
-        return filtered_stocks
-
-    print("\n[섹터/뉴스 수집 중...]")
-
-    # 1) 섹터 & 뉴스
-    for s in filtered_stocks:
-        time.sleep(0.3)
-        sector = fetch_naver_sector(s["ticker"])
-        s["sector"] = sector or "기타"
-        news = fetch_naver_news(s["ticker"])
-        s["news"] = news or ""
-        status = "섹터=" + s["sector"]
-        if news:
-            status += ", 뉴스O"
-        print(f"  {s['name']}: {status}")
-
-    # 2) 동일섹터 동반상승
-    print("\n[동일섹터 동반상승 검색 중...]")
-    sectors = set(s["sector"] for s in filtered_stocks if s["sector"] != "기타")
-
-    # 등락률 5% 이상 상승 종목만 후보로
-    rising_candidates = [
-        s for s in all_stocks
-        if s["change_rate"] >= 5.0
-        and s["ticker"] not in {fs["ticker"] for fs in filtered_stocks}
-    ]
-    rising_candidates.sort(key=lambda x: x["change_rate"], reverse=True)
-
-    sector_companions = {}
-    for sector in sectors:
-        companions = []
-        checked = 0
-        for r in rising_candidates[:100]:
-            if checked >= 15:
-                break
-            time.sleep(0.2)
-            try:
-                r_sector = fetch_naver_sector(r["ticker"])
-                checked += 1
-                if r_sector == sector:
-                    companions.append({"name": r["name"], "change_rate": r["change_rate"]})
-                    if len(companions) >= 4:
-                        break
-            except Exception:
-                continue
-
-        companions.sort(key=lambda x: x["change_rate"], reverse=True)
-        sector_companions[sector] = companions[:4]
-        if companions:
-            names = ", ".join(c["name"] + "(+" + str(c["change_rate"]) + "%)" for c in companions)
-            print(f"  {sector}: {names}")
-
-    for s in filtered_stocks:
-        s["companions"] = sector_companions.get(s["sector"], [])
-
-    return filtered_stocks
-
-
-# ═══════════════════════════════════════════
-#   3. 하이라이트 & 데이터 저장
-# ═══════════════════════════════════════════
-
 def generate_highlights(filtered_stocks):
-    """주목 포인트 생성"""
+    """주목 포인트 자동 생성"""
     highlights = []
 
-    # 섹터별 그룹핑
-    sg = {}
-    for s in filtered_stocks:
-        sec = s.get("sector", "기타")
-        sg.setdefault(sec, []).append(s)
+    # 상한가 종목
+    limit_up = [s for s in filtered_stocks if s["change_rate"] >= 29.5]
+    for s in limit_up:
+        highlights.append("🚀 상한가: " + s["name"] + "(+" + str(s["change_rate"]) + "%)")
 
-    for sec, stks in sg.items():
-        if len(stks) >= 2 and sec != "기타":
-            names = ", ".join(s["name"] for s in stks)
-            highlights.append("🔥 " + sec + " 테마 집중 — " + str(len(stks)) + "개 (" + names + ")")
+    # 하한가 종목
+    limit_down = [s for s in filtered_stocks if s["change_rate"] <= -29.5]
+    for s in limit_down:
+        highlights.append("💥 하한가: " + s["name"] + "(" + str(s["change_rate"]) + "%)")
 
-    # 상한가
-    for s in filtered_stocks:
-        if s["change_rate"] >= 29.5:
-            highlights.append("🚀 상한가: " + s["name"] + "(+" + str(s["change_rate"]) + "%)")
+    # 거래대금 TOP 3
+    top3 = sorted(filtered_stocks, key=lambda x: x["trading_value"], reverse=True)[:3]
+    if top3:
+        names = ", ".join(s["name"] + "(" + str(int(s["trading_value"])) + "억)" for s in top3)
+        highlights.append("💰 거래대금 TOP3: " + names)
 
-    # 3개월 급등 지속
-    momentum = [s for s in filtered_stocks if s.get("three_month_return") and s["three_month_return"] >= 100]
-    if momentum:
-        details = ", ".join(
-            s["name"] + " (3M +" + str(s["three_month_return"]) + "%)"
-            for s in momentum
-        )
-        highlights.append("⚠️ 단기 급등 지속 (추격 주의): " + details)
+    # 급등 (등락률 +15% 이상) 종목 수
+    sharp_rise = [s for s in filtered_stocks if s["change_rate"] >= 15]
+    if len(sharp_rise) >= 3:
+        highlights.append("🔥 급등(+15%↑) " + str(len(sharp_rise)) + "개 종목 — 시장 과열 주의")
 
-    # 테마 키워드 감지
-    energy = [s for s in filtered_stocks if any(kw in s["name"] for kw in ["에너지", "이앤씨", "E&A", "솔라", "풍력", "태양"])]
-    if len(energy) >= 2:
-        names = ", ".join(s["name"] for s in energy)
-        highlights.append("⚡ 에너지/건설 관련주 동반 급등 — " + names)
+    # 급락 (등락률 -10% 이하) 종목 수
+    sharp_fall = [s for s in filtered_stocks if s["change_rate"] <= -10]
+    if len(sharp_fall) >= 3:
+        highlights.append("⚠️ 급락(-10%↓) " + str(len(sharp_fall)) + "개 종목 — 투매 경계")
 
     return highlights
 
 
-def build_data_json(date_str, filtered_stocks, all_stocks, highlights, near_miss):
+# ═══════════════════════════════════════════
+#   3. 데이터 저장 & Git
+# ═══════════════════════════════════════════
+
+def build_data_json(date_str, filtered_stocks, all_stocks, highlights):
     """data.json 생성"""
-    kospi_filtered = sum(1 for s in filtered_stocks if s["market"] == "KOSPI")
-    kosdaq_filtered = sum(1 for s in filtered_stocks if s["market"] == "KOSDAQ")
     kospi_total = sum(1 for s in all_stocks if s["market"] == "KOSPI")
     kosdaq_total = sum(1 for s in all_stocks if s["market"] == "KOSDAQ")
+    kospi_filtered = sum(1 for s in filtered_stocks if s["market"] == "KOSPI")
+    kosdaq_filtered = sum(1 for s in filtered_stocks if s["market"] == "KOSDAQ")
 
     data = {
         "date": date_str,
@@ -351,7 +232,6 @@ def build_data_json(date_str, filtered_stocks, all_stocks, highlights, near_miss
         "filter_defaults": DEFAULT_FILTERS,
         "total_filtered": len(filtered_stocks),
         "stocks": filtered_stocks,
-        "near_miss": near_miss[:10],
         "highlights": highlights,
         "all_stocks_summary": {
             "kospi_count": kospi_filtered,
@@ -365,13 +245,9 @@ def build_data_json(date_str, filtered_stocks, all_stocks, highlights, near_miss
     with open(DATA_JSON, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print(f"\n[저장] {DATA_JSON}")
+    print(f"\n[저장] {DATA_JSON} ({len(filtered_stocks)}개 종목)")
     return data
 
-
-# ═══════════════════════════════════════════
-#   4. Git 커밋 & 푸시
-# ═══════════════════════════════════════════
 
 def git_commit_and_push(date_str):
     """Git 자동 커밋 & 푸시"""
@@ -383,7 +259,6 @@ def git_commit_and_push(date_str):
         if lock_path.exists():
             try:
                 lock_path.unlink()
-                print(f"[Git] stale lock 제거: {lock}")
             except Exception:
                 pass
 
@@ -400,9 +275,8 @@ def git_commit_and_push(date_str):
             print("[Git] 변경사항 없음")
             return True
 
-        print("[Git] 커밋 완료: " + commit_msg)
+        print("[Git] 커밋: " + commit_msg)
 
-        # Push
         result = subprocess.run(
             ["git", "push", "origin", "main"],
             capture_output=True, text=True, timeout=30
@@ -421,13 +295,13 @@ def git_commit_and_push(date_str):
 
 
 # ═══════════════════════════════════════════
-#   5. 메인
+#   4. 메인
 # ═══════════════════════════════════════════
 
 def main():
     print("=" * 60)
-    print("  KOSPI/KOSDAQ 급등 스크리닝 봇")
-    print("  데이터: FinanceDataReader (KRX 원본) + pykrx fallback")
+    print("  KOSPI/KOSDAQ 스크리닝 봇 (경량)")
+    print("  FDR(KRX 원본) | 크롤링 없음 | 빠른 실행")
     print("=" * 60)
 
     # 1) 거래일
@@ -439,70 +313,55 @@ def main():
     # 2) 전 종목 수집
     all_stocks = fetch_all_stocks(date_str_compact)
     if not all_stocks:
-        print("\n❌ 데이터 수집 실패. 종료.")
+        print("\n❌ 데이터 수집 실패")
         return None
 
     kospi_n = sum(1 for s in all_stocks if s["market"] == "KOSPI")
     kosdaq_n = sum(1 for s in all_stocks if s["market"] == "KOSDAQ")
-    print(f"\n총 {len(all_stocks)}개 종목 수집 (KOSPI {kospi_n} / KOSDAQ {kosdaq_n})")
+    print(f"\n총 {len(all_stocks)}개 종목 (KOSPI {kospi_n} / KOSDAQ {kosdaq_n})")
 
-    # 3) 필터
+    # 3) 필터 (거래대금 2000억↑, 시총 2000조↓)
     filtered = apply_filters(all_stocks)
-    print(f"\n[필터 결과] {len(filtered)}개 종목 통과")
-    print(f"  (거래대금 {DEFAULT_FILTERS['min_trading_value']:,}억↑, "
-          f"등락률 +{DEFAULT_FILTERS['min_change_rate']}%↑, "
-          f"시총 {DEFAULT_FILTERS['max_market_cap']:,}억↓)")
-    print()
-    for s in filtered:
-        print(f"  {s['name']} ({s['ticker']}) | +{s['change_rate']}% | "
-              f"거래대금 {s['trading_value']:,.0f}억 | 시총 {s['market_cap']:,.0f}억")
+    print(f"\n[필터] {len(filtered)}개 종목 통과 (거래대금 {DEFAULT_FILTERS['min_trading_value']:,}억↑)")
 
-    # near-miss: 거래대금 500억+ 이지만 2000억 미만
-    near_miss = [
-        s for s in all_stocks
-        if s["change_rate"] >= DEFAULT_FILTERS["min_change_rate"]
-        and 500 <= s["trading_value"] < DEFAULT_FILTERS["min_trading_value"]
-        and 0 < s["market_cap"] <= DEFAULT_FILTERS["max_market_cap"]
-    ]
-    near_miss.sort(key=lambda x: x["trading_value"], reverse=True)
-
-    # 4) 섹터/뉴스 보강
-    if filtered:
-        filtered = enrich_filtered_stocks(filtered, all_stocks)
-
-    # 5) 하이라이트
+    # 4) 하이라이트
     highlights = generate_highlights(filtered)
 
-    # 6) JSON 저장
-    data = build_data_json(date_str, filtered, all_stocks, highlights, near_miss)
+    # 5) 저장
+    data = build_data_json(date_str, filtered, all_stocks, highlights)
 
-    # 7) Git 푸시
+    # 6) Git 푸시
     git_commit_and_push(date_str)
 
-    # 8) 결과 요약
+    # 7) 요약
     print("\n" + "=" * 60)
     print("  📊 결과 요약")
     print("=" * 60)
     print(f"  대상일: {date_str}")
-    print(f"  수집: KOSPI {kospi_n}개, KOSDAQ {kosdaq_n}개")
+    print(f"  수집: KOSPI {kospi_n} / KOSDAQ {kosdaq_n}")
     print(f"  필터 통과: {len(filtered)}개")
+
+    # 상승/하락 분포
+    up = sum(1 for s in filtered if s["change_rate"] > 0)
+    down = sum(1 for s in filtered if s["change_rate"] < 0)
+    flat = len(filtered) - up - down
+    print(f"  상승 {up} / 보합 {flat} / 하락 {down}")
+
     if filtered:
-        print()
-        for s in filtered:
-            sec = s.get("sector", "")
-            news_str = ""
-            if s.get("news"):
-                news_str = " | " + s["news"]
-            print(f"  • {s['name']} ({s['ticker']}): +{s['change_rate']}% | "
-                  f"TV {s['trading_value']:,.0f}억 | MC {s['market_cap']:,.0f}억 | {sec}{news_str}")
-    if near_miss:
-        print(f"\n  📌 기준 근접 ({len(near_miss)}개):")
-        for s in near_miss[:5]:
-            print(f"    {s['name']}: +{s['change_rate']}% | TV {s['trading_value']:,.0f}억")
+        print(f"\n  거래대금 TOP 10:")
+        for s in filtered[:10]:
+            sign = "+" if s["change_rate"] >= 0 else ""
+            mc_str = str(int(s["market_cap"])) + "억"
+            if s["market_cap"] >= 10000:
+                mc_str = str(round(s["market_cap"] / 10000, 1)) + "조"
+            print(f"    {s['name']} ({s['market']}): {sign}{s['change_rate']}% | "
+                  f"TV {s['trading_value']:,.0f}억 | MC {mc_str}")
+
     if highlights:
         print(f"\n  🔍 주목:")
         for h in highlights:
             print(f"    {h}")
+
     print(f"\n  🌐 https://whysosary-dot.github.io/stock-screener/")
     print("\n✅ 완료!")
     return data

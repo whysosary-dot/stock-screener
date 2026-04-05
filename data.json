@@ -1,12 +1,13 @@
 {
   "date": "2026-04-06",
-  "generated_at": "2026-04-06T00:27:45.077710",
+  "generated_at": "2026-04-06T00:33:56.402611",
   "filter_defaults": {
     "min_trading_value": 2000,
-    "min_change_rate": 10.0,
-    "max_market_cap": 300000
+    "min_change_rate": -30.0,
+    "max_change_rate": 30.0,
+    "max_market_cap": 2000000
   },
-  "total_filtered": 7,
+  "total_filtered": 27,
   "stocks": [
     {
       "ticker": "010170",
@@ -16,24 +17,17 @@
       "volume": 76311778,
       "trading_value": 9471.0,
       "market_cap": 19809.0,
-      "change_rate": 25.89,
-      "three_month_return": null,
-      "sector": "통신장비",
-      "news": "",
-      "companions": [
-        {
-          "name": "한국첨단소재",
-          "change_rate": 30.0
-        },
-        {
-          "name": "CS",
-          "change_rate": 29.96
-        },
-        {
-          "name": "옵티시스",
-          "change_rate": 21.62
-        }
-      ]
+      "change_rate": 25.89
+    },
+    {
+      "ticker": "079550",
+      "name": "LIG넥스원",
+      "market": "KOSPI",
+      "close": 860000,
+      "volume": 946418,
+      "trading_value": 7963.0,
+      "market_cap": 189200.0,
+      "change_rate": 9.69
     },
     {
       "ticker": "475150",
@@ -43,16 +37,7 @@
       "volume": 11359132,
       "trading_value": 7347.0,
       "market_cap": 23234.0,
-      "change_rate": 24.0,
-      "three_month_return": null,
-      "sector": "에너지장비및서비스",
-      "news": "",
-      "companions": [
-        {
-          "name": "에스에너지",
-          "change_rate": 29.95
-        }
-      ]
+      "change_rate": 24.0
     },
     {
       "ticker": "011930",
@@ -62,20 +47,7 @@
       "volume": 193360440,
       "trading_value": 6556.0,
       "market_cap": 7091.0,
-      "change_rate": 25.27,
-      "three_month_return": null,
-      "sector": "반도체와반도체장비",
-      "news": "",
-      "companions": [
-        {
-          "name": "레이저쎌",
-          "change_rate": 21.4
-        },
-        {
-          "name": "알파칩스",
-          "change_rate": 20.63
-        }
-      ]
+      "change_rate": 25.27
     },
     {
       "ticker": "322000",
@@ -85,16 +57,37 @@
       "volume": 3337733,
       "trading_value": 5907.0,
       "market_cap": 21403.0,
-      "change_rate": 30.0,
-      "three_month_return": null,
-      "sector": "에너지장비및서비스",
-      "news": "",
-      "companions": [
-        {
-          "name": "에스에너지",
-          "change_rate": 29.95
-        }
-      ]
+      "change_rate": 30.0
+    },
+    {
+      "ticker": "047040",
+      "name": "대우건설",
+      "market": "KOSPI",
+      "close": 16810,
+      "volume": 32764212,
+      "trading_value": 5646.0,
+      "market_cap": 69866.0,
+      "change_rate": 2.25
+    },
+    {
+      "ticker": "003280",
+      "name": "흥아해운",
+      "market": "KOSPI",
+      "close": 4090,
+      "volume": 124803310,
+      "trading_value": 5299.0,
+      "market_cap": 9833.0,
+      "change_rate": -8.5
+    },
+    {
+      "ticker": "009830",
+      "name": "한화솔루션",
+      "market": "KOSPI",
+      "close": 39050,
+      "volume": 10292583,
+      "trading_value": 4084.0,
+      "market_cap": 67124.0,
+      "change_rate": 9.69
     },
     {
       "ticker": "0010F0",
@@ -104,16 +97,47 @@
       "volume": 41494781,
       "trading_value": 3902.0,
       "market_cap": 1011.0,
-      "change_rate": 13.66,
-      "three_month_return": null,
-      "sector": "화학",
-      "news": "",
-      "companions": [
-        {
-          "name": "후성",
-          "change_rate": 28.53
-        }
-      ]
+      "change_rate": 13.66
+    },
+    {
+      "ticker": "000250",
+      "name": "삼천당제약",
+      "market": "KOSDAQ",
+      "close": 648000,
+      "volume": 621768,
+      "trading_value": 3884.0,
+      "market_cap": 152004.0,
+      "change_rate": 6.4
+    },
+    {
+      "ticker": "009150",
+      "name": "삼성전기",
+      "market": "KOSPI",
+      "close": 456000,
+      "volume": 831535,
+      "trading_value": 3765.0,
+      "market_cap": 340603.0,
+      "change_rate": 9.35
+    },
+    {
+      "ticker": "050890",
+      "name": "쏠리드",
+      "market": "KOSDAQ",
+      "close": 16300,
+      "volume": 21465663,
+      "trading_value": 3548.0,
+      "market_cap": 9903.0,
+      "change_rate": 8.16
+    },
+    {
+      "ticker": "329180",
+      "name": "HD현대중공업",
+      "market": "KOSPI",
+      "close": 479500,
+      "volume": 743866,
+      "trading_value": 3526.0,
+      "market_cap": 503289.0,
+      "change_rate": 9.23
     },
     {
       "ticker": "028050",
@@ -123,11 +147,87 @@
       "volume": 7790091,
       "trading_value": 3139.0,
       "market_cap": 79478.0,
-      "change_rate": 15.53,
-      "three_month_return": null,
-      "sector": "건설",
-      "news": "",
-      "companions": []
+      "change_rate": 15.53
+    },
+    {
+      "ticker": "005380",
+      "name": "현대차",
+      "market": "KOSPI",
+      "close": 471000,
+      "volume": 659219,
+      "trading_value": 3119.0,
+      "market_cap": 964409.0,
+      "change_rate": 1.18
+    },
+    {
+      "ticker": "006400",
+      "name": "삼성SDI",
+      "market": "KOSPI",
+      "close": 438500,
+      "volume": 692098,
+      "trading_value": 3051.0,
+      "market_cap": 353368.0,
+      "change_rate": -1.02
+    },
+    {
+      "ticker": "100090",
+      "name": "SK오션플랜트",
+      "market": "KOSPI",
+      "close": 30200,
+      "volume": 10066236,
+      "trading_value": 3041.0,
+      "market_cap": 18868.0,
+      "change_rate": 6.53
+    },
+    {
+      "ticker": "012450",
+      "name": "한화에어로스페이스",
+      "market": "KOSPI",
+      "close": 1449000,
+      "volume": 193653,
+      "trading_value": 2805.0,
+      "market_cap": 747154.0,
+      "change_rate": 2.26
+    },
+    {
+      "ticker": "272210",
+      "name": "한화시스템",
+      "market": "KOSPI",
+      "close": 135400,
+      "volume": 1927511,
+      "trading_value": 2604.0,
+      "market_cap": 255797.0,
+      "change_rate": 4.8
+    },
+    {
+      "ticker": "024060",
+      "name": "흥구석유",
+      "market": "KOSDAQ",
+      "close": 22000,
+      "volume": 11186609,
+      "trading_value": 2462.0,
+      "market_cap": 3300.0,
+      "change_rate": 1.62
+    },
+    {
+      "ticker": "0007J0",
+      "name": "인벤테라",
+      "market": "KOSDAQ",
+      "close": 32850,
+      "volume": 6418073,
+      "trading_value": 2441.0,
+      "market_cap": 2584.0,
+      "change_rate": -6.81
+    },
+    {
+      "ticker": "034020",
+      "name": "두산에너빌리티",
+      "market": "KOSPI",
+      "close": 96600,
+      "volume": 2522536,
+      "trading_value": 2434.0,
+      "market_cap": 618782.0,
+      "change_rate": 3.21
     },
     {
       "ticker": "375500",
@@ -137,134 +237,57 @@
       "volume": 2963265,
       "trading_value": 2274.0,
       "market_cap": 29020.0,
-      "change_rate": 10.13,
-      "three_month_return": null,
-      "sector": "건설",
-      "news": "",
-      "companions": []
-    }
-  ],
-  "near_miss": [
-    {
-      "ticker": "112610",
-      "name": "씨에스윈드",
-      "market": "KOSPI",
-      "close": 76900,
-      "volume": 2288237,
-      "trading_value": 1721.0,
-      "market_cap": 32430.0,
-      "change_rate": 18.49,
-      "three_month_return": null
+      "change_rate": 10.13
     },
     {
-      "ticker": "010820",
-      "name": "퍼스텍",
-      "market": "KOSPI",
-      "close": 9130,
-      "volume": 14055100,
-      "trading_value": 1217.0,
-      "market_cap": 4453.0,
-      "change_rate": 24.9,
-      "three_month_return": null
-    },
-    {
-      "ticker": "010060",
-      "name": "OCI홀딩스",
-      "market": "KOSPI",
-      "close": 229500,
-      "volume": 499507,
-      "trading_value": 1119.0,
-      "market_cap": 42848.0,
-      "change_rate": 11.95,
-      "three_month_return": null
-    },
-    {
-      "ticker": "017900",
-      "name": "광전자",
-      "market": "KOSPI",
-      "close": 4455,
-      "volume": 25962440,
-      "trading_value": 1066.0,
-      "market_cap": 2581.0,
-      "change_rate": 29.88,
-      "three_month_return": null
-    },
-    {
-      "ticker": "058470",
-      "name": "리노공업",
+      "ticker": "032820",
+      "name": "우리기술",
       "market": "KOSDAQ",
-      "close": 110400,
-      "volume": 934117,
-      "trading_value": 991.0,
-      "market_cap": 84138.0,
-      "change_rate": 11.4,
-      "three_month_return": null
+      "close": 21600,
+      "volume": 10584637,
+      "trading_value": 2241.0,
+      "market_cap": 36957.0,
+      "change_rate": 4.6
     },
     {
-      "ticker": "001250",
-      "name": "GS글로벌",
+      "ticker": "005935",
+      "name": "삼성전자우",
       "market": "KOSPI",
-      "close": 3170,
-      "volume": 28470561,
-      "trading_value": 893.0,
-      "market_cap": 2616.0,
-      "change_rate": 22.16,
-      "three_month_return": null
+      "close": 124400,
+      "volume": 1817737,
+      "trading_value": 2234.0,
+      "market_cap": 1015072.0,
+      "change_rate": 4.89
     },
     {
-      "ticker": "092790",
-      "name": "넥스틸",
+      "ticker": "402340",
+      "name": "SK스퀘어",
       "market": "KOSPI",
-      "close": 14920,
-      "volume": 6107663,
-      "trading_value": 881.0,
-      "market_cap": 3879.0,
-      "change_rate": 21.4,
-      "three_month_return": null
+      "close": 483000,
+      "volume": 457740,
+      "trading_value": 2191.0,
+      "market_cap": 637981.0,
+      "change_rate": 2.88
     },
     {
-      "ticker": "389260",
-      "name": "대명에너지",
-      "market": "KOSDAQ",
-      "close": 27300,
-      "volume": 3073787,
-      "trading_value": 798.0,
-      "market_cap": 4891.0,
-      "change_rate": 10.75,
-      "three_month_return": null
-    },
-    {
-      "ticker": "093370",
-      "name": "후성",
+      "ticker": "064350",
+      "name": "현대로템",
       "market": "KOSPI",
-      "close": 8920,
-      "volume": 8942707,
-      "trading_value": 750.0,
-      "market_cap": 9567.0,
-      "change_rate": 28.53,
-      "three_month_return": null
-    },
-    {
-      "ticker": "100840",
-      "name": "SNT에너지",
-      "market": "KOSPI",
-      "close": 52100,
-      "volume": 1307144,
-      "trading_value": 694.0,
-      "market_cap": 10775.0,
-      "change_rate": 11.09,
-      "three_month_return": null
+      "close": 210000,
+      "volume": 985634,
+      "trading_value": 2045.0,
+      "market_cap": 229199.0,
+      "change_rate": 4.22
     }
   ],
   "highlights": [
-    "🔥 에너지장비및서비스 테마 집중 — 2개 (SK이터닉스, HD현대에너지솔루션)",
-    "🔥 건설 테마 집중 — 2개 (삼성E&A, DL이앤씨)",
     "🚀 상한가: HD현대에너지솔루션(+30.0%)",
-    "⚡ 에너지/건설 관련주 동반 급등 — HD현대에너지솔루션, 삼성E&A, DL이앤씨"
+    "💰 거래대금 TOP3: 대한광통신(9471억), LIG넥스원(7963억), SK이터닉스(7347억)",
+    "🔥 급등(+15%↑) 5개 종목 — 시장 과열 주의"
   ],
   "all_stocks_summary": {
-    "kospi_count": 5,
-    "kosdaq_count": 2,
+    "kospi_count": 20,
+    "kosdaq_count": 7,
     "total_kospi": 950,
     "total_kosdaq": 1824,
     "total": 2774
