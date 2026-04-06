@@ -982,7 +982,7 @@ function renderStockCards() {
           </div>
           <div class="metric">
             <div class="metric-label">등락률</div>
-            <div class="metric-value up">+${s.change_rate}%</div>
+            <div class="metric-value ${s.change_rate >= 0 ? 'up' : 'down'}">${s.change_rate >= 0 ? '+' : ''}${s.change_rate}%</div>
           </div>
           <div class="metric">
             <div class="metric-label">거래대금</div>
@@ -1026,7 +1026,7 @@ function renderSectorSummary() {
       ${stocks.map(s => `
         <div class="sector-stock">
           <span>${s.name}</span>
-          <span style="color: var(--up); font-weight: 600;">+${s.change_rate}%</span>
+          <span style="color: var(${s.change_rate >= 0 ? '--up' : '--down'}); font-weight: 600;">${s.change_rate >= 0 ? '+' : ''}${s.change_rate}%</span>
         </div>
       `).join('')}
     </div>
