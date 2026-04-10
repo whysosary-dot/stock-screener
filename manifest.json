@@ -1,0 +1,28 @@
+{
+  "name": "KOSPI/KOSDAQ 급등 스크리닝",
+  "short_name": "급등스크리닝",
+  "description": "매일 장 마감 후 KOSPI/KOSDAQ 급등 종목 스크리닝",
+  "start_url": "/stock-screener/",
+  "display": "standalone",
+  "background_color": "#0a0f1e",
+  "theme_color": "#0a0f1e",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
