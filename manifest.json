@@ -4,25 +4,26 @@
   "description": "매일 장 마감 후 KOSPI/KOSDAQ 급등 종목 스크리닝",
   "start_url": "/stock-screener/",
   "display": "standalone",
-  "background_color": "#0a0f1e",
-  "theme_color": "#0a0f1e",
+  "background_color": "#ffffff",
+  "theme_color": "#10b981",
   "icons": [
     {
-      "src": "apple-touch-icon.png",
+      "src": "apple-touch-icon.png?v=3",
       "sizes": "180x180",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "icon-192x192.png",
+      "src": "icon-192x192.png?v=3",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "icon-512x512.png",
+      "src": "icon-512x512.png?v=3",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
