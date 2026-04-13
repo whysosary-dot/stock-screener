@@ -1,6 +1,6 @@
 {
   "date": "2026-04-13",
-  "generated_at": "2026-04-13T17:38:19.230885",
+  "generated_at": "2026-04-13T18:09:37.410418",
   "filter_defaults": {
     "min_trading_value": 1000,
     "min_change_rate": -30.0,
@@ -17,7 +17,10 @@
       "volume": 57345309,
       "trading_value": 11317.0,
       "market_cap": 30895.0,
-      "change_rate": 11.82
+      "change_rate": 11.82,
+      "one_month_return": 168.5,
+      "two_month_return": 497.6,
+      "three_month_return": 528.8
     },
     {
       "ticker": "252670",
@@ -27,7 +30,10 @@
       "volume": 2782204089,
       "trading_value": 6274.0,
       "market_cap": 11769.0,
-      "change_rate": 2.28
+      "change_rate": 2.28,
+      "one_month_return": -21.1,
+      "two_month_return": -30.0,
+      "three_month_return": -53.7
     },
     {
       "ticker": "008350",
@@ -37,7 +43,10 @@
       "volume": 196784066,
       "trading_value": 5249.0,
       "market_cap": 3698.0,
-      "change_rate": 29.93
+      "change_rate": 29.93,
+      "one_month_return": 90.2,
+      "two_month_return": 123.7,
+      "three_month_return": 137.6
     },
     {
       "ticker": "114800",
@@ -47,7 +56,10 @@
       "volume": 200335170,
       "trading_value": 3108.0,
       "market_cap": 9378.0,
-      "change_rate": 0.98
+      "change_rate": 0.98,
+      "one_month_return": -9.7,
+      "two_month_return": -13.1,
+      "three_month_return": -28.5
     },
     {
       "ticker": "005880",
@@ -57,7 +69,10 @@
       "volume": 98757265,
       "trading_value": 2982.0,
       "market_cap": 9231.0,
-      "change_rate": -7.44
+      "change_rate": -7.44,
+      "one_month_return": 30.0,
+      "two_month_return": 29.4,
+      "three_month_return": 59.3
     },
     {
       "ticker": "011930",
@@ -67,7 +82,10 @@
       "volume": 73379555,
       "trading_value": 2848.0,
       "market_cap": 8080.0,
-      "change_rate": 3.7
+      "change_rate": 3.7,
+      "one_month_return": 65.6,
+      "two_month_return": 59.9,
+      "three_month_return": 148.9
     },
     {
       "ticker": "018470",
@@ -77,7 +95,10 @@
       "volume": 145657570,
       "trading_value": 2655.0,
       "market_cap": 2428.0,
-      "change_rate": 26.62
+      "change_rate": 26.62,
+      "one_month_return": 51.7,
+      "two_month_return": 50.9,
+      "three_month_return": 49.5
     },
     {
       "ticker": "215790",
@@ -87,18 +108,22 @@
       "volume": 43437789,
       "trading_value": 1414.0,
       "market_cap": 1345.0,
-      "change_rate": 14.19
+      "change_rate": 14.19,
+      "one_month_return": 772.1,
+      "two_month_return": 558.8,
+      "three_month_return": 441.3
     }
   ],
   "highlights": [
     "🚀 상한가: 남선알미늄(+29.93%)",
-    "💰 거래대금 TOP3: 대한광통신(11317억), KODEX 200선물인버스2X(6274억), 남선알미늄(5249억)"
+    "💰 거래대금 TOP3: 대한광통신(11317억), KODEX 200선물인버스2X(6274억), 남선알미늄(5249억)",
+    "⚠️ 단기 급등 지속 (추격 주의): 대한광통신 (3M +528.8%, 오늘 +11.82%), 남선알미늄 (3M +137.6%, 오늘 +29.93%), 이노인스트루먼트 (3M +441.3%, 오늘 +14.19%)"
   ],
   "all_stocks_summary": {
     "kospi_count": 6,
     "kosdaq_count": 2,
-    "total_kospi": 6,
-    "total_kosdaq": 2,
-    "total": 8
+    "total_kospi": 991,
+    "total_kosdaq": 743,
+    "total": 1734
   }
 }
