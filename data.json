@@ -1,6 +1,6 @@
 {
   "date": "2026-04-14",
-  "generated_at": "2026-04-14T16:38:50.342978",
+  "generated_at": "2026-04-14T16:40:00.836535",
   "filter_defaults": {
     "min_trading_value": 1000,
     "min_change_rate": -30.0,
@@ -19,9 +19,9 @@
       "market_cap": 10963.0,
       "market": "KOSPI",
       "sosok": 0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": -26.1,
+      "two_month_return": -34.4,
+      "three_month_return": -56.1
     },
     {
       "ticker": "114800",
@@ -33,9 +33,9 @@
       "market_cap": 8928.0,
       "market": "KOSPI",
       "sosok": 0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": -12.4,
+      "two_month_return": -15.7,
+      "three_month_return": -30.3
     },
     {
       "ticker": "008350",
@@ -47,9 +47,9 @@
       "market_cap": 3976.0,
       "market": "KOSPI",
       "sosok": 0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 104.5,
+      "two_month_return": 146.8,
+      "three_month_return": 155.6
     },
     {
       "ticker": "018470",
@@ -61,9 +61,9 @@
       "market_cap": 2471.0,
       "market": "KOSPI",
       "sosok": 0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 54.4,
+      "two_month_return": 56.1,
+      "three_month_return": 51.8
     },
     {
       "ticker": "010170",
@@ -75,9 +75,9 @@
       "market_cap": 31330.0,
       "market": "KOSDAQ",
       "sosok": 1,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 172.3,
+      "two_month_return": 484.1,
+      "three_month_return": 567.2
     }
   ],
   "highlights": [
