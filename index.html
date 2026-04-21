@@ -936,7 +936,7 @@ function renderStockCards() {
     const marketClass = s.market === 'KOSDAQ' ? 'kosdaq' : '';
 
     // 금액 포맷
-    const closeStr = s.close.toLocaleString() + '원';
+    const closeStr = (s.price ?? s.close ?? 0).toLocaleString() + '원';
     const tvStr = s.trading_value >= 10000
       ? (s.trading_value / 10000).toFixed(1) + '조'
       : Math.round(s.trading_value).toLocaleString() + '억';
