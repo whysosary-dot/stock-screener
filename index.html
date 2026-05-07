@@ -1006,7 +1006,7 @@ function renderStockCards() {
       <div class="stock-card ${isLimitUp ? 'limit-up' : ''}">
         <div class="card-top">
           <div>
-            <a class="stock-name" href="https://finance.naver.com/item/main.naver?code=${s.ticker}" target="_blank" rel="noopener">${s.name}</a>
+            <a class="stock-name" href="https://m.stock.naver.com/domestic/stock/${s.ticker}/overview" target="_blank" rel="noopener">${s.name}</a>
             <span class="stock-ticker">${s.ticker}</span>
           </div>
           <span class="stock-market ${marketClass}">${s.market}</span>
