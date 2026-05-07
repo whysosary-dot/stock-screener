@@ -274,6 +274,12 @@ input[type="range"]::-webkit-slider-thumb {
   font-size: 20px;
   font-weight: 700;
   color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+}
+.stock-name:hover {
+  color: var(--accent);
+  text-decoration: underline;
 }
 
 .stock-ticker {
@@ -936,7 +942,7 @@ function renderStockCards() {
     const marketClass = s.market === 'KOSDAQ' ? 'kosdaq' : '';
 
     // 금액 포맷
-    const closeStr = (s.price ?? s.close ?? 0).toLocaleString() + '원';
+    const closeStr = s.close.toLocaleString() + '원';
     const tvStr = s.trading_value >= 10000
       ? (s.trading_value / 10000).toFixed(1) + '조'
       : Math.round(s.trading_value).toLocaleString() + '억';
@@ -976,7 +982,7 @@ function renderStockCards() {
       <div class="stock-card ${isLimitUp ? 'limit-up' : ''}">
         <div class="card-top">
           <div>
-            <span class="stock-name">${s.name}</span>
+            <a class="stock-name" href="https://finance.naver.com/item/main.naver?code=${s.ticker}" target="_blank" rel="noopener">${s.name}</a>
             <span class="stock-ticker">${s.ticker}</span>
           </div>
           <span class="stock-market ${marketClass}">${s.market}</span>
