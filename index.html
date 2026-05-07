@@ -630,6 +630,8 @@ input[type="range"]::-webkit-slider-thumb {
     <button class="sort-btn" data-sort="one_month_return">1개월수익률순</button>
     <button class="sort-btn" data-sort="two_month_return">2개월수익률순</button>
     <button class="sort-btn" data-sort="three_month_return">3개월수익률순</button>
+    <button class="sort-btn" data-sort="acc_1m_2m" title="최근 1개월 수익률이 2개월 수익률보다 높은 종목 — 최근 가속 중">1M↑2M 가속</button>
+    <button class="sort-btn" data-sort="acc_1m_2m_3m" title="1개월 &gt; 2개월 &gt; 3개월 수익률 순으로 점진 상승 중인 종목">1M↑2M↑3M 점진가속</button>
   </div>
 
   <!-- Highlights -->
@@ -879,8 +881,30 @@ function setupSort() {
 
 function sortStocks() {
   FILTERED.sort((a, b) => {
-    const av = a[CURRENT_SORT] ?? -Infinity;
-    const bv = b[CURRENT_SORT] ?? -Infinity;
+    let av, bv;
+
+    if (CURRENT_SORT === 'acc_1m_2m') {
+      // 1개월 수익률 - 2개월 수익률: 양수일수록 최근 1개월이 더 강함
+      av = (a.one_month_return != null && a.two_month_return != null)
+        ? (a.one_month_return - a.two_month_return) : -Infinity;
+      bv = (b.one_month_return != null && b.two_month_return != null)
+        ? (b.one_month_return - b.two_month_return) : -Infinity;
+
+    } else if (CURRENT_SORT === 'acc_1m_2m_3m') {
+      // 1M > 2M > 3M 조건 충족 종목만 점수, 나머지는 -Infinity
+      const aOk = a.one_month_return != null && a.two_month_return != null && a.three_month_return != null
+        && a.one_month_return > a.two_month_return && a.two_month_return > a.three_month_return;
+      const bOk = b.one_month_return != null && b.two_month_return != null && b.three_month_return != null
+        && b.one_month_return > b.two_month_return && b.two_month_return > b.three_month_return;
+      // 조건 충족 시 1M 수익률 기준 정렬
+      av = aOk ? a.one_month_return : -Infinity;
+      bv = bOk ? b.one_month_return : -Infinity;
+
+    } else {
+      av = a[CURRENT_SORT] ?? -Infinity;
+      bv = b[CURRENT_SORT] ?? -Infinity;
+    }
+
     return bv - av;
   });
 }
