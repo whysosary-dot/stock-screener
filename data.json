@@ -1,6 +1,6 @@
 {
   "date": "2026-05-08",
-  "generated_at": "2026-05-08T07:37:06.307418",
+  "generated_at": "2026-05-08T10:11:27.116411",
   "filter_defaults": {
     "min_trading_value": 1000,
     "min_change_rate": -30.0,
@@ -17,45 +17,9 @@
       "change_rate": 2.86,
       "trading_value": 1001.87,
       "market_cap": 10514.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "396500",
-      "name": "TIGER 반도체TOP10",
-      "market": "KOSPI",
-      "current_price": 46375.0,
-      "change_rate": 0.45,
-      "trading_value": 11691.0,
-      "market_cap": 122778.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "233740",
-      "name": "KODEX 코스닥150레버리지",
-      "market": "KOSPI",
-      "current_price": 17005.0,
-      "change_rate": 0.71,
-      "trading_value": 5398.37,
-      "market_cap": 41203.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "018880",
-      "name": "한온시스템",
-      "market": "KOSPI",
-      "current_price": 4770.0,
-      "change_rate": 2.65,
-      "trading_value": 1316.83,
-      "market_cap": 48953.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 51.9,
+      "two_month_return": 78.0,
+      "three_month_return": 62.1
     },
     {
       "ticker": "003470",
@@ -65,9 +29,9 @@
       "change_rate": 3.89,
       "trading_value": 1493.61,
       "market_cap": 14311.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 46.8,
+      "two_month_return": 50.5,
+      "three_month_return": 64.1
     },
     {
       "ticker": "114800",
@@ -77,9 +41,21 @@
       "change_rate": 0.17,
       "trading_value": 3740.82,
       "market_cap": 8602.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": -24.2,
+      "two_month_return": -35.9,
+      "three_month_return": -40.6
+    },
+    {
+      "ticker": "233740",
+      "name": "KODEX 코스닥150레버리지",
+      "market": "KOSPI",
+      "current_price": 17005.0,
+      "change_rate": 0.71,
+      "trading_value": 5398.37,
+      "market_cap": 41203.0,
+      "one_month_return": 15.4,
+      "two_month_return": 0.2,
+      "three_month_return": 6.3
     },
     {
       "ticker": "001440",
@@ -89,9 +65,33 @@
       "change_rate": 12.79,
       "trading_value": 14244.99,
       "market_cap": 134801.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 130.3,
+      "two_month_return": 151.5,
+      "three_month_return": 139.0
+    },
+    {
+      "ticker": "396500",
+      "name": "TIGER 반도체TOP10",
+      "market": "KOSPI",
+      "current_price": 46375.0,
+      "change_rate": 0.45,
+      "trading_value": 11691.0,
+      "market_cap": 122778.0,
+      "one_month_return": 34.5,
+      "two_month_return": 47.8,
+      "three_month_return": 65.2
+    },
+    {
+      "ticker": "018880",
+      "name": "한온시스템",
+      "market": "KOSPI",
+      "current_price": 4770.0,
+      "change_rate": 2.65,
+      "trading_value": 1316.83,
+      "market_cap": 48953.0,
+      "one_month_return": 20.8,
+      "two_month_return": 21.5,
+      "three_month_return": 26.9
     },
     {
       "ticker": "005930",
@@ -101,9 +101,69 @@
       "change_rate": 1.1,
       "trading_value": 68090.5,
       "market_cap": 15697258.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 27.6,
+      "two_month_return": 54.8,
+      "three_month_return": 69.3
+    },
+    {
+      "ticker": "069500",
+      "name": "KODEX 200",
+      "market": "KOSPI",
+      "current_price": 115810.0,
+      "change_rate": 0.16,
+      "trading_value": 20441.01,
+      "market_cap": 249860.0,
+      "one_month_return": 30.1,
+      "two_month_return": 48.0,
+      "three_month_return": 54.0
+    },
+    {
+      "ticker": "360750",
+      "name": "TIGER 미국S&P500",
+      "market": "KOSPI",
+      "current_price": 26820.0,
+      "change_rate": 1.02,
+      "trading_value": 3777.22,
+      "market_cap": 171299.0,
+      "one_month_return": 8.0,
+      "two_month_return": 8.9,
+      "three_month_return": 8.4
+    },
+    {
+      "ticker": "498400",
+      "name": "KODEX 200타겟위클리커버드콜",
+      "market": "KOSPI",
+      "current_price": 23355.0,
+      "change_rate": 0.37,
+      "trading_value": 2834.89,
+      "market_cap": 53716.0,
+      "one_month_return": 26.6,
+      "two_month_return": 41.4,
+      "three_month_return": 43.3
+    },
+    {
+      "ticker": "010140",
+      "name": "삼성중공업",
+      "market": "KOSPI",
+      "current_price": 31950.0,
+      "change_rate": 5.19,
+      "trading_value": 2521.99,
+      "market_cap": 281160.0,
+      "one_month_return": 12.9,
+      "two_month_return": 11.9,
+      "three_month_return": 16.2
+    },
+    {
+      "ticker": "229200",
+      "name": "KODEX 코스닥150",
+      "market": "KOSPI",
+      "current_price": 20125.0,
+      "change_rate": 0.37,
+      "trading_value": 3518.1,
+      "market_cap": 61180.0,
+      "one_month_return": 7.6,
+      "two_month_return": 1.6,
+      "three_month_return": 8.6
     },
     {
       "ticker": "0167",
@@ -113,18 +173,6 @@
       "change_rate": 0.09,
       "trading_value": 2736.6,
       "market_cap": 12899.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "0117",
-      "name": "TIGER 코리아AI전력기기TOP3플러스",
-      "market": "KOSPI",
-      "current_price": 32565.0,
-      "change_rate": 0.35,
-      "trading_value": 2780.16,
-      "market_cap": 14801.0,
       "one_month_return": null,
       "two_month_return": null,
       "three_month_return": null
@@ -142,64 +190,88 @@
       "three_month_return": null
     },
     {
-      "ticker": "069500",
-      "name": "KODEX 200",
+      "ticker": "232080",
+      "name": "TIGER 코스닥150",
       "market": "KOSPI",
-      "current_price": 115810.0,
-      "change_rate": 0.16,
-      "trading_value": 20441.01,
-      "market_cap": 249860.0,
+      "current_price": 20510.0,
+      "change_rate": 0.32,
+      "trading_value": 1024.69,
+      "market_cap": 20510.0,
+      "one_month_return": 7.6,
+      "two_month_return": 1.5,
+      "three_month_return": 8.3
+    },
+    {
+      "ticker": "091180",
+      "name": "KODEX 자동차",
+      "market": "KOSPI",
+      "current_price": 35565.0,
+      "change_rate": 5.72,
+      "trading_value": 2374.99,
+      "market_cap": 6153.0,
+      "one_month_return": 12.9,
+      "two_month_return": 16.0,
+      "three_month_return": 16.3
+    },
+    {
+      "ticker": "047040",
+      "name": "대우건설",
+      "market": "KOSPI",
+      "current_price": 32850.0,
+      "change_rate": 1.05,
+      "trading_value": 2123.11,
+      "market_cap": 134983.0,
+      "one_month_return": 45.7,
+      "two_month_return": 272.9,
+      "three_month_return": 495.1
+    },
+    {
+      "ticker": "0117",
+      "name": "TIGER 코리아AI전력기기TOP3플러스",
+      "market": "KOSPI",
+      "current_price": 32565.0,
+      "change_rate": 0.35,
+      "trading_value": 2780.16,
+      "market_cap": 14801.0,
       "one_month_return": null,
       "two_month_return": null,
       "three_month_return": null
     },
     {
-      "ticker": "360750",
-      "name": "TIGER 미국S&P500",
+      "ticker": "102970",
+      "name": "KODEX 증권",
       "market": "KOSPI",
-      "current_price": 26820.0,
-      "change_rate": 1.02,
-      "trading_value": 3777.22,
-      "market_cap": 171299.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "current_price": 31535.0,
+      "change_rate": 1.87,
+      "trading_value": 1935.37,
+      "market_cap": 12220.0,
+      "one_month_return": 13.4,
+      "two_month_return": 25.3,
+      "three_month_return": 44.8
     },
     {
-      "ticker": "498400",
-      "name": "KODEX 200타겟위클리커버드콜",
+      "ticker": "102110",
+      "name": "TIGER 200",
       "market": "KOSPI",
-      "current_price": 23355.0,
-      "change_rate": 0.37,
-      "trading_value": 2834.89,
-      "market_cap": 53716.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "current_price": 115840.0,
+      "change_rate": 0.18,
+      "trading_value": 7063.05,
+      "market_cap": 101244.0,
+      "one_month_return": 30.2,
+      "two_month_return": 48.3,
+      "three_month_return": 54.2
     },
     {
-      "ticker": "010140",
-      "name": "삼성중공업",
+      "ticker": "006800",
+      "name": "미래에셋증권",
       "market": "KOSPI",
-      "current_price": 31950.0,
-      "change_rate": 5.19,
-      "trading_value": 2521.99,
-      "market_cap": 281160.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "229200",
-      "name": "KODEX 코스닥150",
-      "market": "KOSPI",
-      "current_price": 20125.0,
-      "change_rate": 0.37,
-      "trading_value": 3518.1,
-      "market_cap": 61180.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "current_price": 79600.0,
+      "change_rate": 0.76,
+      "trading_value": 4142.11,
+      "market_cap": 445415.0,
+      "one_month_return": 17.6,
+      "two_month_return": 24.0,
+      "three_month_return": 65.8
     },
     {
       "ticker": "0101",
@@ -214,76 +286,16 @@
       "three_month_return": null
     },
     {
-      "ticker": "047040",
-      "name": "대우건설",
+      "ticker": "445290",
+      "name": "KODEX 로봇액티브",
       "market": "KOSPI",
-      "current_price": 32850.0,
-      "change_rate": 1.05,
-      "trading_value": 2123.11,
-      "market_cap": 134983.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "091180",
-      "name": "KODEX 자동차",
-      "market": "KOSPI",
-      "current_price": 35565.0,
-      "change_rate": 5.72,
-      "trading_value": 2374.99,
-      "market_cap": 6153.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "102970",
-      "name": "KODEX 증권",
-      "market": "KOSPI",
-      "current_price": 31535.0,
-      "change_rate": 1.87,
-      "trading_value": 1935.37,
-      "market_cap": 12220.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "232080",
-      "name": "TIGER 코스닥150",
-      "market": "KOSPI",
-      "current_price": 20510.0,
-      "change_rate": 0.32,
-      "trading_value": 1024.69,
-      "market_cap": 20510.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "006800",
-      "name": "미래에셋증권",
-      "market": "KOSPI",
-      "current_price": 79600.0,
-      "change_rate": 0.76,
-      "trading_value": 4142.11,
-      "market_cap": 445415.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "102110",
-      "name": "TIGER 200",
-      "market": "KOSPI",
-      "current_price": 115840.0,
-      "change_rate": 0.18,
-      "trading_value": 7063.05,
-      "market_cap": 101244.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "current_price": 38700.0,
+      "change_rate": 6.49,
+      "trading_value": 1802.41,
+      "market_cap": 12384.0,
+      "one_month_return": 21.9,
+      "two_month_return": 22.0,
+      "three_month_return": 17.5
     },
     {
       "ticker": "305720",
@@ -293,33 +305,9 @@
       "change_rate": 1.28,
       "trading_value": 1073.0,
       "market_cap": 25413.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "445290",
-      "name": "KODEX 로봇액티브",
-      "market": "KOSPI",
-      "current_price": 38700.0,
-      "change_rate": 6.49,
-      "trading_value": 1802.41,
-      "market_cap": 12384.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "091160",
-      "name": "KODEX 반도체",
-      "market": "KOSPI",
-      "current_price": 143715.0,
-      "change_rate": 1.14,
-      "trading_value": 6502.73,
-      "market_cap": 61726.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 24.8,
+      "two_month_return": 36.4,
+      "three_month_return": 35.3
     },
     {
       "ticker": "494310",
@@ -329,9 +317,45 @@
       "change_rate": 2.81,
       "trading_value": 5021.44,
       "market_cap": 24739.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 90.2,
+      "two_month_return": 118.7,
+      "three_month_return": 152.5
+    },
+    {
+      "ticker": "091160",
+      "name": "KODEX 반도체",
+      "market": "KOSPI",
+      "current_price": 143715.0,
+      "change_rate": 1.14,
+      "trading_value": 6502.73,
+      "market_cap": 61726.0,
+      "one_month_return": 37.7,
+      "two_month_return": 54.1,
+      "three_month_return": 70.2
+    },
+    {
+      "ticker": "138540",
+      "name": "TIGER 현대차그룹플러스",
+      "market": "KOSPI",
+      "current_price": 67430.0,
+      "change_rate": 5.44,
+      "trading_value": 2287.32,
+      "market_cap": 8550.0,
+      "one_month_return": 11.8,
+      "two_month_return": 16.9,
+      "three_month_return": 23.2
+    },
+    {
+      "ticker": "028050",
+      "name": "삼성E&A",
+      "market": "KOSPI",
+      "current_price": 62400.0,
+      "change_rate": 3.11,
+      "trading_value": 2587.97,
+      "market_cap": 122304.0,
+      "one_month_return": 23.6,
+      "two_month_return": 89.7,
+      "three_month_return": 95.9
     },
     {
       "ticker": "0091",
@@ -346,30 +370,6 @@
       "three_month_return": null
     },
     {
-      "ticker": "138540",
-      "name": "TIGER 현대차그룹플러스",
-      "market": "KOSPI",
-      "current_price": 67430.0,
-      "change_rate": 5.44,
-      "trading_value": 2287.32,
-      "market_cap": 8550.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "028050",
-      "name": "삼성E&A",
-      "market": "KOSPI",
-      "current_price": 62400.0,
-      "change_rate": 3.11,
-      "trading_value": 2587.97,
-      "market_cap": 122304.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
       "ticker": "035720",
       "name": "카카오",
       "market": "KOSPI",
@@ -377,33 +377,9 @@
       "change_rate": 1.66,
       "trading_value": 1566.35,
       "market_cap": 203831.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "000270",
-      "name": "기아",
-      "market": "KOSPI",
-      "current_price": 164500.0,
-      "change_rate": 4.38,
-      "trading_value": 6144.28,
-      "market_cap": 642229.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "395270",
-      "name": "HANARO Fn K-반도체",
-      "market": "KOSPI",
-      "current_price": 53290.0,
-      "change_rate": 0.43,
-      "trading_value": 1755.78,
-      "market_cap": 27524.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": -3.9,
+      "two_month_return": -8.7,
+      "three_month_return": -18.1
     },
     {
       "ticker": "395160",
@@ -413,9 +389,33 @@
       "change_rate": 0.48,
       "trading_value": 1146.95,
       "market_cap": 27428.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 33.0,
+      "two_month_return": 45.8,
+      "three_month_return": 59.1
+    },
+    {
+      "ticker": "000270",
+      "name": "기아",
+      "market": "KOSPI",
+      "current_price": 164500.0,
+      "change_rate": 4.38,
+      "trading_value": 6144.28,
+      "market_cap": 642229.0,
+      "one_month_return": 3.3,
+      "two_month_return": 7.2,
+      "three_month_return": 8.3
+    },
+    {
+      "ticker": "395270",
+      "name": "HANARO Fn K-반도체",
+      "market": "KOSPI",
+      "current_price": 53290.0,
+      "change_rate": 0.43,
+      "trading_value": 1755.78,
+      "market_cap": 27524.0,
+      "one_month_return": 44.8,
+      "two_month_return": 68.3,
+      "three_month_return": 90.6
     },
     {
       "ticker": "336260",
@@ -425,9 +425,9 @@
       "change_rate": 13.25,
       "trading_value": 2448.2,
       "market_cap": 56521.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 135.8,
+      "two_month_return": 128.6,
+      "three_month_return": 144.8
     },
     {
       "ticker": "278530",
@@ -437,9 +437,9 @@
       "change_rate": 0.0,
       "trading_value": 1046.39,
       "market_cap": 80782.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 30.6,
+      "two_month_return": 49.1,
+      "three_month_return": 54.7
     },
     {
       "ticker": "367760",
@@ -449,9 +449,9 @@
       "change_rate": 0.18,
       "trading_value": 1285.18,
       "market_cap": 4666.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 48.2,
+      "two_month_return": 86.1,
+      "three_month_return": 103.3
     },
     {
       "ticker": "064400",
@@ -461,9 +461,9 @@
       "change_rate": 4.87,
       "trading_value": 1474.47,
       "market_cap": 68789.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 15.6,
+      "two_month_return": 15.3,
+      "three_month_return": 5.2
     },
     {
       "ticker": "139260",
@@ -473,9 +473,9 @@
       "change_rate": 0.25,
       "trading_value": 3016.73,
       "market_cap": 16020.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 52.8,
+      "two_month_return": 78.9,
+      "three_month_return": 91.0
     },
     {
       "ticker": "010170",
@@ -485,33 +485,9 @@
       "change_rate": 2.52,
       "trading_value": 15594.81,
       "market_cap": 34751.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "012860",
-      "name": "모베이스전자",
-      "market": "KOSDAQ",
-      "current_price": 4365.0,
-      "change_rate": 11.64,
-      "trading_value": 1380.67,
-      "market_cap": 3197.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "090710",
-      "name": "휴림로봇",
-      "market": "KOSDAQ",
-      "current_price": 12790.0,
-      "change_rate": 6.58,
-      "trading_value": 3696.01,
-      "market_cap": 15279.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 52.1,
+      "two_month_return": 426.5,
+      "three_month_return": 615.2
     },
     {
       "ticker": "229000",
@@ -521,9 +497,33 @@
       "change_rate": 4.17,
       "trading_value": 1096.46,
       "market_cap": 861.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 41.1,
+      "two_month_return": -1.7,
+      "three_month_return": 130.0
+    },
+    {
+      "ticker": "090710",
+      "name": "휴림로봇",
+      "market": "KOSDAQ",
+      "current_price": 12790.0,
+      "change_rate": 6.58,
+      "trading_value": 3696.01,
+      "market_cap": 15279.0,
+      "one_month_return": 10.4,
+      "two_month_return": 7.1,
+      "three_month_return": -7.1
+    },
+    {
+      "ticker": "012860",
+      "name": "모베이스전자",
+      "market": "KOSDAQ",
+      "current_price": 4365.0,
+      "change_rate": 11.64,
+      "trading_value": 1380.67,
+      "market_cap": 3197.0,
+      "one_month_return": 14.3,
+      "two_month_return": 16.7,
+      "three_month_return": 16.1
     },
     {
       "ticker": "264850",
@@ -533,9 +533,9 @@
       "change_rate": 0.86,
       "trading_value": 2308.53,
       "market_cap": 2439.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 33.5,
+      "two_month_return": 25.4,
+      "three_month_return": 9.5
     },
     {
       "ticker": "223250",
@@ -545,9 +545,69 @@
       "change_rate": 13.92,
       "trading_value": 1456.44,
       "market_cap": 1752.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 49.3,
+      "two_month_return": 41.3,
+      "three_month_return": 17.9
+    },
+    {
+      "ticker": "125490",
+      "name": "한라캐스트",
+      "market": "KOSDAQ",
+      "current_price": 18850.0,
+      "change_rate": 12.0,
+      "trading_value": 2507.71,
+      "market_cap": 6881.0,
+      "one_month_return": 31.5,
+      "two_month_return": 28.3,
+      "three_month_return": -2.3
+    },
+    {
+      "ticker": "050890",
+      "name": "쏠리드",
+      "market": "KOSDAQ",
+      "current_price": 18200.0,
+      "change_rate": 3.45,
+      "trading_value": 1796.57,
+      "market_cap": 11058.0,
+      "one_month_return": 20.5,
+      "two_month_return": 130.1,
+      "three_month_return": 94.0
+    },
+    {
+      "ticker": "101170",
+      "name": "우림피티에스",
+      "market": "KOSDAQ",
+      "current_price": 16040.0,
+      "change_rate": 9.94,
+      "trading_value": 1207.03,
+      "market_cap": 2165.0,
+      "one_month_return": 18.1,
+      "two_month_return": 15.9,
+      "three_month_return": 1.5
+    },
+    {
+      "ticker": "043260",
+      "name": "성호전자",
+      "market": "KOSDAQ",
+      "current_price": 43750.0,
+      "change_rate": 4.67,
+      "trading_value": 1051.99,
+      "market_cap": 31029.0,
+      "one_month_return": 2.7,
+      "two_month_return": 13.6,
+      "three_month_return": 106.4
+    },
+    {
+      "ticker": "072950",
+      "name": "빛샘전자",
+      "market": "KOSDAQ",
+      "current_price": 16190.0,
+      "change_rate": 5.1,
+      "trading_value": 1319.29,
+      "market_cap": 1304.0,
+      "one_month_return": 86.3,
+      "two_month_return": 153.4,
+      "three_month_return": 184.5
     },
     {
       "ticker": "0011",
@@ -562,66 +622,6 @@
       "three_month_return": null
     },
     {
-      "ticker": "125490",
-      "name": "한라캐스트",
-      "market": "KOSDAQ",
-      "current_price": 18850.0,
-      "change_rate": 12.0,
-      "trading_value": 2507.71,
-      "market_cap": 6881.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "050890",
-      "name": "쏠리드",
-      "market": "KOSDAQ",
-      "current_price": 18200.0,
-      "change_rate": 3.45,
-      "trading_value": 1796.57,
-      "market_cap": 11058.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "101170",
-      "name": "우림피티에스",
-      "market": "KOSDAQ",
-      "current_price": 16040.0,
-      "change_rate": 9.94,
-      "trading_value": 1207.03,
-      "market_cap": 2165.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "072950",
-      "name": "빛샘전자",
-      "market": "KOSDAQ",
-      "current_price": 16190.0,
-      "change_rate": 5.1,
-      "trading_value": 1319.29,
-      "market_cap": 1304.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "043260",
-      "name": "성호전자",
-      "market": "KOSDAQ",
-      "current_price": 43750.0,
-      "change_rate": 4.67,
-      "trading_value": 1051.99,
-      "market_cap": 31029.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
       "ticker": "098460",
       "name": "고영",
       "market": "KOSDAQ",
@@ -629,21 +629,9 @@
       "change_rate": 1.37,
       "trading_value": 1115.93,
       "market_cap": 27942.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
-    },
-    {
-      "ticker": "032820",
-      "name": "우리기술",
-      "market": "KOSDAQ",
-      "current_price": 20150.0,
-      "change_rate": 3.82,
-      "trading_value": 1425.5,
-      "market_cap": 34476.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 43.6,
+      "two_month_return": 38.0,
+      "three_month_return": 24.1
     },
     {
       "ticker": "440110",
@@ -653,9 +641,21 @@
       "change_rate": 10.26,
       "trading_value": 2101.07,
       "market_cap": 46289.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 62.1,
+      "two_month_return": 43.9,
+      "three_month_return": 104.7
+    },
+    {
+      "ticker": "032820",
+      "name": "우리기술",
+      "market": "KOSDAQ",
+      "current_price": 20150.0,
+      "change_rate": 3.82,
+      "trading_value": 1425.5,
+      "market_cap": 34476.0,
+      "one_month_return": -14.8,
+      "two_month_return": 16.5,
+      "three_month_return": 112.3
     },
     {
       "ticker": "100790",
@@ -665,9 +665,9 @@
       "change_rate": 7.28,
       "trading_value": 1005.72,
       "market_cap": 30547.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 93.9,
+      "two_month_return": 175.8,
+      "three_month_return": 133.3
     },
     {
       "ticker": "950160",
@@ -677,9 +677,9 @@
       "change_rate": 11.52,
       "trading_value": 2187.23,
       "market_cap": 108293.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 25.9,
+      "two_month_return": 23.4,
+      "three_month_return": 35.5
     },
     {
       "ticker": "058610",
@@ -689,13 +689,14 @@
       "change_rate": 8.94,
       "trading_value": 2047.89,
       "market_cap": 30006.0,
-      "one_month_return": null,
-      "two_month_return": null,
-      "three_month_return": null
+      "one_month_return": 18.9,
+      "two_month_return": 5.6,
+      "three_month_return": -0.6
     }
   ],
   "highlights": [
-    "💰 거래대금 TOP3: 삼성전자(68090억), KODEX 200(20441억), 대한광통신(15595억)"
+    "💰 거래대금 TOP3: 삼성전자(68090억), KODEX 200(20441억), 대한광통신(15595억)",
+    "⚠️ 단기 급등 지속 (추격 주의): 대한전선, 두산퓨얼셀, 파두"
   ],
   "all_stocks_summary": {
     "kospi_count": 39,
