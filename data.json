@@ -21,7 +21,8 @@
       "two_month_return": 78.0,
       "three_month_return": 62.1,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "003470",
@@ -35,7 +36,114 @@
       "two_month_return": 50.5,
       "three_month_return": 64.1,
       "dart_corp_code": "00117601",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00117601&textCrpNm=%EC%9C%A0%EC%95%88%ED%83%80%EC%A6%9D%EA%B6%8C&textCrpNm2=%EC%9C%A0%EC%95%88%ED%83%80%EC%A6%9D%EA%B6%8C"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00117601&textCrpNm=%EC%9C%A0%EC%95%88%ED%83%80%EC%A6%9D%EA%B6%8C&textCrpNm2=%EC%9C%A0%EC%95%88%ED%83%80%EC%A6%9D%EA%B6%8C",
+      "disclosures": [
+        {
+          "title": "증권발행실적보고서",
+          "submitter": "유안타증권",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000272",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000272"
+        },
+        {
+          "title": "주식소각결정",
+          "submitter": "유안타증권",
+          "date": "2026.05.07",
+          "rcp_no": "20260507800735",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507800735"
+        },
+        {
+          "title": "최대주주등소유주식변동신고서",
+          "submitter": "유안타증권",
+          "date": "2026.05.07",
+          "rcp_no": "20260507800707",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507800707"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "뤄즈펑",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000607",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000607"
+        },
+        {
+          "title": "증권발행실적보고서",
+          "submitter": "유안타증권",
+          "date": "2026.05.04",
+          "rcp_no": "20260504000040",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260504000040"
+        },
+        {
+          "title": "증권발행실적보고서",
+          "submitter": "유안타증권",
+          "date": "2026.05.04",
+          "rcp_no": "20260504000039",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260504000039"
+        },
+        {
+          "title": "증권발행실적보고서",
+          "submitter": "유안타증권",
+          "date": "2026.04.30",
+          "rcp_no": "20260430000027",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430000027"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "유안타씨큐리티즈아시아파이낸셜서비시스프라이빗리미티드",
+          "date": "2026.04.29",
+          "rcp_no": "20260429000871",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429000871"
+        },
+        {
+          "title": "투자설명서(일괄신고)",
+          "submitter": "유안타증권",
+          "date": "2026.04.29",
+          "rcp_no": "20260429000609",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429000609"
+        },
+        {
+          "title": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+          "submitter": "유안타증권",
+          "date": "2026.04.29",
+          "rcp_no": "20260429000496",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429000496"
+        },
+        {
+          "title": "투자설명서(일괄신고)",
+          "submitter": "유안타증권",
+          "date": "2026.04.28",
+          "rcp_no": "20260428000733",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260428000733"
+        },
+        {
+          "title": "일괄신고추가서류(파생결합증권-주가연계증권)",
+          "submitter": "유안타증권",
+          "date": "2026.04.28",
+          "rcp_no": "20260428000689",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260428000689"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "신남석",
+          "date": "2026.04.27",
+          "rcp_no": "20260427000708",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427000708"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "유태인",
+          "date": "2026.04.27",
+          "rcp_no": "20260427000693",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427000693"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "최해호",
+          "date": "2026.04.27",
+          "rcp_no": "20260427000683",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427000683"
+        }
+      ]
     },
     {
       "ticker": "114800",
@@ -49,7 +157,8 @@
       "two_month_return": -35.9,
       "three_month_return": -40.6,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "233740",
@@ -63,7 +172,8 @@
       "two_month_return": 0.2,
       "three_month_return": 6.3,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "001440",
@@ -77,7 +187,114 @@
       "two_month_return": 151.5,
       "three_month_return": 139.0,
       "dart_corp_code": "00113207",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00113207&textCrpNm=%EB%8C%80%ED%95%9C%EC%A0%84%EC%84%A0&textCrpNm2=%EB%8C%80%ED%95%9C%EC%A0%84%EC%84%A0"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00113207&textCrpNm=%EB%8C%80%ED%95%9C%EC%A0%84%EC%84%A0&textCrpNm2=%EB%8C%80%ED%95%9C%EC%A0%84%EC%84%A0",
+      "disclosures": [
+        {
+          "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+          "submitter": "대한전선",
+          "date": "2026.04.29",
+          "rcp_no": "20260429800519",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429800519"
+        },
+        {
+          "title": "[기재정정]단일판매ㆍ공급계약체결",
+          "submitter": "대한전선",
+          "date": "2026.04.23",
+          "rcp_no": "20260423800683",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260423800683"
+        },
+        {
+          "title": "동일인등출자계열회사와의상품ㆍ용역거래변경",
+          "submitter": "대한전선",
+          "date": "2026.04.22",
+          "rcp_no": "20260422000158",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260422000158"
+        },
+        {
+          "title": "[기재정정]전환청구권ㆍ신주인수권ㆍ교환청구권행사",
+          "submitter": "대한전선",
+          "date": "2026.04.21",
+          "rcp_no": "20260421800611",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260421800611"
+        },
+        {
+          "title": "전환청구권ㆍ신주인수권ㆍ교환청구권행사",
+          "submitter": "대한전선",
+          "date": "2026.04.21",
+          "rcp_no": "20260421800539",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260421800539"
+        },
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "대한전선",
+          "date": "2026.04.20",
+          "rcp_no": "20260420800267",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260420800267"
+        },
+        {
+          "title": "결산실적공시예고(안내공시)",
+          "submitter": "대한전선",
+          "date": "2026.04.20",
+          "rcp_no": "20260420800252",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260420800252"
+        },
+        {
+          "title": "[기재정정]단일판매ㆍ공급계약체결(자율공시)",
+          "submitter": "대한전선",
+          "date": "2026.04.17",
+          "rcp_no": "20260417800800",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260417800800"
+        },
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "대한전선",
+          "date": "2026.03.30",
+          "rcp_no": "20260330800575",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260330800575"
+        },
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "대한전선",
+          "date": "2026.03.30",
+          "rcp_no": "20260330800567",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260330800567"
+        },
+        {
+          "title": "동일인등출자계열회사와의상품ㆍ용역거래",
+          "submitter": "대한전선",
+          "date": "2026.03.27",
+          "rcp_no": "20260327000161",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260327000161"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "대한전선",
+          "date": "2026.03.26",
+          "rcp_no": "20260326000652",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260326000652"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "대한전선",
+          "date": "2026.03.26",
+          "rcp_no": "20260326801141",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260326801141"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "대한전선",
+          "date": "2026.03.18",
+          "rcp_no": "20260318001418",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318001418"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "대한전선",
+          "date": "2026.03.16",
+          "rcp_no": "20260316801784",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260316801784"
+        }
+      ]
     },
     {
       "ticker": "396500",
@@ -91,7 +308,8 @@
       "two_month_return": 47.8,
       "three_month_return": 65.2,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "018880",
@@ -105,7 +323,114 @@
       "two_month_return": 21.5,
       "three_month_return": 26.9,
       "dart_corp_code": "00161125",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00161125&textCrpNm=%ED%95%9C%EC%98%A8%EC%8B%9C%EC%8A%A4%ED%85%9C&textCrpNm2=%ED%95%9C%EC%98%A8%EC%8B%9C%EC%8A%A4%ED%85%9C"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00161125&textCrpNm=%ED%95%9C%EC%98%A8%EC%8B%9C%EC%8A%A4%ED%85%9C&textCrpNm2=%ED%95%9C%EC%98%A8%EC%8B%9C%EC%8A%A4%ED%85%9C",
+      "disclosures": [
+        {
+          "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+          "submitter": "한온시스템",
+          "date": "2026.04.30",
+          "rcp_no": "20260430800482",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430800482"
+        },
+        {
+          "title": "증권발행실적보고서",
+          "submitter": "한온시스템",
+          "date": "2026.04.24",
+          "rcp_no": "20260424000454",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424000454"
+        },
+        {
+          "title": "투자설명서",
+          "submitter": "한온시스템",
+          "date": "2026.04.24",
+          "rcp_no": "20260424000003",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424000003"
+        },
+        {
+          "title": "[발행조건확정]증권신고서(채무증권)",
+          "submitter": "한온시스템",
+          "date": "2026.04.23",
+          "rcp_no": "20260423000733",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260423000733"
+        },
+        {
+          "title": "[발행조건확정]증권신고서(채무증권)",
+          "submitter": "한온시스템",
+          "date": "2026.04.20",
+          "rcp_no": "20260420000295",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260420000295"
+        },
+        {
+          "title": "[기재정정]증권신고서(채무증권)",
+          "submitter": "한온시스템",
+          "date": "2026.04.20",
+          "rcp_no": "20260420000286",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260420000286"
+        },
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "한온시스템",
+          "date": "2026.04.15",
+          "rcp_no": "20260415800279",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260415800279"
+        },
+        {
+          "title": "결산실적공시예고(안내공시)",
+          "submitter": "한온시스템",
+          "date": "2026.04.15",
+          "rcp_no": "20260415800277",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260415800277"
+        },
+        {
+          "title": "증권신고서(채무증권)",
+          "submitter": "한온시스템",
+          "date": "2026.04.14",
+          "rcp_no": "20260414002448",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260414002448"
+        },
+        {
+          "title": "불성실공시법인지정",
+          "submitter": "유가증권시장본부",
+          "date": "2026.04.09",
+          "rcp_no": "20260409801007",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260409801007"
+        },
+        {
+          "title": "[기재정정]횡령ㆍ배임사실확인",
+          "submitter": "한온시스템",
+          "date": "2026.04.06",
+          "rcp_no": "20260406801075",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406801075"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "한온시스템",
+          "date": "2026.03.26",
+          "rcp_no": "20260326000365",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260326000365"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "한온시스템",
+          "date": "2026.03.26",
+          "rcp_no": "20260326800542",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260326800542"
+        },
+        {
+          "title": "불성실공시법인지정예고",
+          "submitter": "유가증권시장본부",
+          "date": "2026.03.19",
+          "rcp_no": "20260319801375",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260319801375"
+        },
+        {
+          "title": "횡령ㆍ배임사실확인",
+          "submitter": "한온시스템",
+          "date": "2026.03.18",
+          "rcp_no": "20260318802185",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318802185"
+        }
+      ]
     },
     {
       "ticker": "005930",
@@ -119,7 +444,114 @@
       "two_month_return": 54.8,
       "three_month_return": 69.3,
       "dart_corp_code": "00126380",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00126380&textCrpNm=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90&textCrpNm2=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00126380&textCrpNm=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90&textCrpNm2=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90",
+      "disclosures": [
+        {
+          "title": "최대주주등소유주식변동신고서",
+          "submitter": "삼성전자",
+          "date": "2026.05.08",
+          "rcp_no": "20260508801105",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508801105"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이동건",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000866",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000866"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "삼성물산",
+          "date": "2026.05.04",
+          "rcp_no": "20260504000421",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260504000421"
+        },
+        {
+          "title": "특수관계인에대한출자",
+          "submitter": "삼성전자",
+          "date": "2026.04.30",
+          "rcp_no": "20260430001632",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430001632"
+        },
+        {
+          "title": "특수관계인과의내부거래",
+          "submitter": "삼성전자",
+          "date": "2026.04.30",
+          "rcp_no": "20260430001625",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430001625"
+        },
+        {
+          "title": "특수관계인과의보험거래",
+          "submitter": "삼성전자",
+          "date": "2026.04.30",
+          "rcp_no": "20260430001606",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430001606"
+        },
+        {
+          "title": "현금ㆍ현물배당결정",
+          "submitter": "삼성전자",
+          "date": "2026.04.30",
+          "rcp_no": "20260430800106",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430800106"
+        },
+        {
+          "title": "[기재정정]연결재무제표기준영업(잠정)실적(공정공시)",
+          "submitter": "삼성전자",
+          "date": "2026.04.30",
+          "rcp_no": "20260430800097",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430800097"
+        },
+        {
+          "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+          "submitter": "삼성전자",
+          "date": "2026.04.30",
+          "rcp_no": "20260430800083",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430800083"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "하지훈",
+          "date": "2026.04.29",
+          "rcp_no": "20260429000319",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429000319"
+        },
+        {
+          "title": "자기주식취득결과보고서",
+          "submitter": "삼성전자",
+          "date": "2026.04.24",
+          "rcp_no": "20260424000778",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424000778"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "삼성물산",
+          "date": "2026.04.24",
+          "rcp_no": "20260424000758",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424000758"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "임지운",
+          "date": "2026.04.23",
+          "rcp_no": "20260423000164",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260423000164"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "삼성물산",
+          "date": "2026.04.17",
+          "rcp_no": "20260417000682",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260417000682"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김민우",
+          "date": "2026.04.17",
+          "rcp_no": "20260417000440",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260417000440"
+        }
+      ]
     },
     {
       "ticker": "069500",
@@ -133,7 +565,8 @@
       "two_month_return": 48.0,
       "three_month_return": 54.0,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "360750",
@@ -147,7 +580,8 @@
       "two_month_return": 8.9,
       "three_month_return": 8.4,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "498400",
@@ -161,7 +595,8 @@
       "two_month_return": 41.4,
       "three_month_return": 43.3,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "010140",
@@ -175,7 +610,114 @@
       "two_month_return": 11.9,
       "three_month_return": 16.2,
       "dart_corp_code": "00126478",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00126478&textCrpNm=%EC%82%BC%EC%84%B1%EC%A4%91%EA%B3%B5%EC%97%85&textCrpNm2=%EC%82%BC%EC%84%B1%EC%A4%91%EA%B3%B5%EC%97%85"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00126478&textCrpNm=%EC%82%BC%EC%84%B1%EC%A4%91%EA%B3%B5%EC%97%85&textCrpNm2=%EC%82%BC%EC%84%B1%EC%A4%91%EA%B3%B5%EC%97%85",
+      "disclosures": [
+        {
+          "title": "최대주주등소유주식변동신고서",
+          "submitter": "삼성중공업",
+          "date": "2026.05.06",
+          "rcp_no": "20260506800656",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260506800656"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "삼성중공업",
+          "date": "2026.05.04",
+          "rcp_no": "20260504800254",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260504800254"
+        },
+        {
+          "title": "[기재정정]단일판매ㆍ공급계약체결",
+          "submitter": "삼성중공업",
+          "date": "2026.04.30",
+          "rcp_no": "20260430800985",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430800985"
+        },
+        {
+          "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+          "submitter": "삼성중공업",
+          "date": "2026.04.30",
+          "rcp_no": "20260430800939",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430800939"
+        },
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "삼성중공업",
+          "date": "2026.04.17",
+          "rcp_no": "20260417800615",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260417800615"
+        },
+        {
+          "title": "소송등의제기ㆍ신청(일정금액이상의청구)",
+          "submitter": "삼성중공업",
+          "date": "2026.04.06",
+          "rcp_no": "20260406801121",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406801121"
+        },
+        {
+          "title": "최대주주등소유주식변동신고서",
+          "submitter": "삼성중공업",
+          "date": "2026.04.06",
+          "rcp_no": "20260406800682",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406800682"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "삼성중공업",
+          "date": "2026.04.01",
+          "rcp_no": "20260401800243",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401800243"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(약식)",
+          "submitter": "BlackRockFundAdvisors",
+          "date": "2026.03.31",
+          "rcp_no": "20260331002572",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331002572"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "삼성중공업",
+          "date": "2026.03.23",
+          "rcp_no": "20260323800137",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323800137"
+        },
+        {
+          "title": "기타경영사항(자율공시)",
+          "submitter": "삼성중공업",
+          "date": "2026.03.20",
+          "rcp_no": "20260320800998",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320800998"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "삼성중공업",
+          "date": "2026.03.20",
+          "rcp_no": "20260320000800",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320000800"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "삼성중공업",
+          "date": "2026.03.20",
+          "rcp_no": "20260320800914",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320800914"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "삼성중공업",
+          "date": "2026.03.20",
+          "rcp_no": "20260320800106",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320800106"
+        },
+        {
+          "title": "[기재정정]단일판매ㆍ공급계약체결",
+          "submitter": "삼성중공업",
+          "date": "2026.03.16",
+          "rcp_no": "20260316801067",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260316801067"
+        }
+      ]
     },
     {
       "ticker": "229200",
@@ -189,7 +731,8 @@
       "two_month_return": 1.6,
       "three_month_return": 8.6,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "0167",
@@ -203,7 +746,8 @@
       "two_month_return": null,
       "three_month_return": null,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "0162",
@@ -217,7 +761,8 @@
       "two_month_return": null,
       "three_month_return": null,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "232080",
@@ -231,7 +776,8 @@
       "two_month_return": 1.5,
       "three_month_return": 8.3,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "091180",
@@ -245,7 +791,8 @@
       "two_month_return": 16.0,
       "three_month_return": 16.3,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "047040",
@@ -259,7 +806,114 @@
       "two_month_return": 272.9,
       "three_month_return": 495.1,
       "dart_corp_code": "00124540",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00124540&textCrpNm=%EB%8C%80%EC%9A%B0%EA%B1%B4%EC%84%A4&textCrpNm2=%EB%8C%80%EC%9A%B0%EA%B1%B4%EC%84%A4"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00124540&textCrpNm=%EB%8C%80%EC%9A%B0%EA%B1%B4%EC%84%A4&textCrpNm2=%EB%8C%80%EC%9A%B0%EA%B1%B4%EC%84%A4",
+      "disclosures": [
+        {
+          "title": "타인에대한채무보증결정",
+          "submitter": "대우건설",
+          "date": "2026.05.07",
+          "rcp_no": "20260507800633",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507800633"
+        },
+        {
+          "title": "[기재정정]단일판매ㆍ공급계약체결",
+          "submitter": "대우건설",
+          "date": "2026.04.30",
+          "rcp_no": "20260430800486",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430800486"
+        },
+        {
+          "title": "[기재정정]타인에대한채무보증결정",
+          "submitter": "대우건설",
+          "date": "2026.04.29",
+          "rcp_no": "20260429800801",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429800801"
+        },
+        {
+          "title": "타인에대한채무보증결정",
+          "submitter": "대우건설",
+          "date": "2026.04.28",
+          "rcp_no": "20260428800534",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260428800534"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "대우건설",
+          "date": "2026.04.28",
+          "rcp_no": "20260428800476",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260428800476"
+        },
+        {
+          "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+          "submitter": "대우건설",
+          "date": "2026.04.28",
+          "rcp_no": "20260428800065",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260428800065"
+        },
+        {
+          "title": "투자판단관련주요경영사항",
+          "submitter": "대우건설",
+          "date": "2026.04.27",
+          "rcp_no": "20260427800114",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427800114"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "정상호",
+          "date": "2026.04.24",
+          "rcp_no": "20260424000617",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424000617"
+        },
+        {
+          "title": "결산실적공시예고(안내공시)",
+          "submitter": "대우건설",
+          "date": "2026.04.23",
+          "rcp_no": "20260423800488",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260423800488"
+        },
+        {
+          "title": "타인에대한채무보증결정",
+          "submitter": "대우건설",
+          "date": "2026.04.22",
+          "rcp_no": "20260422800511",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260422800511"
+        },
+        {
+          "title": "[기재정정]단일판매ㆍ공급계약체결",
+          "submitter": "대우건설",
+          "date": "2026.04.21",
+          "rcp_no": "20260421800429",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260421800429"
+        },
+        {
+          "title": "[기재정정]타인에대한채무보증결정",
+          "submitter": "대우건설",
+          "date": "2026.04.21",
+          "rcp_no": "20260421800409",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260421800409"
+        },
+        {
+          "title": "투자판단관련주요경영사항",
+          "submitter": "대우건설",
+          "date": "2026.04.21",
+          "rcp_no": "20260421800001",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260421800001"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "대우건설",
+          "date": "2026.04.16",
+          "rcp_no": "20260416800364",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260416800364"
+        },
+        {
+          "title": "단일판매ㆍ공급계약해지(자율공시)",
+          "submitter": "대우건설",
+          "date": "2026.04.10",
+          "rcp_no": "20260410800750",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260410800750"
+        }
+      ]
     },
     {
       "ticker": "0117",
@@ -273,7 +927,8 @@
       "two_month_return": null,
       "three_month_return": null,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "102970",
@@ -287,7 +942,8 @@
       "two_month_return": 25.3,
       "three_month_return": 44.8,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "102110",
@@ -301,7 +957,8 @@
       "two_month_return": 48.3,
       "three_month_return": 54.2,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "006800",
@@ -315,7 +972,114 @@
       "two_month_return": 24.0,
       "three_month_return": 65.8,
       "dart_corp_code": "00111722",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00111722&textCrpNm=%EB%AF%B8%EB%9E%98%EC%97%90%EC%85%8B%EC%A6%9D%EA%B6%8C&textCrpNm2=%EB%AF%B8%EB%9E%98%EC%97%90%EC%85%8B%EC%A6%9D%EA%B6%8C"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00111722&textCrpNm=%EB%AF%B8%EB%9E%98%EC%97%90%EC%85%8B%EC%A6%9D%EA%B6%8C&textCrpNm2=%EB%AF%B8%EB%9E%98%EC%97%90%EC%85%8B%EC%A6%9D%EA%B6%8C",
+      "disclosures": [
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "KIM WOO CHAN",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000455",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000455"
+        },
+        {
+          "title": "증권발행실적보고서",
+          "submitter": "미래에셋증권",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000435",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000435"
+        },
+        {
+          "title": "증권발행실적보고서",
+          "submitter": "미래에셋증권",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000412",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000412"
+        },
+        {
+          "title": "증권발행실적보고서",
+          "submitter": "미래에셋증권",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000406",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000406"
+        },
+        {
+          "title": "투자설명서(일괄신고)",
+          "submitter": "미래에셋증권",
+          "date": "2026.05.06",
+          "rcp_no": "20260506000339",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260506000339"
+        },
+        {
+          "title": "투자설명서(일괄신고)",
+          "submitter": "미래에셋증권",
+          "date": "2026.05.06",
+          "rcp_no": "20260506000280",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260506000280"
+        },
+        {
+          "title": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+          "submitter": "미래에셋증권",
+          "date": "2026.05.06",
+          "rcp_no": "20260506000334",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260506000334"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "류희석",
+          "date": "2026.05.06",
+          "rcp_no": "20260506000070",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260506000070"
+        },
+        {
+          "title": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+          "submitter": "미래에셋증권",
+          "date": "2026.05.06",
+          "rcp_no": "20260506000243",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260506000243"
+        },
+        {
+          "title": "증권발행실적보고서",
+          "submitter": "미래에셋증권",
+          "date": "2026.05.04",
+          "rcp_no": "20260504000252",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260504000252"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "류원식",
+          "date": "2026.05.04",
+          "rcp_no": "20260504000241",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260504000241"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "권오만",
+          "date": "2026.05.04",
+          "rcp_no": "20260504000236",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260504000236"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김병천",
+          "date": "2026.05.04",
+          "rcp_no": "20260504000232",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260504000232"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김진태",
+          "date": "2026.05.04",
+          "rcp_no": "20260504000226",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260504000226"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "Sweemer Jonathan Robert",
+          "date": "2026.05.04",
+          "rcp_no": "20260504000204",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260504000204"
+        }
+      ]
     },
     {
       "ticker": "0101",
@@ -329,7 +1093,8 @@
       "two_month_return": null,
       "three_month_return": null,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "445290",
@@ -343,7 +1108,8 @@
       "two_month_return": 22.0,
       "three_month_return": 17.5,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "305720",
@@ -357,7 +1123,8 @@
       "two_month_return": 36.4,
       "three_month_return": 35.3,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "494310",
@@ -371,7 +1138,8 @@
       "two_month_return": 118.7,
       "three_month_return": 152.5,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "091160",
@@ -385,7 +1153,8 @@
       "two_month_return": 54.1,
       "three_month_return": 70.2,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "138540",
@@ -399,7 +1168,8 @@
       "two_month_return": 16.9,
       "three_month_return": 23.2,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "028050",
@@ -413,7 +1183,114 @@
       "two_month_return": 89.7,
       "three_month_return": 95.9,
       "dart_corp_code": "00126308",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00126308&textCrpNm=%EC%82%BC%EC%84%B1E%26A&textCrpNm2=%EC%82%BC%EC%84%B1E%26A"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00126308&textCrpNm=%EC%82%BC%EC%84%B1E%26A&textCrpNm2=%EC%82%BC%EC%84%B1E%26A",
+      "disclosures": [
+        {
+          "title": "최대주주등소유주식변동신고서",
+          "submitter": "삼성E&A",
+          "date": "2026.05.06",
+          "rcp_no": "20260506800612",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260506800612"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "문승욱",
+          "date": "2026.04.30",
+          "rcp_no": "20260430000770",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430000770"
+        },
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "삼성E&A",
+          "date": "2026.04.27",
+          "rcp_no": "20260427800518",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427800518"
+        },
+        {
+          "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+          "submitter": "삼성E&A",
+          "date": "2026.04.23",
+          "rcp_no": "20260423800261",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260423800261"
+        },
+        {
+          "title": "[기재정정]단일판매ㆍ공급계약체결",
+          "submitter": "삼성E&A",
+          "date": "2026.04.17",
+          "rcp_no": "20260417800717",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260417800717"
+        },
+        {
+          "title": "[기재정정]단일판매ㆍ공급계약체결",
+          "submitter": "삼성E&A",
+          "date": "2026.04.17",
+          "rcp_no": "20260417800522",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260417800522"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(약식)",
+          "submitter": "인베스코에셋매니지먼트리미티드",
+          "date": "2026.04.16",
+          "rcp_no": "20260416000508",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260416000508"
+        },
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "삼성E&A",
+          "date": "2026.04.16",
+          "rcp_no": "20260416800516",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260416800516"
+        },
+        {
+          "title": "결산실적공시예고(안내공시)",
+          "submitter": "삼성E&A",
+          "date": "2026.04.16",
+          "rcp_no": "20260416800509",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260416800509"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(약식)",
+          "submitter": "국민연금공단",
+          "date": "2026.04.01",
+          "rcp_no": "20260401003903",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401003903"
+        },
+        {
+          "title": "최대주주등소유주식변동신고서",
+          "submitter": "삼성E&A",
+          "date": "2026.04.01",
+          "rcp_no": "20260401800847",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401800847"
+        },
+        {
+          "title": "[기재정정]단일판매ㆍ공급계약체결",
+          "submitter": "삼성E&A",
+          "date": "2026.03.31",
+          "rcp_no": "20260331803154",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331803154"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(약식)",
+          "submitter": "인베스코에셋매니지먼트리미티드",
+          "date": "2026.03.31",
+          "rcp_no": "20260331003707",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331003707"
+        },
+        {
+          "title": "기업가치제고계획(자율공시)",
+          "submitter": "삼성E&A",
+          "date": "2026.03.20",
+          "rcp_no": "20260320801193",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320801193"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "삼성E&A",
+          "date": "2026.03.19",
+          "rcp_no": "20260319000573",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260319000573"
+        }
+      ]
     },
     {
       "ticker": "0091",
@@ -427,7 +1304,8 @@
       "two_month_return": null,
       "three_month_return": null,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "035720",
@@ -441,7 +1319,114 @@
       "two_month_return": -8.7,
       "three_month_return": -18.1,
       "dart_corp_code": "00258801",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00258801&textCrpNm=%EC%B9%B4%EC%B9%B4%EC%98%A4&textCrpNm2=%EC%B9%B4%EC%B9%B4%EC%98%A4"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00258801&textCrpNm=%EC%B9%B4%EC%B9%B4%EC%98%A4&textCrpNm2=%EC%B9%B4%EC%B9%B4%EC%98%A4",
+      "disclosures": [
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "현동수",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000879",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000879"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "최동진",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000845",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000845"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "주성범",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000817",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000817"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "조수란",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000800",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000800"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "정혜윤",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000785",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000785"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "장정환",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000767",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000767"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "장영신",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000748",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000748"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이재승",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000735",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000735"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "윤종현",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000719",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000719"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "서은희",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000706",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000706"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "노병석",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000687",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000687"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김춘호",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000665",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000665"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김준호",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000635",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000635"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김대년",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000608",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000608"
+        },
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "카카오",
+          "date": "2026.05.07",
+          "rcp_no": "20260507800276",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507800276"
+        }
+      ]
     },
     {
       "ticker": "395160",
@@ -455,7 +1440,8 @@
       "two_month_return": 45.8,
       "three_month_return": 59.1,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "000270",
@@ -469,7 +1455,114 @@
       "two_month_return": 7.2,
       "three_month_return": 8.3,
       "dart_corp_code": "00106641",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00106641&textCrpNm=%EA%B8%B0%EC%95%84&textCrpNm2=%EA%B8%B0%EC%95%84"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00106641&textCrpNm=%EA%B8%B0%EC%95%84&textCrpNm2=%EA%B8%B0%EC%95%84",
+      "disclosures": [
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "최양석",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000438",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000438"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "최승범",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000434",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000434"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "조민영",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000427",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000427"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "정진태",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000425",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000425"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "정제욱",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000418",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000418"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "정원정",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000413",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000413"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "정광호",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000407",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000407"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "장동규",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000403",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000403"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이혜영",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000399",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000399"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이종무",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000394",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000394"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이정표",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000385",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000385"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이정래",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000380",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000380"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이재석",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000376",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000376"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이수영",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000370",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000370"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이상열",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000367",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000367"
+        }
+      ]
     },
     {
       "ticker": "395270",
@@ -483,7 +1576,8 @@
       "two_month_return": 68.3,
       "three_month_return": 90.6,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "336260",
@@ -497,7 +1591,114 @@
       "two_month_return": 128.6,
       "three_month_return": 144.8,
       "dart_corp_code": "01412725",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01412725&textCrpNm=%EB%91%90%EC%82%B0%ED%93%A8%EC%96%BC%EC%85%80&textCrpNm2=%EB%91%90%EC%82%B0%ED%93%A8%EC%96%BC%EC%85%80"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01412725&textCrpNm=%EB%91%90%EC%82%B0%ED%93%A8%EC%96%BC%EC%85%80&textCrpNm2=%EB%91%90%EC%82%B0%ED%93%A8%EC%96%BC%EC%85%80",
+      "disclosures": [
+        {
+          "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.04.29",
+          "rcp_no": "20260429800762",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429800762"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.04.29",
+          "rcp_no": "20260429800701",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429800701"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.04.29",
+          "rcp_no": "20260429800551",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429800551"
+        },
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.04.22",
+          "rcp_no": "20260422800582",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260422800582"
+        },
+        {
+          "title": "결산실적공시예고(안내공시)",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.04.22",
+          "rcp_no": "20260422800546",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260422800546"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.03.26",
+          "rcp_no": "20260326001300",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260326001300"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.03.26",
+          "rcp_no": "20260326802658",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260326802658"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.03.19",
+          "rcp_no": "20260319801648",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260319801648"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.03.19",
+          "rcp_no": "20260319801422",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260319801422"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.03.18",
+          "rcp_no": "20260318001264",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318001264"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.03.13",
+          "rcp_no": "20260313801583",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313801583"
+        },
+        {
+          "title": "의결권대리행사권유참고서류",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.03.11",
+          "rcp_no": "20260311004390",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260311004390"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "두산퓨얼셀",
+          "date": "2026.03.11",
+          "rcp_no": "20260311004355",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260311004355"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이승준",
+          "date": "2026.03.05",
+          "rcp_no": "20260305000576",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260305000576"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "박준영",
+          "date": "2026.03.05",
+          "rcp_no": "20260305000149",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260305000149"
+        }
+      ]
     },
     {
       "ticker": "278530",
@@ -511,7 +1712,8 @@
       "two_month_return": 49.1,
       "three_month_return": 54.7,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "367760",
@@ -525,7 +1727,8 @@
       "two_month_return": 86.1,
       "three_month_return": 103.3,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "064400",
@@ -539,7 +1742,114 @@
       "two_month_return": 15.3,
       "three_month_return": 5.2,
       "dart_corp_code": "00139834",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00139834&textCrpNm=LG%EC%94%A8%EC%97%94%EC%97%90%EC%8A%A4&textCrpNm2=LG%EC%94%A8%EC%97%94%EC%97%90%EC%8A%A4"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00139834&textCrpNm=LG%EC%94%A8%EC%97%94%EC%97%90%EC%8A%A4&textCrpNm2=LG%EC%94%A8%EC%97%94%EC%97%90%EC%8A%A4",
+      "disclosures": [
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "LG씨엔에스",
+          "date": "2026.05.06",
+          "rcp_no": "20260506800189",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260506800189"
+        },
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "LG씨엔에스",
+          "date": "2026.05.06",
+          "rcp_no": "20260506800185",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260506800185"
+        },
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "LG씨엔에스",
+          "date": "2026.04.30",
+          "rcp_no": "20260430800147",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430800147"
+        },
+        {
+          "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+          "submitter": "LG씨엔에스",
+          "date": "2026.04.30",
+          "rcp_no": "20260430800132",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430800132"
+        },
+        {
+          "title": "결산실적공시예고(안내공시)",
+          "submitter": "LG씨엔에스",
+          "date": "2026.04.16",
+          "rcp_no": "20260416800175",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260416800175"
+        },
+        {
+          "title": "기업설명회(IR)개최(안내공시)",
+          "submitter": "LG씨엔에스",
+          "date": "2026.04.16",
+          "rcp_no": "20260416800169",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260416800169"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "LG",
+          "date": "2026.04.03",
+          "rcp_no": "20260403002616",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260403002616"
+        },
+        {
+          "title": "최대주주등소유주식변동신고서",
+          "submitter": "LG씨엔에스",
+          "date": "2026.04.03",
+          "rcp_no": "20260403800555",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260403800555"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "현신균",
+          "date": "2026.04.03",
+          "rcp_no": "20260403000610",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260403000610"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "LG씨엔에스",
+          "date": "2026.04.01",
+          "rcp_no": "20260401800516",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401800516"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "LG씨엔에스",
+          "date": "2026.04.01",
+          "rcp_no": "20260401800358",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401800358"
+        },
+        {
+          "title": "기업가치제고계획(자율공시)",
+          "submitter": "LG씨엔에스",
+          "date": "2026.03.24",
+          "rcp_no": "20260324800910",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324800910"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "LG씨엔에스",
+          "date": "2026.03.24",
+          "rcp_no": "20260324000624",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324000624"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "LG씨엔에스",
+          "date": "2026.03.24",
+          "rcp_no": "20260324800837",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324800837"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "구연수",
+          "date": "2026.03.17",
+          "rcp_no": "20260317000314",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317000314"
+        }
+      ]
     },
     {
       "ticker": "139260",
@@ -553,7 +1863,8 @@
       "two_month_return": 78.9,
       "three_month_return": 91.0,
       "dart_corp_code": null,
-      "dart_url": null
+      "dart_url": null,
+      "disclosures": []
     },
     {
       "ticker": "010170",
@@ -567,7 +1878,114 @@
       "two_month_return": 426.5,
       "three_month_return": 615.2,
       "dart_corp_code": "00113261",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00113261&textCrpNm=%EB%8C%80%ED%95%9C%EA%B4%91%ED%86%B5%EC%8B%A0&textCrpNm2=%EB%8C%80%ED%95%9C%EA%B4%91%ED%86%B5%EC%8B%A0"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00113261&textCrpNm=%EB%8C%80%ED%95%9C%EA%B4%91%ED%86%B5%EC%8B%A0&textCrpNm2=%EB%8C%80%ED%95%9C%EA%B4%91%ED%86%B5%EC%8B%A0",
+      "disclosures": [
+        {
+          "title": "주식등의대량보유상황보고서(약식)",
+          "submitter": "국민연금공단",
+          "date": "2026.04.01",
+          "rcp_no": "20260401004407",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004407"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "대한광통신",
+          "date": "2026.03.27",
+          "rcp_no": "20260327001338",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260327001338"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "대한광통신",
+          "date": "2026.03.27",
+          "rcp_no": "20260327901915",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260327901915"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "대한광통신",
+          "date": "2026.03.19",
+          "rcp_no": "20260319000854",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260319000854"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "대한광통신",
+          "date": "2026.03.19",
+          "rcp_no": "20260319900871",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260319900871"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "티에프오인더스트리",
+          "date": "2026.03.16",
+          "rcp_no": "20260316001154",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260316001154"
+        },
+        {
+          "title": "의결권대리행사권유참고서류",
+          "submitter": "대한광통신",
+          "date": "2026.03.12",
+          "rcp_no": "20260312001294",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260312001294"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "대한광통신",
+          "date": "2026.03.12",
+          "rcp_no": "20260312001283",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260312001283"
+        },
+        {
+          "title": "주주총회집중일개최사유신고",
+          "submitter": "대한광통신",
+          "date": "2026.03.12",
+          "rcp_no": "20260312901964",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260312901964"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "대한광통신",
+          "date": "2026.03.12",
+          "rcp_no": "20260312901828",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260312901828"
+        },
+        {
+          "title": "[기재정정]매출액또는손익구조30%(대규모법인은15%)이상변동",
+          "submitter": "대한광통신",
+          "date": "2026.03.12",
+          "rcp_no": "20260312901725",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260312901725"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "설윤석",
+          "date": "2026.03.09",
+          "rcp_no": "20260309001908",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309001908"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "티에프오인더스트리",
+          "date": "2026.03.09",
+          "rcp_no": "20260309001903",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309001903"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "티에프오인더스트리",
+          "date": "2026.03.09",
+          "rcp_no": "20260309001888",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309001888"
+        },
+        {
+          "title": "[기재정정]주식등의대량보유상황보고서(일반)",
+          "submitter": "티에프오인더스트리",
+          "date": "2026.03.09",
+          "rcp_no": "20260309001872",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309001872"
+        }
+      ]
     },
     {
       "ticker": "229000",
@@ -581,7 +1999,114 @@
       "two_month_return": -1.7,
       "three_month_return": 130.0,
       "dart_corp_code": "01051472",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01051472&textCrpNm=%EC%A0%A0%ED%81%90%EB%A6%AD%EC%8A%A4&textCrpNm2=%EC%A0%A0%ED%81%90%EB%A6%AD%EC%8A%A4"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01051472&textCrpNm=%EC%A0%A0%ED%81%90%EB%A6%AD%EC%8A%A4&textCrpNm2=%EC%A0%A0%ED%81%90%EB%A6%AD%EC%8A%A4",
+      "disclosures": [
+        {
+          "title": "분기보고서 \r\n\t\t\t\t\t\t\t(2026.03)",
+          "submitter": "젠큐릭스",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000946",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000946"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "조상래",
+          "date": "2026.04.09",
+          "rcp_no": "20260409002568",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260409002568"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "젠큐릭스",
+          "date": "2026.03.24",
+          "rcp_no": "20260324900593",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324900593"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "젠큐릭스",
+          "date": "2026.03.16",
+          "rcp_no": "20260316001142",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260316001142"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "젠큐릭스",
+          "date": "2026.03.11",
+          "rcp_no": "20260311901081",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260311901081"
+        },
+        {
+          "title": "의결권대리행사권유참고서류",
+          "submitter": "젠큐릭스",
+          "date": "2026.03.09",
+          "rcp_no": "20260309001674",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309001674"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "젠큐릭스",
+          "date": "2026.03.09",
+          "rcp_no": "20260309001632",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309001632"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "조상래",
+          "date": "2026.03.09",
+          "rcp_no": "20260309001624",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309001624"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "젠큐릭스",
+          "date": "2026.03.09",
+          "rcp_no": "20260309900902",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309900902"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "문영호",
+          "date": "2026.03.05",
+          "rcp_no": "20260305001449",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260305001449"
+        },
+        {
+          "title": "조회공시요구(현저한시황변동)에대한답변(중요정보없음)",
+          "submitter": "젠큐릭스",
+          "date": "2026.03.03",
+          "rcp_no": "20260303901074",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260303901074"
+        },
+        {
+          "title": "조회공시요구(현저한시황변동)",
+          "submitter": "코스닥시장본부",
+          "date": "2026.02.27",
+          "rcp_no": "20260227902039",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260227902039"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "조상래",
+          "date": "2026.02.25",
+          "rcp_no": "20260225005334",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260225005334"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "조상래",
+          "date": "2026.02.05",
+          "rcp_no": "20260205000528",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260205000528"
+        },
+        {
+          "title": "주권관련사채권의취득결정",
+          "submitter": "젠큐릭스",
+          "date": "2026.01.29",
+          "rcp_no": "20260129901003",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260129901003"
+        }
+      ]
     },
     {
       "ticker": "090710",
@@ -595,7 +2120,114 @@
       "two_month_return": 7.1,
       "three_month_return": -7.1,
       "dart_corp_code": "00540429",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00540429&textCrpNm=%ED%9C%B4%EB%A6%BC%EB%A1%9C%EB%B4%87&textCrpNm2=%ED%9C%B4%EB%A6%BC%EB%A1%9C%EB%B4%87"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00540429&textCrpNm=%ED%9C%B4%EB%A6%BC%EB%A1%9C%EB%B4%87&textCrpNm2=%ED%9C%B4%EB%A6%BC%EB%A1%9C%EB%B4%87",
+      "disclosures": [
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "휴림홀딩스",
+          "date": "2026.04.07",
+          "rcp_no": "20260407003029",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260407003029"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "휴림홀딩스",
+          "date": "2026.04.07",
+          "rcp_no": "20260407003018",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260407003018"
+        },
+        {
+          "title": "최대주주변경을수반하는주식담보제공계약해제ㆍ취소등",
+          "submitter": "휴림로봇",
+          "date": "2026.04.02",
+          "rcp_no": "20260402901037",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260402901037"
+        },
+        {
+          "title": "[기재정정]최대주주변경을수반하는주식담보제공계약체결",
+          "submitter": "휴림로봇",
+          "date": "2026.03.31",
+          "rcp_no": "20260331904763",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331904763"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "휴림로봇",
+          "date": "2026.03.31",
+          "rcp_no": "20260331004779",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331004779"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "휴림로봇",
+          "date": "2026.03.31",
+          "rcp_no": "20260331904225",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331904225"
+        },
+        {
+          "title": "[기재정정]최대주주변경을수반하는주식담보제공계약체결",
+          "submitter": "휴림로봇",
+          "date": "2026.03.27",
+          "rcp_no": "20260327902824",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260327902824"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "휴림홀딩스",
+          "date": "2026.03.25",
+          "rcp_no": "20260325001246",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260325001246"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "휴림로봇",
+          "date": "2026.03.23",
+          "rcp_no": "20260323001558",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323001558"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "휴림로봇",
+          "date": "2026.03.23",
+          "rcp_no": "20260323901437",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323901437"
+        },
+        {
+          "title": "[기재정정]최대주주변경을수반하는주식담보제공계약체결",
+          "submitter": "휴림로봇",
+          "date": "2026.03.18",
+          "rcp_no": "20260318902520",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318902520"
+        },
+        {
+          "title": "의결권대리행사권유참고서류",
+          "submitter": "휴림로봇",
+          "date": "2026.03.13",
+          "rcp_no": "20260313001318",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313001318"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "휴림로봇",
+          "date": "2026.03.13",
+          "rcp_no": "20260313001293",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313001293"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "휴림로봇",
+          "date": "2026.03.13",
+          "rcp_no": "20260313901961",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313901961"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "휴림홀딩스",
+          "date": "2026.03.11",
+          "rcp_no": "20260311004167",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260311004167"
+        }
+      ]
     },
     {
       "ticker": "012860",
@@ -609,7 +2241,114 @@
       "two_month_return": 16.7,
       "three_month_return": 16.1,
       "dart_corp_code": "00137234",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00137234&textCrpNm=%EB%AA%A8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%A0%84%EC%9E%90&textCrpNm2=%EB%AA%A8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%A0%84%EC%9E%90"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00137234&textCrpNm=%EB%AA%A8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%A0%84%EC%9E%90&textCrpNm2=%EB%AA%A8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%A0%84%EC%9E%90",
+      "disclosures": [
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "모베이스전자",
+          "date": "2026.03.30",
+          "rcp_no": "20260330000866",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260330000866"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "모베이스전자",
+          "date": "2026.03.26",
+          "rcp_no": "20260326902430",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260326902430"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "모베이스전자",
+          "date": "2026.03.24",
+          "rcp_no": "20260324000792",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324000792"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "모베이스전자",
+          "date": "2026.03.18",
+          "rcp_no": "20260318000473",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318000473"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "모베이스전자",
+          "date": "2026.03.18",
+          "rcp_no": "20260318900309",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318900309"
+        },
+        {
+          "title": "[기재정정]주주총회소집공고",
+          "submitter": "모베이스전자",
+          "date": "2026.03.11",
+          "rcp_no": "20260311004234",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260311004234"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "모베이스전자",
+          "date": "2026.03.11",
+          "rcp_no": "20260311003985",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260311003985"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "모베이스전자",
+          "date": "2026.03.11",
+          "rcp_no": "20260311900976",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260311900976"
+        },
+        {
+          "title": "현금ㆍ현물배당결정",
+          "submitter": "모베이스전자",
+          "date": "2026.03.11",
+          "rcp_no": "20260311900923",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260311900923"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "류연택",
+          "date": "2026.03.06",
+          "rcp_no": "20260306000839",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260306000839"
+        },
+        {
+          "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+          "submitter": "모베이스전자",
+          "date": "2026.02.25",
+          "rcp_no": "20260225900238",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260225900238"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "차종익",
+          "date": "2026.02.04",
+          "rcp_no": "20260204000554",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260204000554"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "홍성만",
+          "date": "2026.02.04",
+          "rcp_no": "20260204000546",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260204000546"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "박노헌",
+          "date": "2026.01.28",
+          "rcp_no": "20260128000448",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260128000448"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이민형",
+          "date": "2026.01.28",
+          "rcp_no": "20260128000442",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260128000442"
+        }
+      ]
     },
     {
       "ticker": "264850",
@@ -623,7 +2362,100 @@
       "two_month_return": 25.4,
       "three_month_return": 9.5,
       "dart_corp_code": "01199189",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01199189&textCrpNm=%EC%9D%B4%EB%9E%9C%EC%8B%9C%EC%8A%A4&textCrpNm2=%EC%9D%B4%EB%9E%9C%EC%8B%9C%EC%8A%A4"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01199189&textCrpNm=%EC%9D%B4%EB%9E%9C%EC%8B%9C%EC%8A%A4&textCrpNm2=%EC%9D%B4%EB%9E%9C%EC%8B%9C%EC%8A%A4",
+      "disclosures": [
+        {
+          "title": "정기주주총회결과",
+          "submitter": "이랜시스",
+          "date": "2026.03.26",
+          "rcp_no": "20260326900723",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260326900723"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "이랜시스",
+          "date": "2026.03.18",
+          "rcp_no": "20260318000687",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318000687"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "이랜시스",
+          "date": "2026.03.13",
+          "rcp_no": "20260313902177",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313902177"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "이랜시스",
+          "date": "2026.03.11",
+          "rcp_no": "20260311003717",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260311003717"
+        },
+        {
+          "title": "현금ㆍ현물배당결정",
+          "submitter": "이랜시스",
+          "date": "2026.03.09",
+          "rcp_no": "20260309900683",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309900683"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "이랜시스",
+          "date": "2026.03.09",
+          "rcp_no": "20260309900671",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309900671"
+        },
+        {
+          "title": "매출액또는손익구조30%(대규모법인은15%)이상변동",
+          "submitter": "이랜시스",
+          "date": "2026.03.09",
+          "rcp_no": "20260309900665",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309900665"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "이랜텍",
+          "date": "2026.02.26",
+          "rcp_no": "20260226005855",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260226005855"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "이랜텍",
+          "date": "2026.01.05",
+          "rcp_no": "20260105000325",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260105000325"
+        },
+        {
+          "title": "주주명부폐쇄기간또는기준일설정",
+          "submitter": "이랜시스",
+          "date": "2025.12.10",
+          "rcp_no": "20251210900236",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251210900236"
+        },
+        {
+          "title": "분기보고서 \r\n\t\t\t\t\t\t\t(2025.09)",
+          "submitter": "이랜시스",
+          "date": "2025.11.14",
+          "rcp_no": "20251114001234",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251114001234"
+        },
+        {
+          "title": "반기보고서 \r\n\t\t\t\t\t\t\t(2025.06)",
+          "submitter": "이랜시스",
+          "date": "2025.08.14",
+          "rcp_no": "20250814001705",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250814001705"
+        },
+        {
+          "title": "분기보고서 \r\n\t\t\t\t\t\t\t(2025.03)",
+          "submitter": "이랜시스",
+          "date": "2025.05.15",
+          "rcp_no": "20250515000129",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250515000129"
+        }
+      ]
     },
     {
       "ticker": "223250",
@@ -637,7 +2469,114 @@
       "two_month_return": 41.3,
       "three_month_return": 17.9,
       "dart_corp_code": "00916826",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00916826&textCrpNm=%EB%93%9C%EB%A6%BC%EC%94%A8%EC%95%84%EC%9D%B4%EC%97%90%EC%8A%A4&textCrpNm2=%EB%93%9C%EB%A6%BC%EC%94%A8%EC%95%84%EC%9D%B4%EC%97%90%EC%8A%A4"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00916826&textCrpNm=%EB%93%9C%EB%A6%BC%EC%94%A8%EC%95%84%EC%9D%B4%EC%97%90%EC%8A%A4&textCrpNm2=%EB%93%9C%EB%A6%BC%EC%94%A8%EC%95%84%EC%9D%B4%EC%97%90%EC%8A%A4",
+      "disclosures": [
+        {
+          "title": "소속부변경",
+          "submitter": "코스닥시장본부",
+          "date": "2026.04.30",
+          "rcp_no": "20260430901933",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430901933"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "유정희",
+          "date": "2026.04.06",
+          "rcp_no": "20260406002995",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406002995"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "드림씨아이에스",
+          "date": "2026.03.31",
+          "rcp_no": "20260331003514",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331003514"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "드림씨아이에스",
+          "date": "2026.03.31",
+          "rcp_no": "20260331901880",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331901880"
+        },
+        {
+          "title": "파생상품거래손실발생",
+          "submitter": "드림씨아이에스",
+          "date": "2026.03.24",
+          "rcp_no": "20260324901034",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324901034"
+        },
+        {
+          "title": "[기재정정]주주총회소집공고",
+          "submitter": "드림씨아이에스",
+          "date": "2026.03.24",
+          "rcp_no": "20260323001696",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323001696"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "드림씨아이에스",
+          "date": "2026.03.23",
+          "rcp_no": "20260323001678",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323001678"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "드림씨아이에스",
+          "date": "2026.03.23",
+          "rcp_no": "20260323902351",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323902351"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "드림씨아이에스",
+          "date": "2026.03.16",
+          "rcp_no": "20260316001063",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260316001063"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "드림씨아이에스",
+          "date": "2026.03.16",
+          "rcp_no": "20260316901370",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260316901370"
+        },
+        {
+          "title": "기업설명회(IR)개최",
+          "submitter": "드림씨아이에스",
+          "date": "2026.03.03",
+          "rcp_no": "20260303900999",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260303900999"
+        },
+        {
+          "title": "매출액또는손익구조30%(대규모법인은15%)이상변동",
+          "submitter": "드림씨아이에스",
+          "date": "2026.02.11",
+          "rcp_no": "20260211900926",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260211900926"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "주선영",
+          "date": "2026.01.20",
+          "rcp_no": "20260120000115",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260120000115"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이용정",
+          "date": "2026.01.20",
+          "rcp_no": "20260120000097",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260120000097"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김정아",
+          "date": "2026.01.20",
+          "rcp_no": "20260120000091",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260120000091"
+        }
+      ]
     },
     {
       "ticker": "125490",
@@ -651,7 +2590,114 @@
       "two_month_return": 28.3,
       "three_month_return": -2.3,
       "dart_corp_code": "00683061",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00683061&textCrpNm=%ED%95%9C%EB%9D%BC%EC%BA%90%EC%8A%A4%ED%8A%B8&textCrpNm2=%ED%95%9C%EB%9D%BC%EC%BA%90%EC%8A%A4%ED%8A%B8"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00683061&textCrpNm=%ED%95%9C%EB%9D%BC%EC%BA%90%EC%8A%A4%ED%8A%B8&textCrpNm2=%ED%95%9C%EB%9D%BC%EC%BA%90%EC%8A%A4%ED%8A%B8",
+      "disclosures": [
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "한라캐스트",
+          "date": "2026.03.30",
+          "rcp_no": "20260330001245",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260330001245"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "한라캐스트",
+          "date": "2026.03.30",
+          "rcp_no": "20260330901002",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260330901002"
+        },
+        {
+          "title": "기업설명회(IR)개최",
+          "submitter": "한라캐스트",
+          "date": "2026.03.23",
+          "rcp_no": "20260323900477",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323900477"
+        },
+        {
+          "title": "단기차입금증가결정",
+          "submitter": "한라캐스트",
+          "date": "2026.03.23",
+          "rcp_no": "20260323900472",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323900472"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "한라캐스트",
+          "date": "2026.03.19",
+          "rcp_no": "20260319000665",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260319000665"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "한라캐스트",
+          "date": "2026.03.19",
+          "rcp_no": "20260319900608",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260319900608"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "오종두",
+          "date": "2026.03.11",
+          "rcp_no": "20260311004099",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260311004099"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "오택원",
+          "date": "2026.03.11",
+          "rcp_no": "20260311003975",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260311003975"
+        },
+        {
+          "title": "[기재정정]주주총회소집공고",
+          "submitter": "한라캐스트",
+          "date": "2026.03.03",
+          "rcp_no": "20260303002409",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260303002409"
+        },
+        {
+          "title": "의결권대리행사권유참고서류",
+          "submitter": "한라캐스트",
+          "date": "2026.03.03",
+          "rcp_no": "20260303002307",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260303002307"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "한라캐스트",
+          "date": "2026.03.03",
+          "rcp_no": "20260303002267",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260303002267"
+        },
+        {
+          "title": "주주총회집중일개최사유신고",
+          "submitter": "한라캐스트",
+          "date": "2026.03.03",
+          "rcp_no": "20260303900570",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260303900570"
+        },
+        {
+          "title": "[기재정정]주주총회소집결의",
+          "submitter": "한라캐스트",
+          "date": "2026.03.03",
+          "rcp_no": "20260303900528",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260303900528"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "한라캐스트",
+          "date": "2026.03.03",
+          "rcp_no": "20260303900253",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260303900253"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "한라캐스트",
+          "date": "2026.02.19",
+          "rcp_no": "20260219002002",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260219002002"
+        }
+      ]
     },
     {
       "ticker": "050890",
@@ -665,7 +2711,114 @@
       "two_month_return": 130.1,
       "three_month_return": 94.0,
       "dart_corp_code": "00364403",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00364403&textCrpNm=%EC%8F%A0%EB%A6%AC%EB%93%9C&textCrpNm2=%EC%8F%A0%EB%A6%AC%EB%93%9C"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00364403&textCrpNm=%EC%8F%A0%EB%A6%AC%EB%93%9C&textCrpNm2=%EC%8F%A0%EB%A6%AC%EB%93%9C",
+      "disclosures": [
+        {
+          "title": "[기재정정]사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "쏠리드",
+          "date": "2026.03.24",
+          "rcp_no": "20260324000935",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324000935"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "쏠리드",
+          "date": "2026.03.24",
+          "rcp_no": "20260324000932",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324000932"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "쏠리드",
+          "date": "2026.03.24",
+          "rcp_no": "20260324901405",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324901405"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "쏠리드",
+          "date": "2026.03.16",
+          "rcp_no": "20260316001496",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260316001496"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "쏠리드",
+          "date": "2026.03.16",
+          "rcp_no": "20260316901858",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260316901858"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이승희",
+          "date": "2026.03.13",
+          "rcp_no": "20260313001017",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313001017"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "권동희",
+          "date": "2026.03.13",
+          "rcp_no": "20260313000976",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313000976"
+        },
+        {
+          "title": "주요사항보고서(자기주식취득신탁계약체결결정)",
+          "submitter": "쏠리드",
+          "date": "2026.03.13",
+          "rcp_no": "20260313000814",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313000814"
+        },
+        {
+          "title": "수시공시의무관련사항(공정공시)",
+          "submitter": "쏠리드",
+          "date": "2026.03.13",
+          "rcp_no": "20260313901108",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313901108"
+        },
+        {
+          "title": "의결권대리행사권유참고서류",
+          "submitter": "쏠리드",
+          "date": "2026.02.26",
+          "rcp_no": "20260226006051",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260226006051"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "쏠리드",
+          "date": "2026.02.26",
+          "rcp_no": "20260226006012",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260226006012"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "쏠리드",
+          "date": "2026.02.26",
+          "rcp_no": "20260226901163",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260226901163"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결(자율공시)",
+          "submitter": "쏠리드",
+          "date": "2026.02.24",
+          "rcp_no": "20260224901321",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260224901321"
+        },
+        {
+          "title": "현금ㆍ현물배당결정",
+          "submitter": "쏠리드",
+          "date": "2026.02.09",
+          "rcp_no": "20260209901688",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260209901688"
+        },
+        {
+          "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정",
+          "submitter": "쏠리드",
+          "date": "2026.01.29",
+          "rcp_no": "20260129900911",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260129900911"
+        }
+      ]
     },
     {
       "ticker": "101170",
@@ -679,7 +2832,114 @@
       "two_month_return": 15.9,
       "three_month_return": 1.5,
       "dart_corp_code": "00567222",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00567222&textCrpNm=%EC%9A%B0%EB%A6%BC%ED%94%BC%ED%8B%B0%EC%97%90%EC%8A%A4&textCrpNm2=%EC%9A%B0%EB%A6%BC%ED%94%BC%ED%8B%B0%EC%97%90%EC%8A%A4"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00567222&textCrpNm=%EC%9A%B0%EB%A6%BC%ED%94%BC%ED%8B%B0%EC%97%90%EC%8A%A4&textCrpNm2=%EC%9A%B0%EB%A6%BC%ED%94%BC%ED%8B%B0%EC%97%90%EC%8A%A4",
+      "disclosures": [
+        {
+          "title": "의결권대리행사권유참고서류",
+          "submitter": "우림피티에스",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000445",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000445"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "우림피티에스",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000444",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000444"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "한규석",
+          "date": "2026.04.27",
+          "rcp_no": "20260427000666",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427000666"
+        },
+        {
+          "title": "[기재정정]주식매수선택권부여에관한신고",
+          "submitter": "우림피티에스",
+          "date": "2026.04.24",
+          "rcp_no": "20260424000621",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260424000621"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "한우진",
+          "date": "2026.04.21",
+          "rcp_no": "20260421000339",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260421000339"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "한규석",
+          "date": "2026.04.21",
+          "rcp_no": "20260421000311",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260421000311"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "한규석",
+          "date": "2026.04.21",
+          "rcp_no": "20260421000290",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260421000290"
+        },
+        {
+          "title": "주주명부폐쇄기간또는기준일설정",
+          "submitter": "우림피티에스",
+          "date": "2026.04.10",
+          "rcp_no": "20260410900461",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260410900461"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "우림피티에스",
+          "date": "2026.04.10",
+          "rcp_no": "20260410900454",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260410900454"
+        },
+        {
+          "title": "[기재정정]주식매수선택권부여에관한신고",
+          "submitter": "우림피티에스",
+          "date": "2026.04.06",
+          "rcp_no": "20260406004265",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406004265"
+        },
+        {
+          "title": "[기재정정]주식매수선택권부여에관한신고",
+          "submitter": "우림피티에스",
+          "date": "2026.04.06",
+          "rcp_no": "20260406004194",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406004194"
+        },
+        {
+          "title": "[기재정정]주식매수선택권부여에관한신고",
+          "submitter": "우림피티에스",
+          "date": "2026.04.06",
+          "rcp_no": "20260406004041",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406004041"
+        },
+        {
+          "title": "[기재정정]주식매수선택권부여에관한신고",
+          "submitter": "우림피티에스",
+          "date": "2026.04.06",
+          "rcp_no": "20260406003458",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406003458"
+        },
+        {
+          "title": "주식매수선택권부여에관한신고",
+          "submitter": "우림피티에스",
+          "date": "2026.04.06",
+          "rcp_no": "20260406003328",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406003328"
+        },
+        {
+          "title": "[기재정정]주식매수선택권부여에관한신고",
+          "submitter": "우림피티에스",
+          "date": "2026.04.06",
+          "rcp_no": "20260406003049",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260406003049"
+        }
+      ]
     },
     {
       "ticker": "043260",
@@ -693,7 +2953,114 @@
       "two_month_return": 13.6,
       "three_month_return": 106.4,
       "dart_corp_code": "00317210",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00317210&textCrpNm=%EC%84%B1%ED%98%B8%EC%A0%84%EC%9E%90&textCrpNm2=%EC%84%B1%ED%98%B8%EC%A0%84%EC%9E%90"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00317210&textCrpNm=%EC%84%B1%ED%98%B8%EC%A0%84%EC%9E%90&textCrpNm2=%EC%84%B1%ED%98%B8%EC%A0%84%EC%9E%90",
+      "disclosures": [
+        {
+          "title": "기업설명회(IR)개최",
+          "submitter": "성호전자",
+          "date": "2026.05.07",
+          "rcp_no": "20260507900965",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507900965"
+        },
+        {
+          "title": "기업설명회(IR)개최",
+          "submitter": "성호전자",
+          "date": "2026.05.07",
+          "rcp_no": "20260507900964",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507900964"
+        },
+        {
+          "title": "[첨부정정]주요사항보고서(회사합병결정)",
+          "submitter": "성호전자",
+          "date": "2026.04.30",
+          "rcp_no": "20260430000794",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430000794"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "서룡전자",
+          "date": "2026.04.29",
+          "rcp_no": "20260429001136",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429001136"
+        },
+        {
+          "title": "주주명부폐쇄기간또는기준일설정",
+          "submitter": "성호전자",
+          "date": "2026.04.29",
+          "rcp_no": "20260429900506",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429900506"
+        },
+        {
+          "title": "주요사항보고서(회사합병결정)",
+          "submitter": "성호전자",
+          "date": "2026.04.29",
+          "rcp_no": "20260429000514",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429000514"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "서룡전자",
+          "date": "2026.04.28",
+          "rcp_no": "20260428000170",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260428000170"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "서룡전자",
+          "date": "2026.04.23",
+          "rcp_no": "20260423000187",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260423000187"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "서룡전자",
+          "date": "2026.04.23",
+          "rcp_no": "20260423000183",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260423000183"
+        },
+        {
+          "title": "주권관련사채권의취득결정",
+          "submitter": "성호전자",
+          "date": "2026.04.22",
+          "rcp_no": "20260422900376",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260422900376"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "서룡전자",
+          "date": "2026.04.21",
+          "rcp_no": "20260421000410",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260421000410"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "서룡전자",
+          "date": "2026.04.20",
+          "rcp_no": "20260420000340",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260420000340"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "서룡전자",
+          "date": "2026.04.17",
+          "rcp_no": "20260417000551",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260417000551"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "서룡전자",
+          "date": "2026.04.16",
+          "rcp_no": "20260416000363",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260416000363"
+        },
+        {
+          "title": "주요사항보고서(타법인주식및출자증권양수결정)",
+          "submitter": "성호전자",
+          "date": "2026.04.15",
+          "rcp_no": "20260415000002",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260415000002"
+        }
+      ]
     },
     {
       "ticker": "072950",
@@ -707,7 +3074,114 @@
       "two_month_return": 153.4,
       "three_month_return": 184.5,
       "dart_corp_code": "00359261",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00359261&textCrpNm=%EB%B9%9B%EC%83%98%EC%A0%84%EC%9E%90&textCrpNm2=%EB%B9%9B%EC%83%98%EC%A0%84%EC%9E%90"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00359261&textCrpNm=%EB%B9%9B%EC%83%98%EC%A0%84%EC%9E%90&textCrpNm2=%EB%B9%9B%EC%83%98%EC%A0%84%EC%9E%90",
+      "disclosures": [
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "강민우",
+          "date": "2026.04.22",
+          "rcp_no": "20260422000537",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260422000537"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "박연수",
+          "date": "2026.04.22",
+          "rcp_no": "20260422000495",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260422000495"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "강만준",
+          "date": "2026.03.24",
+          "rcp_no": "20260324000892",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324000892"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "강민우",
+          "date": "2026.03.24",
+          "rcp_no": "20260324000753",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324000753"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "빛샘전자",
+          "date": "2026.03.24",
+          "rcp_no": "20260324000676",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324000676"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "빛샘전자",
+          "date": "2026.03.24",
+          "rcp_no": "20260324900861",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324900861"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "빛샘전자",
+          "date": "2026.03.16",
+          "rcp_no": "20260316001265",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260316001265"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "빛샘전자",
+          "date": "2026.03.16",
+          "rcp_no": "20260316901613",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260316901613"
+        },
+        {
+          "title": "[기재정정]주주총회소집공고",
+          "submitter": "빛샘전자",
+          "date": "2026.03.09",
+          "rcp_no": "20260309001700",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309001700"
+        },
+        {
+          "title": "의결권대리행사권유참고서류",
+          "submitter": "빛샘전자",
+          "date": "2026.03.09",
+          "rcp_no": "20260309001449",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309001449"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "빛샘전자",
+          "date": "2026.03.09",
+          "rcp_no": "20260309001441",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260309001441"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "빛샘전자",
+          "date": "2026.02.20",
+          "rcp_no": "20260220900891",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260220900891"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "강만준",
+          "date": "2026.02.19",
+          "rcp_no": "20260219002795",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260219002795"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "강만준",
+          "date": "2026.02.19",
+          "rcp_no": "20260219002734",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260219002734"
+        },
+        {
+          "title": "매출액또는손익구조30%(대규모법인은15%)이상변동",
+          "submitter": "빛샘전자",
+          "date": "2026.02.13",
+          "rcp_no": "20260213900602",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260213900602"
+        }
+      ]
     },
     {
       "ticker": "0011",
@@ -721,7 +3195,114 @@
       "two_month_return": null,
       "three_month_return": null,
       "dart_corp_code": "01279698",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01279698&textCrpNm=%EC%B1%84%EB%B9%84&textCrpNm2=%EC%B1%84%EB%B9%84"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01279698&textCrpNm=%EC%B1%84%EB%B9%84&textCrpNm2=%EC%B1%84%EB%B9%84",
+      "disclosures": [
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "오준형",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000543",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000543"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "정민교",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000540",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000540"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이동철",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000539",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000539"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "정재욱",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000535",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000535"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "박흥수",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000533",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000533"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "황종길",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000532",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000532"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이건우",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000529",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000529"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김현수",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000521",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000521"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "황이삭",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000518",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000518"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "정주곤",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000515",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000515"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "박영희",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000514",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000514"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "정민교",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000508",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000508"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "스틱스페셜시츄에이션모빌리티",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000130",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000130"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(약식)",
+          "submitter": "스틱스페셜시츄에이션모빌리티",
+          "date": "2026.05.07",
+          "rcp_no": "20260507000129",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260507000129"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "케이비메자닌캐피탈제4호사모투자",
+          "date": "2026.05.04",
+          "rcp_no": "20260504000447",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260504000447"
+        }
+      ]
     },
     {
       "ticker": "098460",
@@ -735,7 +3316,114 @@
       "two_month_return": 38.0,
       "three_month_return": 24.1,
       "dart_corp_code": "00579999",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00579999&textCrpNm=%EA%B3%A0%EC%98%81&textCrpNm2=%EA%B3%A0%EC%98%81"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00579999&textCrpNm=%EA%B3%A0%EC%98%81&textCrpNm2=%EA%B3%A0%EC%98%81",
+      "disclosures": [
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "고영홀딩스",
+          "date": "2026.04.30",
+          "rcp_no": "20260430001689",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430001689"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김상용",
+          "date": "2026.04.30",
+          "rcp_no": "20260430001629",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430001629"
+        },
+        {
+          "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+          "submitter": "고영",
+          "date": "2026.04.23",
+          "rcp_no": "20260423900530",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260423900530"
+        },
+        {
+          "title": "기업설명회(IR)개최",
+          "submitter": "고영",
+          "date": "2026.04.20",
+          "rcp_no": "20260420900716",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260420900716"
+        },
+        {
+          "title": "기업설명회(IR)개최",
+          "submitter": "고영",
+          "date": "2026.04.20",
+          "rcp_no": "20260420900705",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260420900705"
+        },
+        {
+          "title": "기업가치제고계획(자율공시)",
+          "submitter": "고영",
+          "date": "2026.04.20",
+          "rcp_no": "20260420900411",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260420900411"
+        },
+        {
+          "title": "기업설명회(IR)개최",
+          "submitter": "고영",
+          "date": "2026.04.10",
+          "rcp_no": "20260410900651",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260410900651"
+        },
+        {
+          "title": "자기주식처분결과보고서",
+          "submitter": "고영",
+          "date": "2026.04.01",
+          "rcp_no": "20260401004839",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004839"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "고영홀딩스",
+          "date": "2026.04.01",
+          "rcp_no": "20260401004764",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004764"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "홍덕화",
+          "date": "2026.04.01",
+          "rcp_no": "20260401004466",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004466"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "정중기",
+          "date": "2026.04.01",
+          "rcp_no": "20260401004434",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004434"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김동구",
+          "date": "2026.04.01",
+          "rcp_no": "20260401004388",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004388"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "안용근",
+          "date": "2026.04.01",
+          "rcp_no": "20260401004348",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004348"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "정재헌",
+          "date": "2026.04.01",
+          "rcp_no": "20260401004308",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004308"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이현희",
+          "date": "2026.04.01",
+          "rcp_no": "20260401004279",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004279"
+        }
+      ]
     },
     {
       "ticker": "440110",
@@ -749,7 +3437,114 @@
       "two_month_return": 43.9,
       "three_month_return": 104.7,
       "dart_corp_code": "01292291",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01292291&textCrpNm=%ED%8C%8C%EB%91%90&textCrpNm2=%ED%8C%8C%EB%91%90"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01292291&textCrpNm=%ED%8C%8C%EB%91%90&textCrpNm2=%ED%8C%8C%EB%91%90",
+      "disclosures": [
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "나경석",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000950",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000950"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "파두",
+          "date": "2026.05.06",
+          "rcp_no": "20260506900280",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260506900280"
+        },
+        {
+          "title": "[기재정정]단일판매ㆍ공급계약체결",
+          "submitter": "파두",
+          "date": "2026.04.30",
+          "rcp_no": "20260430900594",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260430900594"
+        },
+        {
+          "title": "기업설명회(IR)개최",
+          "submitter": "파두",
+          "date": "2026.04.29",
+          "rcp_no": "20260429900238",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429900238"
+        },
+        {
+          "title": "기업설명회(IR)개최",
+          "submitter": "파두",
+          "date": "2026.04.29",
+          "rcp_no": "20260429900237",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429900237"
+        },
+        {
+          "title": "기업설명회(IR)개최",
+          "submitter": "파두",
+          "date": "2026.04.29",
+          "rcp_no": "20260429900234",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429900234"
+        },
+        {
+          "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+          "submitter": "파두",
+          "date": "2026.04.27",
+          "rcp_no": "20260427900174",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427900174"
+        },
+        {
+          "title": "[기재정정]임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김진수",
+          "date": "2026.04.23",
+          "rcp_no": "20260423000701",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260423000701"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "임진업",
+          "date": "2026.04.17",
+          "rcp_no": "20260417000659",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260417000659"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "박범진",
+          "date": "2026.04.17",
+          "rcp_no": "20260417000645",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260417000645"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "박상현",
+          "date": "2026.04.17",
+          "rcp_no": "20260417000633",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260417000633"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김선호",
+          "date": "2026.04.17",
+          "rcp_no": "20260417000625",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260417000625"
+        },
+        {
+          "title": "단일판매ㆍ공급계약체결",
+          "submitter": "파두",
+          "date": "2026.04.13",
+          "rcp_no": "20260413900118",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260413900118"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "김진수",
+          "date": "2026.04.01",
+          "rcp_no": "20260401004582",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004582"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "임성욱",
+          "date": "2026.04.01",
+          "rcp_no": "20260401004546",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004546"
+        }
+      ]
     },
     {
       "ticker": "032820",
@@ -763,7 +3558,114 @@
       "two_month_return": 16.5,
       "three_month_return": 112.3,
       "dart_corp_code": "00231044",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00231044&textCrpNm=%EC%9A%B0%EB%A6%AC%EA%B8%B0%EC%88%A0&textCrpNm2=%EC%9A%B0%EB%A6%AC%EA%B8%B0%EC%88%A0"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00231044&textCrpNm=%EC%9A%B0%EB%A6%AC%EA%B8%B0%EC%88%A0&textCrpNm2=%EC%9A%B0%EB%A6%AC%EA%B8%B0%EC%88%A0",
+      "disclosures": [
+        {
+          "title": "[기재정정]단일판매ㆍ공급계약체결",
+          "submitter": "우리기술",
+          "date": "2026.04.27",
+          "rcp_no": "20260427900747",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427900747"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "우리기술",
+          "date": "2026.03.31",
+          "rcp_no": "20260331004284",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331004284"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "우리기술",
+          "date": "2026.03.31",
+          "rcp_no": "20260331902922",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331902922"
+        },
+        {
+          "title": "전환사채(해외전환사채포함)발행후만기전사채취득",
+          "submitter": "우리기술",
+          "date": "2026.03.25",
+          "rcp_no": "20260325900581",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260325900581"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "우리기술",
+          "date": "2026.03.23",
+          "rcp_no": "20260323001668",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323001668"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "우리기술",
+          "date": "2026.03.23",
+          "rcp_no": "20260323901692",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323901692"
+        },
+        {
+          "title": "전환청구권행사",
+          "submitter": "우리기술",
+          "date": "2026.03.12",
+          "rcp_no": "20260312901379",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260312901379"
+        },
+        {
+          "title": "주요사항보고서(자기전환사채매도결정)",
+          "submitter": "우리기술",
+          "date": "2026.03.10",
+          "rcp_no": "20260310002968",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260310002968"
+        },
+        {
+          "title": "전환사채(해외전환사채포함)발행후만기전사채취득",
+          "submitter": "우리기술",
+          "date": "2026.03.10",
+          "rcp_no": "20260310900819",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260310900819"
+        },
+        {
+          "title": "의결권대리행사권유참고서류",
+          "submitter": "우리기술",
+          "date": "2026.03.03",
+          "rcp_no": "20260303002834",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260303002834"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "우리기술",
+          "date": "2026.03.03",
+          "rcp_no": "20260303002812",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260303002812"
+        },
+        {
+          "title": "전환청구권행사",
+          "submitter": "우리기술",
+          "date": "2026.03.03",
+          "rcp_no": "20260303901075",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260303901075"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "우리기술",
+          "date": "2026.02.27",
+          "rcp_no": "20260227902034",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260227902034"
+        },
+        {
+          "title": "매출액또는손익구조30%(대규모법인은15%)이상변동",
+          "submitter": "우리기술",
+          "date": "2026.02.27",
+          "rcp_no": "20260227902025",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260227902025"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(약식)",
+          "submitter": "삼성자산운용",
+          "date": "2026.02.26",
+          "rcp_no": "20260226005171",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260226005171"
+        }
+      ]
     },
     {
       "ticker": "100790",
@@ -777,7 +3679,114 @@
       "two_month_return": 175.8,
       "three_month_return": 133.3,
       "dart_corp_code": "00340096",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00340096&textCrpNm=%EB%AF%B8%EB%9E%98%EC%97%90%EC%85%8B%EB%B2%A4%EC%B2%98%ED%88%AC%EC%9E%90&textCrpNm2=%EB%AF%B8%EB%9E%98%EC%97%90%EC%85%8B%EB%B2%A4%EC%B2%98%ED%88%AC%EC%9E%90"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00340096&textCrpNm=%EB%AF%B8%EB%9E%98%EC%97%90%EC%85%8B%EB%B2%A4%EC%B2%98%ED%88%AC%EC%9E%90&textCrpNm2=%EB%AF%B8%EB%9E%98%EC%97%90%EC%85%8B%EB%B2%A4%EC%B2%98%ED%88%AC%EC%9E%90",
+      "disclosures": [
+        {
+          "title": "특수관계인과의수익증권거래",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.05.08",
+          "rcp_no": "20260508000655",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260508000655"
+        },
+        {
+          "title": "[기재정정]타법인주식및출자증권취득결정",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.04.29",
+          "rcp_no": "20260429901210",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260429901210"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등거래계획보고서",
+          "submitter": "김응석",
+          "date": "2026.04.01",
+          "rcp_no": "20260401004363",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004363"
+        },
+        {
+          "title": "특수관계인과의수익증권거래",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.03.31",
+          "rcp_no": "20260331004005",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331004005"
+        },
+        {
+          "title": "타법인주식및출자증권취득결정",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.03.24",
+          "rcp_no": "20260324901357",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324901357"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.03.24",
+          "rcp_no": "20260324000798",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324000798"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.03.24",
+          "rcp_no": "20260324901000",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324901000"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.03.13",
+          "rcp_no": "20260313001348",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313001348"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.03.13",
+          "rcp_no": "20260313901946",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313901946"
+        },
+        {
+          "title": "의결권대리행사권유참고서류",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.03.06",
+          "rcp_no": "20260306000753",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260306000753"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.03.06",
+          "rcp_no": "20260306000729",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260306000729"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.03.04",
+          "rcp_no": "20260304901334",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260304901334"
+        },
+        {
+          "title": "[기재정정]매출액또는손익구조30%(대규모법인은15%)이상변동",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.03.04",
+          "rcp_no": "20260304901307",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260304901307"
+        },
+        {
+          "title": "대규모기업집단현황공시[분기별공시(개별회사용)]",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.03.03",
+          "rcp_no": "20260303002653",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260303002653"
+        },
+        {
+          "title": "특수관계인과의수익증권거래",
+          "submitter": "미래에셋벤처투자",
+          "date": "2026.02.05",
+          "rcp_no": "20260205000516",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260205000516"
+        }
+      ]
     },
     {
       "ticker": "950160",
@@ -791,7 +3800,114 @@
       "two_month_return": 23.4,
       "three_month_return": 35.5,
       "dart_corp_code": "01245062",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01245062&textCrpNm=%EC%BD%94%EC%98%A4%EB%A1%B1%ED%8B%B0%EC%8A%88%EC%A7%84&textCrpNm2=%EC%BD%94%EC%98%A4%EB%A1%B1%ED%8B%B0%EC%8A%88%EC%A7%84"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01245062&textCrpNm=%EC%BD%94%EC%98%A4%EB%A1%B1%ED%8B%B0%EC%8A%88%EC%A7%84&textCrpNm2=%EC%BD%94%EC%98%A4%EB%A1%B1%ED%8B%B0%EC%8A%88%EC%A7%84",
+      "disclosures": [
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "코오롱",
+          "date": "2026.03.30",
+          "rcp_no": "20260330001323",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260330001323"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "코오롱",
+          "date": "2026.03.27",
+          "rcp_no": "20260327001489",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260327001489"
+        },
+        {
+          "title": "사외이사의선임ㆍ해임또는중도퇴임에관한신고",
+          "submitter": "코오롱티슈진",
+          "date": "2026.03.26",
+          "rcp_no": "20260326001453",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260326001453"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "코오롱티슈진",
+          "date": "2026.03.26",
+          "rcp_no": "20260326903156",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260326903156"
+        },
+        {
+          "title": "코스닥시장상장외국법인외부감사인선임ㆍ해임신고서",
+          "submitter": "코오롱티슈진",
+          "date": "2026.03.25",
+          "rcp_no": "20260325901305",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260325901305"
+        },
+        {
+          "title": "증권발행결과(자율공시)",
+          "submitter": "코오롱티슈진",
+          "date": "2026.03.24",
+          "rcp_no": "20260324900884",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260324900884"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "코오롱티슈진",
+          "date": "2026.03.18",
+          "rcp_no": "20260318001341",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318001341"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "코오롱티슈진",
+          "date": "2026.03.18",
+          "rcp_no": "20260318901396",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318901396"
+        },
+        {
+          "title": "[기재정정]주주총회소집결의",
+          "submitter": "코오롱티슈진",
+          "date": "2026.03.10",
+          "rcp_no": "20260310901572",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260310901572"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "코오롱티슈진",
+          "date": "2026.03.06",
+          "rcp_no": "20260306901677",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260306901677"
+        },
+        {
+          "title": "주식매수선택권부여에관한신고",
+          "submitter": "코오롱티슈진",
+          "date": "2026.03.06",
+          "rcp_no": "20260306000998",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260306000998"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등거래계획보고서",
+          "submitter": "코오롱",
+          "date": "2026.03.06",
+          "rcp_no": "20260306000996",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260306000996"
+        },
+        {
+          "title": "주요사항보고서(유상증자결정)",
+          "submitter": "코오롱티슈진",
+          "date": "2026.03.06",
+          "rcp_no": "20260306000980",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260306000980"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "코오롱티슈진",
+          "date": "2026.03.06",
+          "rcp_no": "20260306000719",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260306000719"
+        },
+        {
+          "title": "전환청구권행사",
+          "submitter": "코오롱티슈진",
+          "date": "2026.03.04",
+          "rcp_no": "20260304901560",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260304901560"
+        }
+      ]
     },
     {
       "ticker": "058610",
@@ -805,7 +3921,114 @@
       "two_month_return": 5.6,
       "three_month_return": -0.6,
       "dart_corp_code": "00220686",
-      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00220686&textCrpNm=%EC%97%90%EC%8A%A4%ED%94%BC%EC%A7%80&textCrpNm2=%EC%97%90%EC%8A%A4%ED%94%BC%EC%A7%80"
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00220686&textCrpNm=%EC%97%90%EC%8A%A4%ED%94%BC%EC%A7%80&textCrpNm2=%EC%97%90%EC%8A%A4%ED%94%BC%EC%A7%80",
+      "disclosures": [
+        {
+          "title": "기업설명회(IR)개최",
+          "submitter": "에스피지",
+          "date": "2026.03.31",
+          "rcp_no": "20260331900531",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260331900531"
+        },
+        {
+          "title": "기업가치제고계획(자율공시)",
+          "submitter": "에스피지",
+          "date": "2026.03.26",
+          "rcp_no": "20260326900680",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260326900680"
+        },
+        {
+          "title": "정기주주총회결과",
+          "submitter": "에스피지",
+          "date": "2026.03.26",
+          "rcp_no": "20260326900407",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260326900407"
+        },
+        {
+          "title": "사업보고서 \r\n\t\t\t\t\t\t\t(2025.12)",
+          "submitter": "에스피지",
+          "date": "2026.03.18",
+          "rcp_no": "20260318000411",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318000411"
+        },
+        {
+          "title": "감사보고서제출",
+          "submitter": "에스피지",
+          "date": "2026.03.18",
+          "rcp_no": "20260318900226",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318900226"
+        },
+        {
+          "title": "주주총회소집공고",
+          "submitter": "에스피지",
+          "date": "2026.03.11",
+          "rcp_no": "20260311003162",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260311003162"
+        },
+        {
+          "title": "주주총회소집결의",
+          "submitter": "에스피지",
+          "date": "2026.03.04",
+          "rcp_no": "20260304900237",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260304900237"
+        },
+        {
+          "title": "매출액또는손익구조30%(대규모법인은15%)이상변동",
+          "submitter": "에스피지",
+          "date": "2026.03.04",
+          "rcp_no": "20260304900235",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260304900235"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(약식)",
+          "submitter": "삼성자산운용",
+          "date": "2026.02.23",
+          "rcp_no": "20260223003250",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260223003250"
+        },
+        {
+          "title": "기업설명회(IR)개최",
+          "submitter": "에스피지",
+          "date": "2026.01.13",
+          "rcp_no": "20260113900067",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260113900067"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이은지",
+          "date": "2025.12.19",
+          "rcp_no": "20251219000511",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251219000511"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이상현",
+          "date": "2025.12.19",
+          "rcp_no": "20251219000505",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251219000505"
+        },
+        {
+          "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+          "submitter": "이준호",
+          "date": "2025.12.19",
+          "rcp_no": "20251219000493",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251219000493"
+        },
+        {
+          "title": "주식등의대량보유상황보고서(일반)",
+          "submitter": "이준호",
+          "date": "2025.12.19",
+          "rcp_no": "20251219000489",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251219000489"
+        },
+        {
+          "title": "현금ㆍ현물배당결정",
+          "submitter": "에스피지",
+          "date": "2025.12.19",
+          "rcp_no": "20251219900726",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251219900726"
+        }
+      ]
     }
   ],
   "highlights": [
