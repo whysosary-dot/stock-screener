@@ -19,7 +19,9 @@
       "market_cap": 10514.0,
       "one_month_return": 51.9,
       "two_month_return": 78.0,
-      "three_month_return": 62.1
+      "three_month_return": 62.1,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "003470",
@@ -31,7 +33,9 @@
       "market_cap": 14311.0,
       "one_month_return": 46.8,
       "two_month_return": 50.5,
-      "three_month_return": 64.1
+      "three_month_return": 64.1,
+      "dart_corp_code": "00117601",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00117601&textCrpNm=%EC%9C%A0%EC%95%88%ED%83%80%EC%A6%9D%EA%B6%8C&textCrpNm2=%EC%9C%A0%EC%95%88%ED%83%80%EC%A6%9D%EA%B6%8C"
     },
     {
       "ticker": "114800",
@@ -43,7 +47,9 @@
       "market_cap": 8602.0,
       "one_month_return": -24.2,
       "two_month_return": -35.9,
-      "three_month_return": -40.6
+      "three_month_return": -40.6,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "233740",
@@ -55,7 +61,9 @@
       "market_cap": 41203.0,
       "one_month_return": 15.4,
       "two_month_return": 0.2,
-      "three_month_return": 6.3
+      "three_month_return": 6.3,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "001440",
@@ -67,7 +75,9 @@
       "market_cap": 134801.0,
       "one_month_return": 130.3,
       "two_month_return": 151.5,
-      "three_month_return": 139.0
+      "three_month_return": 139.0,
+      "dart_corp_code": "00113207",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00113207&textCrpNm=%EB%8C%80%ED%95%9C%EC%A0%84%EC%84%A0&textCrpNm2=%EB%8C%80%ED%95%9C%EC%A0%84%EC%84%A0"
     },
     {
       "ticker": "396500",
@@ -79,7 +89,9 @@
       "market_cap": 122778.0,
       "one_month_return": 34.5,
       "two_month_return": 47.8,
-      "three_month_return": 65.2
+      "three_month_return": 65.2,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "018880",
@@ -91,7 +103,9 @@
       "market_cap": 48953.0,
       "one_month_return": 20.8,
       "two_month_return": 21.5,
-      "three_month_return": 26.9
+      "three_month_return": 26.9,
+      "dart_corp_code": "00161125",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00161125&textCrpNm=%ED%95%9C%EC%98%A8%EC%8B%9C%EC%8A%A4%ED%85%9C&textCrpNm2=%ED%95%9C%EC%98%A8%EC%8B%9C%EC%8A%A4%ED%85%9C"
     },
     {
       "ticker": "005930",
@@ -103,7 +117,9 @@
       "market_cap": 15697258.0,
       "one_month_return": 27.6,
       "two_month_return": 54.8,
-      "three_month_return": 69.3
+      "three_month_return": 69.3,
+      "dart_corp_code": "00126380",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00126380&textCrpNm=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90&textCrpNm2=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90"
     },
     {
       "ticker": "069500",
@@ -115,7 +131,9 @@
       "market_cap": 249860.0,
       "one_month_return": 30.1,
       "two_month_return": 48.0,
-      "three_month_return": 54.0
+      "three_month_return": 54.0,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "360750",
@@ -127,7 +145,9 @@
       "market_cap": 171299.0,
       "one_month_return": 8.0,
       "two_month_return": 8.9,
-      "three_month_return": 8.4
+      "three_month_return": 8.4,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "498400",
@@ -139,7 +159,9 @@
       "market_cap": 53716.0,
       "one_month_return": 26.6,
       "two_month_return": 41.4,
-      "three_month_return": 43.3
+      "three_month_return": 43.3,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "010140",
@@ -151,7 +173,9 @@
       "market_cap": 281160.0,
       "one_month_return": 12.9,
       "two_month_return": 11.9,
-      "three_month_return": 16.2
+      "three_month_return": 16.2,
+      "dart_corp_code": "00126478",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00126478&textCrpNm=%EC%82%BC%EC%84%B1%EC%A4%91%EA%B3%B5%EC%97%85&textCrpNm2=%EC%82%BC%EC%84%B1%EC%A4%91%EA%B3%B5%EC%97%85"
     },
     {
       "ticker": "229200",
@@ -163,7 +187,9 @@
       "market_cap": 61180.0,
       "one_month_return": 7.6,
       "two_month_return": 1.6,
-      "three_month_return": 8.6
+      "three_month_return": 8.6,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "0167",
@@ -175,7 +201,9 @@
       "market_cap": 12899.0,
       "one_month_return": null,
       "two_month_return": null,
-      "three_month_return": null
+      "three_month_return": null,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "0162",
@@ -187,7 +215,9 @@
       "market_cap": 16583.0,
       "one_month_return": null,
       "two_month_return": null,
-      "three_month_return": null
+      "three_month_return": null,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "232080",
@@ -199,7 +229,9 @@
       "market_cap": 20510.0,
       "one_month_return": 7.6,
       "two_month_return": 1.5,
-      "three_month_return": 8.3
+      "three_month_return": 8.3,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "091180",
@@ -211,7 +243,9 @@
       "market_cap": 6153.0,
       "one_month_return": 12.9,
       "two_month_return": 16.0,
-      "three_month_return": 16.3
+      "three_month_return": 16.3,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "047040",
@@ -223,7 +257,9 @@
       "market_cap": 134983.0,
       "one_month_return": 45.7,
       "two_month_return": 272.9,
-      "three_month_return": 495.1
+      "three_month_return": 495.1,
+      "dart_corp_code": "00124540",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00124540&textCrpNm=%EB%8C%80%EC%9A%B0%EA%B1%B4%EC%84%A4&textCrpNm2=%EB%8C%80%EC%9A%B0%EA%B1%B4%EC%84%A4"
     },
     {
       "ticker": "0117",
@@ -235,7 +271,9 @@
       "market_cap": 14801.0,
       "one_month_return": null,
       "two_month_return": null,
-      "three_month_return": null
+      "three_month_return": null,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "102970",
@@ -247,7 +285,9 @@
       "market_cap": 12220.0,
       "one_month_return": 13.4,
       "two_month_return": 25.3,
-      "three_month_return": 44.8
+      "three_month_return": 44.8,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "102110",
@@ -259,7 +299,9 @@
       "market_cap": 101244.0,
       "one_month_return": 30.2,
       "two_month_return": 48.3,
-      "three_month_return": 54.2
+      "three_month_return": 54.2,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "006800",
@@ -271,7 +313,9 @@
       "market_cap": 445415.0,
       "one_month_return": 17.6,
       "two_month_return": 24.0,
-      "three_month_return": 65.8
+      "three_month_return": 65.8,
+      "dart_corp_code": "00111722",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00111722&textCrpNm=%EB%AF%B8%EB%9E%98%EC%97%90%EC%85%8B%EC%A6%9D%EA%B6%8C&textCrpNm2=%EB%AF%B8%EB%9E%98%EC%97%90%EC%85%8B%EC%A6%9D%EA%B6%8C"
     },
     {
       "ticker": "0101",
@@ -283,7 +327,9 @@
       "market_cap": 6704.0,
       "one_month_return": null,
       "two_month_return": null,
-      "three_month_return": null
+      "three_month_return": null,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "445290",
@@ -295,7 +341,9 @@
       "market_cap": 12384.0,
       "one_month_return": 21.9,
       "two_month_return": 22.0,
-      "three_month_return": 17.5
+      "three_month_return": 17.5,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "305720",
@@ -307,7 +355,9 @@
       "market_cap": 25413.0,
       "one_month_return": 24.8,
       "two_month_return": 36.4,
-      "three_month_return": 35.3
+      "three_month_return": 35.3,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "494310",
@@ -319,7 +369,9 @@
       "market_cap": 24739.0,
       "one_month_return": 90.2,
       "two_month_return": 118.7,
-      "three_month_return": 152.5
+      "three_month_return": 152.5,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "091160",
@@ -331,7 +383,9 @@
       "market_cap": 61726.0,
       "one_month_return": 37.7,
       "two_month_return": 54.1,
-      "three_month_return": 70.2
+      "three_month_return": 70.2,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "138540",
@@ -343,7 +397,9 @@
       "market_cap": 8550.0,
       "one_month_return": 11.8,
       "two_month_return": 16.9,
-      "three_month_return": 23.2
+      "three_month_return": 23.2,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "028050",
@@ -355,7 +411,9 @@
       "market_cap": 122304.0,
       "one_month_return": 23.6,
       "two_month_return": 89.7,
-      "three_month_return": 95.9
+      "three_month_return": 95.9,
+      "dart_corp_code": "00126308",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00126308&textCrpNm=%EC%82%BC%EC%84%B1E%26A&textCrpNm2=%EC%82%BC%EC%84%B1E%26A"
     },
     {
       "ticker": "0091",
@@ -367,7 +425,9 @@
       "market_cap": 11449.0,
       "one_month_return": null,
       "two_month_return": null,
-      "three_month_return": null
+      "three_month_return": null,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "035720",
@@ -379,7 +439,9 @@
       "market_cap": 203831.0,
       "one_month_return": -3.9,
       "two_month_return": -8.7,
-      "three_month_return": -18.1
+      "three_month_return": -18.1,
+      "dart_corp_code": "00258801",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00258801&textCrpNm=%EC%B9%B4%EC%B9%B4%EC%98%A4&textCrpNm2=%EC%B9%B4%EC%B9%B4%EC%98%A4"
     },
     {
       "ticker": "395160",
@@ -391,7 +453,9 @@
       "market_cap": 27428.0,
       "one_month_return": 33.0,
       "two_month_return": 45.8,
-      "three_month_return": 59.1
+      "three_month_return": 59.1,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "000270",
@@ -403,7 +467,9 @@
       "market_cap": 642229.0,
       "one_month_return": 3.3,
       "two_month_return": 7.2,
-      "three_month_return": 8.3
+      "three_month_return": 8.3,
+      "dart_corp_code": "00106641",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00106641&textCrpNm=%EA%B8%B0%EC%95%84&textCrpNm2=%EA%B8%B0%EC%95%84"
     },
     {
       "ticker": "395270",
@@ -415,7 +481,9 @@
       "market_cap": 27524.0,
       "one_month_return": 44.8,
       "two_month_return": 68.3,
-      "three_month_return": 90.6
+      "three_month_return": 90.6,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "336260",
@@ -427,7 +495,9 @@
       "market_cap": 56521.0,
       "one_month_return": 135.8,
       "two_month_return": 128.6,
-      "three_month_return": 144.8
+      "three_month_return": 144.8,
+      "dart_corp_code": "01412725",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01412725&textCrpNm=%EB%91%90%EC%82%B0%ED%93%A8%EC%96%BC%EC%85%80&textCrpNm2=%EB%91%90%EC%82%B0%ED%93%A8%EC%96%BC%EC%85%80"
     },
     {
       "ticker": "278530",
@@ -439,7 +509,9 @@
       "market_cap": 80782.0,
       "one_month_return": 30.6,
       "two_month_return": 49.1,
-      "three_month_return": 54.7
+      "three_month_return": 54.7,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "367760",
@@ -451,7 +523,9 @@
       "market_cap": 4666.0,
       "one_month_return": 48.2,
       "two_month_return": 86.1,
-      "three_month_return": 103.3
+      "three_month_return": 103.3,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "064400",
@@ -463,7 +537,9 @@
       "market_cap": 68789.0,
       "one_month_return": 15.6,
       "two_month_return": 15.3,
-      "three_month_return": 5.2
+      "three_month_return": 5.2,
+      "dart_corp_code": "00139834",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00139834&textCrpNm=LG%EC%94%A8%EC%97%94%EC%97%90%EC%8A%A4&textCrpNm2=LG%EC%94%A8%EC%97%94%EC%97%90%EC%8A%A4"
     },
     {
       "ticker": "139260",
@@ -475,7 +551,9 @@
       "market_cap": 16020.0,
       "one_month_return": 52.8,
       "two_month_return": 78.9,
-      "three_month_return": 91.0
+      "three_month_return": 91.0,
+      "dart_corp_code": null,
+      "dart_url": null
     },
     {
       "ticker": "010170",
@@ -487,7 +565,9 @@
       "market_cap": 34751.0,
       "one_month_return": 52.1,
       "two_month_return": 426.5,
-      "three_month_return": 615.2
+      "three_month_return": 615.2,
+      "dart_corp_code": "00113261",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00113261&textCrpNm=%EB%8C%80%ED%95%9C%EA%B4%91%ED%86%B5%EC%8B%A0&textCrpNm2=%EB%8C%80%ED%95%9C%EA%B4%91%ED%86%B5%EC%8B%A0"
     },
     {
       "ticker": "229000",
@@ -499,7 +579,9 @@
       "market_cap": 861.0,
       "one_month_return": 41.1,
       "two_month_return": -1.7,
-      "three_month_return": 130.0
+      "three_month_return": 130.0,
+      "dart_corp_code": "01051472",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01051472&textCrpNm=%EC%A0%A0%ED%81%90%EB%A6%AD%EC%8A%A4&textCrpNm2=%EC%A0%A0%ED%81%90%EB%A6%AD%EC%8A%A4"
     },
     {
       "ticker": "090710",
@@ -511,7 +593,9 @@
       "market_cap": 15279.0,
       "one_month_return": 10.4,
       "two_month_return": 7.1,
-      "three_month_return": -7.1
+      "three_month_return": -7.1,
+      "dart_corp_code": "00540429",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00540429&textCrpNm=%ED%9C%B4%EB%A6%BC%EB%A1%9C%EB%B4%87&textCrpNm2=%ED%9C%B4%EB%A6%BC%EB%A1%9C%EB%B4%87"
     },
     {
       "ticker": "012860",
@@ -523,7 +607,9 @@
       "market_cap": 3197.0,
       "one_month_return": 14.3,
       "two_month_return": 16.7,
-      "three_month_return": 16.1
+      "three_month_return": 16.1,
+      "dart_corp_code": "00137234",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00137234&textCrpNm=%EB%AA%A8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%A0%84%EC%9E%90&textCrpNm2=%EB%AA%A8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%A0%84%EC%9E%90"
     },
     {
       "ticker": "264850",
@@ -535,7 +621,9 @@
       "market_cap": 2439.0,
       "one_month_return": 33.5,
       "two_month_return": 25.4,
-      "three_month_return": 9.5
+      "three_month_return": 9.5,
+      "dart_corp_code": "01199189",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01199189&textCrpNm=%EC%9D%B4%EB%9E%9C%EC%8B%9C%EC%8A%A4&textCrpNm2=%EC%9D%B4%EB%9E%9C%EC%8B%9C%EC%8A%A4"
     },
     {
       "ticker": "223250",
@@ -547,7 +635,9 @@
       "market_cap": 1752.0,
       "one_month_return": 49.3,
       "two_month_return": 41.3,
-      "three_month_return": 17.9
+      "three_month_return": 17.9,
+      "dart_corp_code": "00916826",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00916826&textCrpNm=%EB%93%9C%EB%A6%BC%EC%94%A8%EC%95%84%EC%9D%B4%EC%97%90%EC%8A%A4&textCrpNm2=%EB%93%9C%EB%A6%BC%EC%94%A8%EC%95%84%EC%9D%B4%EC%97%90%EC%8A%A4"
     },
     {
       "ticker": "125490",
@@ -559,7 +649,9 @@
       "market_cap": 6881.0,
       "one_month_return": 31.5,
       "two_month_return": 28.3,
-      "three_month_return": -2.3
+      "three_month_return": -2.3,
+      "dart_corp_code": "00683061",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00683061&textCrpNm=%ED%95%9C%EB%9D%BC%EC%BA%90%EC%8A%A4%ED%8A%B8&textCrpNm2=%ED%95%9C%EB%9D%BC%EC%BA%90%EC%8A%A4%ED%8A%B8"
     },
     {
       "ticker": "050890",
@@ -571,7 +663,9 @@
       "market_cap": 11058.0,
       "one_month_return": 20.5,
       "two_month_return": 130.1,
-      "three_month_return": 94.0
+      "three_month_return": 94.0,
+      "dart_corp_code": "00364403",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00364403&textCrpNm=%EC%8F%A0%EB%A6%AC%EB%93%9C&textCrpNm2=%EC%8F%A0%EB%A6%AC%EB%93%9C"
     },
     {
       "ticker": "101170",
@@ -583,7 +677,9 @@
       "market_cap": 2165.0,
       "one_month_return": 18.1,
       "two_month_return": 15.9,
-      "three_month_return": 1.5
+      "three_month_return": 1.5,
+      "dart_corp_code": "00567222",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00567222&textCrpNm=%EC%9A%B0%EB%A6%BC%ED%94%BC%ED%8B%B0%EC%97%90%EC%8A%A4&textCrpNm2=%EC%9A%B0%EB%A6%BC%ED%94%BC%ED%8B%B0%EC%97%90%EC%8A%A4"
     },
     {
       "ticker": "043260",
@@ -595,7 +691,9 @@
       "market_cap": 31029.0,
       "one_month_return": 2.7,
       "two_month_return": 13.6,
-      "three_month_return": 106.4
+      "three_month_return": 106.4,
+      "dart_corp_code": "00317210",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00317210&textCrpNm=%EC%84%B1%ED%98%B8%EC%A0%84%EC%9E%90&textCrpNm2=%EC%84%B1%ED%98%B8%EC%A0%84%EC%9E%90"
     },
     {
       "ticker": "072950",
@@ -607,7 +705,9 @@
       "market_cap": 1304.0,
       "one_month_return": 86.3,
       "two_month_return": 153.4,
-      "three_month_return": 184.5
+      "three_month_return": 184.5,
+      "dart_corp_code": "00359261",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00359261&textCrpNm=%EB%B9%9B%EC%83%98%EC%A0%84%EC%9E%90&textCrpNm2=%EB%B9%9B%EC%83%98%EC%A0%84%EC%9E%90"
     },
     {
       "ticker": "0011",
@@ -619,7 +719,9 @@
       "market_cap": 8566.0,
       "one_month_return": null,
       "two_month_return": null,
-      "three_month_return": null
+      "three_month_return": null,
+      "dart_corp_code": "01279698",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01279698&textCrpNm=%EC%B1%84%EB%B9%84&textCrpNm2=%EC%B1%84%EB%B9%84"
     },
     {
       "ticker": "098460",
@@ -631,7 +733,9 @@
       "market_cap": 27942.0,
       "one_month_return": 43.6,
       "two_month_return": 38.0,
-      "three_month_return": 24.1
+      "three_month_return": 24.1,
+      "dart_corp_code": "00579999",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00579999&textCrpNm=%EA%B3%A0%EC%98%81&textCrpNm2=%EA%B3%A0%EC%98%81"
     },
     {
       "ticker": "440110",
@@ -643,7 +747,9 @@
       "market_cap": 46289.0,
       "one_month_return": 62.1,
       "two_month_return": 43.9,
-      "three_month_return": 104.7
+      "three_month_return": 104.7,
+      "dart_corp_code": "01292291",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01292291&textCrpNm=%ED%8C%8C%EB%91%90&textCrpNm2=%ED%8C%8C%EB%91%90"
     },
     {
       "ticker": "032820",
@@ -655,7 +761,9 @@
       "market_cap": 34476.0,
       "one_month_return": -14.8,
       "two_month_return": 16.5,
-      "three_month_return": 112.3
+      "three_month_return": 112.3,
+      "dart_corp_code": "00231044",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00231044&textCrpNm=%EC%9A%B0%EB%A6%AC%EA%B8%B0%EC%88%A0&textCrpNm2=%EC%9A%B0%EB%A6%AC%EA%B8%B0%EC%88%A0"
     },
     {
       "ticker": "100790",
@@ -667,7 +775,9 @@
       "market_cap": 30547.0,
       "one_month_return": 93.9,
       "two_month_return": 175.8,
-      "three_month_return": 133.3
+      "three_month_return": 133.3,
+      "dart_corp_code": "00340096",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00340096&textCrpNm=%EB%AF%B8%EB%9E%98%EC%97%90%EC%85%8B%EB%B2%A4%EC%B2%98%ED%88%AC%EC%9E%90&textCrpNm2=%EB%AF%B8%EB%9E%98%EC%97%90%EC%85%8B%EB%B2%A4%EC%B2%98%ED%88%AC%EC%9E%90"
     },
     {
       "ticker": "950160",
@@ -679,7 +789,9 @@
       "market_cap": 108293.0,
       "one_month_return": 25.9,
       "two_month_return": 23.4,
-      "three_month_return": 35.5
+      "three_month_return": 35.5,
+      "dart_corp_code": "01245062",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=01245062&textCrpNm=%EC%BD%94%EC%98%A4%EB%A1%B1%ED%8B%B0%EC%8A%88%EC%A7%84&textCrpNm2=%EC%BD%94%EC%98%A4%EB%A1%B1%ED%8B%B0%EC%8A%88%EC%A7%84"
     },
     {
       "ticker": "058610",
@@ -691,7 +803,9 @@
       "market_cap": 30006.0,
       "one_month_return": 18.9,
       "two_month_return": 5.6,
-      "three_month_return": -0.6
+      "three_month_return": -0.6,
+      "dart_corp_code": "00220686",
+      "dart_url": "https://dart.fss.or.kr/dsab007/main.do?option=corp&autoSearchCorp=Y&textCrpCik=00220686&textCrpNm=%EC%97%90%EC%8A%A4%ED%94%BC%EC%A7%80&textCrpNm2=%EC%97%90%EC%8A%A4%ED%94%BC%EC%A7%80"
     }
   ],
   "highlights": [
