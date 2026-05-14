@@ -710,11 +710,11 @@ input[type="range"]::-webkit-slider-thumb {
     <div class="filter-item">
       <div class="filter-label">
         <span>거래대금 최소</span>
-        <span class="filter-value" id="tvLabel">2,000억</span>
+        <span class="filter-value" id="tvLabel">1,000억</span>
       </div>
       <div class="filter-row">
-        <input type="range" id="filterTV" min="1000" max="10000" step="100" value="2000">
-        <input type="number" class="filter-num" id="filterTVNum" min="1000" max="10000" step="100" value="2000">
+        <input type="range" id="filterTV" min="1000" max="10000" step="100" value="1000">
+        <input type="number" class="filter-num" id="filterTVNum" min="1000" max="10000" step="100" value="1000">
         <span class="filter-unit">억</span>
       </div>
     </div>
@@ -749,8 +749,8 @@ input[type="range"]::-webkit-slider-thumb {
 
   <!-- Sort Bar -->
   <div class="sort-bar">
-    <button class="sort-btn active" data-sort="trading_value">거래대금순</button>
-    <button class="sort-btn" data-sort="change_rate">등락률순</button>
+    <button class="sort-btn" data-sort="trading_value">거래대금순</button>
+    <button class="sort-btn active" data-sort="change_rate">등락률순</button>
     <button class="sort-btn" data-sort="market_cap">시총순</button>
     <button class="sort-btn" data-sort="one_month_return">1개월수익률순</button>
     <button class="sort-btn" data-sort="two_month_return">2개월수익률순</button>
@@ -801,7 +801,7 @@ input[type="range"]::-webkit-slider-thumb {
 let RAW_DATA = null;        // 원본 data.json
 let ALL_STOCKS = [];        // 전체 종목 (필터 전)
 let FILTERED = [];          // 필터 후 종목
-let CURRENT_SORT = 'trading_value';
+let CURRENT_SORT = 'change_rate';
 
 // ─── Sample Data (data.json 로드 실패 시 또는 테스트용) ───
 const SAMPLE_DATA = {
