@@ -1174,7 +1174,7 @@ function renderStockCards() {
         ${newsHtml}
         ${companionsHtml}
         <div class="card-links">
-          <button class="dart-link" onclick='openDisclosureModal(${JSON.stringify(s.name)}, ${JSON.stringify(s.disclosures||[])}, ${JSON.stringify(s.dart_url||null)})'>📋 DART 공시</button>
+          <a class="dart-link" href="https://dart.fss.or.kr/dsab007/main.do?textCrpNm=${encodeURIComponent(s.name)}&repCode=A001" target="_blank" rel="noopener">📋 DART 공시</a>
           <a class="naver-link" href="https://m.stock.naver.com/domestic/stock/${s.ticker}/overview" target="_blank" rel="noopener">📊 네이버 주식</a>
         </div>
       </div>`;
