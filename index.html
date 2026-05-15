@@ -312,6 +312,32 @@ input[type="range"]::-webkit-slider-thumb {
   margin-bottom: 16px;
 }
 
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+.card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text-dim);
+  transition: background 0.15s, color 0.15s;
+  cursor: pointer;
+}
+.card-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
 .card-metrics {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -1034,6 +1060,10 @@ function renderStockCards() {
           ${returnHtml}
         </div>
 
+        <div class="card-actions">
+          <a class="card-btn" href="https://dart.fss.or.kr/dsab007/main.do?autoSearch=Y&option=corp&textCrpNm=${encodeURIComponent(s.name)}" target="_blank" rel="noopener">🗂 DART 공시</a>
+          <a class="card-btn" href="https://m.stock.naver.com/domestic/stock/${s.ticker}/overview" target="_blank" rel="noopener">📊 네이버 주식</a>
+        </div>
         ${newsHtml}
         ${companionsHtml}
       </div>`;
