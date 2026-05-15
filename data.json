@@ -1,6 +1,6 @@
 {
   "date": "2026-05-15",
-  "generated_at": "2026-05-15T07:39:11.101217",
+  "generated_at": "2026-05-15T15:41:23.123197",
   "filter_defaults": {
     "min_trading_value": 1000,
     "min_change_rate": -30.0,
@@ -20,9 +20,9 @@
       "market_cap": 15814184,
       "volume": 37931525,
       "trading_value": 102604.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 28.2,
+      "return_2m": 43.3,
+      "return_3m": 49.3
     },
     {
       "ticker": "000660",
@@ -33,9 +33,9 @@
       "market_cap": 12964056,
       "volume": 6921083,
       "trading_value": 125894.5,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 60.1,
+      "return_2m": 86.8,
+      "return_3m": 106.7
     },
     {
       "ticker": "402340",
@@ -46,9 +46,9 @@
       "market_cap": 1448903,
       "volume": 766701,
       "trading_value": 8418.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 65.1,
+      "return_2m": 95.4,
+      "return_3m": 96.8
     },
     {
       "ticker": "005935",
@@ -59,9 +59,9 @@
       "market_cap": 1439454,
       "volume": 4935772,
       "trading_value": 8854.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 24.1,
+      "return_2m": 29.7,
+      "return_3m": 40.6
     },
     {
       "ticker": "005380",
@@ -72,9 +72,9 @@
       "market_cap": 1433304,
       "volume": 4332789,
       "trading_value": 30329.5,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 37.8,
+      "return_2m": 38.3,
+      "return_3m": 40.3
     },
     {
       "ticker": "373220",
@@ -85,9 +85,9 @@
       "market_cap": 975780,
       "volume": 798242,
       "trading_value": 3328.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 2.2,
+      "return_2m": 13.9,
+      "return_3m": 5.6
     },
     {
       "ticker": "009150",
@@ -98,9 +98,9 @@
       "market_cap": 754406,
       "volume": 1329154,
       "trading_value": 13424.5,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 64.5,
+      "return_2m": 144.6,
+      "return_3m": 226.3
     },
     {
       "ticker": "034020",
@@ -111,9 +111,9 @@
       "market_cap": 709742,
       "volume": 5217764,
       "trading_value": 5781.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 6.3,
+      "return_2m": 4.8,
+      "return_3m": 14.6
     },
     {
       "ticker": "329180",
@@ -124,9 +124,9 @@
       "market_cap": 671752,
       "volume": 600876,
       "trading_value": 3845.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 34.9,
+      "return_2m": 9.8,
+      "return_3m": 17.9
     },
     {
       "ticker": "207940",
@@ -137,9 +137,9 @@
       "market_cap": 656869,
       "volume": 82235,
       "trading_value": 1166.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -11.4,
+      "return_2m": -9.5,
+      "return_3m": -17.0
     },
     {
       "ticker": "000270",
@@ -150,9 +150,9 @@
       "market_cap": 655894,
       "volume": 2839184,
       "trading_value": 4769.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 10.9,
+      "return_2m": 3.7,
+      "return_3m": 2.4
     },
     {
       "ticker": "028260",
@@ -163,9 +163,9 @@
       "market_cap": 643000,
       "volume": 712137,
       "trading_value": 2823.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 28.9,
+      "return_2m": 42.4,
+      "return_3m": 24.7
     },
     {
       "ticker": "012450",
@@ -176,9 +176,9 @@
       "market_cap": 627011,
       "volume": 169786,
       "trading_value": 2064.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -19.4,
+      "return_2m": -17.6,
+      "return_3m": 10.0
     },
     {
       "ticker": "032830",
@@ -189,9 +189,9 @@
       "market_cap": 620000,
       "volume": 665867,
       "trading_value": 2064.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 20.2,
+      "return_2m": 46.2,
+      "return_3m": 50.9
     },
     {
       "ticker": "105560",
@@ -202,9 +202,9 @@
       "market_cap": 580155,
       "volume": 1530297,
       "trading_value": 2381.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -1.6,
+      "return_2m": 4.2,
+      "return_3m": -7.3
     },
     {
       "ticker": "012330",
@@ -215,9 +215,9 @@
       "market_cap": 570708,
       "volume": 991930,
       "trading_value": 6239.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 51.4,
+      "return_2m": 56.9,
+      "return_3m": 44.6
     },
     {
       "ticker": "006400",
@@ -228,9 +228,9 @@
       "market_cap": 494795,
       "volume": 1100294,
       "trading_value": 6755.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 30.4,
+      "return_2m": 60.3,
+      "return_3m": 64.0
     },
     {
       "ticker": "055550",
@@ -241,9 +241,9 @@
       "market_cap": 451396,
       "volume": 1473275,
       "trading_value": 1401.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -4.7,
+      "return_2m": 5.7,
+      "return_3m": -7.2
     },
     {
       "ticker": "267260",
@@ -254,9 +254,9 @@
       "market_cap": 424996,
       "volume": 184128,
       "trading_value": 2170.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 12.3,
+      "return_2m": 30.3,
+      "return_3m": 24.2
     },
     {
       "ticker": "068270",
@@ -267,9 +267,9 @@
       "market_cap": 419019,
       "volume": 769091,
       "trading_value": 1452.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -6.5,
+      "return_2m": -5.6,
+      "return_3m": -20.7
     },
     {
       "ticker": "066570",
@@ -280,9 +280,9 @@
       "market_cap": 391738,
       "volume": 5856267,
       "trading_value": 14084.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 96.8,
+      "return_2m": 110.6,
+      "return_3m": 105.2
     },
     {
       "ticker": "006800",
@@ -293,9 +293,9 @@
       "market_cap": 391137,
       "volume": 4453979,
       "trading_value": 3113.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 0.3,
+      "return_2m": -1.4,
+      "return_3m": 13.5
     },
     {
       "ticker": "010120",
@@ -306,9 +306,9 @@
       "market_cap": 388500,
       "volume": 1471082,
       "trading_value": 3810.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 38.7,
+      "return_2m": -64.7,
+      "return_3m": -60.8
     },
     {
       "ticker": "005490",
@@ -319,9 +319,9 @@
       "market_cap": 370454,
       "volume": 713593,
       "trading_value": 3336.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 27.0,
+      "return_2m": 40.2,
+      "return_3m": 24.5
     },
     {
       "ticker": "034730",
@@ -332,9 +332,9 @@
       "market_cap": 364689,
       "volume": 245797,
       "trading_value": 1236.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 36.1,
+      "return_2m": 52.2,
+      "return_3m": 43.9
     },
     {
       "ticker": "042660",
@@ -345,9 +345,9 @@
       "market_cap": 361874,
       "volume": 2595567,
       "trading_value": 3065.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -6.1,
+      "return_2m": -10.5,
+      "return_3m": -9.0
     },
     {
       "ticker": "042700",
@@ -358,9 +358,9 @@
       "market_cap": 351702,
       "volume": 1042610,
       "trading_value": 3847.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 25.1,
+      "return_2m": 23.0,
+      "return_3m": 82.2
     },
     {
       "ticker": "298040",
@@ -371,9 +371,9 @@
       "market_cap": 349204,
       "volume": 70467,
       "trading_value": 2639.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 26.3,
+      "return_2m": 48.8,
+      "return_3m": 57.1
     },
     {
       "ticker": "086790",
@@ -384,9 +384,9 @@
       "market_cap": 326498,
       "volume": 1047927,
       "trading_value": 1247.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -1.7,
+      "return_2m": 9.8,
+      "return_3m": -6.7
     },
     {
       "ticker": "035420",
@@ -397,9 +397,9 @@
       "market_cap": 319238,
       "volume": 997805,
       "trading_value": 2030.5,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -3.6,
+      "return_2m": -6.7,
+      "return_3m": -19.4
     },
     {
       "ticker": "009540",
@@ -410,9 +410,9 @@
       "market_cap": 294416,
       "volume": 321212,
       "trading_value": 1336.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 3.6,
+      "return_2m": 1.6,
+      "return_3m": 4.7
     },
     {
       "ticker": "051910",
@@ -423,9 +423,9 @@
       "market_cap": 264015,
       "volume": 407694,
       "trading_value": 1524.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 5.6,
+      "return_2m": 28.1,
+      "return_3m": 15.3
     },
     {
       "ticker": "000150",
@@ -436,9 +436,9 @@
       "market_cap": 261368,
       "volume": 122070,
       "trading_value": 1970.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 18.9,
+      "return_2m": 48.3,
+      "return_3m": 71.3
     },
     {
       "ticker": "010140",
@@ -449,9 +449,9 @@
       "market_cap": 257840,
       "volume": 8257612,
       "trading_value": 2419.5,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 4.3,
+      "return_2m": 1.9,
+      "return_3m": 5.8
     },
     {
       "ticker": "069500",
@@ -462,9 +462,9 @@
       "market_cap": 249988,
       "volume": 27724693,
       "trading_value": 32493.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 26.5,
+      "return_2m": 41.2,
+      "return_3m": 43.2
     },
     {
       "ticker": "015760",
@@ -475,9 +475,9 @@
       "market_cap": 248761,
       "volume": 3102994,
       "trading_value": 1202.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -12.6,
+      "return_2m": -17.4,
+      "return_3m": -35.2
     },
     {
       "ticker": "000810",
@@ -488,9 +488,9 @@
       "market_cap": 247347,
       "volume": 239227,
       "trading_value": 1325.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 14.0,
+      "return_2m": 19.1,
+      "return_3m": -0.9
     },
     {
       "ticker": "064350",
@@ -501,9 +501,9 @@
       "market_cap": 219922,
       "volume": 505763,
       "trading_value": 1019.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -4.0,
+      "return_2m": 4.3,
+      "return_3m": 0.0
     },
     {
       "ticker": "017670",
@@ -514,9 +514,9 @@
       "market_cap": 217582,
       "volume": 1013036,
       "trading_value": 1026.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 3.3,
+      "return_2m": 32.8,
+      "return_3m": 17.1
     },
     {
       "ticker": "003670",
@@ -527,9 +527,9 @@
       "market_cap": 209468,
       "volume": 455373,
       "trading_value": 1072.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 8.3,
+      "return_2m": 23.2,
+      "return_3m": 5.1
     },
     {
       "ticker": "096770",
@@ -540,9 +540,9 @@
       "market_cap": 208780,
       "volume": 1140726,
       "trading_value": 1408.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 1.6,
+      "return_2m": 13.0,
+      "return_3m": 8.5
     },
     {
       "ticker": "272210",
@@ -553,9 +553,9 @@
       "market_cap": 197043,
       "volume": 1061441,
       "trading_value": 1107.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -20.7,
+      "return_2m": -25.5,
+      "return_3m": 0.9
     },
     {
       "ticker": "003550",
@@ -566,9 +566,9 @@
       "market_cap": 194319,
       "volume": 2619097,
       "trading_value": 3300.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 35.0,
+      "return_2m": 42.2,
+      "return_3m": 31.7
     },
     {
       "ticker": "079550",
@@ -579,9 +579,9 @@
       "market_cap": 183480,
       "volume": 220911,
       "trading_value": 1842.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -6.6,
+      "return_2m": 14.2,
+      "return_3m": 81.3
     },
     {
       "ticker": "086280",
@@ -592,9 +592,9 @@
       "market_cap": 181500,
       "volume": 848509,
       "trading_value": 2053.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 9.8,
+      "return_2m": 10.5,
+      "return_3m": -5.1
     },
     {
       "ticker": "360750",
@@ -605,9 +605,9 @@
       "market_cap": 179445,
       "volume": 19449232,
       "trading_value": 5400.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 8.8,
+      "return_2m": 12.0,
+      "return_3m": 13.6
     },
     {
       "ticker": "307950",
@@ -618,9 +618,9 @@
       "market_cap": 177707,
       "volume": 340298,
       "trading_value": 2205.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 55.8,
+      "return_2m": 54.3,
+      "return_3m": 48.5
     },
     {
       "ticker": "011070",
@@ -631,9 +631,9 @@
       "market_cap": 173243,
       "volume": 403497,
       "trading_value": 2953.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 91.1,
+      "return_2m": 188.2,
+      "return_3m": 201.9
     },
     {
       "ticker": "000720",
@@ -644,9 +644,9 @@
       "market_cap": 172601,
       "volume": 1149196,
       "trading_value": 1781.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -13.5,
+      "return_2m": -2.9,
+      "return_3m": 35.6
     },
     {
       "ticker": "047810",
@@ -657,9 +657,9 @@
       "market_cap": 157032,
       "volume": 654684,
       "trading_value": 1054.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -15.2,
+      "return_2m": -15.7,
+      "return_3m": -8.8
     },
     {
       "ticker": "006260",
@@ -670,9 +670,9 @@
       "market_cap": 147420,
       "volume": 318123,
       "trading_value": 1503.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 37.6,
+      "return_2m": 77.6,
+      "return_3m": 90.5
     },
     {
       "ticker": "018260",
@@ -683,9 +683,9 @@
       "market_cap": 146244,
       "volume": 1858078,
       "trading_value": 3511.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 5.8,
+      "return_2m": 19.2,
+      "return_3m": 10.9
     },
     {
       "ticker": "071050",
@@ -696,9 +696,9 @@
       "market_cap": 143773,
       "volume": 649627,
       "trading_value": 1676.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 1.2,
+      "return_2m": 15.4,
+      "return_3m": 0.2
     },
     {
       "ticker": "396500",
@@ -709,9 +709,9 @@
       "market_cap": 128575,
       "volume": 28590462,
       "trading_value": 13237.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 30.5,
+      "return_2m": 39.8,
+      "return_3m": 57.9
     },
     {
       "ticker": "047040",
@@ -722,9 +722,9 @@
       "market_cap": 117109,
       "volume": 14445051,
       "trading_value": 4116.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 0.0,
+      "return_2m": 137.9,
+      "return_3m": 290.4
     },
     {
       "ticker": "001440",
@@ -735,9 +735,9 @@
       "market_cap": 111868,
       "volume": 6898792,
       "trading_value": 4139.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 45.5,
+      "return_2m": 104.4,
+      "return_3m": 90.2
     },
     {
       "ticker": "016360",
@@ -748,9 +748,9 @@
       "market_cap": 110018,
       "volume": 924999,
       "trading_value": 1139.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 10.9,
+      "return_2m": 27.5,
+      "return_3m": 22.0
     },
     {
       "ticker": "003230",
@@ -761,9 +761,9 @@
       "market_cap": 108777,
       "volume": 87310,
       "trading_value": 1260.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 12.7,
+      "return_2m": 39.1,
+      "return_3m": 21.3
     },
     {
       "ticker": "133690",
@@ -774,9 +774,9 @@
       "market_cap": 102746,
       "volume": 1241734,
       "trading_value": 2412.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 15.1,
+      "return_2m": 19.4,
+      "return_3m": 23.2
     },
     {
       "ticker": "102110",
@@ -787,9 +787,9 @@
       "market_cap": 101862,
       "volume": 8171287,
       "trading_value": 9583.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 26.5,
+      "return_2m": 41.3,
+      "return_3m": 43.3
     },
     {
       "ticker": "000880",
@@ -800,9 +800,9 @@
       "market_cap": 99698,
       "volume": 732532,
       "trading_value": 1035.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 11.6,
+      "return_2m": 14.3,
+      "return_3m": 20.0
     },
     {
       "ticker": "028050",
@@ -813,9 +813,9 @@
       "market_cap": 99176,
       "volume": 2899526,
       "trading_value": 1467.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -3.4,
+      "return_2m": 61.4,
+      "return_3m": 49.3
     },
     {
       "ticker": "005387",
@@ -826,9 +826,9 @@
       "market_cap": 97724,
       "volume": 422779,
       "trading_value": 1181.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 15.3,
+      "return_2m": 6.1,
+      "return_3m": 6.3
     },
     {
       "ticker": "007660",
@@ -839,9 +839,9 @@
       "market_cap": 93964,
       "volume": 1641507,
       "trading_value": 2101.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 3.9,
+      "return_2m": 21.0,
+      "return_3m": 26.0
     },
     {
       "ticker": "379800",
@@ -852,9 +852,9 @@
       "market_cap": 93637,
       "volume": 22197624,
       "trading_value": 5611.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 8.4,
+      "return_2m": 11.6,
+      "return_3m": 13.2
     },
     {
       "ticker": "064400",
@@ -865,9 +865,9 @@
       "market_cap": 83903,
       "volume": 7333668,
       "trading_value": 6351.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 31.8,
+      "return_2m": 32.0,
+      "return_3m": 21.8
     },
     {
       "ticker": "122630",
@@ -878,9 +878,9 @@
       "market_cap": 83468,
       "volume": 25084400,
       "trading_value": 38880.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 56.5,
+      "return_2m": 88.9,
+      "return_3m": 83.2
     },
     {
       "ticker": "454910",
@@ -891,9 +891,9 @@
       "market_cap": 82581,
       "volume": 8437915,
       "trading_value": 10749.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 36.5,
+      "return_2m": 44.8,
+      "return_3m": 27.3
     },
     {
       "ticker": "062040",
@@ -904,9 +904,9 @@
       "market_cap": 82204,
       "volume": 604885,
       "trading_value": 1624.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 38.2,
+      "return_2m": 96.4,
+      "return_3m": 84.5
     },
     {
       "ticker": "459580",
@@ -917,9 +917,9 @@
       "market_cap": 79499,
       "volume": 359948,
       "trading_value": 3868.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 0.0,
+      "return_2m": 0.0,
+      "return_3m": -0.0
     },
     {
       "ticker": "379810",
@@ -930,9 +930,9 @@
       "market_cap": 78691,
       "volume": 7863876,
       "trading_value": 2286.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 15.0,
+      "return_2m": 19.3,
+      "return_3m": 23.1
     },
     {
       "ticker": "488770",
@@ -943,9 +943,9 @@
       "market_cap": 74765,
       "volume": 1091993,
       "trading_value": 1139.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 0.3,
+      "return_2m": 0.5,
+      "return_3m": 0.8
     },
     {
       "ticker": "000990",
@@ -956,9 +956,9 @@
       "market_cap": 71130,
       "volume": 841608,
       "trading_value": 1376.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 65.8,
+      "return_2m": 86.0,
+      "return_3m": 75.8
     },
     {
       "ticker": "034220",
@@ -969,9 +969,9 @@
       "market_cap": 70500,
       "volume": 35916260,
       "trading_value": 5064.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 3.7,
+      "return_2m": 23.4,
+      "return_3m": 21.6
     },
     {
       "ticker": "009830",
@@ -982,9 +982,9 @@
       "market_cap": 69788,
       "volume": 4540404,
       "trading_value": 1843.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -4.2,
+      "return_2m": -11.8,
+      "return_3m": -11.5
     },
     {
       "ticker": "091160",
@@ -995,9 +995,9 @@
       "market_cap": 66742,
       "volume": 9194194,
       "trading_value": 13412.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 34.3,
+      "return_2m": 46.7,
+      "return_3m": 64.4
     },
     {
       "ticker": "066970",
@@ -1008,9 +1008,9 @@
       "market_cap": 64810,
       "volume": 633101,
       "trading_value": 1014.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -6.1,
+      "return_2m": 52.4,
+      "return_3m": 41.6
     },
     {
       "ticker": "004020",
@@ -1021,9 +1021,9 @@
       "market_cap": 61585,
       "volume": 3739416,
       "trading_value": 1725.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 15.4,
+      "return_2m": 32.2,
+      "return_3m": 37.8
     },
     {
       "ticker": "128940",
@@ -1034,9 +1034,9 @@
       "market_cap": 60532,
       "volume": 292081,
       "trading_value": 1380.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -7.7,
+      "return_2m": -5.5,
+      "return_3m": -21.4
     },
     {
       "ticker": "103590",
@@ -1047,9 +1047,9 @@
       "market_cap": 56793,
       "volume": 852881,
       "trading_value": 1015.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 37.2,
+      "return_2m": 54.7,
+      "return_3m": 66.6
     },
     {
       "ticker": "498400",
@@ -1060,9 +1060,9 @@
       "market_cap": 56552,
       "volume": 14028796,
       "trading_value": 3256.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 23.1,
+      "return_2m": 34.4,
+      "return_3m": 33.6
     },
     {
       "ticker": "000500",
@@ -1073,9 +1073,9 @@
       "market_cap": 55998,
       "volume": 382618,
       "trading_value": 1295.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 164.5,
+      "return_2m": 249.0,
+      "return_3m": 278.6
     },
     {
       "ticker": "381180",
@@ -1086,9 +1086,9 @@
       "market_cap": 55916,
       "volume": 2427274,
       "trading_value": 1122.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 30.3,
+      "return_2m": 52.5,
+      "return_3m": 50.6
     },
     {
       "ticker": "010060",
@@ -1099,9 +1099,9 @@
       "market_cap": 54330,
       "volume": 1073031,
       "trading_value": 3122.5,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 23.8,
+      "return_2m": 84.1,
+      "return_3m": 93.2
     },
     {
       "ticker": "229200",
@@ -1112,9 +1112,9 @@
       "market_cap": 52428,
       "volume": 35107357,
       "trading_value": 6661.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -2.3,
+      "return_2m": -3.4,
+      "return_3m": 0.1
     },
     {
       "ticker": "018880",
@@ -1125,9 +1125,9 @@
       "market_cap": 51826,
       "volume": 61701383,
       "trading_value": 3115.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 24.5,
+      "return_2m": 26.2,
+      "return_3m": 13.2
     },
     {
       "ticker": "088350",
@@ -1138,9 +1138,9 @@
       "market_cap": 46814,
       "volume": 22711366,
       "trading_value": 1224.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 10.3,
+      "return_2m": 14.6,
+      "return_3m": 11.6
     },
     {
       "ticker": "487240",
@@ -1151,9 +1151,9 @@
       "market_cap": 45148,
       "volume": 15981054,
       "trading_value": 8360.5,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 36.6,
+      "return_2m": 69.2,
+      "return_3m": 75.3
     },
     {
       "ticker": "148020",
@@ -1164,9 +1164,9 @@
       "market_cap": 42646,
       "volume": 2108878,
       "trading_value": 2481.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 25.7,
+      "return_2m": 40.6,
+      "return_3m": 42.5
     },
     {
       "ticker": "233740",
@@ -1177,9 +1177,9 @@
       "market_cap": 36093,
       "volume": 53749909,
       "trading_value": 8059.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -5.5,
+      "return_2m": -10.2,
+      "return_3m": -10.0
     },
     {
       "ticker": "204320",
@@ -1190,9 +1190,9 @@
       "market_cap": 28973,
       "volume": 2179914,
       "trading_value": 1345.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 17.1,
+      "return_2m": 21.0,
+      "return_3m": 6.0
     },
     {
       "ticker": "395270",
@@ -1203,9 +1203,9 @@
       "market_cap": 28913,
       "volume": 7637459,
       "trading_value": 4202.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 39.4,
+      "return_2m": 62.3,
+      "return_3m": 85.2
     },
     {
       "ticker": "292150",
@@ -1216,9 +1216,9 @@
       "market_cap": 25162,
       "volume": 8151754,
       "trading_value": 3390.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 27.3,
+      "return_2m": 38.1,
+      "return_3m": 41.2
     },
     {
       "ticker": "494310",
@@ -1229,9 +1229,9 @@
       "market_cap": 24530,
       "volume": 8210476,
       "trading_value": 11158.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 75.1,
+      "return_2m": 98.4,
+      "return_3m": 135.4
     },
     {
       "ticker": "0162Z0",
@@ -1242,8 +1242,8 @@
       "market_cap": 22069,
       "volume": 22877930,
       "trading_value": 3023.3,
-      "return_1m": null,
-      "return_2m": null,
+      "return_1m": 21.1,
+      "return_2m": 30.9,
       "return_3m": null
     },
     {
@@ -1255,9 +1255,9 @@
       "market_cap": 22042,
       "volume": 1229833,
       "trading_value": 2420.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 23.0,
+      "return_2m": 64.8,
+      "return_3m": 141.8
     },
     {
       "ticker": "305720",
@@ -1268,9 +1268,9 @@
       "market_cap": 22005,
       "volume": 11088550,
       "trading_value": 2165.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 8.8,
+      "return_2m": 22.5,
+      "return_3m": 15.1
     },
     {
       "ticker": "395160",
@@ -1281,9 +1281,9 @@
       "market_cap": 21945,
       "volume": 11554066,
       "trading_value": 4432.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 29.1,
+      "return_2m": 41.4,
+      "return_3m": 56.3
     },
     {
       "ticker": "488080",
@@ -1294,9 +1294,9 @@
       "market_cap": 21695,
       "volume": 8217790,
       "trading_value": 6401.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 66.3,
+      "return_2m": 83.3,
+      "return_3m": 119.8
     },
     {
       "ticker": "0167A0",
@@ -1307,7 +1307,7 @@
       "market_cap": 21056,
       "volume": 35425655,
       "trading_value": 6343.0,
-      "return_1m": null,
+      "return_1m": 49.3,
       "return_2m": null,
       "return_3m": null
     },
@@ -1320,9 +1320,9 @@
       "market_cap": 19073,
       "volume": 4558159,
       "trading_value": 1701.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 8.6,
+      "return_2m": 1.2,
+      "return_3m": 5.9
     },
     {
       "ticker": "139260",
@@ -1333,9 +1333,9 @@
       "market_cap": 17992,
       "volume": 1565032,
       "trading_value": 2259.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 49.9,
+      "return_2m": 76.3,
+      "return_3m": 87.9
     },
     {
       "ticker": "232080",
@@ -1346,9 +1346,9 @@
       "market_cap": 17542,
       "volume": 5320292,
       "trading_value": 1026.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -2.6,
+      "return_2m": -3.9,
+      "return_3m": -0.2
     },
     {
       "ticker": "001740",
@@ -1359,9 +1359,9 @@
       "market_cap": 17492,
       "volume": 70532690,
       "trading_value": 6150.5,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 60.9,
+      "return_2m": 66.4,
+      "return_3m": 60.9
     },
     {
       "ticker": "472150",
@@ -1372,9 +1372,9 @@
       "market_cap": 15285,
       "volume": 8872968,
       "trading_value": 2090.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 23.6,
+      "return_2m": 34.7,
+      "return_3m": 35.4
     },
     {
       "ticker": "091230",
@@ -1385,9 +1385,9 @@
       "market_cap": 14692,
       "volume": 2113988,
       "trading_value": 3242.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 33.9,
+      "return_2m": 46.9,
+      "return_3m": 65.0
     },
     {
       "ticker": "066575",
@@ -1398,9 +1398,9 @@
       "market_cap": 14449,
       "volume": 1821475,
       "trading_value": 1531.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 58.7,
+      "return_2m": 60.8,
+      "return_3m": 57.5
     },
     {
       "ticker": "0117V0",
@@ -1411,9 +1411,9 @@
       "market_cap": 13529,
       "volume": 9728818,
       "trading_value": 2598.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 33.4,
+      "return_2m": 61.7,
+      "return_3m": 68.0
     },
     {
       "ticker": "445290",
@@ -1424,9 +1424,9 @@
       "market_cap": 12751,
       "volume": 7364511,
       "trading_value": 3034.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 26.9,
+      "return_2m": 27.1,
+      "return_3m": 20.4
     },
     {
       "ticker": "252670",
@@ -1437,9 +1437,9 @@
       "market_cap": 12417,
       "volume": 10627912612,
       "trading_value": 12540.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -40.7,
+      "return_2m": -57.1,
+      "return_3m": -63.1
     },
     {
       "ticker": "102970",
@@ -1450,9 +1450,9 @@
       "market_cap": 11212,
       "volume": 7125379,
       "trading_value": 1994.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -3.3,
+      "return_2m": 4.0,
+      "return_3m": 5.2
     },
     {
       "ticker": "114800",
@@ -1463,9 +1463,9 @@
       "market_cap": 10277,
       "volume": 1050727211,
       "trading_value": 11925.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -22.3,
+      "return_2m": -32.7,
+      "return_3m": -36.2
     },
     {
       "ticker": "495050",
@@ -1476,9 +1476,9 @@
       "market_cap": 10084,
       "volume": 4214684,
       "trading_value": 1493.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 28.5,
+      "return_2m": 42.5,
+      "return_3m": 45.9
     },
     {
       "ticker": "237350",
@@ -1489,9 +1489,9 @@
       "market_cap": 10003,
       "volume": 1233612,
       "trading_value": 1153.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 27.5,
+      "return_2m": 41.7,
+      "return_3m": 44.2
     },
     {
       "ticker": "469150",
@@ -1502,9 +1502,9 @@
       "market_cap": 9915,
       "volume": 3297876,
       "trading_value": 2286.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 37.4,
+      "return_2m": 49.7,
+      "return_3m": 78.3
     },
     {
       "ticker": "138540",
@@ -1515,9 +1515,9 @@
       "market_cap": 9886,
       "volume": 5158272,
       "trading_value": 3755.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 21.3,
+      "return_2m": 24.6,
+      "return_3m": 25.1
     },
     {
       "ticker": "0091P0",
@@ -1528,9 +1528,9 @@
       "market_cap": 9691,
       "volume": 5744500,
       "trading_value": 1308.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -8.6,
+      "return_2m": 8.8,
+      "return_3m": 40.2
     },
     {
       "ticker": "364980",
@@ -1541,9 +1541,9 @@
       "market_cap": 8617,
       "volume": 9022444,
       "trading_value": 1163.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 14.9,
+      "return_2m": 31.4,
+      "return_3m": 23.6
     },
     {
       "ticker": "0183J0",
@@ -1554,7 +1554,7 @@
       "market_cap": 8559,
       "volume": 20164632,
       "trading_value": 2801.9,
-      "return_1m": null,
+      "return_1m": 36.6,
       "return_2m": null,
       "return_3m": null
     },
@@ -1567,9 +1567,9 @@
       "market_cap": 8224,
       "volume": 4725938,
       "trading_value": 1888.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 869.7,
+      "return_2m": 1683.5,
+      "return_3m": 1622.0
     },
     {
       "ticker": "0148J0",
@@ -1580,9 +1580,9 @@
       "market_cap": 7922,
       "volume": 32719062,
       "trading_value": 4700.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 24.4,
+      "return_2m": 17.0,
+      "return_3m": 6.1
     },
     {
       "ticker": "462330",
@@ -1593,9 +1593,9 @@
       "market_cap": 7606,
       "volume": 75612500,
       "trading_value": 1637.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 13.8,
+      "return_2m": 42.7,
+      "return_3m": 16.8
     },
     {
       "ticker": "0177N0",
@@ -1606,7 +1606,7 @@
       "market_cap": 7546,
       "volume": 10592474,
       "trading_value": 1482.9,
-      "return_1m": null,
+      "return_1m": 20.6,
       "return_2m": null,
       "return_3m": null
     },
@@ -1619,9 +1619,9 @@
       "market_cap": 7197,
       "volume": 1122465,
       "trading_value": 1105.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 40.9,
+      "return_2m": 56.3,
+      "return_3m": 65.6
     },
     {
       "ticker": "003280",
@@ -1632,9 +1632,9 @@
       "market_cap": 6588,
       "volume": 83042386,
       "trading_value": 2275.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -16.2,
+      "return_2m": -9.7,
+      "return_3m": 59.5
     },
     {
       "ticker": "452260",
@@ -1645,9 +1645,9 @@
       "market_cap": 6494,
       "volume": 30636505,
       "trading_value": 1026.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 38.7,
+      "return_2m": 28.1,
+      "return_3m": 41.6
     },
     {
       "ticker": "091180",
@@ -1658,9 +1658,9 @@
       "market_cap": 6155,
       "volume": 6215911,
       "trading_value": 2413.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 22.7,
+      "return_2m": 25.9,
+      "return_3m": 19.1
     },
     {
       "ticker": "367760",
@@ -1671,9 +1671,9 @@
       "market_cap": 6086,
       "volume": 2476727,
       "trading_value": 1463.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 43.4,
+      "return_2m": 79.7,
+      "return_3m": 104.2
     },
     {
       "ticker": "0167Z0",
@@ -1684,7 +1684,7 @@
       "market_cap": 5772,
       "volume": 10411738,
       "trading_value": 1322.3,
-      "return_1m": null,
+      "return_1m": 18.0,
       "return_2m": null,
       "return_3m": null
     },
@@ -1697,9 +1697,9 @@
       "market_cap": 5279,
       "volume": 377258,
       "trading_value": 1896.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 106.3,
+      "return_2m": 181.7,
+      "return_3m": 196.2
     },
     {
       "ticker": "000650",
@@ -1710,9 +1710,9 @@
       "market_cap": 4724,
       "volume": 643575,
       "trading_value": 2127.0,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 50.6,
+      "return_2m": 46.2,
+      "return_3m": 16.2
     },
     {
       "ticker": "466930",
@@ -1723,9 +1723,9 @@
       "market_cap": 3528,
       "volume": 5220275,
       "trading_value": 1644.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 39.9,
+      "return_2m": 50.6,
+      "return_3m": 52.2
     },
     {
       "ticker": "0190G0",
@@ -1749,9 +1749,9 @@
       "market_cap": 1905,
       "volume": 4226180,
       "trading_value": 2780.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 60.9,
+      "return_2m": 61.1,
+      "return_3m": 19.4
     },
     {
       "ticker": "251340",
@@ -1762,9 +1762,9 @@
       "market_cap": 1842,
       "volume": 54694591,
       "trading_value": 1145.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 2.2,
+      "return_2m": 1.5,
+      "return_3m": -8.7
     },
     {
       "ticker": "0190C0",
@@ -1788,9 +1788,9 @@
       "market_cap": 197540,
       "volume": 706370,
       "trading_value": 2606.5,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -1.1,
+      "return_2m": 3.9,
+      "return_3m": -3.4
     },
     {
       "ticker": "247540",
@@ -1801,9 +1801,9 @@
       "market_cap": 186367,
       "volume": 825029,
       "trading_value": 1571.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -5.9,
+      "return_2m": 1.7,
+      "return_3m": -2.9
     },
     {
       "ticker": "086520",
@@ -1814,9 +1814,9 @@
       "market_cap": 175423,
       "volume": 1869135,
       "trading_value": 2414.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -12.6,
+      "return_2m": -11.4,
+      "return_3m": -14.1
     },
     {
       "ticker": "277810",
@@ -1827,9 +1827,9 @@
       "market_cap": 157139,
       "volume": 381329,
       "trading_value": 3088.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 32.6,
+      "return_2m": 12.5,
+      "return_3m": 20.9
     },
     {
       "ticker": "058470",
@@ -1840,9 +1840,9 @@
       "market_cap": 76974,
       "volume": 1245260,
       "trading_value": 1257.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -10.5,
+      "return_2m": -9.8,
+      "return_3m": 3.6
     },
     {
       "ticker": "036930",
@@ -1853,9 +1853,9 @@
       "market_cap": 65167,
       "volume": 3413821,
       "trading_value": 4786.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 98.6,
+      "return_2m": 118.7,
+      "return_3m": 174.9
     },
     {
       "ticker": "440110",
@@ -1866,9 +1866,9 @@
       "market_cap": 50147,
       "volume": 2165931,
       "trading_value": 2168.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 64.4,
+      "return_2m": 44.4,
+      "return_3m": 91.8
     },
     {
       "ticker": "108490",
@@ -1879,9 +1879,9 @@
       "market_cap": 48148,
       "volume": 531033,
       "trading_value": 1744.4,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 25.1,
+      "return_2m": 31.9,
+      "return_3m": 21.0
     },
     {
       "ticker": "319400",
@@ -1892,9 +1892,9 @@
       "market_cap": 45776,
       "volume": 6795201,
       "trading_value": 2792.8,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 34.1,
+      "return_2m": 37.9,
+      "return_3m": 49.7
     },
     {
       "ticker": "403870",
@@ -1905,9 +1905,9 @@
       "market_cap": 40738,
       "volume": 2420770,
       "trading_value": 1198.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 16.3,
+      "return_2m": 12.9,
+      "return_3m": 16.2
     },
     {
       "ticker": "178320",
@@ -1918,9 +1918,9 @@
       "market_cap": 39899,
       "volume": 2126051,
       "trading_value": 1424.5,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 30.6,
+      "return_2m": 44.7,
+      "return_3m": 83.1
     },
     {
       "ticker": "010170",
@@ -1931,9 +1931,9 @@
       "market_cap": 35762,
       "volume": 14393438,
       "trading_value": 3310.5,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 16.2,
+      "return_2m": 216.4,
+      "return_3m": 566.7
     },
     {
       "ticker": "067310",
@@ -1944,9 +1944,9 @@
       "market_cap": 35160,
       "volume": 13113819,
       "trading_value": 6937.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 58.6,
+      "return_2m": 65.1,
+      "return_3m": 59.8
     },
     {
       "ticker": "032820",
@@ -1957,9 +1957,9 @@
       "market_cap": 29309,
       "volume": 6740062,
       "trading_value": 1154.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": -21.2,
+      "return_2m": -28.6,
+      "return_3m": 38.8
     },
     {
       "ticker": "100790",
@@ -1970,9 +1970,9 @@
       "market_cap": 29165,
       "volume": 2386557,
       "trading_value": 1310.2,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 38.8,
+      "return_2m": 141.9,
+      "return_3m": 132.6
     },
     {
       "ticker": "080220",
@@ -1983,9 +1983,9 @@
       "market_cap": 28346,
       "volume": 10690993,
       "trading_value": 8798.7,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 94.3,
+      "return_2m": 87.9,
+      "return_3m": 79.9
     },
     {
       "ticker": "098460",
@@ -1996,9 +1996,9 @@
       "market_cap": 24990,
       "volume": 3366276,
       "trading_value": 1225.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 25.3,
+      "return_2m": 25.3,
+      "return_3m": 17.2
     },
     {
       "ticker": "078600",
@@ -2009,9 +2009,9 @@
       "market_cap": 23222,
       "volume": 684483,
       "trading_value": 1023.3,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 9.9,
+      "return_2m": 35.0,
+      "return_3m": 72.8
     },
     {
       "ticker": "090710",
@@ -2022,9 +2022,9 @@
       "market_cap": 15673,
       "volume": 50656100,
       "trading_value": 6646.1,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 13.7,
+      "return_2m": 9.7,
+      "return_3m": -6.3
     },
     {
       "ticker": "036540",
@@ -2035,9 +2035,9 @@
       "market_cap": 14160,
       "volume": 30506734,
       "trading_value": 2626.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 22.6,
+      "return_2m": 22.5,
+      "return_3m": 21.6
     },
     {
       "ticker": "439960",
@@ -2061,9 +2061,9 @@
       "market_cap": 8658,
       "volume": 2043468,
       "trading_value": 1814.6,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 40.1,
+      "return_2m": 37.7,
+      "return_3m": 13.8
     },
     {
       "ticker": "487580",
@@ -2087,16 +2087,17 @@
       "market_cap": 1129,
       "volume": 34325242,
       "trading_value": 1439.9,
-      "return_1m": null,
-      "return_2m": null,
-      "return_3m": null
+      "return_1m": 19.0,
+      "return_2m": 39.6,
+      "return_3m": 55.7
     }
   ],
   "highlights": [
     "💥 하한가: 폴레드",
     "💰 거래대금 TOP3: SK하이닉스(125894억), 삼성전자(102605억), KODEX 레버리지(38881억)",
     "🔥 급등(+15%↑) 3개 종목",
-    "⚠️ 급락(-10%↓) 17개 종목"
+    "⚠️ 급락(-10%↓) 17개 종목",
+    "⚠️ 단기 급등 지속 (추격 주의): LG전자"
   ],
   "all_stocks_summary": {
     "kospi_count": 136,
