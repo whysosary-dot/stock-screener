@@ -452,131 +452,6 @@ input[type="range"]::-webkit-slider-thumb {
 .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
 .empty-state h3 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
 
-
-/* ─── DART 전자공시 링크 ─── */
-.card-links {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 12px;
-}
-
-.dart-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(0, 110, 60, 0.07);
-  border: 1px solid rgba(0, 110, 60, 0.25);
-  color: #006e3c;
-  padding: 5px 12px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-.dart-link:hover {
-  background: rgba(0, 110, 60, 0.15);
-  border-color: #006e3c;
-}
-
-.naver-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(3, 199, 90, 0.07);
-  border: 1px solid rgba(3, 199, 90, 0.3);
-  color: #03b050;
-  padding: 5px 12px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-.naver-link:hover {
-  background: rgba(3, 199, 90, 0.15);
-  border-color: #03b050;
-}
-
-
-/* ─── 공시 모달 ─── */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-}
-.modal-overlay.open { display: flex; }
-.modal-box {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 24px;
-  width: 100%;
-  max-width: 560px;
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-}
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-.modal-title { font-size: 17px; font-weight: 700; }
-.modal-close {
-  background: none; border: none; font-size: 22px;
-  cursor: pointer; color: var(--text-dim); line-height: 1;
-}
-.disclosure-item {
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-.disclosure-item:last-child { border: none; }
-.disclosure-title {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--accent);
-  text-decoration: none;
-  margin-bottom: 3px;
-  line-height: 1.5;
-}
-.disclosure-title:hover { text-decoration: underline; }
-.disclosure-meta {
-  font-size: 12px;
-  color: var(--text-dim);
-}
-.dart-more-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 16px;
-  background: rgba(0,110,60,0.07);
-  border: 1px solid rgba(0,110,60,0.25);
-  color: #006e3c;
-  padding: 7px 14px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-}
-.dart-more-link:hover { background: rgba(0,110,60,0.15); }
-.no-disclosure {
-  padding: 20px 0;
-  text-align: center;
-  color: var(--text-dim);
-  font-size: 14px;
-}
 /* ─── Footer ─── */
 .footer {
   text-align: center;
@@ -710,11 +585,11 @@ input[type="range"]::-webkit-slider-thumb {
     <div class="filter-item">
       <div class="filter-label">
         <span>거래대금 최소</span>
-        <span class="filter-value" id="tvLabel">1,000억</span>
+        <span class="filter-value" id="tvLabel">2,000억</span>
       </div>
       <div class="filter-row">
-        <input type="range" id="filterTV" min="1000" max="10000" step="100" value="1000">
-        <input type="number" class="filter-num" id="filterTVNum" min="1000" max="10000" step="100" value="1000">
+        <input type="range" id="filterTV" min="1000" max="10000" step="100" value="2000">
+        <input type="number" class="filter-num" id="filterTVNum" min="1000" max="10000" step="100" value="2000">
         <span class="filter-unit">억</span>
       </div>
     </div>
@@ -749,8 +624,8 @@ input[type="range"]::-webkit-slider-thumb {
 
   <!-- Sort Bar -->
   <div class="sort-bar">
-    <button class="sort-btn" data-sort="trading_value">거래대금순</button>
-    <button class="sort-btn active" data-sort="change_rate">등락률순</button>
+    <button class="sort-btn active" data-sort="trading_value">거래대금순</button>
+    <button class="sort-btn" data-sort="change_rate">등락률순</button>
     <button class="sort-btn" data-sort="market_cap">시총순</button>
     <button class="sort-btn" data-sort="one_month_return">1개월수익률순</button>
     <button class="sort-btn" data-sort="two_month_return">2개월수익률순</button>
@@ -779,18 +654,6 @@ input[type="range"]::-webkit-slider-thumb {
 </div>
 
 <!-- Footer -->
-
-<!-- 공시 모달 -->
-<div class="modal-overlay" id="disclosureModal" onclick="closeModal(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <span class="modal-title" id="modalTitle">최근 공시</span>
-      <button class="modal-close" onclick="document.getElementById('disclosureModal').classList.remove('open')">×</button>
-    </div>
-    <div id="modalBody"></div>
-  </div>
-</div>
-
 <div class="footer">
   급등 스크리닝 봇 | 조건: 거래대금·등락률·시총 필터 | pykrx 기반 자동 수집<br>
   ⚠️ 투자 참고용이며, 투자 판단의 근거로 사용하지 마세요.
@@ -801,7 +664,7 @@ input[type="range"]::-webkit-slider-thumb {
 let RAW_DATA = null;        // 원본 data.json
 let ALL_STOCKS = [];        // 전체 종목 (필터 전)
 let FILTERED = [];          // 필터 후 종목
-let CURRENT_SORT = 'change_rate';
+let CURRENT_SORT = 'trading_value';
 
 // ─── Sample Data (data.json 로드 실패 시 또는 테스트용) ───
 const SAMPLE_DATA = {
@@ -1103,7 +966,7 @@ function renderStockCards() {
     const marketClass = s.market === 'KOSDAQ' ? 'kosdaq' : '';
 
     // 금액 포맷
-    const closeStr = (s.current_price ?? s.close ?? 0).toLocaleString() + '원';
+    const closeStr = (s.price ?? s.current_price ?? s.close ?? 0).toLocaleString() + '원';
     const tvStr = s.trading_value >= 10000
       ? (s.trading_value / 10000).toFixed(1) + '조'
       : Math.round(s.trading_value).toLocaleString() + '억';
@@ -1112,9 +975,9 @@ function renderStockCards() {
       : Math.round(s.market_cap).toLocaleString() + '억';
 
     const returnHtml = [
-      {label: '1개월', val: s.one_month_return},
-      {label: '2개월', val: s.two_month_return},
-      {label: '3개월', val: s.three_month_return},
+      {label: '1개월', val: s.return_1m ?? s.one_month_return},
+      {label: '2개월', val: s.return_2m ?? s.two_month_return},
+      {label: '3개월', val: s.return_3m ?? s.three_month_return},
     ].filter(r => r.val != null).map(r =>
       `<div class="metric">
          <div class="metric-label">${r.label} 수익률</div>
@@ -1143,7 +1006,7 @@ function renderStockCards() {
       <div class="stock-card ${isLimitUp ? 'limit-up' : ''}">
         <div class="card-top">
           <div>
-            <span class="stock-name">${s.name}</span>
+            <a class="stock-name" href="https://m.stock.naver.com/domestic/stock/${s.ticker}/overview" target="_blank" rel="noopener">${s.name}</a>
             <span class="stock-ticker">${s.ticker}</span>
           </div>
           <span class="stock-market ${marketClass}">${s.market}</span>
@@ -1173,10 +1036,6 @@ function renderStockCards() {
 
         ${newsHtml}
         ${companionsHtml}
-        <div class="card-links">
-          <a class="dart-link" href="https://dart.fss.or.kr/dsab007/main.do?autoSearch=Y&option=corp&textCrpNm=${encodeURIComponent(s.name)}" target="_blank" rel="noopener">📋 DART 공시</a>
-          <a class="naver-link" href="https://m.stock.naver.com/domestic/stock/${s.ticker}/overview" target="_blank" rel="noopener">📊 네이버 주식</a>
-        </div>
       </div>`;
   }).join('');
 }
@@ -1212,34 +1071,6 @@ function renderSectorSummary() {
     </div>
   `).join('');
 }
-
-function openDisclosureModal(name, disclosures, dartUrl) {
-  document.getElementById('modalTitle').textContent = name + ' — 최근 공시';
-  const body = document.getElementById('modalBody');
-  if (!disclosures || disclosures.length === 0) {
-    body.innerHTML = '<div class="no-disclosure">ETF 또는 공시 정보 없음</div>';
-  } else {
-    body.innerHTML = disclosures.map(d => `
-      <div class="disclosure-item">
-        <a class="disclosure-title" href="${d.url}" target="_blank" rel="noopener">${d.title}</a>
-        <span class="disclosure-meta">${d.date} · ${d.submitter}</span>
-      </div>`).join('');
-  }
-  if (dartUrl) {
-    body.innerHTML += `<a class="dart-more-link" href="${dartUrl}" target="_blank" rel="noopener">📋 DART에서 전체 공시 보기 →</a>`;
-  }
-  document.getElementById('disclosureModal').classList.add('open');
-}
-
-function closeModal(e) {
-  if (e.target === document.getElementById('disclosureModal')) {
-    document.getElementById('disclosureModal').classList.remove('open');
-  }
-}
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') document.getElementById('disclosureModal').classList.remove('open');
-});
-
 </script>
 
 </body>
