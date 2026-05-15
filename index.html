@@ -588,8 +588,8 @@ input[type="range"]::-webkit-slider-thumb {
         <span class="filter-value" id="tvLabel">2,000억</span>
       </div>
       <div class="filter-row">
-        <input type="range" id="filterTV" min="1000" max="10000" step="100" value="2000">
-        <input type="number" class="filter-num" id="filterTVNum" min="1000" max="10000" step="100" value="2000">
+        <input type="range" id="filterTV" min="1000" max="10000" step="100" value="1000">
+        <input type="number" class="filter-num" id="filterTVNum" min="1000" max="10000" step="100" value="1000">
         <span class="filter-unit">억</span>
       </div>
     </div>
@@ -624,12 +624,12 @@ input[type="range"]::-webkit-slider-thumb {
 
   <!-- Sort Bar -->
   <div class="sort-bar">
-    <button class="sort-btn active" data-sort="trading_value">거래대금순</button>
-    <button class="sort-btn" data-sort="change_rate">등락률순</button>
+    <button class="sort-btn" data-sort="trading_value">거래대금순</button>
+    <button class="sort-btn active" data-sort="change_rate">등락률순</button>
     <button class="sort-btn" data-sort="market_cap">시총순</button>
-    <button class="sort-btn" data-sort="one_month_return">1개월수익률순</button>
-    <button class="sort-btn" data-sort="two_month_return">2개월수익률순</button>
-    <button class="sort-btn" data-sort="three_month_return">3개월수익률순</button>
+    <button class="sort-btn" data-sort="return_1m">1개월수익률순</button>
+    <button class="sort-btn" data-sort="return_2m">2개월수익률순</button>
+    <button class="sort-btn" data-sort="return_3m">3개월수익률순</button>
     <button class="sort-btn" data-sort="acc_1m_2m" title="최근 1개월 수익률이 2개월 수익률보다 높은 종목 — 최근 가속 중">1M↑2M 가속</button>
     <button class="sort-btn" data-sort="acc_1m_2m_3m" title="1개월 &gt; 2개월 &gt; 3개월 수익률 순으로 점진 상승 중인 종목">1M↑2M↑3M 점진가속</button>
   </div>
@@ -664,7 +664,7 @@ input[type="range"]::-webkit-slider-thumb {
 let RAW_DATA = null;        // 원본 data.json
 let ALL_STOCKS = [];        // 전체 종목 (필터 전)
 let FILTERED = [];          // 필터 후 종목
-let CURRENT_SORT = 'trading_value';
+let CURRENT_SORT = 'change_rate';
 
 // ─── Sample Data (data.json 로드 실패 시 또는 테스트용) ───
 const SAMPLE_DATA = {
@@ -885,20 +885,20 @@ function sortStocks() {
 
     if (CURRENT_SORT === 'acc_1m_2m') {
       // 1개월 수익률 - 2개월 수익률: 양수일수록 최근 1개월이 더 강함
-      av = (a.one_month_return != null && a.two_month_return != null)
-        ? (a.one_month_return - a.two_month_return) : -Infinity;
-      bv = (b.one_month_return != null && b.two_month_return != null)
-        ? (b.one_month_return - b.two_month_return) : -Infinity;
+      av = (a.return_1m != null && a.return_2m != null)
+        ? (a.return_1m - a.return_2m) : -Infinity;
+      bv = (b.return_1m != null && b.return_2m != null)
+        ? (b.return_1m - b.return_2m) : -Infinity;
 
     } else if (CURRENT_SORT === 'acc_1m_2m_3m') {
       // 1M > 2M > 3M 조건 충족 종목만 점수, 나머지는 -Infinity
-      const aOk = a.one_month_return != null && a.two_month_return != null && a.three_month_return != null
-        && a.one_month_return > a.two_month_return && a.two_month_return > a.three_month_return;
-      const bOk = b.one_month_return != null && b.two_month_return != null && b.three_month_return != null
-        && b.one_month_return > b.two_month_return && b.two_month_return > b.three_month_return;
+      const aOk = a.return_1m != null && a.return_2m != null && a.return_3m != null
+        && a.return_1m > a.return_2m && a.return_2m > a.return_3m;
+      const bOk = b.return_1m != null && b.return_2m != null && b.return_3m != null
+        && b.return_1m > b.return_2m && b.return_2m > b.return_3m;
       // 조건 충족 시 1M 수익률 기준 정렬
-      av = aOk ? a.one_month_return : -Infinity;
-      bv = bOk ? b.one_month_return : -Infinity;
+      av = aOk ? a.return_1m : -Infinity;
+      bv = bOk ? b.return_1m : -Infinity;
 
     } else {
       av = a[CURRENT_SORT] ?? -Infinity;
