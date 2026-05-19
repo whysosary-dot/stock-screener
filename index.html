@@ -611,7 +611,7 @@ input[type="range"]::-webkit-slider-thumb {
     <div class="filter-item">
       <div class="filter-label">
         <span>거래대금 최소</span>
-        <span class="filter-value" id="tvLabel">2,000억</span>
+        <span class="filter-value" id="tvLabel">1,000억</span>
       </div>
       <div class="filter-row">
         <input type="range" id="filterTV" min="1000" max="10000" step="100" value="1000">
@@ -863,6 +863,11 @@ function setupFilters() {
     document.getElementById('mcLabel').textContent = v >= 10000 ? Math.round(v / 10000).toLocaleString() + '조' : v.toLocaleString() + '억';
     applyFilters(); renderAll();
   }
+
+  // 초기 레이블 동기화 (슬라이더 value → 레이블)
+  updateTV(tvSlider.value);
+  updateCR(crSlider.value);
+  updateMC(mcSlider.value);
 
   // 슬라이더 → 숫자 입력 동기화
   tvSlider.addEventListener('input', () => { tvNum.value = tvSlider.value; updateTV(tvSlider.value); });
