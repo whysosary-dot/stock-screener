@@ -1,6 +1,6 @@
 {
   "date": "2026-05-20",
-  "generated_at": "2026-05-20T07:36:41.342687",
+  "generated_at": "2026-05-20T12:51:59.223251",
   "filter_defaults": {
     "min_trading_value": 1000,
     "min_change_rate": -30.0,
@@ -22,7 +22,7 @@
       "trading_value": 1593.0,
       "return_1m": -3.5,
       "return_2m": 484.5,
-      "return_3m": null
+      "return_3m": 525.9
     },
     {
       "ticker": "215790",
@@ -35,7 +35,7 @@
       "trading_value": 1129.7,
       "return_1m": -7.4,
       "return_2m": 452.4,
-      "return_3m": null
+      "return_3m": 467.7
     },
     {
       "ticker": "142280",
@@ -48,7 +48,7 @@
       "trading_value": 1113.0,
       "return_1m": 53.8,
       "return_2m": 70.9,
-      "return_3m": null
+      "return_3m": 62.0
     },
     {
       "ticker": "001820",
@@ -61,7 +61,7 @@
       "trading_value": 2313.3,
       "return_1m": 24.6,
       "return_2m": 34.6,
-      "return_3m": null
+      "return_3m": 88.7
     },
     {
       "ticker": "439960",
@@ -87,7 +87,7 @@
       "trading_value": 1550.4,
       "return_1m": 56.4,
       "return_2m": 74.5,
-      "return_3m": null
+      "return_3m": 49.6
     },
     {
       "ticker": "253840",
@@ -100,7 +100,7 @@
       "trading_value": 1638.6,
       "return_1m": 9.8,
       "return_2m": 52.6,
-      "return_3m": null
+      "return_3m": 28.9
     },
     {
       "ticker": "043260",
@@ -113,7 +113,7 @@
       "trading_value": 1424.1,
       "return_1m": -24.7,
       "return_2m": -12.4,
-      "return_3m": null
+      "return_3m": 86.7
     },
     {
       "ticker": "069540",
@@ -126,7 +126,7 @@
       "trading_value": 2047.6,
       "return_1m": -21.2,
       "return_2m": 134.7,
-      "return_3m": null
+      "return_3m": 372.0
     },
     {
       "ticker": "009150",
@@ -139,7 +139,7 @@
       "trading_value": 20253.0,
       "return_1m": 56.0,
       "return_2m": 128.4,
-      "return_3m": null
+      "return_3m": 196.4
     },
     {
       "ticker": "046970",
@@ -152,7 +152,7 @@
       "trading_value": 1056.0,
       "return_1m": -30.9,
       "return_2m": 208.5,
-      "return_3m": null
+      "return_3m": 481.4
     },
     {
       "ticker": "329180",
@@ -165,7 +165,7 @@
       "trading_value": 4342.4,
       "return_1m": 21.4,
       "return_2m": 13.8,
-      "return_3m": null
+      "return_3m": 10.8
     },
     {
       "ticker": "010170",
@@ -178,7 +178,7 @@
       "trading_value": 6585.1,
       "return_1m": 50.8,
       "return_2m": 207.8,
-      "return_3m": null
+      "return_3m": 540.6
     },
     {
       "ticker": "082740",
@@ -191,7 +191,7 @@
       "trading_value": 1004.1,
       "return_1m": 28.2,
       "return_2m": 41.9,
-      "return_3m": null
+      "return_3m": 26.1
     },
     {
       "ticker": "307950",
@@ -204,7 +204,7 @@
       "trading_value": 1334.3,
       "return_1m": 31.9,
       "return_2m": 29.6,
-      "return_3m": null
+      "return_3m": 27.3
     },
     {
       "ticker": "440110",
@@ -217,7 +217,7 @@
       "trading_value": 1841.8,
       "return_1m": 90.8,
       "return_2m": 89.5,
-      "return_3m": null
+      "return_3m": 117.4
     },
     {
       "ticker": "251340",
@@ -230,7 +230,7 @@
       "trading_value": 1409.2,
       "return_1m": 11.4,
       "return_2m": 11.4,
-      "return_3m": null
+      "return_3m": 5.4
     },
     {
       "ticker": "395160",
@@ -243,7 +243,7 @@
       "trading_value": 3644.3,
       "return_1m": 23.7,
       "return_2m": 31.8,
-      "return_3m": null
+      "return_3m": 49.5
     },
     {
       "ticker": "395270",
@@ -256,7 +256,7 @@
       "trading_value": 3478.6,
       "return_1m": 32.1,
       "return_2m": 52.1,
-      "return_3m": null
+      "return_3m": 74.6
     },
     {
       "ticker": "012330",
@@ -269,7 +269,7 @@
       "trading_value": 5161.9,
       "return_1m": 27.4,
       "return_2m": 33.6,
-      "return_3m": null
+      "return_3m": 21.5
     },
     {
       "ticker": "487580",
@@ -295,7 +295,7 @@
       "trading_value": 1166.0,
       "return_1m": 36.4,
       "return_2m": 65.8,
-      "return_3m": null
+      "return_3m": 94.5
     },
     {
       "ticker": "252670",
@@ -308,7 +308,7 @@
       "trading_value": 15990.6,
       "return_1m": -34.6,
       "return_2m": -49.8,
-      "return_3m": null
+      "return_3m": -58.3
     },
     {
       "ticker": "442580",
@@ -321,7 +321,7 @@
       "trading_value": 1128.0,
       "return_1m": 36.2,
       "return_2m": 46.0,
-      "return_3m": null
+      "return_3m": 56.4
     },
     {
       "ticker": "034730",
@@ -334,7 +334,7 @@
       "trading_value": 2072.1,
       "return_1m": 39.5,
       "return_2m": 46.1,
-      "return_3m": null
+      "return_3m": 48.0
     },
     {
       "ticker": "0167A0",
@@ -360,7 +360,7 @@
       "trading_value": 8155.7,
       "return_1m": 53.3,
       "return_2m": 69.9,
-      "return_3m": null
+      "return_3m": 104.0
     },
     {
       "ticker": "036930",
@@ -373,7 +373,7 @@
       "trading_value": 11659.3,
       "return_1m": 95.1,
       "return_2m": 145.2,
-      "return_3m": null
+      "return_3m": 224.5
     },
     {
       "ticker": "402340",
@@ -386,7 +386,7 @@
       "trading_value": 9275.3,
       "return_1m": 46.8,
       "return_2m": 69.2,
-      "return_3m": null
+      "return_3m": 81.8
     },
     {
       "ticker": "114800",
@@ -399,7 +399,7 @@
       "trading_value": 12454.2,
       "return_1m": -18.2,
       "return_2m": -27.1,
-      "return_3m": null
+      "return_3m": -32.1
     },
     {
       "ticker": "466920",
@@ -412,7 +412,7 @@
       "trading_value": 1057.7,
       "return_1m": -0.3,
       "return_2m": -0.8,
-      "return_3m": null
+      "return_3m": -3.7
     },
     {
       "ticker": "007660",
@@ -425,7 +425,7 @@
       "trading_value": 1663.2,
       "return_1m": -8.8,
       "return_2m": -4.1,
-      "return_3m": null
+      "return_3m": 19.6
     },
     {
       "ticker": "091160",
@@ -438,7 +438,7 @@
       "trading_value": 8858.2,
       "return_1m": 25.4,
       "return_2m": 35.7,
-      "return_3m": null
+      "return_3m": 53.9
     },
     {
       "ticker": "017670",
@@ -451,7 +451,7 @@
       "trading_value": 1129.5,
       "return_1m": 1.7,
       "return_2m": 24.5,
-      "return_3m": null
+      "return_3m": 20.4
     },
     {
       "ticker": "469150",
@@ -464,7 +464,7 @@
       "trading_value": 1652.1,
       "return_1m": 26.9,
       "return_2m": 35.1,
-      "return_3m": null
+      "return_3m": 65.4
     },
     {
       "ticker": "396500",
@@ -477,7 +477,7 @@
       "trading_value": 8579.1,
       "return_1m": 20.4,
       "return_2m": 27.8,
-      "return_3m": null
+      "return_3m": 45.3
     },
     {
       "ticker": "086790",
@@ -490,7 +490,7 @@
       "trading_value": 1673.2,
       "return_1m": -5.8,
       "return_2m": 2.1,
-      "return_3m": null
+      "return_3m": -8.5
     },
     {
       "ticker": "005930",
@@ -503,7 +503,7 @@
       "trading_value": 94140.3,
       "return_1m": 28.7,
       "return_2m": 38.4,
-      "return_3m": null
+      "return_3m": 45.3
     },
     {
       "ticker": "0162Z0",
@@ -529,7 +529,7 @@
       "trading_value": 1114.6,
       "return_1m": -6.0,
       "return_2m": -4.0,
-      "return_3m": null
+      "return_3m": -6.3
     },
     {
       "ticker": "133690",
@@ -542,7 +542,7 @@
       "trading_value": 3168.3,
       "return_1m": 11.1,
       "return_2m": 19.2,
-      "return_3m": null
+      "return_3m": 20.8
     },
     {
       "ticker": "0190G0",
@@ -568,7 +568,7 @@
       "trading_value": 1993.5,
       "return_1m": 11.0,
       "return_2m": 19.0,
-      "return_3m": null
+      "return_3m": 20.6
     },
     {
       "ticker": "459580",
@@ -581,7 +581,7 @@
       "trading_value": 3432.2,
       "return_1m": 0.0,
       "return_2m": 0.0,
-      "return_3m": null
+      "return_3m": -0.0
     },
     {
       "ticker": "000660",
@@ -594,7 +594,7 @@
       "trading_value": 94380.2,
       "return_1m": 49.7,
       "return_2m": 73.3,
-      "return_3m": null
+      "return_3m": 95.2
     },
     {
       "ticker": "0177N0",
@@ -620,7 +620,7 @@
       "trading_value": 1386.9,
       "return_1m": 23.1,
       "return_2m": 34.8,
-      "return_3m": null
+      "return_3m": 49.3
     },
     {
       "ticker": "139260",
@@ -633,7 +633,7 @@
       "trading_value": 2534.6,
       "return_1m": 33.6,
       "return_2m": 56.4,
-      "return_3m": null
+      "return_3m": 71.2
     },
     {
       "ticker": "042700",
@@ -646,7 +646,7 @@
       "trading_value": 3423.2,
       "return_1m": 0.2,
       "return_2m": -7.1,
-      "return_3m": null
+      "return_3m": 42.7
     },
     {
       "ticker": "488080",
@@ -659,7 +659,7 @@
       "trading_value": 3257.8,
       "return_1m": 39.1,
       "return_2m": 48.3,
-      "return_3m": null
+      "return_3m": 82.1
     },
     {
       "ticker": "009540",
@@ -672,7 +672,7 @@
       "trading_value": 1069.4,
       "return_1m": -3.4,
       "return_2m": -1.4,
-      "return_3m": null
+      "return_3m": -5.6
     },
     {
       "ticker": "360750",
@@ -685,7 +685,7 @@
       "trading_value": 5276.5,
       "return_1m": 5.9,
       "return_2m": 11.8,
-      "return_3m": null
+      "return_3m": 11.3
     },
     {
       "ticker": "298040",
@@ -698,7 +698,7 @@
       "trading_value": 2307.0,
       "return_1m": 18.6,
       "return_2m": 30.5,
-      "return_3m": null
+      "return_3m": 45.5
     },
     {
       "ticker": "379800",
@@ -711,7 +711,7 @@
       "trading_value": 5855.0,
       "return_1m": 5.6,
       "return_2m": 11.4,
-      "return_3m": null
+      "return_3m": 11.1
     },
     {
       "ticker": "091230",
@@ -724,7 +724,7 @@
       "trading_value": 2367.4,
       "return_1m": 24.4,
       "return_2m": 34.6,
-      "return_3m": null
+      "return_3m": 53.2
     },
     {
       "ticker": "237350",
@@ -737,7 +737,7 @@
       "trading_value": 1021.4,
       "return_1m": 20.9,
       "return_2m": 31.3,
-      "return_3m": null
+      "return_3m": 35.7
     },
     {
       "ticker": "207940",
@@ -750,7 +750,7 @@
       "trading_value": 1097.8,
       "return_1m": -16.7,
       "return_2m": -16.5,
-      "return_3m": null
+      "return_3m": -22.3
     },
     {
       "ticker": "105560",
@@ -763,7 +763,7 @@
       "trading_value": 1994.6,
       "return_1m": -5.7,
       "return_2m": -2.3,
-      "return_3m": null
+      "return_3m": -8.9
     },
     {
       "ticker": "067310",
@@ -776,7 +776,7 @@
       "trading_value": 1190.8,
       "return_1m": 22.0,
       "return_2m": 35.8,
-      "return_3m": null
+      "return_3m": 36.0
     },
     {
       "ticker": "472150",
@@ -789,7 +789,7 @@
       "trading_value": 1256.8,
       "return_1m": 17.2,
       "return_2m": 24.3,
-      "return_3m": null
+      "return_3m": 27.1
     },
     {
       "ticker": "069500",
@@ -802,7 +802,7 @@
       "trading_value": 23179.4,
       "return_1m": 19.9,
       "return_2m": 30.8,
-      "return_3m": null
+      "return_3m": 34.3
     },
     {
       "ticker": "498400",
@@ -815,7 +815,7 @@
       "trading_value": 2707.8,
       "return_1m": 16.4,
       "return_2m": 24.1,
-      "return_3m": null
+      "return_3m": 25.4
     },
     {
       "ticker": "292150",
@@ -828,7 +828,7 @@
       "trading_value": 1390.2,
       "return_1m": 18.9,
       "return_2m": 27.7,
-      "return_3m": null
+      "return_3m": 31.8
     },
     {
       "ticker": "102110",
@@ -841,7 +841,7 @@
       "trading_value": 7010.2,
       "return_1m": 19.8,
       "return_2m": 30.7,
-      "return_3m": null
+      "return_3m": 34.2
     },
     {
       "ticker": "148020",
@@ -854,7 +854,7 @@
       "trading_value": 1729.6,
       "return_1m": 19.5,
       "return_2m": 30.5,
-      "return_3m": null
+      "return_3m": 34.1
     },
     {
       "ticker": "080220",
@@ -867,7 +867,7 @@
       "trading_value": 2607.2,
       "return_1m": 120.5,
       "return_2m": 114.0,
-      "return_3m": null
+      "return_3m": 103.2
     },
     {
       "ticker": "042660",
@@ -880,7 +880,7 @@
       "trading_value": 1267.4,
       "return_1m": -14.1,
       "return_2m": -14.4,
-      "return_3m": null
+      "return_3m": -21.4
     },
     {
       "ticker": "000810",
@@ -893,7 +893,7 @@
       "trading_value": 1027.7,
       "return_1m": 14.2,
       "return_2m": 14.4,
-      "return_3m": null
+      "return_3m": -4.7
     },
     {
       "ticker": "000150",
@@ -906,7 +906,7 @@
       "trading_value": 1454.3,
       "return_1m": 5.0,
       "return_2m": 24.6,
-      "return_3m": null
+      "return_3m": 49.3
     },
     {
       "ticker": "047040",
@@ -919,7 +919,7 @@
       "trading_value": 2287.5,
       "return_1m": -5.2,
       "return_2m": 39.5,
-      "return_3m": null
+      "return_3m": 236.1
     },
     {
       "ticker": "0167Z0",
@@ -945,7 +945,7 @@
       "trading_value": 9408.8,
       "return_1m": 21.4,
       "return_2m": 27.7,
-      "return_3m": null
+      "return_3m": 33.2
     },
     {
       "ticker": "068270",
@@ -958,7 +958,7 @@
       "trading_value": 1137.0,
       "return_1m": -12.7,
       "return_2m": -11.2,
-      "return_3m": null
+      "return_3m": -26.6
     },
     {
       "ticker": "138540",
@@ -971,7 +971,7 @@
       "trading_value": 1107.0,
       "return_1m": 2.3,
       "return_2m": 4.5,
-      "return_3m": null
+      "return_3m": 5.0
     },
     {
       "ticker": "196170",
@@ -984,7 +984,7 @@
       "trading_value": 1570.2,
       "return_1m": -3.2,
       "return_2m": 1.7,
-      "return_3m": null
+      "return_3m": -12.6
     },
     {
       "ticker": "005380",
@@ -997,7 +997,7 @@
       "trading_value": 11559.3,
       "return_1m": 12.3,
       "return_2m": 14.5,
-      "return_3m": null
+      "return_3m": 15.4
     },
     {
       "ticker": "010120",
@@ -1010,7 +1010,7 @@
       "trading_value": 2020.8,
       "return_1m": 29.5,
       "return_2m": -73.1,
-      "return_3m": null
+      "return_3m": -64.7
     },
     {
       "ticker": "0080G0",
@@ -1023,7 +1023,7 @@
       "trading_value": 1100.5,
       "return_1m": -14.2,
       "return_2m": -5.8,
-      "return_3m": null
+      "return_3m": 0.7
     },
     {
       "ticker": "122630",
@@ -1036,7 +1036,7 @@
       "trading_value": 32743.5,
       "return_1m": 41.0,
       "return_2m": 62.4,
-      "return_3m": null
+      "return_3m": 61.6
     },
     {
       "ticker": "000720",
@@ -1049,7 +1049,7 @@
       "trading_value": 1488.1,
       "return_1m": -21.9,
       "return_2m": -17.0,
-      "return_3m": null
+      "return_3m": 9.6
     },
     {
       "ticker": "0183J0",
@@ -1075,7 +1075,7 @@
       "trading_value": 2310.8,
       "return_1m": 28.7,
       "return_2m": 69.4,
-      "return_3m": null
+      "return_3m": 59.3
     },
     {
       "ticker": "086520",
@@ -1088,7 +1088,7 @@
       "trading_value": 1382.8,
       "return_1m": -23.7,
       "return_2m": -21.3,
-      "return_3m": null
+      "return_3m": -31.1
     },
     {
       "ticker": "064350",
@@ -1101,7 +1101,7 @@
       "trading_value": 1036.2,
       "return_1m": -12.8,
       "return_2m": 5.8,
-      "return_3m": null
+      "return_3m": -9.3
     },
     {
       "ticker": "028260",
@@ -1114,7 +1114,7 @@
       "trading_value": 2176.7,
       "return_1m": 23.5,
       "return_2m": 24.5,
-      "return_3m": null
+      "return_3m": 16.0
     },
     {
       "ticker": "267260",
@@ -1127,7 +1127,7 @@
       "trading_value": 1885.0,
       "return_1m": -1.9,
       "return_2m": 11.2,
-      "return_3m": null
+      "return_3m": 10.2
     },
     {
       "ticker": "0117V0",
@@ -1140,7 +1140,7 @@
       "trading_value": 1138.0,
       "return_1m": 22.4,
       "return_2m": 35.1,
-      "return_3m": null
+      "return_3m": 53.8
     },
     {
       "ticker": "012450",
@@ -1153,7 +1153,7 @@
       "trading_value": 2755.5,
       "return_1m": -12.4,
       "return_2m": -5.4,
-      "return_3m": null
+      "return_3m": 8.7
     },
     {
       "ticker": "006400",
@@ -1166,7 +1166,7 @@
       "trading_value": 3943.2,
       "return_1m": 5.9,
       "return_2m": 42.3,
-      "return_3m": null
+      "return_3m": 39.7
     },
     {
       "ticker": "229200",
@@ -1179,7 +1179,7 @@
       "trading_value": 5090.7,
       "return_1m": -10.7,
       "return_2m": -12.4,
-      "return_3m": null
+      "return_3m": -13.5
     },
     {
       "ticker": "487240",
@@ -1192,7 +1192,7 @@
       "trading_value": 3688.0,
       "return_1m": 27.3,
       "return_2m": 42.5,
-      "return_3m": null
+      "return_3m": 62.0
     },
     {
       "ticker": "010140",
@@ -1205,7 +1205,7 @@
       "trading_value": 1449.7,
       "return_1m": -3.2,
       "return_2m": -3.2,
-      "return_3m": null
+      "return_3m": -4.3
     },
     {
       "ticker": "035420",
@@ -1218,7 +1218,7 @@
       "trading_value": 1899.9,
       "return_1m": -10.3,
       "return_2m": -13.5,
-      "return_3m": null
+      "return_3m": -24.3
     },
     {
       "ticker": "079550",
@@ -1231,7 +1231,7 @@
       "trading_value": 1544.5,
       "return_1m": -9.6,
       "return_2m": 26.0,
-      "return_3m": null
+      "return_3m": 79.9
     },
     {
       "ticker": "000270",
@@ -1244,7 +1244,7 @@
       "trading_value": 2866.7,
       "return_1m": -5.1,
       "return_2m": -11.3,
-      "return_3m": null
+      "return_3m": -12.1
     },
     {
       "ticker": "305720",
@@ -1257,7 +1257,7 @@
       "trading_value": 1964.1,
       "return_1m": -7.4,
       "return_2m": 8.8,
-      "return_3m": null
+      "return_3m": -0.6
     },
     {
       "ticker": "373220",
@@ -1270,7 +1270,7 @@
       "trading_value": 1583.6,
       "return_1m": -10.4,
       "return_2m": 2.4,
-      "return_3m": null
+      "return_3m": -4.7
     },
     {
       "ticker": "011070",
@@ -1283,7 +1283,7 @@
       "trading_value": 3512.5,
       "return_1m": 85.6,
       "return_2m": 156.8,
-      "return_3m": null
+      "return_3m": 200.4
     },
     {
       "ticker": "0148J0",
@@ -1296,7 +1296,7 @@
       "trading_value": 1004.7,
       "return_1m": -1.9,
       "return_2m": -4.6,
-      "return_3m": null
+      "return_3m": -16.3
     },
     {
       "ticker": "277810",
@@ -1309,7 +1309,7 @@
       "trading_value": 1203.6,
       "return_1m": 4.9,
       "return_2m": -3.2,
-      "return_3m": null
+      "return_3m": -11.1
     },
     {
       "ticker": "034020",
@@ -1322,7 +1322,7 @@
       "trading_value": 4388.5,
       "return_1m": -8.7,
       "return_2m": -7.6,
-      "return_3m": null
+      "return_3m": 2.9
     },
     {
       "ticker": "454910",
@@ -1335,7 +1335,7 @@
       "trading_value": 1489.1,
       "return_1m": 2.4,
       "return_2m": 6.9,
-      "return_3m": null
+      "return_3m": -6.3
     },
     {
       "ticker": "064400",
@@ -1348,7 +1348,7 @@
       "trading_value": 1100.2,
       "return_1m": 9.2,
       "return_2m": 5.3,
-      "return_3m": null
+      "return_3m": -0.7
     },
     {
       "ticker": "001740",
@@ -1361,7 +1361,7 @@
       "trading_value": 1026.7,
       "return_1m": 45.3,
       "return_2m": 46.1,
-      "return_3m": null
+      "return_3m": 44.7
     },
     {
       "ticker": "051910",
@@ -1374,7 +1374,7 @@
       "trading_value": 1510.5,
       "return_1m": -9.2,
       "return_2m": 7.1,
-      "return_3m": null
+      "return_3m": -0.7
     },
     {
       "ticker": "005490",
@@ -1387,7 +1387,7 @@
       "trading_value": 3065.2,
       "return_1m": 7.1,
       "return_2m": 21.4,
-      "return_3m": null
+      "return_3m": 7.2
     },
     {
       "ticker": "066570",
@@ -1400,7 +1400,7 @@
       "trading_value": 6739.1,
       "return_1m": 45.4,
       "return_2m": 53.5,
-      "return_3m": null
+      "return_3m": 49.5
     },
     {
       "ticker": "015760",
@@ -1413,7 +1413,7 @@
       "trading_value": 1176.7,
       "return_1m": -20.0,
       "return_2m": -24.9,
-      "return_3m": null
+      "return_3m": -40.6
     },
     {
       "ticker": "178320",
@@ -1426,7 +1426,7 @@
       "trading_value": 1581.7,
       "return_1m": 26.8,
       "return_2m": 36.9,
-      "return_3m": null
+      "return_3m": 64.5
     },
     {
       "ticker": "233740",
@@ -1439,7 +1439,7 @@
       "trading_value": 7519.1,
       "return_1m": -21.1,
       "return_2m": -26.0,
-      "return_3m": null
+      "return_3m": -32.6
     },
     {
       "ticker": "006800",
@@ -1452,7 +1452,7 @@
       "trading_value": 2314.0,
       "return_1m": -10.1,
       "return_2m": -8.4,
-      "return_3m": null
+      "return_3m": -12.1
     },
     {
       "ticker": "006260",
@@ -1465,7 +1465,7 @@
       "trading_value": 1631.7,
       "return_1m": 50.6,
       "return_2m": 64.7,
-      "return_3m": null
+      "return_3m": 99.2
     },
     {
       "ticker": "462330",
@@ -1478,7 +1478,7 @@
       "trading_value": 2008.0,
       "return_1m": -16.7,
       "return_2m": 12.1,
-      "return_3m": null
+      "return_3m": -13.0
     },
     {
       "ticker": "027360",
@@ -1491,7 +1491,7 @@
       "trading_value": 1251.1,
       "return_1m": 28.1,
       "return_2m": 112.9,
-      "return_3m": null
+      "return_3m": 206.1
     },
     {
       "ticker": "100790",
@@ -1504,7 +1504,7 @@
       "trading_value": 1439.7,
       "return_1m": 18.9,
       "return_2m": 142.6,
-      "return_3m": null
+      "return_3m": 126.8
     },
     {
       "ticker": "288180",
@@ -1525,7 +1525,8 @@
     "💥 하한가: 케이피항공산업",
     "💰 거래대금 TOP3: SK하이닉스(94,380억), 삼성전자(94,140억), KODEX 레버리지(32,744억)",
     "🔥 급등(+15%↑) 7개 종목",
-    "⚠️ 급락(-10%↓) 3개 종목"
+    "⚠️ 급락(-10%↓) 3개 종목",
+    "⚠️ 단기 급등 지속 (추격 주의): 광전자, 이노인스트루먼트, 빛과전자"
   ],
   "all_stocks_summary": {
     "kospi_count": 96,
