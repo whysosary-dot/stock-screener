@@ -900,9 +900,20 @@ function applyFilters() {
 function setupSort() {
   document.querySelectorAll('.sort-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      const isActive = btn.classList.contains('active');
+
+      // 모든 버튼 active 해제
       document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      CURRENT_SORT = btn.dataset.sort;
+
+      if (isActive) {
+        // 이미 active였으면 → 토글 해제 (정렬 없음)
+        CURRENT_SORT = null;
+      } else {
+        // 새 버튼 선택
+        btn.classList.add('active');
+        CURRENT_SORT = btn.dataset.sort;
+      }
+
       sortStocks();
       renderStockCards();
     });
@@ -911,6 +922,8 @@ function setupSort() {
 
 
 function sortStocks() {
+  if (!CURRENT_SORT) return; // 정렬 없음 → 순서 유지
+
   FILTERED.sort((a, b) => {
     let av, bv;
 
