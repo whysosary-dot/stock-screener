@@ -813,9 +813,9 @@ function initFilterToggle() {
 // ─── Init ───
 document.addEventListener('DOMContentLoaded', () => {
   initFilterToggle();
-  loadData();
-  setupFilters();
-  setupSort();
+  setupSort();    // ← 먼저: 이벤트 리스너 등록 (RAW_DATA 불필요)
+  setupFilters(); // ← 두번째: 초기 renderAll 호출하지만, RAW_DATA 없으면 render 함수들이 guard
+  loadData();     // ← 마지막: async 데이터 로드 후 renderAll 정식 실행
 });
 
 
@@ -964,6 +964,7 @@ function renderAll() {
 
 
 function renderHeader() {
+  if (!RAW_DATA) return;
   document.getElementById('dateBadge').textContent = RAW_DATA.date;
   document.getElementById('filteredCount').textContent = FILTERED.length;
   document.getElementById('totalCount').textContent = RAW_DATA.all_stocks_summary?.total || ALL_STOCKS.length;
@@ -976,6 +977,7 @@ function renderHeader() {
 
 
 function renderHighlights() {
+  if (!RAW_DATA) return;
   const section = document.getElementById('highlightsSection');
   const list = document.getElementById('highlightsList');
   const highlights = RAW_DATA.highlights || [];
