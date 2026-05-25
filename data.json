@@ -1429,5 +1429,117 @@
     "total_kospi": 2330,
     "total_kosdaq": 1810,
     "total": 108
-  }
+  },
+  "limit_stocks": [
+    {
+      "ticker": "208710",
+      "name": "포톤",
+      "market": "KOSDAQ",
+      "price": 2730,
+      "change_rate": 30.0,
+      "market_cap": 360,
+      "volume": 2010520,
+      "trading_value": 54.9
+    },
+    {
+      "ticker": "429270",
+      "name": "시지트로닉스",
+      "market": "KOSDAQ",
+      "price": 8930,
+      "change_rate": 29.99,
+      "market_cap": 576,
+      "volume": 1976944,
+      "trading_value": 176.5
+    },
+    {
+      "ticker": "007390",
+      "name": "네이처셀",
+      "market": "KOSDAQ",
+      "price": 22500,
+      "change_rate": 29.98,
+      "market_cap": 14498,
+      "volume": 109151,
+      "trading_value": 24.6
+    },
+    {
+      "ticker": "184230",
+      "name": "SGA솔루션즈",
+      "market": "KOSDAQ",
+      "price": 3860,
+      "change_rate": 29.97,
+      "market_cap": 729,
+      "volume": 1094539,
+      "trading_value": 42.2
+    },
+    {
+      "ticker": "032580",
+      "name": "피델릭스",
+      "market": "KOSDAQ",
+      "price": 8460,
+      "change_rate": 29.95,
+      "market_cap": 2803,
+      "volume": 6897896,
+      "trading_value": 583.6
+    },
+    {
+      "ticker": "001820",
+      "name": "삼화콘덴서",
+      "market": "KOSPI",
+      "price": 102000,
+      "change_rate": 29.94,
+      "market_cap": 10603,
+      "volume": 2646960,
+      "trading_value": 2699.9
+    },
+    {
+      "ticker": "026910",
+      "name": "광진실업",
+      "market": "KOSDAQ",
+      "price": 2670,
+      "change_rate": 29.93,
+      "market_cap": 171,
+      "volume": 1779234,
+      "trading_value": 47.5
+    },
+    {
+      "ticker": "025560",
+      "name": "미래산업",
+      "market": "KOSPI",
+      "price": 35850,
+      "change_rate": 29.89,
+      "market_cap": 1825,
+      "volume": 890827,
+      "trading_value": 319.4
+    },
+    {
+      "ticker": "069540",
+      "name": "빛과전자",
+      "market": "KOSDAQ",
+      "price": 6610,
+      "change_rate": 29.86,
+      "market_cap": 6471,
+      "volume": 40236023,
+      "trading_value": 2659.6
+    },
+    {
+      "ticker": "011230",
+      "name": "삼화전자",
+      "market": "KOSPI",
+      "price": 2680,
+      "change_rate": 29.78,
+      "market_cap": 514,
+      "volume": 2527085,
+      "trading_value": 67.7
+    },
+    {
+      "ticker": "477850",
+      "name": "마키나락스",
+      "market": "KOSDAQ",
+      "price": 54600,
+      "change_rate": -30.0,
+      "market_cap": 9578,
+      "volume": 9343955,
+      "trading_value": 5101.8
+    }
+  ]
 }
