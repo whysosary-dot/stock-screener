@@ -487,6 +487,43 @@ input[type="range"]::-webkit-slider-thumb {
   border-top: 1px solid var(--border);
 }
 
+/* ─── Tab Bar ─── */
+.tab-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--border);
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover { color: var(--text); }
+
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.tab-btn.tab-up.active  { color: var(--up);   border-bottom-color: var(--up); }
+.tab-btn.tab-down.active { color: var(--down); border-bottom-color: var(--down); }
+
+/* ─── Limit stocks panel ─── */
+.limit-panel { display: none; }
+.limit-panel.visible { display: block; }
+.main-panel  { display: block; }
+.main-panel.hidden  { display: none; }
+
 /* ─── Sort buttons ─── */
 .sort-bar {
   display: flex;
@@ -648,6 +685,16 @@ input[type="range"]::-webkit-slider-thumb {
 <!-- ─── Main Content ─── -->
 <div class="main">
 
+  <!-- Tab Bar -->
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="main">📊 전체 스크리닝</button>
+    <button class="tab-btn tab-up"   data-tab="upper">🚀 상한가 (+27%↑)</button>
+    <button class="tab-btn tab-down" data-tab="lower">💥 하한가 (-27%↓)</button>
+  </div>
+
+  <!-- Main Panel -->
+  <div class="main-panel" id="mainPanel">
+
   <!-- Sort Bar -->
   <div class="sort-bar">
     <button class="sort-btn" data-sort="trading_value">거래대금순</button>
@@ -677,6 +724,18 @@ input[type="range"]::-webkit-slider-thumb {
   <!-- Sector Summary -->
   <div id="sectorSummary" class="sector-summary"></div>
 
+  </div><!-- /#mainPanel -->
+
+  <!-- Upper Limit Panel -->
+  <div class="limit-panel" id="upperPanel">
+    <div id="upperGrid" class="stock-grid"></div>
+  </div>
+
+  <!-- Lower Limit Panel -->
+  <div class="limit-panel" id="lowerPanel">
+    <div id="lowerGrid" class="stock-grid"></div>
+  </div>
+
 </div>
 
 <!-- Footer -->
@@ -691,6 +750,7 @@ let RAW_DATA = null;        // 원본 data.json
 let ALL_STOCKS = [];        // 전체 종목 (필터 전)
 let FILTERED = [];          // 필터 후 종목
 let CURRENT_SORT = 'change_rate';
+let CURRENT_TAB = 'main';   // 'main' | 'upper' | 'lower'
 
 // ─── Sample Data (data.json 로드 실패 시 또는 테스트용) ───
 const SAMPLE_DATA = {
@@ -794,6 +854,77 @@ const SAMPLE_DATA = {
 };
 
 
+// ─── Tabs ───
+function setupTabs() {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      CURRENT_TAB = btn.dataset.tab;
+
+      const mainPanel  = document.getElementById('mainPanel');
+      const upperPanel = document.getElementById('upperPanel');
+      const lowerPanel = document.getElementById('lowerPanel');
+
+      mainPanel.classList.toggle('hidden',  CURRENT_TAB !== 'main');
+      upperPanel.classList.toggle('visible', CURRENT_TAB === 'upper');
+      lowerPanel.classList.toggle('visible', CURRENT_TAB === 'lower');
+
+      if (CURRENT_TAB === 'upper') renderLimitPanel('upper');
+      if (CURRENT_TAB === 'lower') renderLimitPanel('lower');
+    });
+  });
+}
+
+function renderLimitPanel(type) {
+  if (!RAW_DATA) return;
+  const limitStocks = RAW_DATA.limit_stocks || [];
+  const stocks = type === 'upper'
+    ? limitStocks.filter(s => s.change_rate >= 27)
+    : limitStocks.filter(s => s.change_rate <= -27);
+
+  const gridId = type === 'upper' ? 'upperGrid' : 'lowerGrid';
+  const grid = document.getElementById(gridId);
+
+  if (stocks.length === 0) {
+    grid.innerHTML = '<div class="empty-state"><div class="icon">' + (type === 'upper' ? '🚀' : '💥') + '</div><h3>해당 종목 없음</h3></div>';
+    return;
+  }
+
+  grid.innerHTML = stocks.map(s => {
+    const isUp = s.change_rate >= 0;
+    const marketClass = s.market === 'KOSDAQ' ? 'kosdaq' : '';
+    const priceStr = (s.price || 0).toLocaleString() + '원';
+    const tvStr = s.trading_value >= 10000
+      ? (s.trading_value / 10000).toFixed(1) + '조'
+      : Math.round(s.trading_value).toLocaleString() + '억';
+    const mcStr = s.market_cap
+      ? (s.market_cap >= 10000 ? (s.market_cap / 10000).toFixed(1) + '조' : Math.round(s.market_cap).toLocaleString() + '억')
+      : '-';
+
+    return '<div class="stock-card' + (s.change_rate >= 29.5 ? ' limit-up' : '') + '">' +
+      '<div class="card-top">' +
+        '<div>' +
+          '<a class="stock-name" href="https://m.stock.naver.com/domestic/stock/' + s.ticker + '/total" target="_blank" rel="noopener">' + s.name + '</a>' +
+          '<span class="stock-ticker">' + s.ticker + '</span>' +
+        '</div>' +
+        '<span class="stock-market ' + marketClass + '">' + s.market + '</span>' +
+      '</div>' +
+      '<div class="card-metrics">' +
+        '<div class="metric"><div class="metric-label">종가</div><div class="metric-value">' + priceStr + '</div></div>' +
+        '<div class="metric"><div class="metric-label">등락률</div><div class="metric-value ' + (isUp ? 'up' : 'down') + '">' + (isUp ? '+' : '') + s.change_rate + '%</div></div>' +
+        '<div class="metric"><div class="metric-label">거래대금</div><div class="metric-value">' + tvStr + '</div></div>' +
+        '<div class="metric"><div class="metric-label">시가총액</div><div class="metric-value">' + mcStr + '</div></div>' +
+      '</div>' +
+      '<div class="card-actions">' +
+        '<a class="card-btn" href="https://dart.fss.or.kr/dsab007/main.do?autoSearch=Y&option=corp&textCrpNm=' + encodeURIComponent(s.name) + '" target="_blank" rel="noopener">🗂 DART 공시</a>' +
+        '<a class="card-btn" href="https://m.stock.naver.com/domestic/stock/' + s.ticker + '/overview" target="_blank" rel="noopener">📊 네이버 주식</a>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+
 // ─── Filter Toggle ───
 function toggleFilters() {
   const wrap = document.getElementById('filtersWrap');
@@ -813,9 +944,10 @@ function initFilterToggle() {
 // ─── Init ───
 document.addEventListener('DOMContentLoaded', () => {
   initFilterToggle();
-  setupSort();    // ← 먼저: 이벤트 리스너 등록 (RAW_DATA 불필요)
-  setupFilters(); // ← 두번째: 초기 renderAll 호출하지만, RAW_DATA 없으면 render 함수들이 guard
-  loadData();     // ← 마지막: async 데이터 로드 후 renderAll 정식 실행
+  setupTabs();    // ← 탭 리스너
+  setupSort();    // ← 정렬 리스너
+  setupFilters(); // ← 필터 리스너 (RAW_DATA 없어도 안전)
+  loadData();     // ← async 데이터 로드 후 renderAll 정식 실행
 });
 
 
