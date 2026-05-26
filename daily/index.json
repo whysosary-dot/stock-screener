@@ -1,0 +1,21 @@
+{
+  "updated_at": "2026-05-26T12:45:19.225550",
+  "latest_date": "2026-05-26",
+  "count": 1,
+  "dates": [
+    {
+      "date": "2026-05-26",
+      "label": "2026년 5월 26일 (화)",
+      "sub": "필터통과 128개 · KOSPI 98개 + KOSDAQ 30개 · 전체 수집 4,268개",
+      "total_filtered": 128,
+      "kospi_count": 98,
+      "kosdaq_count": 30,
+      "total_kospi": 2446,
+      "total_kosdaq": 1822,
+      "limit_up": 17,
+      "limit_down": 1,
+      "generated_at": "2026-05-26T07:37:06.889755",
+      "new": true
+    }
+  ]
+}
