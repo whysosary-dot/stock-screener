@@ -320,17 +320,60 @@ let CURRENT_TAB = 'main';
 let CURRENT_DATE = '';
 let INDEX_DATA = null;
 
-/* ───────── localStorage ───────── */
-const LS_FAVS = 'screener_favs';
-const LS_META = 'screener_fav_meta';
-const LS_MEMOS = 'screener_fav_memos';
+/* ───────── localStorage (v2 — 날짜별 분리) ───────── */
+// 신규 키 구조: { "2026-05-26": { "005930": true, ... }, "2026-05-28": { ... } }
+const LS_FAVS_V2 = 'screener_favs_v2';
+const LS_META_V2 = 'screener_fav_meta_v2';
+const LS_MEMOS_V2 = 'screener_fav_memos_v2';
+// 레거시 키 (마이그레이션용)
+const LS_FAVS_LEGACY = 'screener_favs';
+const LS_META_LEGACY = 'screener_fav_meta';
+const LS_MEMOS_LEGACY = 'screener_fav_memos';
 
-function getFavs(){ try{return JSON.parse(localStorage.getItem(LS_FAVS)||'{}');}catch(e){return {};} }
-function saveFavs(f){ try{localStorage.setItem(LS_FAVS,JSON.stringify(f));}catch(e){} }
-function getMeta(){ try{return JSON.parse(localStorage.getItem(LS_META)||'{}');}catch(e){return {};} }
-function saveMeta(m){ try{localStorage.setItem(LS_META,JSON.stringify(m));}catch(e){} }
-function getMemos(){ try{return JSON.parse(localStorage.getItem(LS_MEMOS)||'{}');}catch(e){return {};} }
-function saveMemos(m){ try{localStorage.setItem(LS_MEMOS,JSON.stringify(m));}catch(e){} }
+function _readLS(k, def){ try{var v=localStorage.getItem(k); return v?JSON.parse(v):def;}catch(e){return def;} }
+function _writeLS(k, v){ try{localStorage.setItem(k, JSON.stringify(v));}catch(e){} }
+
+function getAllFavs(){ return _readLS(LS_FAVS_V2, {}); }
+function saveAllFavs(o){ _writeLS(LS_FAVS_V2, o); }
+function getAllMeta(){ return _readLS(LS_META_V2, {}); }
+function saveAllMeta(o){ _writeLS(LS_META_V2, o); }
+function getAllMemos(){ return _readLS(LS_MEMOS_V2, {}); }
+function saveAllMemos(o){ _writeLS(LS_MEMOS_V2, o); }
+
+// CURRENT_DATE 기준(기본) 접근
+function getFavs(date){ var all=getAllFavs(); return all[date||CURRENT_DATE] || {}; }
+function getMeta(date){ var all=getAllMeta(); return all[date||CURRENT_DATE] || {}; }
+function getMemos(date){ var all=getAllMemos(); return all[date||CURRENT_DATE] || {}; }
+
+function migrateLegacyFavsIfNeeded(){
+  // 이미 v2가 채워져 있으면 스킵
+  if(localStorage.getItem(LS_FAVS_V2) != null) return;
+  var oldFavs = _readLS(LS_FAVS_LEGACY, {});
+  var oldMeta = _readLS(LS_META_LEGACY, {});
+  var oldMemos = _readLS(LS_MEMOS_LEGACY, {});
+  var favsV2={}, metaV2={}, memosV2={};
+  Object.keys(oldFavs).forEach(function(ticker){
+    if(!oldFavs[ticker]) return;
+    var d = (oldMeta[ticker] && oldMeta[ticker].date) || '날짜 미상';
+    if(!favsV2[d]) favsV2[d]={};
+    favsV2[d][ticker] = true;
+    if(oldMeta[ticker]){
+      if(!metaV2[d]) metaV2[d]={};
+      metaV2[d][ticker] = oldMeta[ticker];
+    }
+    if(oldMemos[ticker]){
+      if(!memosV2[d]) memosV2[d]={};
+      memosV2[d][ticker] = oldMemos[ticker];
+    }
+  });
+  saveAllFavs(favsV2);
+  saveAllMeta(metaV2);
+  saveAllMemos(memosV2);
+  try{ console.log('[favs migrate] tickers=', Object.keys(oldFavs).length, 'dates=', Object.keys(favsV2).length); }catch(e){}
+}
+// 페이지 스크립트 평가 직후 즉시 마이그레이션 (CURRENT_DATE 로드 전이라도 안전)
+migrateLegacyFavsIfNeeded();
+
 function escHtml(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 // DART autoSearch는 한글 raw 그대로일 때만 자동검색이 작동 → URL-special chars만 선택적 인코딩
 function dartUrl(name){
@@ -338,64 +381,80 @@ function dartUrl(name){
   return 'https://dart.fss.or.kr/dsab007/main.do?autoSearch=Y&option=corp&textCrpNm='+safe;
 }
 
-function isFav(ticker){ return !!getFavs()[ticker]; }
+function isFav(ticker, date){ return !!getFavs(date)[ticker]; }
 
-function toggleFav(ticker, btnEl){
-  var f = getFavs();
-  var m = getMeta();
-  if(f[ticker]){
-    delete f[ticker];
-    delete m[ticker];
+function toggleFav(ticker, btnEl, date){
+  date = date || CURRENT_DATE;
+  if(!date){ return; }
+  var allF = getAllFavs(), allM = getAllMeta();
+  var fDate = allF[date] ? Object.assign({}, allF[date]) : {};
+  var mDate = allM[date] ? Object.assign({}, allM[date]) : {};
+  if(fDate[ticker]){
+    delete fDate[ticker];
+    delete mDate[ticker];
   } else {
-    f[ticker] = true;
-    // 메타 저장 (이 일자 데이터 기준)
-    var s = ALL_STOCKS.find(function(x){return x.ticker===ticker;});
+    fDate[ticker] = true;
+    // 메타 저장 — 같은 일자의 ALL_STOCKS / limit_stocks 데이터 기준
+    var pool = (date === CURRENT_DATE) ? ALL_STOCKS : [];
+    var s = pool.find(function(x){return x.ticker===ticker;});
     if(s){
-      m[ticker] = {
-        name:s.name, market:s.market, date:CURRENT_DATE,
+      mDate[ticker] = {
+        name:s.name, market:s.market, date:date,
         change_rate:s.change_rate, price:s.price,
         market_cap:s.market_cap, trading_value:s.trading_value,
         return_1m:s.return_1m, return_2m:s.return_2m, return_3m:s.return_3m,
       };
-    } else {
-      // 상한가/하한가 패널에서 찍은 경우
-      var lim = (RAW_DATA.limit_stocks || []).find(function(x){return x.ticker===ticker;});
-      if(lim) m[ticker] = {
-        name:lim.name, market:lim.market, date:CURRENT_DATE,
+    } else if(date === CURRENT_DATE) {
+      var lim = (RAW_DATA && RAW_DATA.limit_stocks || []).find(function(x){return x.ticker===ticker;});
+      if(lim) mDate[ticker] = {
+        name:lim.name, market:lim.market, date:date,
         change_rate:lim.change_rate, price:lim.price,
         market_cap:lim.market_cap, trading_value:lim.trading_value,
       };
     }
   }
-  saveFavs(f);
-  saveMeta(m);
+  if(Object.keys(fDate).length>0) allF[date]=fDate; else delete allF[date];
+  if(Object.keys(mDate).length>0) allM[date]=mDate; else delete allM[date];
+  saveAllFavs(allF);
+  saveAllMeta(allM);
   localStorage.setItem('screener_fav_ts', Date.now());
 
-  // 모든 같은 ticker 카드 토글 (상한가/하한가/즐겨찾기 탭에서도 동기화)
-  document.querySelectorAll('[data-fav-ticker="'+ticker+'"]').forEach(function(card){
-    var on = !!getFavs()[ticker];
-    card.classList.toggle('fav', on);
-    var btn = card.querySelector('.fav-toggle');
-    if(btn){
-      btn.classList.toggle('on', on);
-      btn.textContent = on ? '★' : '☆';
-      btn.setAttribute('aria-pressed', on?'true':'false');
-    }
-  });
+  // 현재 페이지(CURRENT_DATE)에 속한 카드들만 UI 업데이트
+  if(date === CURRENT_DATE){
+    document.querySelectorAll('[data-fav-ticker="'+ticker+'"]').forEach(function(card){
+      var cardDate = card.getAttribute('data-fav-date') || CURRENT_DATE;
+      if(cardDate !== CURRENT_DATE) return; // "다른 일자" 카드는 건드리지 않음
+      var on = !!getFavs(CURRENT_DATE)[ticker];
+      card.classList.toggle('fav', on);
+      var btn = card.querySelector('.fav-toggle');
+      if(btn){
+        btn.classList.toggle('on', on);
+        btn.textContent = on ? '★' : '☆';
+        btn.setAttribute('aria-pressed', on?'true':'false');
+      }
+      // 메모 textarea도 현재 날짜 메모로 동기화
+      var ta = card.querySelector('.card-memo');
+      if(ta){ ta.value = getMemos(CURRENT_DATE)[ticker] || ''; }
+    });
+  }
   updateFavBadge();
-  // 즐겨찾기 탭이 활성화돼 있으면 새로 그리기
   if(CURRENT_TAB==='fav') renderFavPanel();
 }
 
-function saveMemo(ticker, val){
-  var memos = getMemos();
-  if((val||'').trim()) memos[ticker] = val;
-  else delete memos[ticker];
-  saveMemos(memos);
+function saveMemo(ticker, val, date){
+  date = date || CURRENT_DATE;
+  if(!date) return;
+  var all = getAllMemos();
+  var m = all[date] ? Object.assign({}, all[date]) : {};
+  if((val||'').trim()) m[ticker] = val;
+  else delete m[ticker];
+  if(Object.keys(m).length>0) all[date]=m; else delete all[date];
+  saveAllMemos(all);
   localStorage.setItem('screener_fav_ts', Date.now());
 }
 
 function updateFavBadge(){
+  // 현재 일자의 즐겨찾기 수만 표시
   var cnt = Object.keys(getFavs()).length;
   var el = document.getElementById('favTabBadge');
   if(!el) return;
@@ -551,7 +610,7 @@ function renderStockCard(s, opts){
 
   var memo = getMemos()[s.ticker] || '';
 
-  return '<div class="stock-card'+(isLimitUp?' limit-up':'')+(on?' fav':'')+'" id="stock-'+s.ticker+'" data-fav-ticker="'+s.ticker+'">'+
+  return '<div class="stock-card'+(isLimitUp?' limit-up':'')+(on?' fav':'')+'" id="stock-'+s.ticker+'" data-fav-ticker="'+s.ticker+'" data-fav-date="'+escHtml(CURRENT_DATE||'')+'">'+
     '<div class="card-top">'+
       '<div class="card-name-row">'+
         '<button class="fav-toggle'+(on?' on':'')+'" aria-pressed="'+(on?'true':'false')+'" '+
@@ -664,29 +723,43 @@ function renderLimitPanel(type){
 
 function renderFavPanel(){
   var grid = document.getElementById('favGrid');
-  var f = getFavs();
-  var meta = getMeta();
-  var memos = getMemos();
+  var fThis = getFavs(CURRENT_DATE);
   // 이 일자에서 즐겨찾기된 종목: ALL_STOCKS + limit_stocks 중 favs 포함
   var inThisDate = [];
   var pool = ALL_STOCKS.concat(RAW_DATA && RAW_DATA.limit_stocks ? RAW_DATA.limit_stocks : []);
-  var seen = {};
+  var seenThis = {};
   pool.forEach(function(s){
-    if(f[s.ticker] && !seen[s.ticker]){
-      seen[s.ticker] = true;
+    if(fThis[s.ticker] && !seenThis[s.ticker]){
+      seenThis[s.ticker] = true;
       inThisDate.push(s);
     }
   });
 
-  // 다른 일자에서만 즐겨찾기한 종목 (간단 카드로 표시)
-  var otherDates = [];
-  Object.keys(f).forEach(function(c){
-    if(!seen[c]){
-      otherDates.push(c);
-    }
+  // 다른 일자에서 즐겨찾기한 (date, ticker) 쌍 모두 표시
+  var allFavs = getAllFavs();
+  var allMeta = getAllMeta();
+  var allMemos = getAllMemos();
+  var otherEntries = [];
+  Object.keys(allFavs).forEach(function(d){
+    if(d === CURRENT_DATE) return;
+    var fd = allFavs[d] || {};
+    Object.keys(fd).forEach(function(t){
+      if(!fd[t]) return;
+      otherEntries.push({
+        date: d,
+        ticker: t,
+        meta: (allMeta[d] || {})[t] || {},
+        memo: (allMemos[d] || {})[t] || ''
+      });
+    });
+  });
+  // 최신 날짜 우선 정렬, 같은 날짜는 ticker 순
+  otherEntries.sort(function(a,b){
+    if(a.date !== b.date) return b.date.localeCompare(a.date);
+    return a.ticker.localeCompare(b.ticker);
   });
 
-  if(inThisDate.length===0 && otherDates.length===0){
+  if(inThisDate.length===0 && otherEntries.length===0){
     grid.innerHTML = '<div class="empty-state"><div class="icon">⭐</div><h3>즐겨찾기한 종목이 없습니다</h3><p>종목 카드 옆 ☆ 버튼을 눌러 추가하세요</p></div>';
     return;
   }
@@ -696,19 +769,21 @@ function renderFavPanel(){
     html += '<h2 style="font-size:14px;color:var(--gold);margin-bottom:10px;font-weight:700;">⭐ 이 일자 즐겨찾기 ('+inThisDate.length+')</h2>';
     html += inThisDate.map(function(s){return renderStockCard(s);}).join('');
   }
-  if(otherDates.length>0){
-    html += '<h2 style="font-size:14px;color:var(--text-dim);margin:24px 0 10px;font-weight:700;">📂 다른 일자에서 즐겨찾기 ('+otherDates.length+')</h2>';
-    otherDates.forEach(function(c){
-      var m = meta[c] || {};
+  if(otherEntries.length>0){
+    html += '<h2 style="font-size:14px;color:var(--text-dim);margin:24px 0 10px;font-weight:700;">📂 다른 일자에서 즐겨찾기 ('+otherEntries.length+')</h2>';
+    otherEntries.forEach(function(e){
+      var c = e.ticker;
+      var date = e.date;
+      var m = e.meta;
       var name = m.name || c;
       var cr = m.change_rate;
-      var date = m.date || '';
-      var dailyUrl = date ? ('daily.html?date='+date+'#stock-'+c) : '#';
-      var memo = memos[c] || '';
-      html += '<div class="stock-card fav" id="stock-'+c+'" data-fav-ticker="'+c+'">'+
+      var dailyUrl = (date && date !== '날짜 미상') ? ('daily.html?date='+date+'#stock-'+c) : '#';
+      var memo = e.memo;
+      var cardId = 'stock-'+c+'-'+date.replace(/[^0-9a-zA-Z-]/g,'_');
+      html += '<div class="stock-card fav" id="'+cardId+'" data-fav-ticker="'+c+'" data-fav-date="'+escHtml(date)+'">'+
         '<div class="card-top">'+
           '<div class="card-name-row">'+
-            '<button class="fav-toggle on" aria-pressed="true" onclick="toggleFav(\''+c+'\',this)" title="즐겨찾기">★</button>'+
+            '<button class="fav-toggle on" aria-pressed="true" onclick="toggleFav(\''+c+'\',this,\''+escHtml(date)+'\')" title="이 일자 즐겨찾기 해제">★</button>'+
             '<a class="stock-name" href="'+dailyUrl+'">'+escHtml(name)+'</a>'+
             '<span class="stock-ticker">'+c+'</span>'+
           '</div>'+
@@ -717,17 +792,17 @@ function renderFavPanel(){
         '<div class="card-metrics">'+
           (m.price?'<div class="metric"><div class="metric-label">종가</div><div class="metric-value">'+m.price.toLocaleString()+'원</div></div>':'')+
           (cr!=null?'<div class="metric"><div class="metric-label">등락률</div><div class="metric-value '+(cr>=0?'up':'down')+'">'+(cr>=0?'+':'')+cr+'%</div></div>':'')+
-          (date?'<div class="metric"><div class="metric-label">즐겨찾기 일자</div><div class="metric-value" style="font-size:14px">'+date+'</div></div>':'')+
+          '<div class="metric"><div class="metric-label">즐겨찾기 일자</div><div class="metric-value" style="font-size:14px">'+escHtml(date)+'</div></div>'+
         '</div>'+
         '<div class="card-actions">'+
-          (date?'<a class="card-btn" href="'+dailyUrl+'">📅 해당 일자 보기</a>':'')+
+          (date && date !== '날짜 미상'?'<a class="card-btn" href="'+dailyUrl+'">📅 해당 일자 보기</a>':'')+
           '<a class="card-btn" href="https://m.stock.naver.com/domestic/stock/'+c+'/total" target="_blank" rel="noopener">📊 네이버 주식</a>'+
           '<a class="card-btn" href="'+dartUrl(name)+'" target="_blank" rel="noopener">🗂 DART</a>'+
         '</div>'+
         '<div class="card-memo-wrap">'+
           '<textarea class="card-memo" rows="1" placeholder="✏️ 메모 (자동저장)" '+
-            'oninput="this.style.height=\'auto\';this.style.height=this.scrollHeight+\'px\';saveMemo(\''+c+'\',this.value)" '+
-            'onchange="saveMemo(\''+c+'\',this.value)">'+escHtml(memo)+'</textarea>'+
+            'oninput="this.style.height=\'auto\';this.style.height=this.scrollHeight+\'px\';saveMemo(\''+c+'\',this.value,\''+escHtml(date)+'\')" '+
+            'onchange="saveMemo(\''+c+'\',this.value,\''+escHtml(date)+'\')">'+escHtml(memo)+'</textarea>'+
         '</div>'+
       '</div>';
     });
@@ -777,6 +852,26 @@ async function ghApiPut(path, contentB64, sha, message){
   return r.json();
 }
 
+// 레거시 평면 구조({ticker:true}) → v2 중첩 구조({date:{ticker:true}}) 변환
+function _migrateFlatToNested(flatFavs, flatMeta, flatMemos){
+  var favsV2={}, metaV2={}, memosV2={};
+  Object.keys(flatFavs||{}).forEach(function(ticker){
+    if(!flatFavs[ticker]) return;
+    var d = (flatMeta && flatMeta[ticker] && flatMeta[ticker].date) || '날짜 미상';
+    if(!favsV2[d]) favsV2[d]={};
+    favsV2[d][ticker] = true;
+    if(flatMeta && flatMeta[ticker]){
+      if(!metaV2[d]) metaV2[d]={};
+      metaV2[d][ticker] = flatMeta[ticker];
+    }
+    if(flatMemos && flatMemos[ticker]){
+      if(!memosV2[d]) memosV2[d]={};
+      memosV2[d][ticker] = flatMemos[ticker];
+    }
+  });
+  return {favs:favsV2, meta:metaV2, memos:memosV2};
+}
+
 async function ghCommitFavs(){
   if(!confirm('즐겨찾기·메모를 GitHub에 저장할까요?\n모든 기기의 데이터가 현재 기기 기준으로 덮어씌워집니다.')) return;
   var pat=getPatFromLS();
@@ -784,13 +879,21 @@ async function ghCommitFavs(){
   var btn=document.getElementById('gh-commit-btn');
   if(btn){ btn.disabled=true; btn.textContent='⏳ 저장 중...'; }
   try {
-    var favs=getFavs(), meta=getMeta(), memos=getMemos();
+    var favsV2=getAllFavs(), metaV2=getAllMeta(), memosV2=getAllMemos();
     var now=Date.now();
-    var payload=JSON.stringify({favs:favs, meta:meta, memos:memos, updatedAt:now}, null, 2);
+    // v2 페이로드 (schema:2). 구버전 클라이언트 호환을 위해 favs/meta/memos는 빈 객체로 둠.
+    var payload=JSON.stringify({
+      schema: 2,
+      favs_v2: favsV2,
+      meta_v2: metaV2,
+      memos_v2: memosV2,
+      favs: {}, meta: {}, memos: {},
+      updatedAt: now
+    }, null, 2);
     var b64=btoa(unescape(encodeURIComponent(payload)));
     var existing=await ghApiGet(GH_SYNC.PATH);
     var sha=existing?existing.sha:undefined;
-    await ghApiPut(GH_SYNC.PATH, b64, sha, '⭐ 즐겨찾기 동기화');
+    await ghApiPut(GH_SYNC.PATH, b64, sha, '⭐ 즐겨찾기 동기화 (날짜별)');
     localStorage.setItem(LS_TS_KEY, now);
     toast('✅ GitHub에 저장됐어요!');
   } catch(e){
@@ -804,37 +907,55 @@ async function loadFavsFromGitHub(){
   var pat=getPatFromLS();
   if(!pat) return;
   try {
-    var localFavs=getFavs();
-    if(Object.keys(localFavs).length>0 && !localStorage.getItem(LS_TS_KEY)){
+    var localTotal = 0;
+    var _af = getAllFavs();
+    Object.keys(_af).forEach(function(d){ localTotal += Object.keys(_af[d]||{}).length; });
+    if(localTotal>0 && !localStorage.getItem(LS_TS_KEY)){
       localStorage.setItem(LS_TS_KEY, Date.now());
     }
     var localTs=parseInt(localStorage.getItem(LS_TS_KEY)||'0',10);
     var file=await ghApiGet(GH_SYNC.PATH);
     if(!file) return;
     var data=JSON.parse(decodeURIComponent(escape(atob(file.content.replace(/\n/g,'')))));
-    if(!data.favs) return;
     var ghTs=data.updatedAt||0;
     if(ghTs<=localTs) return;
-    saveFavs(data.favs||{});
-    if(data.meta) saveMeta(data.meta);
-    if(data.memos) saveMemos(data.memos);
+
+    var favsV2, metaV2, memosV2;
+    if(data.schema === 2 || data.favs_v2){
+      // 신규 포맷
+      favsV2 = data.favs_v2 || {};
+      metaV2 = data.meta_v2 || {};
+      memosV2 = data.memos_v2 || {};
+    } else if(data.favs){
+      // 구버전 포맷 → 마이그레이션
+      var mig = _migrateFlatToNested(data.favs, data.meta, data.memos);
+      favsV2 = mig.favs; metaV2 = mig.meta; memosV2 = mig.memos;
+    } else {
+      return;
+    }
+    saveAllFavs(favsV2);
+    saveAllMeta(metaV2);
+    saveAllMemos(memosV2);
     localStorage.setItem(LS_TS_KEY, ghTs);
-    // 즐겨찾기 갱신 — 모든 카드 다시 그리기
+    // UI 갱신
     updateFavBadge();
     if(CURRENT_TAB==='fav') renderFavPanel();
-    // 메인/상한가/하한가 패널의 별 표시도 갱신
+    // 메인/상한가/하한가 패널 별 표시 갱신 (CURRENT_DATE 기준)
+    var curFavs = getFavs(CURRENT_DATE);
+    var curMemos = getMemos(CURRENT_DATE);
     document.querySelectorAll('[data-fav-ticker]').forEach(function(card){
+      var cardDate = card.getAttribute('data-fav-date') || CURRENT_DATE;
+      if(cardDate !== CURRENT_DATE) return;
       var t = card.getAttribute('data-fav-ticker');
-      var on = !!getFavs()[t];
+      var on = !!curFavs[t];
       card.classList.toggle('fav', on);
       var btn = card.querySelector('.fav-toggle');
       if(btn){
         btn.classList.toggle('on', on);
         btn.textContent = on ? '★' : '☆';
       }
-      // 메모 textarea도 갱신
       var ta = card.querySelector('.card-memo');
-      if(ta){ ta.value = getMemos()[t] || ''; if(ta.value){ ta.style.height='auto'; ta.style.height=ta.scrollHeight+'px'; } }
+      if(ta){ ta.value = curMemos[t] || ''; if(ta.value){ ta.style.height='auto'; ta.style.height=ta.scrollHeight+'px'; } }
     });
     toast('☁️ GitHub에서 동기화됨');
   } catch(e){ console.warn('GH load fail:', e); }
