@@ -458,7 +458,7 @@ const GH_SYNC = { OWNER:'whysosary-dot', REPO:'stock-screener', PATH:'screener_f
 const LS_PAT_KEY = 'screener_gh_pat';
 const LS_TS_KEY = 'screener_fav_ts';
 
-function getPatFromLS(){ return localStorage.getItem(LS_PAT_KEY)||''; }
+function getPatFromLS(){ return localStorage.getItem(LS_PAT_KEY)||localStorage.getItem('sv_github_pat')||''; }
 function savePatToLS(p){ localStorage.setItem(LS_PAT_KEY, p); }
 
 function toast(msg, ok){
@@ -513,6 +513,25 @@ function _migrateFlatToNested(flatFavs, flatMeta, flatMemos){
   return {favs:favsV2, meta:metaV2, memos:memosV2};
 }
 
+async function ghCommitFavsCore(){
+  if(!getPatFromLS()) throw new Error('PAT 미설정');
+  var favsV2=getAllFavs(), metaV2=getAllMeta(), memosV2=getAllMemos();
+  var now=Date.now();
+  var payload=JSON.stringify({
+    schema: 2,
+    favs_v2: favsV2,
+    meta_v2: metaV2,
+    memos_v2: memosV2,
+    favs: {}, meta: {}, memos: {},
+    updatedAt: now
+  }, null, 2);
+  var b64=btoa(unescape(encodeURIComponent(payload)));
+  var existing=await ghApiGet(GH_SYNC.PATH);
+  var sha=existing?existing.sha:undefined;
+  await ghApiPut(GH_SYNC.PATH, b64, sha, '⭐ 즐겨찾기 동기화 (날짜별)');
+  localStorage.setItem(LS_TS_KEY, now);
+}
+
 async function ghCommitFavs(){
   if(!confirm('즐겨찾기·메모를 GitHub에 저장할까요?\n모든 기기의 데이터가 현재 기기 기준으로 덮어씌워집니다.')) return;
   var pat=getPatFromLS();
@@ -520,21 +539,7 @@ async function ghCommitFavs(){
   var btn=document.getElementById('gh-commit-btn');
   if(btn){ btn.disabled=true; btn.textContent='⏳ 저장 중...'; }
   try {
-    var favsV2=getAllFavs(), metaV2=getAllMeta(), memosV2=getAllMemos();
-    var now=Date.now();
-    var payload=JSON.stringify({
-      schema: 2,
-      favs_v2: favsV2,
-      meta_v2: metaV2,
-      memos_v2: memosV2,
-      favs: {}, meta: {}, memos: {},
-      updatedAt: now
-    }, null, 2);
-    var b64=btoa(unescape(encodeURIComponent(payload)));
-    var existing=await ghApiGet(GH_SYNC.PATH);
-    var sha=existing?existing.sha:undefined;
-    await ghApiPut(GH_SYNC.PATH, b64, sha, '⭐ 즐겨찾기 동기화 (날짜별)');
-    localStorage.setItem(LS_TS_KEY, now);
+    await ghCommitFavsCore();
     toast('✅ GitHub에 저장됐어요!');
   } catch(e){
     toast('❌ '+e.message, false);
@@ -542,6 +547,22 @@ async function ghCommitFavs(){
     if(btn){ btn.disabled=false; btn.textContent='☁️ 커밋 & 푸시'; }
   }
 }
+
+/* ── Stock Valuation 대시보드 통합 커밋 (iframe 내장 시) ── */
+(function(){
+  if (window.self === window.top) return;
+  // 대시보드 탭 안에서는 자체 커밋 버튼 숨김 (통합 버튼으로 일원화)
+  var _b=document.getElementById('gh-commit-btn'); if(_b) _b.style.display='none';
+  window.addEventListener('message', async function(e){
+    if (e.origin !== 'https://whysosary-dot.github.io' || !e.data || !e.data.type) return;
+    if (e.data.type === 'sv-ping'){ e.source.postMessage({type:'sv-pong', repo:'stock-screener'}, e.origin); return; }
+    if (e.data.type !== 'sv-commit') return;
+    var ok=true, msg='커밋 완료';
+    try { await ghCommitFavsCore(); }
+    catch(err){ ok=false; msg=err.message||String(err); }
+    e.source.postMessage({type:'sv-commit-result', repo:'stock-screener', ok:ok, msg:msg}, e.origin);
+  });
+})();
 
 async function loadFavsFromGitHub(){
   var pat=getPatFromLS();
