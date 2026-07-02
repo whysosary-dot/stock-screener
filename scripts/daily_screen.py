@@ -245,6 +245,20 @@ def main():
     data_json_str = json.dumps(data_out, ensure_ascii=False, indent=2)
     idx_json_str = json.dumps(idx_out, ensure_ascii=False, indent=2)
 
+    # BASE env가 있으면 로컬 사본에도 저장 (마운트된 워크스페이스 동기화 — 기존 동작 유지)
+    base = os.environ.get('BASE')
+    if base and os.path.isdir(base):
+        try:
+            os.makedirs(os.path.join(base, 'daily'), exist_ok=True)
+            for p, s in ((os.path.join(base, 'data.json'), data_json_str),
+                         (os.path.join(base, 'daily', f'{date}.json'), data_json_str),
+                         (os.path.join(base, 'daily', 'index.json'), idx_json_str)):
+                with open(p, 'w', encoding='utf-8') as f:
+                    f.write(s)
+            print(f'로컬 사본 저장: {base}')
+        except Exception as e:
+            print(f'로컬 사본 저장 실패(무시): {e}')
+
     if push:
         print('5/5 GitHub 푸시...', flush=True)
         msg = (f'📊 스크리닝 업데이트: {date} (KOSPI {summary["kospi_count"]}+KOSDAQ {summary["kosdaq_count"]}'
