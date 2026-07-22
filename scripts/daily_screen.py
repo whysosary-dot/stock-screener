@@ -169,7 +169,7 @@ def main():
     if len(all_stocks) < 1000:
         print(f'❌ 수집 실패 의심 (총 {len(all_stocks)}개) — 중단'); sys.exit(1)
 
-    filtered = [s for s in all_stocks if s['trading_value'] >= 1000]
+    filtered = [s for s in all_stocks if s['trading_value'] >= 0]
     print(f'3/5 필터 통과 {len(filtered)}개 — 수익률 계산...', flush=True)
 
     # 휴장 감지
@@ -195,7 +195,7 @@ def main():
     data_out = {
         'date': date,
         'generated_at': datetime.now().isoformat(),
-        'filter_defaults': {'min_trading_value': 1000, 'min_change_rate': -30.0, 'max_change_rate': 30.0,
+        'filter_defaults': {'min_trading_value': 0, 'min_change_rate': -30.0, 'max_change_rate': 30.0,
                             'max_market_cap': 20000000, 'sort_by': 'change_rate', 'sort_order': 'desc'},
         'total_filtered': len(filtered),
         'stocks': filtered,
