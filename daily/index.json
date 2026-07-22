@@ -1,8 +1,22 @@
 {
-  "updated_at": "2026-07-21T16:39:53.680211",
-  "latest_date": "2026-07-21",
-  "count": 41,
+  "updated_at": "2026-07-22T16:52:30.833436",
+  "latest_date": "2026-07-22",
+  "count": 42,
   "dates": [
+    {
+      "date": "2026-07-22",
+      "label": "2026년 7월 22일 (수)",
+      "sub": "필터통과 66개 · KOSPI 59개 + KOSDAQ 7개 · 전체 수집 4,302개",
+      "total_filtered": 66,
+      "kospi_count": 59,
+      "kosdaq_count": 7,
+      "total_kospi": 2481,
+      "total_kosdaq": 1821,
+      "limit_up": 15,
+      "limit_down": 6,
+      "generated_at": "2026-07-22T16:52:30.471920",
+      "new": true
+    },
     {
       "date": "2026-07-21",
       "label": "2026년 7월 21일 (화)",
@@ -15,7 +29,7 @@
       "limit_up": 20,
       "limit_down": 12,
       "generated_at": "2026-07-21T16:39:53.343844",
-      "new": true
+      "new": false
     },
     {
       "date": "2026-07-20",
