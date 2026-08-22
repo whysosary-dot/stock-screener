@@ -231,6 +231,14 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;hei
         </div>
       </div>
       <div class="filter-item">
+        <div class="filter-label"><span>시총 최소</span><span class="filter-value" id="mcMinLabel">0억</span></div>
+        <div class="filter-row">
+          <input type="range" id="filterMCMin" min="0" max="20000000" step="50000" value="0">
+          <input type="number" class="filter-num" id="filterMCMinNum" min="0" max="20000000" step="1000" value="0">
+          <span class="filter-unit">억</span>
+        </div>
+      </div>
+      <div class="filter-item">
         <div class="filter-label"><span>시총 최대</span><span class="filter-value" id="mcLabel">2,000조</span></div>
         <div class="filter-row">
           <input type="range" id="filterMC" min="5000" max="20000000" step="50000" value="20000000">
@@ -520,24 +528,37 @@ function initFilterToggle(){
 function setupFilters(){
   var tvS=document.getElementById('filterTV'),crS=document.getElementById('filterCR'),mcS=document.getElementById('filterMC');
   var tvN=document.getElementById('filterTVNum'),crN=document.getElementById('filterCRNum'),mcN=document.getElementById('filterMCNum');
+  var mnS=document.getElementById('filterMCMin'),mnN=document.getElementById('filterMCMinNum');
   function uTV(v){ document.getElementById('tvLabel').textContent=Number(v).toLocaleString()+'억'; applyFilters(); renderStockCards(); renderHeader(); }
   function uCR(v){ var n=Number(v); document.getElementById('crLabel').textContent=(n>=0?'+':'')+n+'%'; applyFilters(); renderStockCards(); renderHeader(); }
-  function uMC(v){ var n=Number(v); document.getElementById('mcLabel').textContent=n>=10000?Math.round(n/10000).toLocaleString()+'조':n.toLocaleString()+'억'; applyFilters(); renderStockCards(); renderHeader(); }
-  uTV(tvS.value); uCR(crS.value); uMC(mcS.value);
+  function fmtMC(n){ return n>=10000?Math.round(n/10000).toLocaleString()+'조':n.toLocaleString()+'억'; }
+  function uMC(v){ var n=Number(v); document.getElementById('mcLabel').textContent=fmtMC(n); applyFilters(); renderStockCards(); renderHeader(); }
+  function uMCMin(v){ var n=Number(v); document.getElementById('mcMinLabel').textContent=fmtMC(n); applyFilters(); renderStockCards(); renderHeader(); }
+  // 최소가 최대를 넘으면 결과가 항상 0이 되므로, 넘는 쪽을 밀어올려 범위를 유지한다
+  function syncMC(from){
+    var lo=Number(mnS.value), hi=Number(mcS.value);
+    if(lo<=hi) return;
+    if(from==='min'){ mcS.value=lo; mcN.value=lo; uMC(lo); }
+    else{ mnS.value=hi; mnN.value=hi; uMCMin(hi); }
+  }
+  uTV(tvS.value); uCR(crS.value); uMC(mcS.value); uMCMin(mnS.value);
   tvS.oninput=function(){ tvN.value=tvS.value; uTV(tvS.value); };
   crS.oninput=function(){ crN.value=crS.value; uCR(crS.value); };
-  mcS.oninput=function(){ mcN.value=mcS.value; uMC(mcS.value); };
+  mcS.oninput=function(){ mcN.value=mcS.value; uMC(mcS.value); syncMC('max'); };
+  mnS.oninput=function(){ mnN.value=mnS.value; uMCMin(mnS.value); syncMC('min'); };
   tvN.oninput=function(){ tvS.value=tvN.value; uTV(tvN.value); };
   crN.oninput=function(){ crS.value=crN.value; uCR(crN.value); };
-  mcN.oninput=function(){ mcS.value=mcN.value; uMC(mcN.value); };
+  mcN.oninput=function(){ mcS.value=mcN.value; uMC(mcN.value); syncMC('max'); };
+  mnN.oninput=function(){ mnS.value=mnN.value; uMCMin(mnN.value); syncMC('min'); };
 }
 
 function applyFilters(){
   var minTV=Number(document.getElementById('filterTV').value);
   var minCR=Number(document.getElementById('filterCR').value);
   var maxMC=Number(document.getElementById('filterMC').value);
+  var minMC=Number(document.getElementById('filterMCMin').value);
   FILTERED = ALL_STOCKS.filter(function(s){
-    return s.trading_value>=minTV && s.change_rate>=minCR && s.market_cap<=maxMC;
+    return s.trading_value>=minTV && s.change_rate>=minCR && s.market_cap<=maxMC && s.market_cap>=minMC;
   });
   sortStocks();
 }
