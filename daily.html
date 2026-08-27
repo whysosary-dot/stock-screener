@@ -536,7 +536,7 @@ function setupFilters(){
   function uMCMin(v){ var n=Number(v); document.getElementById('mcMinLabel').textContent=fmtMC(n); applyFilters(); renderStockCards(); renderHeader(); }
   // 최소가 최대를 넘으면 결과가 항상 0이 되므로, 넘는 쪽을 밀어올려 범위를 유지한다
   function syncMC(from){
-    var lo=Number(mnS.value), hi=Number(mcS.value);
+    var lo=Number(mnN.value)||0, hi=Number(mcN.value)||0;
     if(lo<=hi) return;
     if(from==='min'){ mcS.value=lo; mcN.value=lo; uMC(lo); }
     else{ mnS.value=hi; mnN.value=hi; uMCMin(hi); }
@@ -553,10 +553,16 @@ function setupFilters(){
 }
 
 function applyFilters(){
-  var minTV=Number(document.getElementById('filterTV').value);
-  var minCR=Number(document.getElementById('filterCR').value);
-  var maxMC=Number(document.getElementById('filterMC').value);
-  var minMC=Number(document.getElementById('filterMCMin').value);
+  // ⚠️ 반드시 숫자 입력칸(*Num)을 읽는다. 슬라이더는 step 단위로 값이 스냅되어
+  //    (예: step=50000 슬라이더에 2000 대입 → 0) 직접 입력한 값이 유실된다.
+  function fv(numId, sliderId){
+    var n=document.getElementById(numId).value;
+    return (n===''||isNaN(Number(n))) ? Number(document.getElementById(sliderId).value) : Number(n);
+  }
+  var minTV=fv('filterTVNum','filterTV');
+  var minCR=fv('filterCRNum','filterCR');
+  var maxMC=fv('filterMCNum','filterMC');
+  var minMC=fv('filterMCMinNum','filterMCMin');
   FILTERED = ALL_STOCKS.filter(function(s){
     return s.trading_value>=minTV && s.change_rate>=minCR && s.market_cap<=maxMC && s.market_cap>=minMC;
   });
