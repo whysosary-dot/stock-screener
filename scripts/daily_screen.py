@@ -44,42 +44,46 @@ def parse_change_rate(col4):
     except Exception:
         return None
 
-def collect_market(sosok, market_name):
-    stocks, seen, page = [], set(), 1
+def collect_market(market_name):
+    """market_name: 'KOSPI' or 'KOSDAQ'.
+    구 finance.naver.com/sise/sise_market_sum.naver 는 stock.naver.com 신규 UI로
+    리다이렉트되며 정적 HTML에 표가 없어 스크레이핑 불가 (2026-09 확인).
+    대체: m.stock.naver.com 모바일 시가총액 API (JSON) 사용."""
+    stocks, page, page_size, total = [], 1, 100, None
     while True:
-        r = fetch(f'https://finance.naver.com/sise/sise_market_sum.naver?sosok={sosok}&page={page}')
+        r = fetch(f'https://m.stock.naver.com/api/stocks/marketValue/{market_name}?page={page}&pageSize={page_size}')
         if not r:
             break
-        soup = BeautifulSoup(r.content.decode('euc-kr', 'ignore'), 'html.parser')
-        rows = soup.select('table.type_2 tr')
-        got = 0
-        for row in rows:
-            cols = row.find_all('td')
-            if len(cols) < 10:
+        try:
+            d = r.json()
+        except Exception:
+            break
+        items = d.get('stocks') or []
+        if not items:
+            break
+        if total is None:
+            total = d.get('totalCount', 0)
+        for it in items:
+            if it.get('stockEndType') != 'stock':
                 continue
-            a = cols[1].find('a')
-            if not a or 'code=' not in (a.get('href') or ''):
-                continue
-            ticker = a['href'].split('code=')[1][:6]
-            if ticker in seen:
-                continue
-            seen.add(ticker)
             try:
-                price = int(cols[2].text.strip().replace(',', ''))
-                volume = int(cols[9].text.strip().replace(',', '')) if cols[9].text.strip() else 0
-                mcap = int(cols[6].text.strip().replace(',', '')) if cols[6].text.strip() else 0
+                ticker = it['itemCode']
+                price = int(it['closePriceRaw'])
+                change_rate = float(it['fluctuationsRatio'])
+                mcap = round(int(it['marketValueRaw']) / 100000000)
+                volume = int(it['accumulatedTradingVolumeRaw'])
+                trading_value = round(int(it['accumulatedTradingValueRaw']) / 100000000, 1)
             except Exception:
                 continue
             stocks.append({
-                'ticker': ticker, 'name': a.text.strip(), 'market': market_name,
-                'price': price, 'change_rate': parse_change_rate(cols[4]),
+                'ticker': ticker, 'name': it.get('stockName', ''), 'market': market_name,
+                'price': price, 'change_rate': change_rate,
                 'market_cap': mcap, 'volume': volume,
-                'trading_value': round(price * volume / 100000000, 1),
+                'trading_value': trading_value,
             })
-            got += 1
-        if got == 0:
-            break
         page += 1
+        if total is not None and (page - 1) * page_size >= total:
+            break
         time.sleep(0.05)
     return stocks
 
@@ -160,10 +164,10 @@ def main():
     date = datetime.now().strftime('%Y-%m-%d')
 
     print('1/5 KOSPI 수집...', flush=True)
-    kospi = collect_market(0, 'KOSPI')
+    kospi = collect_market('KOSPI')
     print(f'  KOSPI {len(kospi)}개', flush=True)
     print('2/5 KOSDAQ 수집...', flush=True)
-    kosdaq = collect_market(1, 'KOSDAQ')
+    kosdaq = collect_market('KOSDAQ')
     print(f'  KOSDAQ {len(kosdaq)}개', flush=True)
     all_stocks = kospi + kosdaq
     if len(all_stocks) < 1000:
