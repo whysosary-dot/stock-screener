@@ -9,13 +9,13 @@ stock-screener 일일 스크리닝 파이프라인 (SKILL.md 전체 로직의 �
 
 - 수집: finance.naver.com sise_market_sum (KOSPI+KOSDAQ 전종목)
 - 필터: 거래대금 1,000억↑
-- 수익률: sise_day page 1~9, table.type2, 종가 cols[1], ThreadPool 16
+- 수익률: api.finance.naver.com siseJson (일별 OHLCV JSON) 30/60/90일 전 종가, ThreadPool 16
 - 휴장 감지: 필터 통과 종목의 80%+ 등락률 0.00% → 휴장으로 판단, 푸시 스킵
 - 푸시: data.json, daily/{date}.json, daily/index.json (GitHub Contents API)
 출력: 요약 수치만 (하이라이트 / 상·하한가 / 커밋 결과)
 """
 import json, os, re, sys, time, base64
-from datetime import datetime
+from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor
 
 import requests
@@ -88,38 +88,38 @@ def collect_market(market_name):
     return stocks
 
 def get_returns(ticker, price):
-    """30/60/90일 전 종가 → 1/2/3개월 수익률"""
-    targets = {'1m': 30, '2m': 60, '3m': 90}
-    found = {}
+    """30/60/90일 전(달력일) 종가 → 1/2/3개월 수익률.
+    finance.naver.com/item/sise_day 는 2026-09 부터 신규 UI 로 리다이렉트되어 표가 없다.
+    api.finance.naver.com/siseJson.naver (일별 OHLCV JSON) 로 대체."""
     today = datetime.now()
-    for page in range(1, 10):
-        r = fetch(f'https://finance.naver.com/item/sise_day.naver?code={ticker}&page={page}')
-        if not r:
-            break
-        soup = BeautifulSoup(r.content.decode('euc-kr', 'ignore'), 'html.parser')
-        rows = soup.select('table.type2 tr')
-        for row in rows:
-            cols = row.find_all('td')
-            if len(cols) < 7:
-                continue
-            date_text = cols[0].text.strip()
-            if not date_text or '.' not in date_text:
-                continue
-            try:
-                row_date = datetime.strptime(date_text, '%Y.%m.%d')
-                p = int(cols[1].text.strip().replace(',', ''))
-            except Exception:
-                continue
-            days = (today - row_date).days
-            for k, target in targets.items():
-                if k not in found and days >= target:
-                    found[k] = p
-        if len(found) == 3:
-            break
-    out = {}
-    for k in ('1m', '2m', '3m'):
-        past = found.get(k)
-        out[f'return_{k}'] = round((price - past) / past * 100, 1) if past else None
+    start = (today - timedelta(days=110)).strftime('%Y%m%d')
+    end = today.strftime('%Y%m%d')
+    r = fetch(f'https://api.finance.naver.com/siseJson.naver?symbol={ticker}&requestType=1'
+              f'&startTime={start}&endTime={end}&timeframe=day')
+    out = {'return_1m': None, 'return_2m': None, 'return_3m': None}
+    if not r:
+        return out
+    try:
+        rows = [json.loads(m) for m in re.findall(r'\["\d{8}".*?\]', r.text)]
+    except Exception:
+        return out
+    closes = []
+    for row in rows:
+        try:
+            closes.append((datetime.strptime(str(row[0]), '%Y%m%d'), float(row[4])))
+        except Exception:
+            continue
+    if not closes:
+        return out
+    for k, target in (('1m', 30), ('2m', 60), ('3m', 90)):
+        past = None
+        for d, c in closes:                       # 오름차순 — target 일 이전의 마지막 거래일 종가
+            if (today - d).days >= target and c > 0:
+                past = c
+            else:
+                break
+        if past:
+            out[f'return_{k}'] = round((price - past) / past * 100, 1)
     return out
 
 def build_highlights(stocks):
