@@ -126,6 +126,50 @@ def grade(s):
     return None, ""
 
 
+def high52(rows):
+    """52주 신고가 판정. rows 최소 120일. 반환 None 이면 해당 없음."""
+    if len(rows) < 120:
+        return None
+    px = [r[1] for r in rows]
+    vol = [r[2] for r in rows]
+    n = len(px)
+    prev_hi = max(px[max(0, n - 253):n - 1])          # 오늘 제외 직전 252거래일 최고 종가
+    last = px[-1]
+    if last < prev_hi * 0.97:
+        return None
+    is_high = last >= prev_hi
+    # 연속 신고가 일수
+    streak = 0
+    i = n - 1
+    while i >= 120 and px[i] >= max(px[max(0, i - 252):i]):
+        streak += 1
+        i -= 1
+    # 이번 신고가 구간 이전에 마지막으로 신고가였던 날 → 며칠 만의 신고가인지
+    gap = None
+    if is_high:
+        j = n - 1 - streak
+        while j >= 120:
+            if px[j] >= max(px[max(0, j - 252):j]):
+                break
+            j -= 1
+        gap = (n - 1 - streak) - j if j >= 120 else n  # 이력 내 처음이면 n(=이력 길이 이상)
+    val = [px[k] * vol[k] / 1e8 for k in range(n)]
+    chg = [0.0] + [(px[k] / px[k - 1] - 1) * 100 for k in range(1, n)]
+    val20 = med(val[-20:])
+    base = med(val[-60:-10]) or med(val[:-10])
+    acc = (med(val[-10:]) / base) if base > 0 else 0.0
+    return dict(
+        kind=("breakout" if is_high and (gap is None or gap >= 120) else "high" if is_high else "near"),
+        is_high=is_high, streak=streak, gap=gap,
+        prev_hi=prev_hi, px=last, chg=round(chg[-1], 2),
+        dist=round((last / prev_hi - 1) * 100, 1),                # 직전 고점 대비 (+: 돌파폭, -: 근접)
+        r20=round((last / px[-21] - 1) * 100, 1), r60=round((last / px[-61] - 1) * 100, 1),
+        r250=round((last / px[max(0, n - 251)] - 1) * 100, 1),
+        val20=round(val20, 1), acc=round(acc, 2), mx20=round(max(abs(c) for c in chg[-20:]), 1),
+        burst=round(val[-1] / (med(val[-21:-1]) or 1e-9), 1),
+        spark=[round(p) for p in px[-60:]], date=rows[-1][0])
+
+
 def main():
     # 1) 최신 스크리너 스냅샷
     idx = fetch_json(f"{RAW}/daily/index.json")
@@ -134,35 +178,51 @@ def main():
     stocks = day["stocks"]
 
     # 2) 값싼 사전 필터 (네이버 호출 수를 줄이기 위한 것 — 시총 제한은 없음)
+    has_ret = sum(1 for s in stocks if s.get("return_1m") is not None) > len(stocks) * 0.5
     cand = [s for s in stocks
             if (s.get("trading_value") or 0) >= VAL20_MIN
-            and s.get("return_1m") is not None
-            and -10 <= s["return_1m"] <= 40
-            and (s.get("return_3m") or 0) <= 60]
+            and (not has_ret                                   # 스냅샷에 수익률이 없으면 사전 필터 생략
+                 or (s.get("return_1m") is not None
+                     and -10 <= s["return_1m"] <= 40
+                     and (s.get("return_3m") or 0) <= 60))]
     if LIMIT:
         cand = cand[:LIMIT]
     print(f"기준일 {date} · 전체 {len(stocks)} → 후보 {len(cand)}종목 이력 수집")
 
-    # 3) 네이버 일별 이력
+    # 3) 네이버 일별 이력 — 전 종목 (52주 신고가는 전 종목, 축적 스캔은 후보만)
+    cand_set = {s["ticker"] for s in cand}
+    universe = [s for s in stocks if (s.get("trading_value") or 0) > 0]
+    if LIMIT:
+        universe = [s for s in universe if s["ticker"] in cand_set][:LIMIT]
+
     def work(s):
         rows = naver_hist(s["ticker"])
         if not rows:
-            return None
-        a = analyse(rows)
-        if not a:
-            return None
-        g, why = grade(a)
-        chase = a["burst15"] >= CHASE_BURST and a["r20"] / 100 >= CHASE_R20
-        if not g and not chase:
-            return None
-        a.update(ticker=s["ticker"], name=s["name"], market=s["market"],
-                 mcap=s.get("market_cap"), grade=g, why=why, chase=chase)
-        return a
+            return None, None
+        sw = None
+        if s["ticker"] in cand_set:
+            a = analyse(rows)
+            if a:
+                g, why = grade(a)
+                chase = a["burst15"] >= CHASE_BURST and a["r20"] / 100 >= CHASE_R20
+                if g or chase:
+                    a.update(ticker=s["ticker"], name=s["name"], market=s["market"],
+                             mcap=s.get("market_cap"), grade=g, why=why, chase=chase)
+                    sw = a
+        hh = high52(rows)
+        if hh:
+            if hh["val20"] < VAL20_MIN:
+                hh = None
+            else:
+                hh.update(ticker=s["ticker"], name=s["name"], market=s["market"], mcap=s.get("market_cap"))
+        return sw, hh
 
     t0 = time.time()
     with ThreadPoolExecutor(6) as ex:
-        res = [r for r in ex.map(work, cand) if r]
-    print(f"  수집 {time.time()-t0:.0f}초 · 신호 {len(res)}건")
+        pairs = list(ex.map(work, universe))
+    res = [p[0] for p in pairs if p[0]]
+    h52 = [p[1] for p in pairs if p[1]]
+    print(f"  수집 {time.time()-t0:.0f}초 · {len(universe)}종목 · 축적 신호 {len(res)}건 · 52주 신고가/근접 {len(h52)}건")
 
     order = {"S": 0, "A": 1, "B": 2, "C": 3, None: 9}
     items = sorted([r for r in res if r["grade"]],
@@ -171,15 +231,19 @@ def main():
                    key=lambda r: -r["burst15"])[:20]
 
     counts = {g: sum(1 for r in items if r["grade"] == g) for g in ("S", "A", "B", "C")}
+    # 52주 신고가: 돌파(장기 박스 첫 돌파) → 신고가 → 근접 순, 각 안에서는 거래대금 순
+    kind_order = {"breakout": 0, "high": 1, "near": 2}
+    h52.sort(key=lambda r: (kind_order[r["kind"]], -(r["val20"] or 0)))
+    h52_counts = {k: sum(1 for r in h52 if r["kind"] == k) for k in ("breakout", "high", "near")}
     # 실제 시세 기준일 = 네이버 이력의 마지막 날 (스크리너 스냅샷보다 최신일 수 있음)
-    px_dates = [r["date"] for r in res if r.get("date")]
+    px_dates = [r["date"] for r in res + h52 if r.get("date")]
     if px_dates:
         top = max(px_dates)
         date = f"{top[:4]}-{top[4:6]}-{top[6:]}"
     out = {
         "date": date, "screener_date": day.get("date"),
         "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
-        "universe": len(stocks), "scanned": len(cand),
+        "universe": len(stocks), "scanned": len(cand), "scanned_all": len(universe),
         "counts": counts, "chase_count": len(chase),
         "thresholds": {"acc_S": ACC_S, "acc_A": ACC_A, "acc_C": ACC_C,
                        "mx_tight": MX_TIGHT, "mx_loose": MX_LOOSE,
@@ -191,9 +255,13 @@ def main():
                      "B": {"med20": 1.99, "win": 57}, "C": {"med20": 2.38, "win": 59},
                      "chase": {"med20": -5.09, "win": 39}},
         "items": items, "chase": chase,
+        "high52_counts": h52_counts, "high52": h52,
     }
 
     print(f"  S {counts['S']} · A {counts['A']} · B {counts['B']} · C {counts['C']} · 추격주의 {len(chase)}")
+    print(f"  52주 신고가: 첫 돌파 {h52_counts['breakout']} · 신고가 {h52_counts['high']} · 근접(-3%) {h52_counts['near']}")
+    for r in [x for x in h52 if x["kind"] == "breakout"][:8]:
+        print(f"   [돌파] {r['name']}({r['ticker']}) {r['gap']}일 만의 신고가 · 연속 {r['streak']}일 · 20일 {r['r20']:+.1f}% · 거래대금 {r['val20']}억")
     for r in items[:12]:
         print(f"   [{r['grade']}] {r['name']}({r['ticker']}) 축적 {r['acc']}x · 20일 {r['r20']:+.1f}% "
               f"· 3개월 {r['r60']:+.1f}% · 최대등락 {r['mx20']}%")
