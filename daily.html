@@ -94,6 +94,10 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;hei
 .tab-btn.tab-down.active{color:var(--down);border-bottom-color:var(--down)}
 .tab-btn.tab-fav.active{color:var(--gold);border-bottom-color:var(--gold)}
 .tab-btn.tab-swing.active{color:#16a34a;border-bottom-color:#16a34a}
+.tab-btn.tab-high.active{color:#b45309;border-bottom-color:#b45309}
+.sw-badge.k-breakout{background:#dc2626}.sw-badge.k-high{background:#b45309}.sw-badge.k-near{background:#94a3b8}
+.sw-card.k-breakout{border-color:#dc2626;box-shadow:0 0 0 1px rgba(220,38,38,.25)}
+.sw-card.k-high{border-color:rgba(180,83,9,.6)}
 .sw-note{background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.25);border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:13px;line-height:1.7;color:var(--text)}
 .sw-note b{color:#16a34a}
 .sw-note table{border-collapse:collapse;margin-top:8px;font-size:12px}
@@ -271,6 +275,7 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;hei
     <button class="tab-btn tab-up" data-tab="upper">🚀 상한가 (+27%↑)</button>
     <button class="tab-btn tab-down" data-tab="lower">💥 하한가 (-27%↓)</button>
     <button class="tab-btn tab-swing" data-tab="swing" title="당일 등락률로는 안 보이는, 한 달에 걸쳐 조용히 오르는 종목">🌱 1개월 추세</button>
+    <button class="tab-btn tab-high" data-tab="high52" title="52주(252거래일) 종가 기준 신고가 · 근접(-3% 이내)">🏔 52주 신고가</button>
     <button class="tab-btn tab-fav" data-tab="fav">⭐ 즐겨찾기 <span class="fav-tab-badge" id="favTabBadge" style="display:none"></span></button>
   </div>
 
@@ -316,6 +321,24 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;hei
       <div class="loading"><div class="spinner"></div><span>스캔 결과 로딩 중…</span></div>
     </div>
     <div id="swingChase"></div>
+  </div>
+
+  <div class="panel" id="panel-high52">
+    <div id="highHead"></div>
+    <div class="sort-bar" id="highSort">
+      <button class="sort-btn active" data-hk="all">전체</button>
+      <button class="sort-btn" data-hk="breakout">🚀 첫 돌파</button>
+      <button class="sort-btn" data-hk="high">신고가</button>
+      <button class="sort-btn" data-hk="near">근접(-3%)</button>
+      <span style="width:12px"></span>
+      <button class="sort-btn active" data-hs="val20">거래대금순</button>
+      <button class="sort-btn" data-hs="mcap">시총순</button>
+      <button class="sort-btn" data-hs="gap">오랜만순</button>
+      <button class="sort-btn" data-hs="r20">20일 수익률순</button>
+    </div>
+    <div id="highGrid" class="stock-grid">
+      <div class="loading"><div class="spinner"></div><span>스캔 결과 로딩 중…</span></div>
+    </div>
   </div>
 
   <div class="panel" id="panel-fav">
@@ -669,6 +692,55 @@ document.addEventListener('click', function(e){
   b.classList.add('active'); SWING_SORT=b.dataset.sw; renderSwing();
 });
 
+/* ───────── 🏔 52주 신고가 ───────── */
+var HIGH_KIND='all', HIGH_SORT='val20';
+var KIND_LABEL={breakout:'첫 돌파', high:'신고가', near:'근접'};
+function highCard(r){
+  var mc = r.mcap ? (r.mcap>=10000 ? (r.mcap/10000).toFixed(1)+'조' : Math.round(r.mcap).toLocaleString()+'억') : '-';
+  var gapTxt = r.kind==='near' ? '직전 고점 대비 '+swNum(r.dist,1)+'%'
+             : (r.gap>=250 ? '1년 넘게 만의 신고가' : r.gap+'거래일 만의 신고가');
+  return '<div class="sw-card k-'+r.kind+'">'+
+    '<div class="sw-top"><span class="sw-badge k-'+r.kind+'">'+KIND_LABEL[r.kind]+'</span>'+
+      '<a class="sw-name" href="https://m.stock.naver.com/domestic/stock/'+r.ticker+'/total" target="_blank" rel="noopener">'+r.name+'</a>'+
+      '<span class="sw-sub">'+r.ticker+' · '+r.market+' · '+mc+'</span></div>'+
+    swSpark(r.spark)+
+    '<div class="sw-metrics">'+
+      '<div>당일<span style="color:'+(r.chg>=0?'#ef4444':'#3b82f6')+'">'+(r.chg>=0?'+':'')+swNum(r.chg,1)+'%</span></div>'+
+      '<div>20일<span style="color:'+(r.r20>=0?'#ef4444':'#3b82f6')+'">'+(r.r20>=0?'+':'')+swNum(r.r20,1)+'%</span></div>'+
+      '<div>1년<span style="color:'+(r.r250>=0?'#ef4444':'#3b82f6')+'">'+(r.r250>=0?'+':'')+swNum(r.r250,0)+'%</span></div>'+
+      '<div>연속<span>'+(r.streak||0)+'일</span></div>'+
+    '</div>'+
+    '<div class="sw-why">'+gapTxt+' · 종가 '+Number(r.px).toLocaleString()+'원 (직전 52주 고점 '+Number(r.prev_hi).toLocaleString()+'원, '+(r.dist>=0?'+':'')+swNum(r.dist,1)+'%)<br>'+
+      '거래대금 20일 '+swNum(r.val20,1)+'억 · 축적배수 '+swNum(r.acc,1)+'x · 당일 대금 '+swNum(r.burst,1)+'배 · 20일 최대등락 '+swNum(r.mx20,1)+'%</div>'+
+  '</div>';
+}
+function renderHigh(){
+  if(!SWING) return;
+  var all=(SWING.high52||[]).slice();
+  var items = HIGH_KIND==='all' ? all : all.filter(function(r){return r.kind===HIGH_KIND;});
+  if(HIGH_SORT==='gap') items.sort(function(a,b){ return ((b.gap||0)-(a.gap||0)) || (b.val20-a.val20); });
+  else items.sort(function(a,b){ return ((b[HIGH_SORT]||0)-(a[HIGH_SORT]||0)); });
+  var c=SWING.high52_counts||{};
+  document.getElementById('highHead').innerHTML =
+    '<div class="sw-note"><b>52주(252거래일) 종가 기준.</b> 오늘 종가가 직전 1년 최고 종가를 넘으면 <b>신고가</b>, 그중 120거래일 이상 만에 처음 넘은 것은 <b style="color:#dc2626">첫 돌파</b>(장기 박스 탈출), 고점의 -3% 이내면 <b style="color:#94a3b8">근접</b>. 시총 제한 없음, 20일 평균 거래대금 0.5억 이상만.'+
+    '<div style="margin-top:8px;font-size:11.5px">기준일 '+SWING.date+' · 스캔 '+(SWING.scanned_all||SWING.scanned)+'종목 · 첫 돌파 '+(c.breakout||0)+' · 신고가 '+(c.high||0)+' · 근접 '+(c.near||0)+'</div></div>';
+  document.getElementById('highGrid').innerHTML = items.length
+    ? items.map(highCard).join('')
+    : '<div class="loading"><span>해당 종목이 없습니다.</span></div>';
+}
+function loadHigh(){
+  if(SWING){ renderHigh(); return; }
+  fetch('swing/latest.json?cb='+Date.now()).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(j){ SWING=j; renderHigh(); })
+    .catch(function(e){ document.getElementById('highGrid').innerHTML='<div class="loading"><span>스캔 데이터를 아직 만들지 못했습니다 ('+e.message+').</span></div>'; });
+}
+document.addEventListener('click', function(e){
+  var b=e.target.closest('#highSort .sort-btn'); if(!b) return;
+  if(b.dataset.hk){ document.querySelectorAll('#highSort [data-hk]').forEach(function(x){x.classList.remove('active');}); b.classList.add('active'); HIGH_KIND=b.dataset.hk; }
+  if(b.dataset.hs){ document.querySelectorAll('#highSort [data-hs]').forEach(function(x){x.classList.remove('active');}); b.classList.add('active'); HIGH_SORT=b.dataset.hs; }
+  renderHigh();
+});
+
 /* ───────── 탭 ───────── */
 function setupTabs(){
   document.querySelectorAll('.tab-btn').forEach(function(btn){
@@ -682,6 +754,7 @@ function setupTabs(){
       if(CURRENT_TAB==='lower') renderLimitPanel('lower');
       if(CURRENT_TAB==='fav') renderFavPanel();
       if(CURRENT_TAB==='swing') loadSwing();
+      if(CURRENT_TAB==='high52') loadHigh();
     });
   });
 }
