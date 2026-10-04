@@ -96,6 +96,7 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;hei
 .tab-btn.tab-swing.active{color:#16a34a;border-bottom-color:#16a34a}
 .tab-btn.tab-high.active{color:#b45309;border-bottom-color:#b45309}
 .sw-badge.k-breakout{background:#dc2626}.sw-badge.k-high{background:#b45309}.sw-badge.k-near{background:#94a3b8}
+.sw-badge.k-h5{background:#0ea5e9}.sw-badge.k-h10{background:#6366f1}
 .sw-card.k-breakout{border-color:#dc2626;box-shadow:0 0 0 1px rgba(220,38,38,.25)}
 .sw-card.k-high{border-color:rgba(180,83,9,.6)}
 .sw-note{background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.25);border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:13px;line-height:1.7;color:var(--text)}
@@ -326,6 +327,10 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;hei
   <div class="panel" id="panel-high52">
     <div id="highHead"></div>
     <div class="sort-bar" id="highSort">
+      <button class="sort-btn active" data-hw="52">52주</button>
+      <button class="sort-btn" data-hw="10">10일</button>
+      <button class="sort-btn" data-hw="5">5일</button>
+      <span style="width:12px"></span>
       <button class="sort-btn active" data-hk="all">전체</button>
       <button class="sort-btn" data-hk="breakout">🚀 첫 돌파</button>
       <button class="sort-btn" data-hk="high">신고가</button>
@@ -693,12 +698,14 @@ document.addEventListener('click', function(e){
 });
 
 /* ───────── 🏔 52주 신고가 ───────── */
-var HIGH_KIND='all', HIGH_SORT='val20';
-var KIND_LABEL={breakout:'첫 돌파', high:'신고가', near:'근접'};
+var HIGH_KIND='all', HIGH_SORT='val20', HIGH_WIN='52';
+var KIND_LABEL={breakout:'첫 돌파', high:'신고가', near:'근접', h5:'5일 신고가', h10:'10일 신고가'};
 function highCard(r){
   var mc = r.mcap ? (r.mcap>=10000 ? (r.mcap/10000).toFixed(1)+'조' : Math.round(r.mcap).toLocaleString()+'억') : '-';
-  var gapTxt = r.kind==='near' ? '직전 고점 대비 '+swNum(r.dist,1)+'%'
+  var gapTxt = (r.kind==='h5'||r.kind==='h10') ? ('52주 고점 대비 '+(r.dist52>=0?'+':'')+swNum(r.dist52,1)+'%'+(r.dist52>=0?' (52주 신고가)':''))
+             : r.kind==='near' ? '직전 고점 대비 '+swNum(r.dist,1)+'%'
              : (r.gap>=250 ? '1년 넘게 만의 신고가' : r.gap+'거래일 만의 신고가');
+  var hiLab = (r.kind==='h5'||r.kind==='h10') ? '직전 '+(r.kind==='h5'?5:10)+'일 고점 ' : '직전 52주 고점 ';
   return '<div class="sw-card k-'+r.kind+'">'+
     '<div class="sw-top"><span class="sw-badge k-'+r.kind+'">'+KIND_LABEL[r.kind]+'</span>'+
       '<a class="sw-name" href="https://m.stock.naver.com/domestic/stock/'+r.ticker+'/total" target="_blank" rel="noopener">'+r.name+'</a>'+
@@ -710,14 +717,26 @@ function highCard(r){
       '<div>1년<span style="color:'+(r.r250>=0?'#ef4444':'#3b82f6')+'">'+(r.r250>=0?'+':'')+swNum(r.r250,0)+'%</span></div>'+
       '<div>연속<span>'+(r.streak||0)+'일</span></div>'+
     '</div>'+
-    '<div class="sw-why">'+gapTxt+' · 종가 '+Number(r.px).toLocaleString()+'원 (직전 52주 고점 '+Number(r.prev_hi).toLocaleString()+'원, '+(r.dist>=0?'+':'')+swNum(r.dist,1)+'%)<br>'+
+    '<div class="sw-why">'+gapTxt+' · 종가 '+Number(r.px).toLocaleString()+'원 ('+hiLab+Number(r.prev_hi).toLocaleString()+'원, '+(r.dist>=0?'+':'')+swNum(r.dist,1)+'%)<br>'+
       '거래대금 20일 '+swNum(r.val20,1)+'억 · 축적배수 '+swNum(r.acc,1)+'x · 당일 대금 '+swNum(r.burst,1)+'배 · 20일 최대등락 '+swNum(r.mx20,1)+'%</div>'+
   '</div>';
 }
 function renderHigh(){
   if(!SWING) return;
-  var all=(SWING.high52||[]).slice();
-  var items = HIGH_KIND==='all' ? all : all.filter(function(r){return r.kind===HIGH_KIND;});
+  var isShort = HIGH_WIN!=='52';
+  document.querySelectorAll('#highSort [data-hk]').forEach(function(b){ b.style.display = isShort ? 'none' : ''; });
+  var all = isShort ? (SWING['high'+HIGH_WIN]||[]).slice() : (SWING.high52||[]).slice();
+  var items = (isShort || HIGH_KIND==='all') ? all : all.filter(function(r){return r.kind===HIGH_KIND;});
+  if(isShort){
+    var tot = SWING['high'+HIGH_WIN+'_total']||all.length;
+    document.getElementById('highHead').innerHTML =
+      '<div class="sw-note"><b>'+HIGH_WIN+'일 신고가</b> — 오늘 종가가 직전 '+HIGH_WIN+'거래일 최고 종가 이상인 종목. 짧은 창이라 종목이 많으므로 20일 평균 거래대금 1억 이상, 거래대금 상위 200개만 저장. 카드의 "52주 고점 대비"가 +면 동시에 52주 신고가.'+
+      '<div style="margin-top:8px;font-size:11.5px">기준일 '+SWING.date+' · 전체 '+tot+'종목 중 '+all.length+'개 표시</div></div>';
+    if(HIGH_SORT==='gap') HIGH_SORT='val20';
+    items.sort(function(a,b){ return ((b[HIGH_SORT]||0)-(a[HIGH_SORT]||0)); });
+    document.getElementById('highGrid').innerHTML = items.length ? items.map(highCard).join('') : '<div class="loading"><span>해당 종목이 없습니다.</span></div>';
+    return;
+  }
   if(HIGH_SORT==='gap') items.sort(function(a,b){ return ((b.gap||0)-(a.gap||0)) || (b.val20-a.val20); });
   else items.sort(function(a,b){ return ((b[HIGH_SORT]||0)-(a[HIGH_SORT]||0)); });
   var c=SWING.high52_counts||{};
@@ -736,6 +755,7 @@ function loadHigh(){
 }
 document.addEventListener('click', function(e){
   var b=e.target.closest('#highSort .sort-btn'); if(!b) return;
+  if(b.dataset.hw){ document.querySelectorAll('#highSort [data-hw]').forEach(function(x){x.classList.remove('active');}); b.classList.add('active'); HIGH_WIN=b.dataset.hw; }
   if(b.dataset.hk){ document.querySelectorAll('#highSort [data-hk]').forEach(function(x){x.classList.remove('active');}); b.classList.add('active'); HIGH_KIND=b.dataset.hk; }
   if(b.dataset.hs){ document.querySelectorAll('#highSort [data-hs]').forEach(function(x){x.classList.remove('active');}); b.classList.add('active'); HIGH_SORT=b.dataset.hs; }
   renderHigh();
