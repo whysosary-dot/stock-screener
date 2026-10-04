@@ -170,6 +170,36 @@ def high52(rows):
         spark=[round(p) for p in px[-60:]], date=rows[-1][0])
 
 
+def short_high(rows, n):
+    """n일 신고가: 오늘 종가 >= 직전 n거래일 최고 종가. 해당 없으면 None."""
+    if len(rows) < max(n + 1, 65):
+        return None
+    px = [r[1] for r in rows]; vol = [r[2] for r in rows]; L = len(px)
+    prev = max(px[L - 1 - n:L - 1])
+    last = px[-1]
+    if last < prev:
+        return None
+    val = [px[k] * vol[k] / 1e8 for k in range(L)]
+    chg = [0.0] + [(px[k] / px[k - 1] - 1) * 100 for k in range(1, L)]
+    val20 = med(val[-20:])
+    if val20 < 1.0:                       # 단기 신고가는 종목 수가 많아 유동성 하한 1억
+        return None
+    base = med(val[-60:-10]) or med(val[:-10])
+    acc = (med(val[-10:]) / base) if base > 0 else 0.0
+    hi52 = max(px[max(0, L - 253):L - 1])
+    streak = 0; i = L - 1
+    while i >= n and px[i] >= max(px[i - n:i]):
+        streak += 1; i -= 1
+    return dict(kind=f"h{n}", streak=streak, px=last, chg=round(chg[-1], 2),
+                prev_hi=prev, dist=round((last / prev - 1) * 100, 1),
+                dist52=round((last / hi52 - 1) * 100, 1),
+                r20=round((last / px[-21] - 1) * 100, 1), r60=round((last / px[-61] - 1) * 100, 1),
+                r250=round((last / px[max(0, L - 251)] - 1) * 100, 1),
+                val20=round(val20, 1), acc=round(acc, 2), mx20=round(max(abs(c) for c in chg[-20:]), 1),
+                burst=round(val[-1] / (med(val[-21:-1]) or 1e-9), 1),
+                spark=[round(p) for p in px[-40:]], date=rows[-1][0], gap=None)
+
+
 def main():
     # 1) 최신 스크리너 스냅샷
     idx = fetch_json(f"{RAW}/daily/index.json")
@@ -198,7 +228,7 @@ def main():
     def work(s):
         rows = naver_hist(s["ticker"])
         if not rows:
-            return None, None
+            return None, None, {}
         sw = None
         if s["ticker"] in cand_set:
             a = analyse(rows)
@@ -215,13 +245,22 @@ def main():
                 hh = None
             else:
                 hh.update(ticker=s["ticker"], name=s["name"], market=s["market"], mcap=s.get("market_cap"))
-        return sw, hh
+        sh = {}
+        for n in (5, 10):
+            x = short_high(rows, n)
+            if x:
+                x.update(ticker=s["ticker"], name=s["name"], market=s["market"], mcap=s.get("market_cap"))
+                sh[n] = x
+        return sw, hh, sh
 
     t0 = time.time()
     with ThreadPoolExecutor(6) as ex:
         pairs = list(ex.map(work, universe))
     res = [p[0] for p in pairs if p[0]]
     h52 = [p[1] for p in pairs if p[1]]
+    h5  = sorted([p[2][5] for p in pairs if p[2].get(5)], key=lambda r: -r["val20"])[:200]
+    h10 = sorted([p[2][10] for p in pairs if p[2].get(10)], key=lambda r: -r["val20"])[:200]
+    n5_all = sum(1 for p in pairs if p[2].get(5)); n10_all = sum(1 for p in pairs if p[2].get(10))
     print(f"  수집 {time.time()-t0:.0f}초 · {len(universe)}종목 · 축적 신호 {len(res)}건 · 52주 신고가/근접 {len(h52)}건")
 
     order = {"S": 0, "A": 1, "B": 2, "C": 3, None: 9}
@@ -256,10 +295,12 @@ def main():
                      "chase": {"med20": -5.09, "win": 39}},
         "items": items, "chase": chase,
         "high52_counts": h52_counts, "high52": h52,
+        "high5": h5, "high10": h10, "high5_total": n5_all, "high10_total": n10_all,
     }
 
     print(f"  S {counts['S']} · A {counts['A']} · B {counts['B']} · C {counts['C']} · 추격주의 {len(chase)}")
     print(f"  52주 신고가: 첫 돌파 {h52_counts['breakout']} · 신고가 {h52_counts['high']} · 근접(-3%) {h52_counts['near']}")
+    print(f"  단기 신고가: 5일 {n5_all} · 10일 {n10_all} (유동성 1억↑, 각 최대 200건 저장)")
     for r in [x for x in h52 if x["kind"] == "breakout"][:8]:
         print(f"   [돌파] {r['name']}({r['ticker']}) {r['gap']}일 만의 신고가 · 연속 {r['streak']}일 · 20일 {r['r20']:+.1f}% · 거래대금 {r['val20']}억")
     for r in items[:12]:
