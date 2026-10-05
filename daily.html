@@ -197,6 +197,8 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;hei
 }
 .date-nav-btn:hover{border-color:var(--accent);color:var(--accent)}
 .date-nav-btn[disabled],.date-nav-btn.disabled{opacity:.35;pointer-events:none}
+select.date-nav-btn{font:inherit;max-width:280px}
+button.date-nav-btn{cursor:pointer;font:inherit}
 
 @media(max-width:768px){
   .topbar{padding:10px 14px}
@@ -273,10 +275,8 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;hei
 
   <div class="tab-bar">
     <button class="tab-btn active" data-tab="main">📊 전체 스크리닝</button>
-    <button class="tab-btn tab-up" data-tab="upper">🚀 상한가 (+27%↑)</button>
-    <button class="tab-btn tab-down" data-tab="lower">💥 하한가 (-27%↓)</button>
     <button class="tab-btn tab-swing" data-tab="swing" title="당일 등락률로는 안 보이는, 한 달에 걸쳐 조용히 오르는 종목">🌱 1개월 추세</button>
-    <button class="tab-btn tab-high" data-tab="high52" title="52주(252거래일) 종가 기준 신고가 · 근접(-3% 이내)">🏔 52주 신고가</button>
+    <button class="tab-btn tab-high" data-tab="high52" title="52주(252거래일) 종가 기준 신고가 · 근접(-3% 이내)">🏔 신고가</button>
     <button class="tab-btn tab-fav" data-tab="fav">⭐ 즐겨찾기 <span class="fav-tab-badge" id="favTabBadge" style="display:none"></span></button>
   </div>
 
@@ -300,14 +300,6 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;hei
     <div id="stockGrid" class="stock-grid">
       <div class="loading"><div class="spinner"></div><span>데이터 로딩 중…</span></div>
     </div>
-  </div>
-
-  <div class="panel" id="panel-upper">
-    <div id="upperGrid" class="stock-grid"></div>
-  </div>
-
-  <div class="panel" id="panel-lower">
-    <div id="lowerGrid" class="stock-grid"></div>
   </div>
 
   <div class="panel" id="panel-swing">
@@ -770,8 +762,6 @@ function setupTabs(){
       CURRENT_TAB = btn.dataset.tab;
       document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
       document.getElementById('panel-'+CURRENT_TAB).classList.add('active');
-      if(CURRENT_TAB==='upper') renderLimitPanel('upper');
-      if(CURRENT_TAB==='lower') renderLimitPanel('lower');
       if(CURRENT_TAB==='fav') renderFavPanel();
       if(CURRENT_TAB==='swing') loadSwing();
       if(CURRENT_TAB==='high52') loadHigh();
@@ -868,17 +858,20 @@ function renderHeader(){
 
 function renderDateNav(){
   var nav = document.getElementById('dateNav');
-  if(!INDEX_DATA || !INDEX_DATA.dates || INDEX_DATA.dates.length<=1){ nav.innerHTML=''; return; }
-  var dates = INDEX_DATA.dates.map(function(x){return x.date;});
-  var i = dates.indexOf(CURRENT_DATE);
-  // 최신=0, 이전=뒤
-  var prev = (i>=0 && i<dates.length-1) ? dates[i+1] : null;  // 더 옛날
-  var next = (i>0) ? dates[i-1] : null;                       // 더 최근
-  var html = '';
-  html += prev ? '<a class="date-nav-btn" href="daily.html?date='+prev+'">← '+prev+'</a>' : '<span class="date-nav-btn disabled">← 이전 없음</span>';
-  html += '<a class="date-nav-btn" href="index.html">📋 전체 일자</a>';
-  html += next ? '<a class="date-nav-btn" href="daily.html?date='+next+'">'+next+' →</a>' : '<span class="date-nav-btn disabled">최신 일자</span>';
-  nav.innerHTML = html;
+  if(!INDEX_DATA || !INDEX_DATA.dates || !INDEX_DATA.dates.length){ nav.innerHTML=''; return; }
+  var ds = INDEX_DATA.dates;                       // 최신순
+  var i = ds.findIndex(function(x){return x.date===CURRENT_DATE;});
+  var prev = (i>=0 && i<ds.length-1) ? ds[i+1].date : null;   // 더 옛날
+  var next = (i>0) ? ds[i-1].date : null;                     // 더 최근
+  var go = function(d){ location.href = 'daily.html?date='+d+(CURRENT_TAB && CURRENT_TAB!=='main' ? '&tab='+CURRENT_TAB : ''); };
+  nav.innerHTML = '<button class="date-nav-btn" id="dPrev" '+(prev?'':'disabled')+'>◀</button>'
+    + '<select class="date-nav-btn" id="dSel" title="날짜 선택">'
+    + ds.map(function(x){ return '<option value="'+x.date+'"'+(x.date===CURRENT_DATE?' selected':'')+'>'+x.date+(x.label? ' '+x.label.replace(/^\d{4}년 \d{1,2}월 \d{1,2}일 /,'') : '')+'</option>'; }).join('')
+    + '</select>'
+    + '<button class="date-nav-btn" id="dNext" '+(next?'':'disabled')+'>▶</button>';
+  document.getElementById('dSel').onchange = function(e){ go(e.target.value); };
+  if(prev) document.getElementById('dPrev').onclick = function(){ go(prev); };
+  if(next) document.getElementById('dNext').onclick = function(){ go(next); };
 }
 
 function renderHighlights(){
@@ -1198,6 +1191,9 @@ document.addEventListener('DOMContentLoaded', function(){
   setupFilters();
   loadData();
   loadFavsFromGitHub();
+  // ?tab=swing|high52|fav — 날짜 이동 후에도 보던 탭 유지
+  var tb = new URLSearchParams(location.search).get('tab');
+  if(tb){ var b = document.querySelector('.tab-btn[data-tab="'+tb+'"]'); if(b) b.click(); }
 });
 </script>
 
