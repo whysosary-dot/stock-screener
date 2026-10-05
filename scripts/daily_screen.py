@@ -122,6 +122,35 @@ def get_returns(ticker, price):
             out[f'return_{k}'] = round((price - past) / past * 100, 1)
     return out
 
+def _num(s):
+    if s is None:
+        return None
+    s = re.sub(r'[^\d.\-]', '', str(s).replace(',', ''))
+    try:
+        return float(s) if s not in ('', '-', '.') else None
+    except ValueError:
+        return None
+
+
+def get_val(ticker):
+    """네이버 종목 통합 API → PER·추정PER·PBR·EPS·배당·외인·52주 고저 (주가·시총은 이미 있음)"""
+    out = {}
+    r = fetch(f'https://m.stock.naver.com/api/stock/{ticker}/integration')
+    if not r:
+        return out
+    try:
+        info = {x.get('code'): x.get('value') for x in (r.json() or {}).get('totalInfos', [])}
+    except Exception:
+        return out
+    for k, src in (('per', 'per'), ('cns_per', 'cnsPer'), ('pbr', 'pbr'), ('eps', 'eps'),
+                   ('div', 'dividendYieldRatio'), ('foreign', 'foreignRate'),
+                   ('hi52', 'highPriceOf52Weeks'), ('lo52', 'lowPriceOf52Weeks')):
+        v = _num(info.get(src))
+        if v is not None:
+            out[k] = v
+    return out
+
+
 def build_highlights(stocks):
     h = []
     ups = [s for s in stocks if (s['change_rate'] or 0) >= 29.5]
@@ -185,6 +214,14 @@ def main():
         rets = list(ex.map(lambda s: get_returns(s['ticker'], s['price']), filtered))
     for s, r in zip(filtered, rets):
         s.update(r)
+
+    # 밸류에이션 (PER·PBR·EPS·배당·외인·52주) — 카드 8칸용. 실패한 종목은 키 없음
+    print('3.5/5 밸류에이션 수집...', flush=True)
+    with ThreadPoolExecutor(max_workers=16) as ex:
+        vals = list(ex.map(lambda s: get_val(s['ticker']), filtered))
+    for s, v in zip(filtered, vals):
+        s.update(v)
+    print(f'  밸류 확보 {sum(1 for v in vals if v)}/{len(filtered)}', flush=True)
 
     print('4/5 데이터 빌드...', flush=True)
     filtered.sort(key=lambda s: s['change_rate'] if s['change_rate'] is not None else -999, reverse=True)
