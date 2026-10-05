@@ -222,8 +222,7 @@ button.date-nav-btn{cursor:pointer;font:inherit}
 <body>
 
 <div class="topbar">
-  <a class="back-link" href="index.html">← 일자 목록</a>
-  <div class="date-pill" id="datePill">로딩…</div>
+  <div class="date-nav" id="dateNav" style="margin:0;justify-content:flex-start"></div>
   <div style="display:flex;gap:6px;align-items:center;">
     <button id="gh-settings-btn" title="GitHub PAT 설정" onclick="openPatModal()" style="padding:5px 10px;border:1px solid var(--border);border-radius:8px;background:#f8fafc;cursor:pointer;font-size:14px;">⚙️</button>
     <button id="gh-commit-btn" onclick="ghCommitFavs()" title="즐겨찾기를 GitHub에 저장 (모든 기기 동기화)" style="padding:5px 12px;border:none;border-radius:8px;background:#3b82f6;color:#fff;cursor:pointer;font-size:12px;font-weight:600;">☁️ 동기화</button>
@@ -278,7 +277,6 @@ button.date-nav-btn{cursor:pointer;font:inherit}
 
 <div class="main">
 
-  <div class="date-nav" id="dateNav"></div>
 
   <div class="tab-bar">
     <button class="tab-btn active" data-tab="main">전체</button>
@@ -849,7 +847,7 @@ function renderTopbar(){
   var dt = CURRENT_DATE.split('-');
   var d = new Date(parseInt(dt[0]),parseInt(dt[1])-1,parseInt(dt[2]));
   var wk = ['일','월','화','수','목','금','토'][d.getDay()];
-  document.getElementById('datePill').textContent = CURRENT_DATE+' ('+wk+')';
+  // 날짜 표시는 상단 ◀ 선택 ▶ 네비로 대체
   document.getElementById('pageTitle').innerHTML = 'KR Screener <span style="font-size:12px;color:var(--text-dim);font-weight:500;margin-left:6px">'+CURRENT_DATE+' · KOSPI·KOSDAQ 전 종목</span>';
   document.title = CURRENT_DATE+' 스크리닝 리포트';
 }
