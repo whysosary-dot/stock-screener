@@ -211,6 +211,13 @@ button.date-nav-btn{cursor:pointer;font:inherit}
   .filters{grid-template-columns:1fr}
 }
 </style>
+<link rel="stylesheet" href="https://whysosary-dot.github.io/stock-valuation/theme.css">
+<style>
+.header h1{font-size:16px;font-weight:800;margin-bottom:6px}
+.topbar{background:var(--panel)}
+.date-pill{background:var(--accent-soft);border-color:var(--accent-soft)}
+.sort-btn:hover,.sort-btn.active,.tab-btn.active{color:var(--accent);border-color:var(--accent)}
+</style>
 </head>
 <body>
 
@@ -225,7 +232,7 @@ button.date-nav-btn{cursor:pointer;font:inherit}
 </div>
 
 <div class="header">
-  <h1 id="pageTitle">KOSPI/KOSDAQ 급등 스크리닝</h1>
+  <h1 id="pageTitle">KR Screener <span style="font-size:12px;color:var(--text-dim);font-weight:500;margin-left:6px">KOSPI·KOSDAQ 전 종목 일별 스크리닝</span></h1>
   <div class="stats-row" id="statsRow">
     <span>전체: <span class="count" id="totalCount">-</span></span>
     <span>필터통과: <span class="count" id="filteredCount">-</span></span>
@@ -274,10 +281,10 @@ button.date-nav-btn{cursor:pointer;font:inherit}
   <div class="date-nav" id="dateNav"></div>
 
   <div class="tab-bar">
-    <button class="tab-btn active" data-tab="main">📊 전체 스크리닝</button>
-    <button class="tab-btn tab-swing" data-tab="swing" title="당일 등락률로는 안 보이는, 한 달에 걸쳐 조용히 오르는 종목">🌱 1개월 추세</button>
-    <button class="tab-btn tab-high" data-tab="high52" title="52주(252거래일) 종가 기준 신고가 · 근접(-3% 이내)">🏔 신고가</button>
-    <button class="tab-btn tab-fav" data-tab="fav">⭐ 즐겨찾기 <span class="fav-tab-badge" id="favTabBadge" style="display:none"></span></button>
+    <button class="tab-btn active" data-tab="main">전체</button>
+    <button class="tab-btn tab-swing" data-tab="swing" title="당일 등락률로는 안 보이는, 한 달에 걸쳐 조용히 오르는 종목">1개월 추세</button>
+    <button class="tab-btn tab-high" data-tab="high52" title="52주(252거래일) 종가 기준 신고가 · 근접(-3% 이내)">신고가</button>
+    <button class="tab-btn tab-fav" data-tab="fav">즐겨찾기 <span class="fav-tab-badge" id="favTabBadge" style="display:none"></span></button>
   </div>
 
   <div class="panel active" id="panel-main">
@@ -843,7 +850,7 @@ function renderTopbar(){
   var d = new Date(parseInt(dt[0]),parseInt(dt[1])-1,parseInt(dt[2]));
   var wk = ['일','월','화','수','목','금','토'][d.getDay()];
   document.getElementById('datePill').textContent = CURRENT_DATE+' ('+wk+')';
-  document.getElementById('pageTitle').textContent = CURRENT_DATE+' KOSPI/KOSDAQ 스크리닝';
+  document.getElementById('pageTitle').innerHTML = 'KR Screener <span style="font-size:12px;color:var(--text-dim);font-weight:500;margin-left:6px">'+CURRENT_DATE+' · KOSPI·KOSDAQ 전 종목</span>';
   document.title = CURRENT_DATE+' 스크리닝 리포트';
 }
 
