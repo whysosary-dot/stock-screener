@@ -95,6 +95,12 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;hei
 .tab-btn.tab-fav.active{color:var(--gold);border-bottom-color:var(--gold)}
 .tab-btn.tab-swing.active{color:#16a34a;border-bottom-color:#16a34a}
 .tab-btn.tab-high.active{color:#b45309;border-bottom-color:#b45309}
+.val{display:grid;grid-template-columns:repeat(4,1fr);gap:4px 8px;font-size:11px;color:var(--text-dim);border-top:1px dashed var(--border);padding-top:7px;margin-top:6px}
+.val div span{display:block;font-size:12.5px;font-weight:700;color:var(--text)}
+.val .u{color:var(--up)} .val .d{color:var(--down)}
+.val .bar{height:4px;background:#eef2f7;border-radius:3px;overflow:hidden;margin-top:2px}
+.val .bar i{display:block;height:100%;background:linear-gradient(90deg,#60a5fa,#f87171)}
+@media (max-width:640px){ .val{grid-template-columns:repeat(3,1fr)} }
 .sw-badge.k-breakout{background:#dc2626}.sw-badge.k-high{background:#b45309}.sw-badge.k-near{background:#94a3b8}
 .sw-badge.k-h5{background:#0ea5e9}.sw-badge.k-h10{background:#6366f1}
 .sw-card.k-breakout{border-color:#dc2626;box-shadow:0 0 0 1px rgba(220,38,38,.25)}
@@ -656,6 +662,7 @@ function swCard(r){
       '<div>최대등락<span>'+swNum(r.mx20,1)+'%</span></div>'+
     '</div>'+
     '<div class="sw-why">'+r.why+'<br>거래대금 10일 '+swNum(r.val10,1)+'억 (기준 대비 '+swNum(r.acc,1)+'배) · 20일 고점 대비 '+swNum(r.pos,1)+'% · 20일 상승일 '+r.up+'%</div>'+
+    valGridHtml(valForTicker(r.ticker))+
   '</div>';
 }
 function renderSwing(){
@@ -716,6 +723,7 @@ function highCard(r){
     '</div>'+
     '<div class="sw-why">'+gapTxt+' · 종가 '+Number(r.px).toLocaleString()+'원 ('+hiLab+Number(r.prev_hi).toLocaleString()+'원, '+(r.dist>=0?'+':'')+swNum(r.dist,1)+'%)<br>'+
       '거래대금 20일 '+swNum(r.val20,1)+'억 · 축적배수 '+swNum(r.acc,1)+'x · 당일 대금 '+swNum(r.burst,1)+'배 · 20일 최대등락 '+swNum(r.mx20,1)+'%</div>'+
+    valGridHtml(valForTicker(r.ticker))+
   '</div>';
 }
 function renderHigh(){
@@ -775,6 +783,27 @@ function setupTabs(){
 }
 
 /* ───────── 카드 렌더링 (공통) ───────── */
+/* 밸류에이션 8칸 — Telegram·Report 탭과 같은 항목·형식. 데이터는 daily JSON(per·pbr·eps·div·foreign·hi52·lo52) */
+function fmtN(n,d){ return (n==null||isNaN(n)) ? '-' : Number(n).toLocaleString('ko-KR',{maximumFractionDigits:d==null?0:d}); }
+function eokStr(v){ return v==null ? '-' : v>=10000 ? (v/10000).toFixed(v>=100000?0:1)+'조' : fmtN(v)+'억'; }
+function valGridHtml(s){
+  if(!s || (s.per==null && s.pbr==null && s.hi52==null)) return '';
+  var price = s.price ?? s.px ?? 0, chg = s.change_rate ?? s.chg;
+  var pos52 = (price && s.hi52 && s.lo52 && s.hi52>s.lo52) ? Math.round((price-s.lo52)/(s.hi52-s.lo52)*100) : null;
+  var chgCls = chg>0?'u':chg<0?'d':'';
+  return '<div class="val">'+
+    '<div>주가<span class="'+chgCls+'">'+fmtN(price)+'원 '+(chg!=null?'<small>('+(chg>0?'+':'')+fmtN(chg,2)+'%)</small>':'')+'</span></div>'+
+    '<div>시총<span>'+eokStr(s.market_cap ?? s.mcap)+'</span></div>'+
+    '<div>PER'+(s.cns_per?' / 추정':'')+'<span>'+(s.per?fmtN(s.per,1):'-')+(s.cns_per?' / '+fmtN(s.cns_per,1):'')+'</span></div>'+
+    '<div>PBR<span>'+(s.pbr?fmtN(s.pbr,2):'-')+'</span></div>'+
+    '<div>EPS<span>'+(s.eps!=null?fmtN(s.eps):'-')+'</span></div>'+
+    '<div>배당<span>'+(s.div!=null?fmtN(s.div,2)+'%':'-')+'</span></div>'+
+    '<div>외인<span>'+(s.foreign!=null?fmtN(s.foreign,1)+'%':'-')+'</span></div>'+
+    '<div>52주 위치<span>'+(pos52!=null?pos52+'%':'-')+'</span>'+(pos52!=null?'<div class="bar"><i style="width:'+pos52+'%"></i></div>':'')+'</div>'+
+  '</div>';
+}
+function valForTicker(t){ var m = (RAW_DATA && RAW_DATA.stocks || []).find(function(x){return x.ticker===t;}); return m || null; }
+
 function renderStockCard(s, opts){
   opts = opts || {};
   var on = isFav(s.ticker);
@@ -814,6 +843,7 @@ function renderStockCard(s, opts){
       '<div class="metric"><div class="metric-label">시가총액</div><div class="metric-value">'+mcStr+'</div></div>'+
       returnHtml+
     '</div>'+
+    valGridHtml(s)+
     '<div class="card-actions">'+
       '<a class="card-btn" href="'+dartUrl(s.name)+'" target="_blank" rel="noopener">🗂 DART 공시</a>'+
       '<a class="card-btn" href="https://m.stock.naver.com/domestic/stock/'+s.ticker+'/total" target="_blank" rel="noopener">📊 네이버 주식</a>'+
