@@ -799,7 +799,7 @@ function valGridHtml(s){
     '<div>EPS<span>'+(s.eps!=null?fmtN(s.eps):'-')+'</span></div>'+
     '<div>배당<span>'+(s.div!=null?fmtN(s.div,2)+'%':'-')+'</span></div>'+
     '<div>외인<span>'+(s.foreign!=null?fmtN(s.foreign,1)+'%':'-')+'</span></div>'+
-    '<div>52주 위치<span>'+(pos52!=null?pos52+'%':'-')+'</span>'+(pos52!=null?'<div class="bar"><i style="width:'+pos52+'%"></i></div>':'')+'</div>'+
+    '<div>52주 위치<span>'+(pos52!=null?Math.max(0,Math.min(100,pos52))+'%'+(pos52>100?' <small style="color:#dc2626;font-weight:700">신고가</small>':pos52<0?' <small style="color:#2563eb;font-weight:700">신저가</small>':''):'-')+'</span>'+(pos52!=null?'<div class="bar"><i style="width:'+Math.max(0,Math.min(100,pos52))+'%"></i></div>':'')+'</div>'+
   '</div>';
 }
 function valForTicker(t){ var m = (RAW_DATA && RAW_DATA.stocks || []).find(function(x){return x.ticker===t;}); return m || null; }
