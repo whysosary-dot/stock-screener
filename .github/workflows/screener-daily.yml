@@ -1,0 +1,41 @@
+name: screener-daily
+# 평일 16:30 KST — KOSPI/KOSDAQ 스크리닝(daily/) + 1개월 추세 스캔(swing/) → GitHub Pages
+on:
+  schedule:
+    - cron: '30 7 * * 1-5'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: screener-daily
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q requests beautifulsoup4
+      - name: screening
+        id: s
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TZ: Asia/Seoul
+        run: |
+          python scripts/daily_screen.py | tee run.log
+          if grep -q "⏸ 공휴일/휴장일" run.log; then echo "closed=1" >> "$GITHUB_OUTPUT"; fi
+      - name: swing scan (1개월 추세)
+        if: steps.s.outputs.closed != '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TZ: Asia/Seoul
+        run: python swing_scan.py
+      - name: rebuild pages
+        if: steps.s.outputs.closed != '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api -X POST repos/${{ github.repository }}/pages/builds || true
