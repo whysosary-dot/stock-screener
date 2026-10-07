@@ -22,6 +22,11 @@ import requests
 from bs4 import BeautifulSoup
 
 GH_TOKEN = os.environ.get('GH_TOKEN') or ''
+if not GH_TOKEN:   # 환경변수가 없으면 BASE(또는 스크립트 위치 상위)의 .github_token 파일
+    for _d in (os.environ.get('BASE') or '', os.path.dirname(os.path.dirname(os.path.abspath(__file__)))):
+        _f = os.path.join(_d, '.github_token') if _d else ''
+        if _f and os.path.isfile(_f):
+            GH_TOKEN = open(_f).read().strip(); break
 REPO = 'whysosary-dot/stock-screener'
 HEADERS_GH = {'Authorization': f'token {GH_TOKEN}', 'Accept': 'application/vnd.github.v3+json'}
 UA = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'}
@@ -188,10 +193,30 @@ def gh_put(path, content_str, message, sha=None):
         print(f'PUT {path} FAILED:', r.status_code, r.text[:200])
     return r.ok
 
-def main():
-    push = '--no-push' not in sys.argv
-    date = datetime.now().strftime('%Y-%m-%d')
+# ──────────────────────────────────────────────────────────────────────
+# 단계 실행 (Cowork 예약 작업용): 셸 호출 하나가 180초로 제한되므로 체크포인트 파일에 진행 상태를 남기고
+# 여러 번 호출해 이어간다.  작업 폴더는 WORK 환경변수(기본 ~/scrwork).
+#   python3 daily_screen.py --step collect            # 1) 전종목 수집 → ckpt
+#   python3 daily_screen.py --step enrich --budget 150  # 2) 수익률·밸류 — 150초만 돌고 저장, 끝나면 ENRICH_DONE 출력
+#   python3 daily_screen.py --step build              # 3) 빌드·푸시·로컬사본·요약
+# --step 없이 실행하면 예전처럼 한 번에 전부 (로컬 맥 등 시간 제한 없는 환경).
+# ──────────────────────────────────────────────────────────────────────
+from datetime import timedelta
+WORK = os.environ.get('WORK') or os.path.join(os.path.expanduser('~'), 'scrwork')
+CKPT = os.path.join(WORK, 'ckpt.json')
 
+def _load_ckpt():
+    with open(CKPT, encoding='utf-8') as f:
+        return json.load(f)
+
+def _save_ckpt(c):
+    os.makedirs(WORK, exist_ok=True)
+    tmp = CKPT + '.tmp'
+    with open(tmp, 'w', encoding='utf-8') as f:
+        json.dump(c, f, ensure_ascii=False)
+    os.replace(tmp, CKPT)
+
+def step_collect(date):
     print('1/5 KOSPI 수집...', flush=True)
     kospi = collect_market('KOSPI')
     print(f'  KOSPI {len(kospi)}개', flush=True)
@@ -201,28 +226,43 @@ def main():
     all_stocks = kospi + kosdaq
     if len(all_stocks) < 1000:
         print(f'❌ 수집 실패 의심 (총 {len(all_stocks)}개) — 중단'); sys.exit(1)
-
     filtered = [s for s in all_stocks if s['trading_value'] >= 0]
-    print(f'3/5 필터 통과 {len(filtered)}개 — 수익률 계산...', flush=True)
-
-    # 휴장 감지
     zero = sum(1 for s in filtered if not s['change_rate'])
     if filtered and zero / len(filtered) > 0.8:
-        print('⏸ 공휴일/휴장일로 판단 (등락률 0 비중 80%↑) — 업데이트 없음'); return
+        print('⏸ 공휴일/휴장일로 판단 (등락률 0 비중 80%↑) — 업데이트 없음')
+        _save_ckpt({'date': date, 'holiday': True}); return None
+    c = {'date': date, 'n_kospi': len(kospi), 'n_kosdaq': len(kosdaq), 'all': all_stocks,
+         'filtered': filtered, 'done': 0, 'holiday': False}
+    _save_ckpt(c)
+    print(f'3/5 필터 통과 {len(filtered)}개 — ckpt 저장 ({CKPT})', flush=True)
+    return c
 
-    with ThreadPoolExecutor(max_workers=16) as ex:
-        rets = list(ex.map(lambda s: get_returns(s['ticker'], s['price']), filtered))
-    for s, r in zip(filtered, rets):
-        s.update(r)
+def step_enrich(c, budget):
+    """filtered[done:] 에 수익률+밸류 채우기. budget 초 안에 끝나는 만큼만."""
+    t0 = time.time()
+    filtered = c['filtered']
+    n = len(filtered)
+    CH = 48
+    while c['done'] < n and time.time() - t0 < budget:
+        chunk = filtered[c['done']:c['done'] + CH]
+        with ThreadPoolExecutor(max_workers=16) as ex:
+            rets = list(ex.map(lambda s: get_returns(s['ticker'], s['price']), chunk))
+            vals = list(ex.map(lambda s: get_val(s['ticker']), chunk))
+        for s, r, v in zip(chunk, rets, vals):
+            s.update(r); s.update(v)
+        c['done'] += len(chunk)
+        _save_ckpt(c)
+    print(f'수익률·밸류 진행 {c["done"]}/{n} ({time.time() - t0:.0f}초)', flush=True)
+    if c['done'] >= n:
+        print('ENRICH_DONE')
+    else:
+        print('ENRICH_MORE')
 
-    # 밸류에이션 (PER·PBR·EPS·배당·외인·52주) — 카드 8칸용. 실패한 종목은 키 없음
-    print('3.5/5 밸류에이션 수집...', flush=True)
-    with ThreadPoolExecutor(max_workers=16) as ex:
-        vals = list(ex.map(lambda s: get_val(s['ticker']), filtered))
-    for s, v in zip(filtered, vals):
-        s.update(v)
-    print(f'  밸류 확보 {sum(1 for v in vals if v)}/{len(filtered)}', flush=True)
-
+def step_build(c, push):
+    date = c['date']
+    all_stocks, filtered = c['all'], c['filtered']
+    kospi_n, kosdaq_n = c['n_kospi'], c['n_kosdaq']
+    print(f'  밸류 확보 {sum(1 for s in filtered if s.get("pbr") is not None or s.get("per") is not None)}/{len(filtered)}', flush=True)
     print('4/5 데이터 빌드...', flush=True)
     filtered.sort(key=lambda s: s['change_rate'] if s['change_rate'] is not None else -999, reverse=True)
     limit_stocks = []
@@ -244,10 +284,9 @@ def main():
         'limit_stocks': limit_stocks,
         'all_stocks_summary': {'kospi_count': len([s for s in filtered if s['market'] == 'KOSPI']),
                                'kosdaq_count': len([s for s in filtered if s['market'] == 'KOSDAQ']),
-                               'total_kospi': len(kospi), 'total_kosdaq': len(kosdaq),
+                               'total_kospi': kospi_n, 'total_kosdaq': kosdaq_n,
                                'total': len(all_stocks)},
     }
-
     # daily/index.json 갱신
     r = requests.get(f'https://api.github.com/repos/{REPO}/contents/daily/index.json?ref=main', headers=HEADERS_GH)
     existing_idx, existing_sha = {'dates': []}, None
@@ -315,12 +354,38 @@ def main():
 
     # ── 요약 보고 (이것만 읽으면 됨) ──
     print('\n===== 요약 =====')
-    print(f'날짜 {date} | 전체 {len(all_stocks):,}개 수집 (KOSPI {len(kospi)}+KOSDAQ {len(kosdaq)}) | 필터통과 {len(filtered)}개')
+    print(f'날짜 {date} | 전체 {len(all_stocks):,}개 수집 (KOSPI {kospi_n}+KOSDAQ {kosdaq_n}) | 필터통과 {len(filtered)}개')
     print(f'상한가 {lu}개 / 하한가 {ld}개')
     for h in data_out['highlights']:
         print(' ·', h)
     top10 = sorted(filtered, key=lambda s: s['trading_value'], reverse=True)[:10]
     print('거래대금 TOP10: ' + ', '.join(f"{s['name']}({s['trading_value']:,.0f}억)" for s in top10))
+
+
+def main():
+    push = '--no-push' not in sys.argv
+    date = datetime.now().strftime('%Y-%m-%d')
+    step = sys.argv[sys.argv.index('--step') + 1] if '--step' in sys.argv else None
+    budget = float(sys.argv[sys.argv.index('--budget') + 1]) if '--budget' in sys.argv else 150
+    if step is None:                       # 한 번에 전부
+        c = step_collect(date)
+        if c is None: return
+        step_enrich(c, 10 ** 9)
+        step_build(c, push); return
+    if step == 'collect':
+        step_collect(date); return
+    c = _load_ckpt()
+    if c.get('holiday'):
+        print('⏸ 공휴일/휴장일 — 업데이트 없음'); return
+    if c.get('date') != date:
+        print(f'❌ ckpt 날짜 {c.get("date")} ≠ 오늘 {date} — --step collect 부터 다시'); sys.exit(1)
+    if step == 'enrich':
+        step_enrich(c, budget); return
+    if step == 'build':
+        if c['done'] < len(c['filtered']):
+            print(f'❌ 수익률·밸류 미완료 {c["done"]}/{len(c["filtered"])} — --step enrich 를 더 실행'); sys.exit(1)
+        step_build(c, push); return
+    print('알 수 없는 --step'); sys.exit(2)
 
 if __name__ == '__main__':
     main()
