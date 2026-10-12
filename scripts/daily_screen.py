@@ -203,6 +203,23 @@ def gh_put(path, content_str, message, sha=None):
 # ──────────────────────────────────────────────────────────────────────
 from datetime import timedelta
 WORK = os.environ.get('WORK') or os.path.join(os.path.expanduser('~'), 'scrwork')
+# 맥 VM $HOME(/sessions) 파티션이 가득 차면 ckpt 저장이 실패 → 시험 쓰기 실패 시 /tmp/scrwork_<uid> 로 전환 (2026-10-12)
+def _probe_dir(d):
+    try:
+        os.makedirs(d, exist_ok=True)
+        t = os.path.join(d, '.probe')
+        with open(t, 'wb') as f: f.write(b'0' * 4_000_000)
+        os.remove(t); return True
+    except Exception:
+        try: os.remove(os.path.join(d, '.probe'))
+        except Exception: pass
+        return False
+_FB = f'/tmp/scrwork_{os.getuid()}'
+if os.path.exists(os.path.join(_FB, 'ckpt.json')) and not os.path.exists(os.path.join(WORK, 'ckpt.json')):
+    WORK = _FB                      # 이전 step 이 이미 /tmp 로 전환해 ckpt 를 남긴 경우 이어서 사용
+elif not _probe_dir(WORK):
+    print(f'⚠ WORK({WORK}) 쓰기 불가(디스크 가득 참?) → {_FB} 사용')
+    WORK = _FB
 CKPT = os.path.join(WORK, 'ckpt.json')
 
 def _load_ckpt():
