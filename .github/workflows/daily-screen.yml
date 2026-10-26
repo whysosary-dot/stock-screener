@@ -1,10 +1,13 @@
 name: daily-screen
 # 평일 16:30 KST KOSPI/KOSDAQ 전종목 스크리닝 + 1개월 추세 스캔. 공휴일은 스크립트가 감지해 스킵.
-# cron 누락 대비 17:00 KST 한 번 더 (같은 날 파일 덮어쓰기라 무해)
+# GitHub cron 은 정각·30분 슬롯이 가장 혼잡해 수 시간 밀리거나 누락된다(2026-10-21~26: 매일 5시간 지연, 10/26 누락).
+# → 어중간한 분으로 3슬롯(16:37 / 17:13 / 18:41 KST). 같은 날 파일 덮어쓰기라 중복 실행 무해.
+# 그래도 안 돌면 stock-valuation 리포의 screener-watchdog 워크플로가 17:52·19:23·21:47 KST 에 확인 후 workflow_dispatch 로 발동.
 on:
   schedule:
-    - cron: '30 7 * * 1-5'
-    - cron: '0 8 * * 1-5'
+    - cron: '37 7 * * 1-5'
+    - cron: '13 8 * * 1-5'
+    - cron: '41 9 * * 1-5'
   workflow_dispatch:
 permissions:
   contents: write
