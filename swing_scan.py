@@ -40,6 +40,7 @@ R60_MAX = 0.15                           # 3개월 정체 (아직 재평가 안 
 HL_RATIO = 1.02                          # 저점 상향 (10일 저점 > 20일 저점 ×1.02)
 VAL20_MIN = 0.5                          # 20일 평균 거래대금 하한(억)
 CHASE_BURST, CHASE_R20 = 8.0, 0.30       # 추격주의: 최근 15일 폭발 8배 + 20일 +30%
+CHART_BARS, CHART_TV_MIN = 245, 100      # 일봉 1년 차트 저장: 최근 245봉, 메인 목록은 거래대금 100억↑ (+ 스윙·신고가 전부)
 
 
 def med(x):
@@ -73,7 +74,7 @@ def naver_hist(ticker, days=260):
             s = urllib.request.urlopen(urllib.request.Request(u, headers=NAVER_H),
                                        timeout=20).read().decode("utf-8", "replace")
             rows = [json.loads(m) for m in re.findall(r'\["\d{8}".*?\]', s)]
-            return [(r[0], float(r[4]), float(r[5])) for r in rows if r[4]]
+            return [(r[0], float(r[4]), float(r[5]), float(r[1] or r[4]), float(r[2] or r[4]), float(r[3] or r[4])) for r in rows if r[4]]  # (날짜, 종가, 거래량, 시가, 고가, 저가)
         except Exception:
             if attempt == 0:
                 time.sleep(0.5)
@@ -225,10 +226,13 @@ def main():
     if LIMIT:
         universe = [s for s in universe if s["ticker"] in cand_set][:LIMIT]
 
+    chart_raw = {}
     def work(s):
         rows = naver_hist(s["ticker"])
         if not rows:
             return None, None, {}
+        if len(rows) >= 30 and len(rows[0]) >= 6:
+            chart_raw[s["ticker"]] = rows[-CHART_BARS:]
         sw = None
         if s["ticker"] in cand_set:
             a = analyse(rows)
@@ -307,7 +311,19 @@ def main():
         print(f"   [{r['grade']}] {r['name']}({r['ticker']}) 축적 {r['acc']}x · 20일 {r['r20']:+.1f}% "
               f"· 3개월 {r['r60']:+.1f}% · 최대등락 {r['mx20']}%")
 
+    # ── 일봉 1년 차트 데이터 (daily.html 카드 미니차트·확대) ──
+    want = {r["ticker"] for r in items + chase + h52 + h5 + h10} | {s["ticker"] for s in stocks if (s.get("trading_value") or 0) >= CHART_TV_MIN}
+    kospi = naver_hist("KOSPI", CHART_BARS)
+    kmap = {r[0]: r[1] for r in kospi} if kospi else {}
+    def pack(rows):
+        return {"d": [r[0] for r in rows], "o": [round(r[3]) for r in rows], "h": [round(r[4]) for r in rows], "l": [round(r[5]) for r in rows],
+                "c": [round(r[1]) for r in rows], "v": [int(r[2]) for r in rows]}
+    charts = {"date": date, "bars": CHART_BARS, "n": 0, "bench": {k: round(v, 2) for k, v in kmap.items()},
+              "stocks": {tk: pack(chart_raw[tk]) for tk in want if tk in chart_raw}}
+    charts["n"] = len(charts["stocks"])
+    print(f"  일봉 차트: {charts['n']}종목 (거래대금 {CHART_TV_MIN}억↑ + 스윙·신고가) · {len(json.dumps(charts, separators=(',', ':')))//1024}KB")
     if DRY:
+        Path("/tmp/swing_charts.json").write_text(json.dumps(charts, ensure_ascii=False, separators=(",", ":")))
         Path("/tmp/swing_latest.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
         print("(dry-run — /tmp/swing_latest.json 에만 저장)")
         return 0
@@ -343,6 +359,7 @@ def main():
         print(f"  ✓ {path}  {r['commit']['sha'][:7]}")
 
     put(f"swing/{date}.json", out, f"swing: {date} 1개월 추세 스캔")
+    put("swing/charts_latest.json", charts, f"swing: 일봉 차트 {date} ({charts['n']}종목)")
     put("swing/latest.json", out, f"swing: latest → {date}")
     cur = gh("swing/index.json")
     dates = []
