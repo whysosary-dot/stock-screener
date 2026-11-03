@@ -223,17 +223,6 @@ button.date-nav-btn{cursor:pointer;font:inherit}
 .topbar{background:var(--panel)}
 .date-pill{background:var(--accent-soft);border-color:var(--accent-soft)}
 .sort-btn:hover,.sort-btn.active,.tab-btn.active{color:var(--accent);border-color:var(--accent)}
-
-/* ── 일봉 1년 미니 차트 (swing/charts_latest.json · 거래대금 100억↑ + 스윙·신고가) ── */
-.kc{margin:10px 0 6px;height:118px;position:relative;border:1px solid var(--border);border-radius:10px;background:var(--card);overflow:hidden;cursor:zoom-in}
-.kc canvas{display:block;width:100%;height:100%}
-.kc .kc-none{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-dim,#8a93a0);cursor:default}
-.kc-modal{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:12px}
-.kc-modal .box{background:var(--card);border-radius:14px;padding:14px 16px;width:min(960px,100%);box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.kc-modal .hd{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
-.kc-modal .hd b{font-size:16px}.kc-modal .hd span{font-size:12px;color:var(--text-dim,#8a93a0)}.kc-modal .hd .x{margin-left:auto;border:none;background:none;font-size:20px;cursor:pointer;color:var(--text-dim,#8a93a0)}
-.kc-modal canvas{display:block;width:100%;height:min(440px,62vh)}
-.kc-modal .ft{font-size:11.5px;color:var(--text-dim,#8a93a0);margin-top:8px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -451,82 +440,6 @@ function migrateLegacyFavsIfNeeded(){
 // 페이지 스크립트 평가 직후 즉시 마이그레이션 (CURRENT_DATE 로드 전이라도 안전)
 migrateLegacyFavsIfNeeded();
 
-
-/* ───────── 📈 일봉 1년 차트 (카드 미니 + 클릭 확대) ───────── */
-/* 데이터: orphan 브랜치 charts — index.json(날짜·조각 목록) + bench.json(코스피) + <종목코드 앞 2자리>.json 조각을 필요한 것만 */
-var KC_BASE = 'https://raw.githubusercontent.com/whysosary-dot/stock-screener/charts/';
-var KC = { data:null, loading:null, failed:false, chunks:{}, pending:{} };
-function kcFetch(name){ return fetch(KC_BASE+name+'?cb='+Math.floor(Date.now()/600000), {cache:'no-store'}).then(function(r){ if(!r.ok) throw new Error(name+' '+r.status); return r.json(); }); }
-function kcLoad(){
-  if(KC.data||KC.loading||KC.failed) return KC.loading||Promise.resolve();
-  KC.loading = Promise.all([kcFetch('index.json'), kcFetch('bench.json')])
-    .then(function(a){ KC.data={ date:a[0].date, n:a[0].n, chunks:a[0].chunks||[], bench:a[1], stocks:{} }; KC.loading=null; kcDrawVisible(); })
-    .catch(function(e){ KC.failed=true; KC.loading=null; console.warn('charts', e); document.querySelectorAll('.kc').forEach(function(el){ el.remove(); }); });
-  return KC.loading;
-}
-function kcChunk(tk){   // 조각 로드 (한 번만), 로드되면 보이는 카드 다시 그림
-  var k=tk.slice(0,2); if(KC.chunks[k]||KC.pending[k]) return;
-  if(KC.data.chunks.length && KC.data.chunks.indexOf(k)<0){ KC.chunks[k]={}; return; }
-  KC.pending[k]=kcFetch(k+'.json').then(function(j){ Object.assign(KC.data.stocks, j); KC.chunks[k]=j; delete KC.pending[k]; kcDrawVisible(); })
-    .catch(function(e){ console.warn('chunk', k, e); KC.chunks[k]={}; delete KC.pending[k]; kcDrawVisible(); });
-}
-function kcSma(a,n){ var o=new Array(a.length).fill(null), s=0; for(var i=0;i<a.length;i++){ s+=a[i]; if(i>=n) s-=a[i-n]; if(i>=n-1) o[i]=s/n; } return o; }
-function kcSetup(cv){ var dpr=Math.min(2,window.devicePixelRatio||1), w=cv.clientWidth||300, h=cv.clientHeight||100; cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr); var g=cv.getContext('2d'); g.setTransform(dpr,0,0,dpr,0,0); return [g,w,h]; }
-function kcFmt(v){ return Math.round(v).toLocaleString(); }
-function kcDraw(cv, tk, big){
-  var S = KC.data && KC.data.stocks && KC.data.stocks[tk]; if(!S) return false;
-  var r = kcSetup(cv), g=r[0], w=r[1], h=r[2]; var n=S.c.length; if(n<5) return false;
-  var bench = KC.data.bench||{};
-  var dim = getComputedStyle(document.body).getPropertyValue('--text-dim').trim()||'#8a93a0', txt=getComputedStyle(document.body).getPropertyValue('--text').trim()||'#111', bd=getComputedStyle(document.body).getPropertyValue('--border').trim()||'#e5e7eb';
-  var ma1=kcSma(S.c,50), ma2=kcSma(S.c,200);
-  var padL=2, padR=big?58:46, padT=big?10:6, axisH=big?14:0, volH=big?40:16, rsH=big?34:14;
-  var priceH=h-padT-volH-rsH-axisH-(big?10:6), bottomP=padT+priceH;
-  var lo=Math.min.apply(null,S.l), hi=Math.max.apply(null,S.h);
-  var X=function(i){ return padL+(w-padL-padR)*(i+.5)/n; }, Y=function(v){ return padT+priceH*(1-(v-lo)/(hi-lo||1)); };
-  var bw=Math.max(1,(w-padL-padR)/n*0.7);
-  // 연·반기 눈금
-  g.strokeStyle=bd; g.fillStyle=dim; g.font='10px -apple-system,sans-serif'; g.textAlign='center';
-  var seen={};
-  for(var i=0;i<n;i++){ var d=S.d[i], ym=d.slice(0,6); if(seen[ym]) continue; seen[ym]=1; var m=d.slice(4,6); if(m==='01'||m==='07'){ g.beginPath(); g.moveTo(X(i),padT); g.lineTo(X(i),bottomP+volH+rsH+8); g.stroke(); if(big) g.fillText(d.slice(2,4)+'.'+m, X(i), h-2); } }
-  // 거래량
-  var vmax=Math.max.apply(null,S.v)||1, vTop=bottomP+4;
-  for(var i=0;i<n;i++){ g.fillStyle=S.c[i]>=S.o[i]?'rgba(211,39,62,.35)':'rgba(47,86,232,.35)'; var bh=volH*S.v[i]/vmax; g.fillRect(X(i)-bw/2, vTop+volH-bh, bw, bh); }
-  // RS (종가 ÷ 코스피)
-  var rs=S.c.map(function(c,i){ var b=bench[S.d[i]]; return b?c/b:null; }), rv=rs.filter(function(x){return x!=null;});
-  if(rv.length>5){ var rlo=Math.min.apply(null,rv), rhi=Math.max.apply(null,rv), rTop=vTop+volH+4; g.strokeStyle='#6d4fd1'; g.lineWidth=1.2; g.beginPath(); var st=false; rs.forEach(function(v,i){ if(v==null) return; var y=rTop+rsH*(1-(v-rlo)/(rhi-rlo||1)); st?g.lineTo(X(i),y):g.moveTo(X(i),y); st=true; }); g.stroke(); if(big){ g.fillStyle='#6d4fd1'; g.font='10px -apple-system,sans-serif'; g.textAlign='left'; g.fillText('RS', w-padR+4, rTop+rsH/2+3); } }
-  // 캔들
-  for(var i=0;i<n;i++){ var up=S.c[i]>=S.o[i]; g.strokeStyle=g.fillStyle=up?'#d3273e':'#2f56e8'; g.lineWidth=1; g.beginPath(); g.moveTo(X(i),Y(S.h[i])); g.lineTo(X(i),Y(S.l[i])); g.stroke(); var y1=Y(Math.max(S.o[i],S.c[i])), y2=Y(Math.min(S.o[i],S.c[i])); g.fillRect(X(i)-bw/2, y1, bw, Math.max(1,y2-y1)); }
-  var line=function(arr,color,lw){ g.strokeStyle=color; g.lineWidth=lw; g.beginPath(); var st=false; arr.forEach(function(v,i){ if(v==null) return; st?g.lineTo(X(i),Y(v)):g.moveTo(X(i),Y(v)); st=true; }); g.stroke(); };
-  line(ma1,'#8a8f99',1.1); line(ma2,'#e8792e',1.4);
-  g.font=(big?'bold 11px':'bold 10px')+' -apple-system,sans-serif'; g.textAlign='left'; g.fillStyle=txt;
-  g.fillText(kcFmt(S.c[n-1]), w-padR+4, Y(S.c[n-1])+4);
-  g.font='10px -apple-system,sans-serif'; g.fillStyle=dim; g.fillText(kcFmt(hi), w-padR+4, padT+8); g.fillText(kcFmt(lo), w-padR+4, bottomP-1);
-  return true;
-}
-function kcBox(tk){ return '<div class="kc" data-kc="'+tk+'" title="일봉 1년 · 회색 50일선 · 주황 200일선 · 거래량 · 보라 RS(코스피 대비) — 클릭하면 크게"><canvas></canvas></div>'; }
-function kcDrawVisible(){
-  document.querySelectorAll('.kc[data-kc]').forEach(function(el){
-    if(el.dataset.done) return;
-    if(!KC.data){ kcLoad(); return; }
-    var tk=el.dataset.kc;
-    if(el.offsetParent===null) return;                          // 숨겨진 탭 — 보일 때 그림
-    if(!KC.data.stocks[tk]){ var k=tk.slice(0,2); if(!KC.chunks[k]){ kcChunk(tk); return; } el.remove(); return; }   // 조각 미로드면 받아온 뒤, 없으면 제거
-    kcDraw(el.querySelector('canvas'), tk, false); el.dataset.done='1'; el.addEventListener('click', function(){ kcOpen(tk); });
-  });
-}
-function kcOpen(tk){
-  var S=KC.data.stocks[tk]; if(!S) return;
-  var nm=(ALL_STOCKS.find(function(s){return s.ticker===tk;})||{}).name||tk;
-  var m=document.createElement('div'); m.className='kc-modal';
-  var last=S.c[S.c.length-1], prev=S.c[S.c.length-2], chg=prev?((last/prev-1)*100):null, hi=Math.max.apply(null,S.h), ma50=kcSma(S.c,50).pop(), ma200=kcSma(S.c,200).pop();
-  m.innerHTML='<div class="box"><div class="hd"><b>'+escHtml(nm)+'</b><span>'+tk+' · 일봉 '+S.c.length+'봉 · '+S.d[S.d.length-1].replace(/(\d{4})(\d{2})(\d{2})/,'$1-$2-$3')+' 종가</span><button class="x" title="닫기">×</button></div><canvas></canvas>'+
-    '<div class="ft">종가 <b>'+kcFmt(last)+'</b>'+(chg!=null?' ('+(chg>=0?'+':'')+chg.toFixed(2)+'%)':'')+' · '+(ma50?(last>ma50?'50일선 위':'50일선 아래'):'')+' · '+(ma200?(last>ma200?'200일선 위':'200일선 아래'):'')+' · 52주 고점 대비 '+((last/hi-1)*100).toFixed(1)+'%<br>회색 50일선 · 주황 200일선 · 하단 거래량 · 보라 RS(코스피 대비 상대강도)</div></div>';
-  var close=function(){ m.remove(); document.removeEventListener('keydown',onKey); }; var onKey=function(e){ if(e.key==='Escape') close(); };
-  m.addEventListener('click', function(e){ if(e.target===m) close(); }); m.querySelector('.x').onclick=close; document.addEventListener('keydown',onKey);
-  document.body.appendChild(m); kcDraw(m.querySelector('canvas'), tk, true);
-}
-(function(){ var mo=new MutationObserver(function(){ if(document.querySelector('.kc[data-kc]:not([data-done])')) kcDrawVisible(); }); mo.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']}); })();
-
 function escHtml(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 // DART autoSearch는 한글 raw 그대로일 때만 자동검색이 작동 → URL-special chars만 선택적 인코딩
 function dartUrl(name){
@@ -741,7 +654,7 @@ function swCard(r){
     '<div class="sw-top"><span class="sw-badge g-'+r.grade+'">'+r.grade+'</span>'+
       '<a class="sw-name" href="https://m.stock.naver.com/domestic/stock/'+r.ticker+'/total" target="_blank" rel="noopener">'+r.name+'</a>'+
       '<span class="sw-sub">'+r.ticker+' · '+r.market+' · '+mc+'</span></div>'+
-    kcBox(r.ticker)+
+    swSpark(r.spark)+
     '<div class="sw-metrics">'+
       '<div>축적배수<span>'+swNum(r.acc,1)+'x</span></div>'+
       '<div>20일<span style="color:'+(r.r20>=0?'#ef4444':'#3b82f6')+'">'+(r.r20>=0?'+':'')+swNum(r.r20,1)+'%</span></div>'+
@@ -801,7 +714,7 @@ function highCard(r){
     '<div class="sw-top"><span class="sw-badge k-'+r.kind+'">'+KIND_LABEL[r.kind]+'</span>'+
       '<a class="sw-name" href="https://m.stock.naver.com/domestic/stock/'+r.ticker+'/total" target="_blank" rel="noopener">'+r.name+'</a>'+
       '<span class="sw-sub">'+r.ticker+' · '+r.market+' · '+mc+'</span></div>'+
-    kcBox(r.ticker)+
+    swSpark(r.spark)+
     '<div class="sw-metrics">'+
       '<div>당일<span style="color:'+(r.chg>=0?'#ef4444':'#3b82f6')+'">'+(r.chg>=0?'+':'')+swNum(r.chg,1)+'%</span></div>'+
       '<div>20일<span style="color:'+(r.r20>=0?'#ef4444':'#3b82f6')+'">'+(r.r20>=0?'+':'')+swNum(r.r20,1)+'%</span></div>'+
@@ -930,7 +843,6 @@ function renderStockCard(s, opts){
       '<div class="metric"><div class="metric-label">시가총액</div><div class="metric-value">'+mcStr+'</div></div>'+
       returnHtml+
     '</div>'+
-    kcBox(s.ticker)+
     valGridHtml(s)+
     '<div class="card-actions">'+
       '<a class="card-btn" href="'+dartUrl(s.name)+'" target="_blank" rel="noopener">🗂 DART 공시</a>'+
