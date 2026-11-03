@@ -332,6 +332,11 @@ def step_build(c, push):
     }
     dates = [d for d in existing_idx.get('dates', []) if d.get('date') != date]
     dates.append(new_entry)
+    # 보관 기간 1년: 365일 지난 날짜는 index 에서 빼고 파일도 삭제 (2026-11-03 사용자 지정 — 저장소 크기 관리)
+    KEEP_DAYS = 365
+    cutoff = (dt - timedelta(days=KEEP_DAYS)).strftime('%Y-%m-%d')
+    expired = [d['date'] for d in dates if d.get('date', '') < cutoff]
+    dates = [d for d in dates if d.get('date', '') >= cutoff]
     dates.sort(key=lambda x: x['date'], reverse=True)
     for i, d in enumerate(dates):
         d['new'] = (i == 0)
@@ -364,6 +369,13 @@ def step_build(c, push):
         ok2 = gh_put(f'daily/{date}.json', data_json_str, msg, gh_get_sha(f'daily/{date}.json'))
         ok3 = gh_put('daily/index.json', idx_json_str, msg, existing_sha)
         print(f'푸시 결과: data.json={ok1}, daily/{date}.json={ok2}, daily/index.json={ok3}')
+        for old in expired:   # 1년 지난 일자 파일 삭제 (daily + swing)
+            for path in (f'daily/{old}.json', f'swing/{old}.json'):
+                sha = gh_get_sha(path)
+                if not sha: continue
+                r = requests.delete(f'https://api.github.com/repos/{REPO}/contents/{path}', headers=HEADERS_GH,
+                                    json={'message': f'🧹 {KEEP_DAYS}일 지난 {path} 삭제', 'sha': sha, 'branch': 'main'})
+                print(f'삭제 {path}: {r.status_code}')
     else:
         with open('data_preview.json', 'w', encoding='utf-8') as f:
             f.write(data_json_str)

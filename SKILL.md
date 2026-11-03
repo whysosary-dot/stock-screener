@@ -28,6 +28,8 @@ stock-screener/
 
 **스킬이 건드리지 않는 파일:** `index.html`, `daily.html`, 아이콘들
 
+**보관 기간 (2026-11-03):** `daily/날짜.json`·`swing/날짜.json` 은 365일만 보관. build 단계가 index.json 갱신 때 1년 지난 날짜를 index 에서 빼고 파일을 삭제한다 (저장소 크기 관리).
+
 ## 중요: 실행 환경 제약
 - 이 태스크는 샌드박스 환경에서 실행되므로 **pykrx, FinanceDataReader는 KRX API 접근 불가**
 - **사용자 Mac 터미널 접근 불가** (자동 실행 시 승인 팝업 대응 불가)
