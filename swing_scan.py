@@ -40,7 +40,7 @@ R60_MAX = 0.15                           # 3개월 정체 (아직 재평가 안 
 HL_RATIO = 1.02                          # 저점 상향 (10일 저점 > 20일 저점 ×1.02)
 VAL20_MIN = 0.5                          # 20일 평균 거래대금 하한(억)
 CHASE_BURST, CHASE_R20 = 8.0, 0.30       # 추격주의: 최근 15일 폭발 8배 + 20일 +30%
-CHART_BARS, CHART_TV_MIN = 245, 100      # 일봉 1년 차트 저장: 최근 245봉, 메인 목록은 거래대금 100억↑ (+ 스윙·신고가 전부)
+CHART_BARS = 245                         # 일봉 1년 차트: 전 종목 최근 245봉 → orphan 브랜치 charts 에 종목코드 앞 2자리별 조각 파일
 
 
 def med(x):
@@ -312,18 +312,26 @@ def main():
               f"· 3개월 {r['r60']:+.1f}% · 최대등락 {r['mx20']}%")
 
     # ── 일봉 1년 차트 데이터 (daily.html 카드 미니차트·확대) ──
-    want = {r["ticker"] for r in items + chase + h52 + h5 + h10} | {s["ticker"] for s in stocks if (s.get("trading_value") or 0) >= CHART_TV_MIN}
+    want = set(chart_raw)   # 이력을 받은 전 종목
     kospi = naver_hist("KOSPI", CHART_BARS)
     kmap = {r[0]: r[1] for r in kospi} if kospi else {}
     def pack(rows):
         return {"d": [r[0] for r in rows], "o": [round(r[3]) for r in rows], "h": [round(r[4]) for r in rows], "l": [round(r[5]) for r in rows],
                 "c": [round(r[1]) for r in rows], "v": [int(r[2]) for r in rows]}
-    charts = {"date": date, "bars": CHART_BARS, "n": 0, "bench": {k: round(v, 2) for k, v in kmap.items()},
-              "stocks": {tk: pack(chart_raw[tk]) for tk in want if tk in chart_raw}}
-    charts["n"] = len(charts["stocks"])
-    print(f"  일봉 차트: {charts['n']}종목 (거래대금 {CHART_TV_MIN}억↑ + 스윙·신고가) · {len(json.dumps(charts, separators=(',', ':')))//1024}KB")
+    # 조각: 종목코드 앞 2자리 → charts/<xx>.json (각 ~1MB). index.json 에 날짜·종목 수·조각 목록. 벤치(코스피)는 bench.json
+    chunks = {}
+    for tk in want:
+        chunks.setdefault(tk[:2], {})[tk] = pack(chart_raw[tk])
+    bench = {k: round(v, 2) for k, v in kmap.items()}
+    cidx = {"date": date, "bars": CHART_BARS, "n": len(want), "chunks": sorted(chunks), "generated_at": datetime.datetime.now().isoformat(timespec="seconds")}
+    cdir = Path(os.environ.get("CHART_OUT", "/tmp/swing_charts")); cdir.mkdir(parents=True, exist_ok=True)
+    for f in cdir.glob("*.json"): f.unlink()
+    for k, v in chunks.items(): (cdir / f"{k}.json").write_text(json.dumps(v, ensure_ascii=False, separators=(",", ":")))
+    (cdir / "bench.json").write_text(json.dumps(bench, separators=(",", ":")))
+    (cdir / "index.json").write_text(json.dumps(cidx, ensure_ascii=False))
+    tot = sum(f.stat().st_size for f in cdir.glob("*.json"))
+    print(f"  일봉 차트: {len(want)}종목 · 조각 {len(chunks)}개 · {tot//1024}KB → {cdir} (워크플로가 orphan 브랜치 charts 로 push)")
     if DRY:
-        Path("/tmp/swing_charts.json").write_text(json.dumps(charts, ensure_ascii=False, separators=(",", ":")))
         Path("/tmp/swing_latest.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
         print("(dry-run — /tmp/swing_latest.json 에만 저장)")
         return 0
@@ -359,7 +367,6 @@ def main():
         print(f"  ✓ {path}  {r['commit']['sha'][:7]}")
 
     put(f"swing/{date}.json", out, f"swing: {date} 1개월 추세 스캔")
-    put("swing/charts_latest.json", charts, f"swing: 일봉 차트 {date} ({charts['n']}종목)")
     put("swing/latest.json", out, f"swing: latest → {date}")
     cur = gh("swing/index.json")
     dates = []

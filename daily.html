@@ -453,13 +453,22 @@ migrateLegacyFavsIfNeeded();
 
 
 /* ───────── 📈 일봉 1년 차트 (카드 미니 + 클릭 확대) ───────── */
-var KC = { data:null, loading:null, failed:false, io:null };
+/* 데이터: orphan 브랜치 charts — index.json(날짜·조각 목록) + bench.json(코스피) + <종목코드 앞 2자리>.json 조각을 필요한 것만 */
+var KC_BASE = 'https://raw.githubusercontent.com/whysosary-dot/stock-screener/charts/';
+var KC = { data:null, loading:null, failed:false, chunks:{}, pending:{} };
+function kcFetch(name){ return fetch(KC_BASE+name+'?cb='+Math.floor(Date.now()/600000), {cache:'no-store'}).then(function(r){ if(!r.ok) throw new Error(name+' '+r.status); return r.json(); }); }
 function kcLoad(){
   if(KC.data||KC.loading||KC.failed) return KC.loading||Promise.resolve();
-  KC.loading = fetch('swing/charts_latest.json?cb='+Math.floor(Date.now()/600000)).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function(j){ KC.data=j; KC.loading=null; kcDrawVisible(); })
+  KC.loading = Promise.all([kcFetch('index.json'), kcFetch('bench.json')])
+    .then(function(a){ KC.data={ date:a[0].date, n:a[0].n, chunks:a[0].chunks||[], bench:a[1], stocks:{} }; KC.loading=null; kcDrawVisible(); })
     .catch(function(e){ KC.failed=true; KC.loading=null; console.warn('charts', e); document.querySelectorAll('.kc').forEach(function(el){ el.remove(); }); });
   return KC.loading;
+}
+function kcChunk(tk){   // 조각 로드 (한 번만), 로드되면 보이는 카드 다시 그림
+  var k=tk.slice(0,2); if(KC.chunks[k]||KC.pending[k]) return;
+  if(KC.data.chunks.length && KC.data.chunks.indexOf(k)<0){ KC.chunks[k]={}; return; }
+  KC.pending[k]=kcFetch(k+'.json').then(function(j){ Object.assign(KC.data.stocks, j); KC.chunks[k]=j; delete KC.pending[k]; kcDrawVisible(); })
+    .catch(function(e){ console.warn('chunk', k, e); KC.chunks[k]={}; delete KC.pending[k]; kcDrawVisible(); });
 }
 function kcSma(a,n){ var o=new Array(a.length).fill(null), s=0; for(var i=0;i<a.length;i++){ s+=a[i]; if(i>=n) s-=a[i-n]; if(i>=n-1) o[i]=s/n; } return o; }
 function kcSetup(cv){ var dpr=Math.min(2,window.devicePixelRatio||1), w=cv.clientWidth||300, h=cv.clientHeight||100; cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr); var g=cv.getContext('2d'); g.setTransform(dpr,0,0,dpr,0,0); return [g,w,h]; }
@@ -500,8 +509,8 @@ function kcDrawVisible(){
     if(el.dataset.done) return;
     if(!KC.data){ kcLoad(); return; }
     var tk=el.dataset.kc;
-    if(!KC.data.stocks[tk]){ el.remove(); return; }           // 거래대금 100억 미만 등 데이터 없음 → 조용히 제거
     if(el.offsetParent===null) return;                          // 숨겨진 탭 — 보일 때 그림
+    if(!KC.data.stocks[tk]){ var k=tk.slice(0,2); if(!KC.chunks[k]){ kcChunk(tk); return; } el.remove(); return; }   // 조각 미로드면 받아온 뒤, 없으면 제거
     kcDraw(el.querySelector('canvas'), tk, false); el.dataset.done='1'; el.addEventListener('click', function(){ kcOpen(tk); });
   });
 }

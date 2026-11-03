@@ -37,7 +37,23 @@ jobs:
             echo "$out" | grep -q ENRICH_DONE && break
           done
           python3 scripts/daily_screen.py --step build 2>&1 | tail -20
-      - name: swing_scan.py (1개월 추세)
+      - name: swing_scan.py (1개월 추세 + 전 종목 일봉 차트 조각)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 swing_scan.py 2>&1 | tail -12
+          CHART_OUT: ${{ runner.temp }}/charts
+        run: python3 swing_scan.py 2>&1 | tail -14
+      # 일봉 차트(약 25MB/일)는 main 이 아니라 이력 없는 orphan 브랜치 `charts` 에 단일 커밋으로 강제 덮어쓰기 → 저장소 크기 고정.
+      # 페이지는 raw.githubusercontent.com/whysosary-dot/stock-screener/charts/<xx>.json 을 필요한 조각만 읽는다.
+      - name: push charts branch (orphan)
+        env:
+          CHART_OUT: ${{ runner.temp }}/charts
+        run: |
+          [ -f "$CHART_OUT/index.json" ] || { echo "차트 조각 없음 — 건너뜀"; exit 0; }
+          cd "$CHART_OUT" && git init -q && git checkout -q --orphan charts
+          git config user.email "whysosary@naver.com" && git config user.name "리송"
+          git add -A && git commit -q -m "charts $(date -u -d '+9 hours' +%F) (orphan)"
+          for i in 1 2 3; do
+            git push -f -q "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" charts:charts && { echo "pushed charts"; exit 0; }
+            echo "push 재시도 $i"; sleep $((i*7))
+          done
+          exit 1
