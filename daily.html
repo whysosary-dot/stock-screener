@@ -112,6 +112,10 @@ table.et tr.er:hover{background:rgba(15,118,110,.05);cursor:pointer}
 table.et tr>th:first-child,table.et tr.er>td:first-child{position:sticky;left:0;z-index:2;background:var(--card,#fff);box-shadow:1px 0 0 var(--border)}
 table.et tr>th:first-child{z-index:3}
 table.et tr.er:hover>td:first-child{background:#f3f8f7}
+.exin{position:sticky;left:8px;display:inline-block;max-width:calc(100vw - 56px);padding:0 8px;white-space:normal}
+.exin table.mini{white-space:nowrap}
+a.nvl{display:inline-block;margin-left:5px;width:17px;height:17px;line-height:17px;text-align:center;border-radius:4px;background:#03c75a;color:#fff!important;font-size:10.5px;font-weight:800;text-decoration:none;vertical-align:1px}
+a.nvl:hover{filter:brightness(.9)}
 table.et td.u{color:#dc2626}table.et td.d{color:#2563eb}
 table.et .src{font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px}
 .src.P{background:rgba(217,115,13,.12);color:#d9730d}.src.R{background:rgba(37,99,235,.12);color:#2563eb}.src.H{background:rgba(100,116,139,.12);color:#64748b}
@@ -932,7 +936,7 @@ function renderEarn(){
   var EF=getEarnFavs();
   var tb=shown.map(function(r){
     var tds=cols.map(function(c){ var k=c[0], v=r[k];
-      if(k==='name') return '<td class="l"><button class="efav" data-efav="'+r.code+'" title="즐겨찾기" style="border:none;background:none;cursor:pointer;font-size:15px;padding:0 4px 0 0;color:'+(EF[r.code]?'#f59e0b':'#cbd5e1')+'">'+(EF[r.code]?'★':'☆')+'</button><b>'+escHtml(r.name)+'</b> <span style="color:var(--text-dim);font-size:11px">'+r.code+' '+(r.mkt==='KOSDAQ'?'Q':r.mkt==='KOSPI'?'P':'')+'</span>'+(r.turn==='흑전'?'<span class="tag2 tp">흑전</span>':r.turn==='적전'?'<span class="tag2 cm">적전</span>':'')+(r.fs==='별도'?'<span class="tag2 cm">별도</span>':'')+'</td>';
+      if(k==='name') return '<td class="l"><button class="efav" data-efav="'+r.code+'" title="즐겨찾기" style="border:none;background:none;cursor:pointer;font-size:15px;padding:0 4px 0 0;color:'+(EF[r.code]?'#f59e0b':'#cbd5e1')+'">'+(EF[r.code]?'★':'☆')+'</button><b>'+escHtml(r.name)+'</b> <span style="color:var(--text-dim);font-size:11px">'+r.code+' '+(r.mkt==='KOSDAQ'?'Q':r.mkt==='KOSPI'?'P':'')+'</span><a class="nvl" href="https://finance.naver.com/item/main.naver?code='+r.code+'" target="_blank" rel="noopener" title="네이버 증권">N</a>'+(r.turn==='흑전'?'<span class="tag2 tp">흑전</span>':r.turn==='적전'?'<span class="tag2 cm">적전</span>':'')+(r.fs==='별도'?'<span class="tag2 cm">별도</span>':'')+'</td>';
       if(k==='d') return '<td class="l">'+(r.ed||r.d||'').slice(5,16).replace('T',' ')+' <span class="src '+r.src+'">'+({P:'잠정',R:'정기',H:'추이'})[r.src]+'</span></td>';
       if(k==='per_') return '<td class="l">'+r.per_+'</td>';
       if(k==='eg') return '<td class="'+eCls(v)+'">'+(v==null?'-':ePct(v))+'</td>';
@@ -946,7 +950,7 @@ function renderEarn(){
       if(k==='mc') return '<td>'+(v==null?'-':eokStr(v))+'</td>';
       return '<td class="'+(v<0?'d':'')+'">'+eFmt(v)+'</td>'; }).join('');
     var row='<tr class="er" data-ec="'+r.code+'">'+tds+'</tr>';
-    if(EXPANDED[r.code]) row+='<tr class="ex"><td colspan="'+cols.length+'">'+earnHist(r.code)+'</td></tr>';
+    if(EXPANDED[r.code]) row+='<tr class="ex"><td colspan="'+cols.length+'" style="text-align:left;padding:8px 0"><div class="exin">'+earnHist(r.code)+'</div></td></tr>';
     return row; }).join('');
   var _ow=document.querySelector('#earnBody .etw'), _sl=_ow?_ow.scrollLeft:0, _sy=window.scrollY;
   document.getElementById('earnBody').innerHTML='<div style="font-size:12px;color:var(--text-dim);margin:4px 0 6px">'+rows.length+'개 종목'+(rows.length>500?' (상위 500개 표시)':'')+' · 행을 누르면 최근 8개 분기 추이</div>'+
@@ -959,7 +963,7 @@ function earnHist(code){
   var h='<table class="mini"><tr><th style="text-align:left">분기</th><th>매출</th><th>영업이익</th><th>이익률</th><th>순이익</th><th>출처</th><th>공시</th></tr>';
   ps.forEach(function(p){ var x=c.q[p];
     h+='<tr><td style="text-align:left">'+p+'</td><td>'+eFmt(x.r)+'</td><td class="'+(x.o<0?'d':'')+'">'+eFmt(x.o)+'</td><td>'+(x.r>0&&x.o!=null?(x.o/x.r*100).toFixed(1)+'%':'-')+'</td><td class="'+(x.n<0?'d':'')+'">'+eFmt(x.n)+'</td><td><span class="src '+x.s+'">'+({P:'잠정',R:'정기',H:'추이'})[x.s]+'</span> '+(x.d||'')+'</td><td>'+(x.rcp?'<a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo='+x.rcp+'" target="_blank" rel="noopener">DART</a>':'')+'</td></tr>'; });
-  return h+'</table> <a class="card-btn" style="display:inline-block;margin-top:6px" href="https://m.stock.naver.com/domestic/stock/'+code+'/total" target="_blank" rel="noopener">📊 네이버 주식</a>';
+  return h+'</table> <a class="card-btn" style="display:inline-block;margin-top:6px" href="https://finance.naver.com/item/main.naver?code='+code+'" target="_blank" rel="noopener">📊 네이버 증권</a>';
 }
 document.addEventListener('click',function(e){
   var th=e.target.closest('#earnBody th[data-es]');
