@@ -942,8 +942,10 @@ function renderEarn(){
     var row='<tr class="er" data-ec="'+r.code+'">'+tds+'</tr>';
     if(EXPANDED[r.code]) row+='<tr class="ex"><td colspan="'+cols.length+'">'+earnHist(r.code)+'</td></tr>';
     return row; }).join('');
+  var _ow=document.querySelector('#earnBody .etw'), _sl=_ow?_ow.scrollLeft:0, _sy=window.scrollY;
   document.getElementById('earnBody').innerHTML='<div style="font-size:12px;color:var(--text-dim);margin:4px 0 6px">'+rows.length+'개 종목'+(rows.length>500?' (상위 500개 표시)':'')+' · 행을 누르면 최근 8개 분기 추이</div>'+
     '<div class="etw"><table class="et"><thead>'+th+'</thead><tbody>'+(tb||'<tr><td class="l" colspan="'+cols.length+'">조건에 맞는 종목이 없습니다.</td></tr>')+'</tbody></table></div>';
+  var _nw=document.querySelector('#earnBody .etw'); if(_nw) _nw.scrollLeft=_sl; window.scrollTo(window.scrollX,_sy);
 }
 function earnHist(code){
   var c=EARN.companies[code]; if(!c) return '';
