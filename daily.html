@@ -270,10 +270,10 @@ button.date-nav-btn{cursor:pointer;font:inherit}
         </div>
       </div>
       <div class="filter-item">
-        <div class="filter-label"><span>시총 최대</span><span class="filter-value" id="mcLabel">2,000조</span></div>
+        <div class="filter-label"><span>시총 최소</span><span class="filter-value" id="mcLabel">0억</span></div>
         <div class="filter-row">
-          <input type="range" id="filterMC" min="5000" max="20000000" step="50000" value="20000000">
-          <input type="number" class="filter-num" id="filterMCNum" min="5000" max="20000000" step="1000" value="20000000">
+          <input type="range" id="filterMC" min="0" max="50000" step="100" value="0">
+          <input type="number" class="filter-num" id="filterMCNum" min="0" step="100" value="0">
           <span class="filter-unit">억</span>
         </div>
       </div>
@@ -296,11 +296,6 @@ button.date-nav-btn{cursor:pointer;font:inherit}
       <button class="sort-btn" data-sort="trading_value">거래대금순</button>
       <button class="sort-btn active" data-sort="change_rate">등락률순</button>
       <button class="sort-btn" data-sort="market_cap">시총순</button>
-      <button class="sort-btn" data-sort="return_1m">1개월수익률순</button>
-      <button class="sort-btn" data-sort="return_2m">2개월수익률순</button>
-      <button class="sort-btn" data-sort="return_3m">3개월수익률순</button>
-      <button class="sort-btn" data-sort="acc_1m_2m" title="최근 1개월이 2개월보다 강한 종목">1M↑2M 가속</button>
-      <button class="sort-btn" data-sort="acc_1m_2m_3m" title="1M&gt;2M&gt;3M 점진 가속">1M↑2M↑3M</button>
     </div>
 
     <div class="highlights" id="highlightsSection" style="display:none">
@@ -595,15 +590,15 @@ function setupFilters(){
   mcS.oninput=function(){ mcN.value=mcS.value; uMC(mcS.value); };
   tvN.oninput=function(){ tvS.value=tvN.value; uTV(tvN.value); };
   crN.oninput=function(){ crS.value=crN.value; uCR(crN.value); };
-  mcN.oninput=function(){ mcS.value=mcN.value; uMC(mcN.value); };
+  mcN.oninput=function(){ mcS.value=Math.min(Number(mcN.value)||0,50000); uMC(mcN.value); };
 }
 
 function applyFilters(){
   var minTV=Number(document.getElementById('filterTV').value);
   var minCR=Number(document.getElementById('filterCR').value);
-  var maxMC=Number(document.getElementById('filterMC').value);
+  var minMC=Number(document.getElementById('filterMCNum').value)||0;
   FILTERED = ALL_STOCKS.filter(function(s){
-    return s.trading_value>=minTV && s.change_rate>=minCR && s.market_cap<=maxMC;
+    return s.trading_value>=minTV && s.change_rate>=minCR && (s.market_cap||0)>=minMC;
   });
   sortStocks();
 }
@@ -625,14 +620,7 @@ function sortStocks(){
   if(!CURRENT_SORT) return;
   FILTERED.sort(function(a,b){
     var av,bv;
-    if(CURRENT_SORT==='acc_1m_2m'){
-      av=(a.return_1m!=null&&a.return_2m!=null)?(a.return_1m-a.return_2m):-Infinity;
-      bv=(b.return_1m!=null&&b.return_2m!=null)?(b.return_1m-b.return_2m):-Infinity;
-    } else if(CURRENT_SORT==='acc_1m_2m_3m'){
-      var aOk=a.return_1m!=null&&a.return_2m!=null&&a.return_3m!=null&&a.return_1m>a.return_2m&&a.return_2m>a.return_3m;
-      var bOk=b.return_1m!=null&&b.return_2m!=null&&b.return_3m!=null&&b.return_1m>b.return_2m&&b.return_2m>b.return_3m;
-      av=aOk?a.return_1m:-Infinity; bv=bOk?b.return_1m:-Infinity;
-    } else { av=a[CURRENT_SORT]??-Infinity; bv=b[CURRENT_SORT]??-Infinity; }
+    av=a[CURRENT_SORT]??-Infinity; bv=b[CURRENT_SORT]??-Infinity;
     return bv-av;
   });
 }
