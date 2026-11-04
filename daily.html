@@ -671,8 +671,8 @@ function swSpark(px){
 }
 function swCard(r){
   var mc = r.mcap ? (r.mcap>=10000 ? (r.mcap/10000).toFixed(1)+'조' : Math.round(r.mcap).toLocaleString()+'억') : '-';
-  return '<div class="sw-card g-'+r.grade+'">'+
-    '<div class="sw-top"><span class="sw-badge g-'+r.grade+'">'+r.grade+'</span>'+
+  return '<div class="sw-card g-'+r.grade+''+(isFav(r.ticker)?' fav':'')+'" data-fav-ticker="'+r.ticker+'" data-fav-date="'+escHtml(CURRENT_DATE||'')+'">'+
+    '<div class="sw-top">'+'<button class="fav-toggle'+(isFav(r.ticker)?' on':'')+'" aria-pressed="'+(isFav(r.ticker)?'true':'false')+'" onclick="toggleFav(\''+r.ticker+'\',this)" title="즐겨찾기">'+(isFav(r.ticker)?'★':'☆')+'</button>'+'<span class="sw-badge g-'+r.grade+'">'+r.grade+'</span>'+
       '<a class="sw-name" href="https://m.stock.naver.com/domestic/stock/'+r.ticker+'/total" target="_blank" rel="noopener">'+r.name+'</a>'+
       '<span class="sw-sub">'+r.ticker+' · '+r.market+' · '+mc+'</span></div>'+
     swSpark(r.spark)+
@@ -733,8 +733,8 @@ function highCard(r){
              : r.kind==='near' ? '직전 고점 대비 '+swNum(r.dist,1)+'%'
              : (r.gap>=250 ? '1년 넘게 만의 신고가' : r.gap+'거래일 만의 신고가');
   var hiLab = (r.kind==='h5'||r.kind==='h10') ? '직전 '+(r.kind==='h5'?5:10)+'일 고점 ' : '직전 52주 고점 ';
-  return '<div class="sw-card k-'+r.kind+'">'+
-    '<div class="sw-top"><span class="sw-badge k-'+r.kind+'">'+KIND_LABEL[r.kind]+'</span>'+
+  return '<div class="sw-card k-'+r.kind+''+(isFav(r.ticker)?' fav':'')+'" data-fav-ticker="'+r.ticker+'" data-fav-date="'+escHtml(CURRENT_DATE||'')+'">'+
+    '<div class="sw-top">'+'<button class="fav-toggle'+(isFav(r.ticker)?' on':'')+'" aria-pressed="'+(isFav(r.ticker)?'true':'false')+'" onclick="toggleFav(\''+r.ticker+'\',this)" title="즐겨찾기">'+(isFav(r.ticker)?'★':'☆')+'</button>'+'<span class="sw-badge k-'+r.kind+'">'+KIND_LABEL[r.kind]+'</span>'+
       '<a class="sw-name" href="https://m.stock.naver.com/domestic/stock/'+r.ticker+'/total" target="_blank" rel="noopener">'+r.name+'</a>'+
       '<span class="sw-sub">'+r.ticker+' · '+r.market+' · '+mc+'</span></div>'+
     swSpark(r.spark)+
