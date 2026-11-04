@@ -135,7 +135,7 @@ table.et .mini{border-collapse:collapse;font-size:11.5px}table.et .mini td,table
 .val .bar i{display:block;height:100%;background:linear-gradient(90deg,#60a5fa,#f87171)}
 @media (max-width:640px){ .val{grid-template-columns:repeat(3,1fr)} }
 .sw-badge.k-breakout{background:#dc2626}.sw-badge.k-high{background:#b45309}.sw-badge.k-near{background:#94a3b8}
-.sw-badge.k-h5{background:#0ea5e9}.sw-badge.k-h10{background:#6366f1}
+.sw-badge.k-h5{background:#0ea5e9}.sw-badge.k-h10{background:#6366f1}.sw-badge.k-h60{background:#6366f1}
 .sw-card.k-breakout{border-color:#dc2626;box-shadow:0 0 0 1px rgba(220,38,38,.25)}
 .sw-card.k-high{border-color:rgba(180,83,9,.6)}
 .sw-note{background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.25);border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:13px;line-height:1.7;color:var(--text)}
@@ -361,7 +361,7 @@ button.date-nav-btn{cursor:pointer;font:inherit}
     <div id="highHead"></div>
     <div class="sort-bar" id="highSort">
       <button class="sort-btn active" data-hw="52">52주</button>
-      <button class="sort-btn" data-hw="10">10일</button>
+      <button class="sort-btn" data-hw="60">60일</button>
       <span style="width:12px"></span>
       <button class="sort-btn active" data-hs="val20">거래대금순</button>
       <button class="sort-btn" data-hs="chg">등락률순</button>
@@ -726,13 +726,13 @@ document.addEventListener('click', function(e){
 
 /* ───────── 🏔 52주 신고가 ───────── */
 var HIGH_KIND='all', HIGH_SORT='val20', HIGH_WIN='52';
-var KIND_LABEL={breakout:'첫 돌파', high:'신고가', near:'근접', h5:'5일 신고가', h10:'10일 신고가'};
+var KIND_LABEL={breakout:'첫 돌파', high:'신고가', near:'근접', h5:'5일 신고가', h10:'10일 신고가', h60:'60일 신고가'};
 function highCard(r){
   var mc = r.mcap ? (r.mcap>=10000 ? (r.mcap/10000).toFixed(1)+'조' : Math.round(r.mcap).toLocaleString()+'억') : '-';
-  var gapTxt = (r.kind==='h5'||r.kind==='h10') ? ('52주 고점 대비 '+(r.dist52>=0?'+':'')+swNum(r.dist52,1)+'%'+(r.dist52>=0?' (52주 신고가)':''))
+  var gapTxt = /^h\d+$/.test(r.kind) ? ('52주 고점 대비 '+(r.dist52>=0?'+':'')+swNum(r.dist52,1)+'%'+(r.dist52>=0?' (52주 신고가)':''))
              : r.kind==='near' ? '직전 고점 대비 '+swNum(r.dist,1)+'%'
              : (r.gap>=250 ? '1년 넘게 만의 신고가' : r.gap+'거래일 만의 신고가');
-  var hiLab = (r.kind==='h5'||r.kind==='h10') ? '직전 '+(r.kind==='h5'?5:10)+'일 고점 ' : '직전 52주 고점 ';
+  var hiLab = /^h\d+$/.test(r.kind) ? '직전 '+r.kind.slice(1)+'일 고점 ' : '직전 52주 고점 ';
   return '<div class="sw-card k-'+r.kind+''+(isFav(r.ticker)?' fav':'')+'" data-fav-ticker="'+r.ticker+'" data-fav-date="'+escHtml(CURRENT_DATE||'')+'">'+
     '<div class="sw-top">'+'<button class="fav-toggle'+(isFav(r.ticker)?' on':'')+'" aria-pressed="'+(isFav(r.ticker)?'true':'false')+'" onclick="toggleFav(\''+r.ticker+'\',this)" title="즐겨찾기">'+(isFav(r.ticker)?'★':'☆')+'</button>'+'<span class="sw-badge k-'+r.kind+'">'+KIND_LABEL[r.kind]+'</span>'+
       '<a class="sw-name" href="https://m.stock.naver.com/domestic/stock/'+r.ticker+'/total" target="_blank" rel="noopener">'+r.name+'</a>'+
@@ -758,7 +758,7 @@ function renderHigh(){
   if(isShort){
     var tot = SWING['high'+HIGH_WIN+'_total']||all.length;
     document.getElementById('highHead').innerHTML =
-      '<div class="sw-note"><b>'+HIGH_WIN+'일 신고가</b> — 오늘 종가가 직전 '+HIGH_WIN+'거래일 최고 종가 이상인 종목. 짧은 창이라 종목이 많으므로 20일 평균 거래대금 1억 이상, 거래대금 상위 200개만 저장. 카드의 "52주 고점 대비"가 +면 동시에 52주 신고가.'+
+      '<div class="sw-note"><b>'+HIGH_WIN+'일 신고가</b> — 오늘 종가가 직전 '+HIGH_WIN+'거래일 최고 종가 이상인 종목. 약 3개월 박스권 돌파 성격. 20일 평균 거래대금 1억 이상, 거래대금 상위 200개만 저장. 카드의 "52주 고점 대비"가 +면 동시에 52주 신고가.'+
       '<div style="margin-top:8px;font-size:11.5px">기준일 '+SWING.date+' · 전체 '+tot+'종목 중 '+all.length+'개 표시</div></div>';
     if(HIGH_SORT==='gap') HIGH_SORT='val20';
     items.sort(function(a,b){ return ((b[HIGH_SORT]||0)-(a[HIGH_SORT]||0)); });
