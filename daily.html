@@ -936,7 +936,7 @@ function renderEarn(){
   var EF=getEarnFavs();
   var tb=shown.map(function(r){
     var tds=cols.map(function(c){ var k=c[0], v=r[k];
-      if(k==='name') return '<td class="l"><button class="efav" data-efav="'+r.code+'" title="즐겨찾기" style="border:none;background:none;cursor:pointer;font-size:15px;padding:0 4px 0 0;color:'+(EF[r.code]?'#f59e0b':'#cbd5e1')+'">'+(EF[r.code]?'★':'☆')+'</button><b>'+escHtml(r.name)+'</b> <span style="color:var(--text-dim);font-size:11px">'+r.code+' '+(r.mkt==='KOSDAQ'?'Q':r.mkt==='KOSPI'?'P':'')+'</span><a class="nvl" href="https://finance.naver.com/item/main.naver?code='+r.code+'" target="_blank" rel="noopener" title="네이버 증권">N</a>'+(r.turn==='흑전'?'<span class="tag2 tp">흑전</span>':r.turn==='적전'?'<span class="tag2 cm">적전</span>':'')+(r.fs==='별도'?'<span class="tag2 cm">별도</span>':'')+'</td>';
+      if(k==='name') return '<td class="l"><button class="efav" data-efav="'+r.code+'" title="즐겨찾기" style="border:none;background:none;cursor:pointer;font-size:15px;padding:0 4px 0 0;color:'+(EF[r.code]?'#f59e0b':'#cbd5e1')+'">'+(EF[r.code]?'★':'☆')+'</button><b>'+escHtml(r.name)+'</b> <span style="color:var(--text-dim);font-size:11px">'+r.code+' '+(r.mkt==='KOSDAQ'?'Q':r.mkt==='KOSPI'?'P':'')+'</span><a class="nvl" href="https://m.stock.naver.com/domestic/stock/'+r.code+'/total" target="_blank" rel="noopener" title="네이버 증권">N</a>'+(r.turn==='흑전'?'<span class="tag2 tp">흑전</span>':r.turn==='적전'?'<span class="tag2 cm">적전</span>':'')+(r.fs==='별도'?'<span class="tag2 cm">별도</span>':'')+'</td>';
       if(k==='d') return '<td class="l">'+(r.ed||r.d||'').slice(5,16).replace('T',' ')+' <span class="src '+r.src+'">'+({P:'잠정',R:'정기',H:'추이'})[r.src]+'</span></td>';
       if(k==='per_') return '<td class="l">'+r.per_+'</td>';
       if(k==='eg') return '<td class="'+eCls(v)+'">'+(v==null?'-':ePct(v))+'</td>';
@@ -963,7 +963,7 @@ function earnHist(code){
   var h='<table class="mini"><tr><th style="text-align:left">분기</th><th>매출</th><th>영업이익</th><th>이익률</th><th>순이익</th><th>출처</th><th>공시</th></tr>';
   ps.forEach(function(p){ var x=c.q[p];
     h+='<tr><td style="text-align:left">'+p+'</td><td>'+eFmt(x.r)+'</td><td class="'+(x.o<0?'d':'')+'">'+eFmt(x.o)+'</td><td>'+(x.r>0&&x.o!=null?(x.o/x.r*100).toFixed(1)+'%':'-')+'</td><td class="'+(x.n<0?'d':'')+'">'+eFmt(x.n)+'</td><td><span class="src '+x.s+'">'+({P:'잠정',R:'정기',H:'추이'})[x.s]+'</span> '+(x.d||'')+'</td><td>'+(x.rcp?'<a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo='+x.rcp+'" target="_blank" rel="noopener">DART</a>':'')+'</td></tr>'; });
-  return h+'</table> <a class="card-btn" style="display:inline-block;margin-top:6px" href="https://finance.naver.com/item/main.naver?code='+code+'" target="_blank" rel="noopener">📊 네이버 증권</a>';
+  return h+'</table> <a class="card-btn" style="display:inline-block;margin-top:6px" href="https://m.stock.naver.com/domestic/stock/'+code+'/total" target="_blank" rel="noopener">📊 네이버 증권</a>';
 }
 document.addEventListener('click',function(e){
   var th=e.target.closest('#earnBody th[data-es]');
