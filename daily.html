@@ -347,10 +347,9 @@ button.date-nav-btn{cursor:pointer;font:inherit}
   <div class="panel" id="panel-swing">
     <div id="swingHead"></div>
     <div class="sort-bar" id="swingSort">
-      <button class="sort-btn active" data-sw="grade">등급순</button>
-      <button class="sort-btn" data-sw="acc">축적배수순</button>
-      <button class="sort-btn" data-sw="r20">20일 수익률순</button>
-      <button class="sort-btn" data-sw="val20">거래대금순</button>
+      <button class="sort-btn" data-sw="val20" title="20일 평균 거래대금">거래대금순</button>
+      <button class="sort-btn" data-sw="chg">등락률순</button>
+      <button class="sort-btn" data-sw="mcap">시총순</button>
     </div>
     <div id="swingGrid" class="stock-grid">
       <div class="loading"><div class="spinner"></div><span>스캔 결과 로딩 중…</span></div>
@@ -365,6 +364,7 @@ button.date-nav-btn{cursor:pointer;font:inherit}
       <button class="sort-btn" data-hw="10">10일</button>
       <span style="width:12px"></span>
       <button class="sort-btn active" data-hs="val20">거래대금순</button>
+      <button class="sort-btn" data-hs="chg">등락률순</button>
       <button class="sort-btn" data-hs="mcap">시총순</button>
     </div>
     <div id="highGrid" class="stock-grid">
@@ -718,8 +718,10 @@ function loadSwing(){
 }
 document.addEventListener('click', function(e){
   var b=e.target.closest('#swingSort .sort-btn'); if(!b) return;
+  var was=b.classList.contains('active');
   document.querySelectorAll('#swingSort .sort-btn').forEach(function(x){x.classList.remove('active');});
-  b.classList.add('active'); SWING_SORT=b.dataset.sw; renderSwing();
+  if(was){ SWING_SORT='grade'; } else { b.classList.add('active'); SWING_SORT=b.dataset.sw; }
+  renderSwing();
 });
 
 /* ───────── 🏔 52주 신고가 ───────── */
