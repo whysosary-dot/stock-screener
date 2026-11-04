@@ -96,6 +96,27 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;hei
 .tab-btn.tab-swing.active{color:#16a34a;border-bottom-color:#16a34a}
 .tab-btn.tab-high.active{color:#b45309;border-bottom-color:#b45309}
 .tab-btn.tab-value.active{color:#7c3aed;border-bottom-color:#7c3aed}
+.tab-btn.tab-earn.active{color:#0f766e;border-bottom-color:#0f766e}
+.enote{background:rgba(15,118,110,.05);border:1px solid rgba(15,118,110,.25);border-radius:12px;padding:12px 16px;margin-bottom:12px;font-size:12.5px;line-height:1.7}
+.enote b{color:#0f766e}
+.ebar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.ebar select,.ebar input[type=text],.ebar input[type=number]{padding:5px 8px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--text);font-size:12px}
+.ebar input[type=number]{width:70px}.ebar label{font-size:12px;color:var(--text-dim);display:inline-flex;align-items:center;gap:4px}
+.etw{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--card,#fff)}
+table.et{border-collapse:collapse;font-size:12px;white-space:nowrap;width:100%}
+table.et th,table.et td{padding:6px 8px;border-bottom:1px solid var(--border);text-align:right}
+table.et th{position:sticky;top:0;background:var(--card,#fff);color:var(--text-dim);font-weight:600;cursor:pointer;user-select:none}
+table.et th.l,table.et td.l{text-align:left}
+table.et th.on{color:#0f766e}
+table.et tr.er:hover{background:rgba(15,118,110,.05);cursor:pointer}
+table.et td.u{color:#dc2626}table.et td.d{color:#2563eb}
+table.et .src{font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px}
+.src.P{background:rgba(217,115,13,.12);color:#d9730d}.src.R{background:rgba(37,99,235,.12);color:#2563eb}.src.H{background:rgba(100,116,139,.12);color:#64748b}
+table.et tr.ex td{background:rgba(15,118,110,.04);text-align:left;white-space:normal}
+table.et .mini{border-collapse:collapse;font-size:11.5px}table.et .mini td,table.et .mini th{padding:3px 7px;border-bottom:1px solid var(--border);text-align:right;position:static}
+.tag2{font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:4px}
+.tag2.tp{background:rgba(220,38,38,.12);color:#dc2626}.tag2.cs{background:rgba(22,163,74,.12);color:#16a34a}.tag2.cm{background:rgba(37,99,235,.12);color:#2563eb}
+
 .val-badges{display:flex;flex-wrap:wrap;gap:4px;margin:-2px 0 6px}
 .vb{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(124,58,237,.1);color:#7c3aed}
 .vb.g{background:rgba(22,163,74,.1);color:#16a34a}.vb.w{background:rgba(220,38,38,.1);color:#dc2626}.vb.n{background:rgba(100,116,139,.12);color:#64748b}
@@ -298,6 +319,7 @@ button.date-nav-btn{cursor:pointer;font:inherit}
     <button class="tab-btn tab-swing" data-tab="swing" title="당일 등락률로는 안 보이는, 한 달에 걸쳐 조용히 오르는 종목">1개월 추세</button>
     <button class="tab-btn tab-high" data-tab="high52" title="52주(252거래일) 종가 기준 신고가 · 근접(-3% 이내)">신고가</button>
     <button class="tab-btn tab-value" data-tab="value" title="이익·성장성 대비 저평가 — 증권사 추정치 기반(A), 실적 기준 저PER·저PBR·배당(B), ROE 대비 저PBR(C)">💎 저평가</button>
+    <button class="tab-btn tab-earn" data-tab="earn" title="AWAKE 실시간 공시 채널의 잠정실적·정기보고서를 분기·연간으로 누적">📊 실적</button>
     <button class="tab-btn tab-fav" data-tab="fav">즐겨찾기 <span class="fav-tab-badge" id="favTabBadge" style="display:none"></span></button>
   </div>
 
@@ -339,15 +361,8 @@ button.date-nav-btn{cursor:pointer;font:inherit}
       <button class="sort-btn" data-hw="10">10일</button>
       <button class="sort-btn" data-hw="5">5일</button>
       <span style="width:12px"></span>
-      <button class="sort-btn active" data-hk="all">전체</button>
-      <button class="sort-btn" data-hk="breakout">🚀 첫 돌파</button>
-      <button class="sort-btn" data-hk="high">신고가</button>
-      <button class="sort-btn" data-hk="near">근접(-3%)</button>
-      <span style="width:12px"></span>
       <button class="sort-btn active" data-hs="val20">거래대금순</button>
       <button class="sort-btn" data-hs="mcap">시총순</button>
-      <button class="sort-btn" data-hs="gap">오랜만순</button>
-      <button class="sort-btn" data-hs="r20">20일 수익률순</button>
     </div>
     <div id="highGrid" class="stock-grid">
       <div class="loading"><div class="spinner"></div><span>스캔 결과 로딩 중…</span></div>
@@ -370,6 +385,11 @@ button.date-nav-btn{cursor:pointer;font:inherit}
       <button class="sort-btn" data-vs="return_3m">3개월 낙폭순</button>
     </div>
     <div id="valueGrid" class="stock-grid"></div>
+  </div>
+
+  <div class="panel" id="panel-earn">
+    <div id="earnHead"></div>
+    <div id="earnBody"><div class="loading"><div class="spinner"></div><span>실적 데이터 로딩 중…</span></div></div>
   </div>
 
   <div class="panel" id="panel-fav">
@@ -858,6 +878,174 @@ document.addEventListener('change',function(e){
   var v=Number(i.value); if(isNaN(v)) return; V[i.dataset.vk]=v; vSave(); renderValue();
 });
 
+
+/* ───────── 📊 실적 (분기·연간 누적) ─────────
+   데이터: earnings/earnings.json — scripts/earnings_collect.py 가 AWAKE(실시간 주식 공시) 텔레그램 메시지를 파싱해 누적.
+   분기 값 우선순위: 정기보고서(R) > 잠정실적(P) > 과거 메시지의 '최근 실적 추이'(H). 단위 억원(메시지 원문이 억 단위 반올림).
+   시즌: 1Q 실적 = 4/1~6/30 공시, 2Q = 7/1~9/30, 3Q = 10/1~12/31, 4Q(연간) = 이듬해 1/1~3/31.
+   밸류에이션(PER·추정PER·PBR·배당·시총)은 선택한 일자의 스크리너 데이터(네이버 금융)를 붙인다. */
+var EARN=null, EARN_LOADING=false, EXPANDED={};
+var ES=(function(){ var d={mode:'season',season:'',period:'',year:'',sort:'d',asc:false,q:'',mkt:'',mc:0,rg:'',og:'',opm:'',tper:'',pbr:'',dv:'',turn:false,beat:false,src:''};
+  try{ return Object.assign(d, JSON.parse(localStorage.getItem('screener_earn_opts')||'{}')); }catch(_){ return d; } })();
+function esSave(){ try{ localStorage.setItem('screener_earn_opts', JSON.stringify(ES)); }catch(_){} }
+function qIdx(p){ var m=/^(\d{4})\.([1-4])Q$/.exec(p||''); return m? (+m[1])*4+(+m[2]-1) : null; }
+function qLab(i){ return Math.floor(i/4)+'.'+(i%4+1)+'Q'; }
+function qShift(p,k){ var i=qIdx(p); return i==null?null:qLab(i-k); }
+function seasonOf(d){ var y=+d.slice(0,4), mo=+d.slice(5,7), q=Math.floor((mo-1)/3); return q===0? (y-1)+'.4Q' : y+'.'+q+'Q'; }
+function seasonRange(s){ var y=+s.slice(0,4), n=+s.charAt(5);
+  return n===4? (y+1)+'.1.1~3.31' : y+'.'+[0,'4.1~6.30','7.1~9.30','10.1~12.31'][n]; }
+function eFmt(v){ return v==null||isNaN(v)?'-':Math.round(v).toLocaleString(); }
+function ePct(v){ if(v==null) return '-'; if(v==='흑전'||v==='적전'||v==='적지') return v; return (v>0?'+':'')+v.toFixed(1)+'%'; }
+function eCls(v){ if(v==='흑전') return 'u'; if(v==='적전'||v==='적지') return 'd'; return v==null?'':(v>0?'u':v<0?'d':''); }
+function gro(a,b){ if(a==null||b==null) return null; if(b>0) return (a/b-1)*100; if(b<=0&&a>0) return '흑전'; if(a<=0&&b<=0) return '적지'; return null; }
+function gnum(v){ return v==='흑전'?1e9:(v==='적전'||v==='적지')?-1e9:v; }
+function qv(c,p){ return (c&&c.q&&c.q[p])||null; }
+function ttm(c,p){ var s={r:0,o:0,n:0}, ok=true; for(var k=0;k<4;k++){ var x=qv(c,qShift(p,k)); if(!x||x.r==null||x.o==null||x.n==null){ ok=false; break; } s.r+=x.r; s.o+=x.o; s.n+=x.n; } return ok?s:null; }
+function mkt(code){ var m=(RAW_DATA&&RAW_DATA.stocks||[]).find(function(x){return x.ticker===code;}); return m||null; }
+
+function loadEarn(){
+  if(EARN){ renderEarn(); return; }
+  if(EARN_LOADING) return; EARN_LOADING=true;
+  fetch('earnings/earnings.json?cb='+Date.now()).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+   .then(function(d){ EARN=d; EARN_LOADING=false;
+     var mk={}; (RAW_DATA&&RAW_DATA.stocks||[]).forEach(function(s){ mk[s.ticker]=s; }); EARN._mk=mk;
+     if(!ES.season||EARN.seasons.indexOf(ES.season)<0) ES.season=EARN.seasons[0];
+     if(!ES.period) ES.period=EARN.seasons[0];
+     if(!ES.year) ES.year=String(+EARN.seasons[0].slice(0,4)-(EARN.seasons[0].endsWith('4Q')?0:1));
+     renderEarn(); })
+   .catch(function(e){ EARN_LOADING=false; document.getElementById('earnBody').innerHTML='<div class="loading"><span>실적 데이터를 불러오지 못했습니다 ('+e.message+')</span></div>'; });
+}
+
+function earnRows(){
+  var C=EARN.companies, rows=[];
+  var mk={}; (RAW_DATA&&RAW_DATA.stocks||[]).forEach(function(s){ mk[s.ticker]=s; });
+  function base(code, per, extra){
+    var c=C[code]; if(!c) return null; var x=qv(c,per); if(!x) return null;
+    var py=qv(c,qShift(per,4)), pq=qv(c,qShift(per,1)), t=ttm(c,per), m=mk[code]||{};
+    var mc=m.market_cap||null;
+    var r={code:code, name:c.n, mkt:m.market||'', per_:per, src:x.s, d:x.d, rcp:x.rcp, fs:x.fs,
+      rev:x.r, op:x.o, ni:x.n, opm:(x.r>0&&x.o!=null)?x.o/x.r*100:null,
+      rg:gro(x.r,py&&py.r), og:gro(x.o,py&&py.o), ng:gro(x.n,py&&py.n), rq:gro(x.r,pq&&pq.r), oq:gro(x.o,pq&&pq.o),
+      tr:t&&t.r, to:t&&t.o, tn:t&&t.n, topm:(t&&t.r>0)?t.o/t.r*100:null,
+      mc:mc, tper:(mc&&t&&t.n>0)?mc/t.n:null, aper:(mc&&x.n>0)?mc/(x.n*4):null,
+      per:m.per||null, cper:m.cns_per||null, pbr:m.pbr||null, dv:m.div||null, r3:m.return_3m};
+    if(r.og==='흑전'||(py&&py.o!=null&&py.o<=0&&x.o>0)) r.turn='흑전'; else if(py&&py.o>0&&x.o<=0) r.turn='적전';
+    return Object.assign(r, extra||{});
+  }
+  if(ES.mode==='season'){
+    var latest={};
+    EARN.events.forEach(function(e){ if(seasonOf(e.d)!==ES.season) return; if(!latest[e.c]||latest[e.c].d<e.d) latest[e.c]=e; });
+    Object.keys(latest).forEach(function(code){ var e=latest[code];
+      var r=base(code, e.p, {ed:e.d, d:e.d, et:e.t, rp:e.rp});
+      if(!r) return;
+      if(e.c_op!=null&&r.op!=null){ r.cop=e.c_op; r.sur=e.c_op!==0?(r.op/e.c_op-1)*100*(e.c_op<0?-1:1):null; }
+      rows.push(r); });
+  } else if(ES.mode==='quarter'){
+    Object.keys(C).forEach(function(code){ var r=base(code, ES.period); if(r) rows.push(r); });
+  } else {
+    var Y=+ES.year;
+    Object.keys(C).forEach(function(code){ var c=C[code], s={r:0,o:0,n:0}, p={r:0,o:0,n:0}, ok=true, okp=true, src='R', d='';
+      for(var q=1;q<=4;q++){ var x=qv(c,Y+'.'+q+'Q'), y=qv(c,(Y-1)+'.'+q+'Q');
+        if(!x||x.r==null||x.o==null||x.n==null) ok=false; else { s.r+=x.r; s.o+=x.o; s.n+=x.n; if(x.s!=='R') src=x.s==='P'&&src==='R'?'P':(x.s==='H'?'H':src); if(x.d>d) d=x.d; }
+        if(!y||y.r==null||y.o==null||y.n==null) okp=false; else { p.r+=y.r; p.o+=y.o; p.n+=y.n; } }
+      if(!ok) return; var m=(mk[code]||{}), mc=m.market_cap||null;
+      var r={code:code,name:c.n,mkt:m.market||'',per_:Y+'',src:src,d:d,rev:s.r,op:s.o,ni:s.n,opm:s.r>0?s.o/s.r*100:null,
+        rg:okp?gro(s.r,p.r):null, og:okp?gro(s.o,p.o):null, ng:okp?gro(s.n,p.n):null, rq:null, oq:null,
+        tr:s.r,to:s.o,tn:s.n,topm:s.r>0?s.o/s.r*100:null, mc:mc, tper:(mc&&s.n>0)?mc/s.n:null, aper:null,
+        per:m.per||null,cper:m.cns_per||null,pbr:m.pbr||null,dv:m.div||null,r3:m.return_3m};
+      if(okp&&p.o<=0&&s.o>0) r.turn='흑전'; else if(okp&&p.o>0&&s.o<=0) r.turn='적전';
+      rows.push(r); });
+  }
+  // 필터
+  var q=(ES.q||'').trim();
+  function ge(v,t){ if(t===''||t==null) return true; v=gnum(v); return v!=null&&v>=+t; }
+  function le(v,t){ if(t===''||t==null) return true; return v!=null&&v>0&&v<=+t; }
+  rows=rows.filter(function(r){
+    if(q && r.name.indexOf(q)<0 && r.code.indexOf(q)<0) return false;
+    if(ES.mkt && r.mkt!==ES.mkt) return false;
+    if(ES.mc && !(r.mc>=+ES.mc)) return false;
+    if(!ge(r.rg,ES.rg)||!ge(r.og,ES.og)||!ge(r.opm,ES.opm)) return false;
+    if(!le(r.tper,ES.tper)||!le(r.pbr,ES.pbr)) return false;
+    if(ES.dv!==''&&!(r.dv>=+ES.dv)) return false;
+    if(ES.turn && r.turn!=='흑전') return false;
+    if(ES.beat && !(r.sur>0)) return false;
+    if(ES.src && r.src!==ES.src) return false;
+    return true; });
+  var k=ES.sort, as=ES.asc?1:-1;
+  rows.sort(function(a,b){ var x=a[k], y=b[k]; if(k==='rg'||k==='og'||k==='ng'||k==='rq'||k==='oq'){ x=gnum(x); y=gnum(y); }
+    if(x==null||x==='') return 1; if(y==null||y==='') return -1; if(typeof x==='string') return as*x.localeCompare(y); return as*(x-y); });
+  return rows;
+}
+
+function renderEarn(){
+  if(!EARN) return;
+  var opts=EARN.seasons.map(function(s){ return '<option value="'+s+'"'+(s===ES.season?' selected':'')+'>'+s+' 실적 시즌 ('+seasonRange(s)+')</option>'; }).join('');
+  var allP={}; Object.keys(EARN.companies).forEach(function(c){ Object.keys(EARN.companies[c].q).forEach(function(p){ allP[p]=(allP[p]||0)+1; }); });
+  var plist=Object.keys(allP).filter(function(p){return allP[p]>=50;}).sort().reverse();
+  var popts=plist.map(function(p){ return '<option value="'+p+'"'+(p===ES.period?' selected':'')+'>'+p+' ('+allP[p]+'개사)</option>'; }).join('');
+  var yrs={}; plist.forEach(function(p){ yrs[p.slice(0,4)]=1; });
+  var yopts=Object.keys(yrs).sort().reverse().map(function(y){ return '<option value="'+y+'"'+(y===ES.year?' selected':'')+'>'+y+'년 (1Q~4Q 합)</option>'; }).join('');
+  function ni(k,lab,unit,w){ return '<label>'+lab+' <input type="number" data-ek="'+k+'" value="'+(ES[k]===''||ES[k]==null?'':ES[k])+'" style="width:'+(w||64)+'px">'+(unit||'')+'</label>'; }
+  document.getElementById('earnHead').innerHTML='<div class="enote"><b>📊 실적 누적</b> — AWAKE 실시간 공시 채널의 <span class="src P">잠정</span> 영업(잠정)실적 공정공시와 <span class="src R">정기</span> 분기·반기·사업보고서를 공시될 때마다 쌓습니다. 정기보고서가 나오면 같은 분기의 잠정 수치를 덮어씁니다. <span class="src H">추이</span>는 다른 공시 메시지의 「최근 실적 추이」에서 채운 과거 분기입니다.<br>'+
+    '단위 억원(메시지 원문이 억 단위 반올림이라 소형주의 이익률은 오차가 큼) · YoY = 전년 같은 분기 대비 · TTM = 최근 4개 분기 합 · <b>TTM PER = 시가총액 ÷ TTM 순이익</b> · 연환산 PER = 시총 ÷ (분기 순이익×4) · PER·추정PER·PBR·배당·시총은 '+(CURRENT_DATE||'')+' 스크리너 시세(네이버, 공시 아님) · 순이익은 메시지 기준(지배/연결 구분 없음). 수집 '+(EARN.updated||'')+'</div>'+
+    '<div class="ebar"><select data-ek="mode"><option value="season"'+(ES.mode==='season'?' selected':'')+'>시즌별 발표</option><option value="quarter"'+(ES.mode==='quarter'?' selected':'')+'>분기별</option><option value="annual"'+(ES.mode==='annual'?' selected':'')+'>연간</option></select>'+
+    (ES.mode==='season'?'<select data-ek="season">'+opts+'</select>':ES.mode==='quarter'?'<select data-ek="period">'+popts+'</select>':'<select data-ek="year">'+yopts+'</select>')+
+    '<input type="text" data-ek="q" placeholder="종목명·코드" value="'+escHtml(ES.q||'')+'" style="width:120px">'+
+    '<select data-ek="mkt"><option value="">전체 시장</option><option'+(ES.mkt==='KOSPI'?' selected':'')+'>KOSPI</option><option'+(ES.mkt==='KOSDAQ'?' selected':'')+'>KOSDAQ</option></select>'+
+    '<select data-ek="src"><option value="">잠정+정기+추이</option><option value="P"'+(ES.src==='P'?' selected':'')+'>잠정만</option><option value="R"'+(ES.src==='R'?' selected':'')+'>정기보고서만</option></select></div>'+
+    '<div class="ebar">'+ni('mc','시총 ≥','억',80)+ni('rg','매출 YoY ≥','%')+ni('og','영업익 YoY ≥','%')+ni('opm','영업이익률 ≥','%')+ni('tper','TTM PER ≤','배')+ni('pbr','PBR ≤','배')+ni('dv','배당 ≥','%')+
+    '<label><input type="checkbox" data-ek="turn"'+(ES.turn?' checked':'')+'> 흑자전환</label><label><input type="checkbox" data-ek="beat"'+(ES.beat?' checked':'')+'> 영업익 컨센 상회</label>'+
+    '<button class="sort-btn" id="earnReset">필터 초기화</button></div>';
+  var rows=earnRows();
+  var cols=[['name','종목','l'],['d','공시일','l'],['per_',ES.mode==='annual'?'연도':'분기','l'],['rev','매출'],['rg','YoY'],['rq','QoQ'],['op','영업이익'],['og','YoY'],['oq','QoQ'],['opm','이익률'],['ni','순이익'],['ng','YoY'],['sur','컨센 대비'],
+    ['tr','TTM 매출'],['to','TTM 영업익'],['tn','TTM 순익'],['topm','TTM 이익률'],['mc','시총'],['tper','TTM PER'],['aper','연환산 PER'],['per','PER'],['cper','추정 PER'],['pbr','PBR'],['dv','배당'],['r3','3개월']];
+  if(ES.mode!=='season') cols=cols.filter(function(c){return c[0]!=='sur';});
+  if(ES.mode==='annual') cols=cols.filter(function(c){return ['rq','oq','tr','to','tn','topm','aper'].indexOf(c[0])<0;});
+  var th='<tr>'+cols.map(function(c){ return '<th class="'+(c[2]||'')+(ES.sort===c[0]?' on':'')+'" data-es="'+c[0]+'">'+c[1]+(ES.sort===c[0]?(ES.asc?' ▲':' ▼'):'')+'</th>'; }).join('')+'</tr>';
+  var shown=rows.slice(0,500);
+  var tb=shown.map(function(r){
+    var tds=cols.map(function(c){ var k=c[0], v=r[k];
+      if(k==='name') return '<td class="l"><b>'+escHtml(r.name)+'</b> <span style="color:var(--text-dim);font-size:11px">'+r.code+' '+(r.mkt==='KOSDAQ'?'Q':r.mkt==='KOSPI'?'P':'')+'</span>'+(r.turn==='흑전'?'<span class="tag2 tp">흑전</span>':r.turn==='적전'?'<span class="tag2 cm">적전</span>':'')+(r.fs==='별도'?'<span class="tag2 cm">별도</span>':'')+'</td>';
+      if(k==='d') return '<td class="l">'+(r.ed||r.d||'').slice(5,16).replace('T',' ')+' <span class="src '+r.src+'">'+({P:'잠정',R:'정기',H:'추이'})[r.src]+'</span></td>';
+      if(k==='per_') return '<td class="l">'+r.per_+'</td>';
+      if(['rg','rq','og','oq','ng','sur'].indexOf(k)>=0) return '<td class="'+eCls(v)+'">'+ePct(v)+'</td>';
+      if(k==='opm'||k==='topm') return '<td class="'+(v<0?'d':'')+'">'+(v==null?'-':v.toFixed(1)+'%')+'</td>';
+      if(k==='r3') return '<td class="'+eCls(v)+'">'+(v==null?'-':ePct(v))+'</td>';
+      if(['tper','aper','per','cper'].indexOf(k)>=0) return '<td>'+(v==null?'-':v.toFixed(1))+'</td>';
+      if(k==='pbr') return '<td>'+(v==null?'-':v.toFixed(2))+'</td>';
+      if(k==='dv') return '<td>'+(v==null?'-':v.toFixed(2)+'%')+'</td>';
+      if(k==='mc') return '<td>'+(v==null?'-':eokStr(v))+'</td>';
+      return '<td class="'+(v<0?'d':'')+'">'+eFmt(v)+'</td>'; }).join('');
+    var row='<tr class="er" data-ec="'+r.code+'">'+tds+'</tr>';
+    if(EXPANDED[r.code]) row+='<tr class="ex"><td colspan="'+cols.length+'">'+earnHist(r.code)+'</td></tr>';
+    return row; }).join('');
+  document.getElementById('earnBody').innerHTML='<div style="font-size:12px;color:var(--text-dim);margin:4px 0 6px">'+rows.length+'개 종목'+(rows.length>500?' (상위 500개 표시)':'')+' · 행을 누르면 최근 8개 분기 추이</div>'+
+    '<div class="etw"><table class="et"><thead>'+th+'</thead><tbody>'+(tb||'<tr><td class="l" colspan="'+cols.length+'">조건에 맞는 종목이 없습니다.</td></tr>')+'</tbody></table></div>';
+}
+function earnHist(code){
+  var c=EARN.companies[code]; if(!c) return '';
+  var ps=Object.keys(c.q).sort().reverse().slice(0,8);
+  var h='<table class="mini"><tr><th style="text-align:left">분기</th><th>매출</th><th>영업이익</th><th>이익률</th><th>순이익</th><th>출처</th><th>공시</th></tr>';
+  ps.forEach(function(p){ var x=c.q[p];
+    h+='<tr><td style="text-align:left">'+p+'</td><td>'+eFmt(x.r)+'</td><td class="'+(x.o<0?'d':'')+'">'+eFmt(x.o)+'</td><td>'+(x.r>0&&x.o!=null?(x.o/x.r*100).toFixed(1)+'%':'-')+'</td><td class="'+(x.n<0?'d':'')+'">'+eFmt(x.n)+'</td><td><span class="src '+x.s+'">'+({P:'잠정',R:'정기',H:'추이'})[x.s]+'</span> '+(x.d||'')+'</td><td>'+(x.rcp?'<a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo='+x.rcp+'" target="_blank" rel="noopener">DART</a>':'')+'</td></tr>'; });
+  return h+'</table> <a class="card-btn" style="display:inline-block;margin-top:6px" href="https://m.stock.naver.com/domestic/stock/'+code+'/total" target="_blank" rel="noopener">📊 네이버 주식</a>';
+}
+document.addEventListener('click',function(e){
+  var th=e.target.closest('#earnBody th[data-es]');
+  if(th){ var k=th.dataset.es; if(ES.sort===k) ES.asc=!ES.asc; else { ES.sort=k; ES.asc=(['tper','aper','per','cper','pbr','name'].indexOf(k)>=0); } esSave(); renderEarn(); return; }
+  var tr=e.target.closest('#earnBody tr.er');
+  if(tr && !e.target.closest('a')){ var c=tr.dataset.ec; EXPANDED[c]=!EXPANDED[c]; renderEarn(); return; }
+  if(e.target.id==='earnReset'){ Object.assign(ES,{q:'',mkt:'',mc:0,rg:'',og:'',opm:'',tper:'',pbr:'',dv:'',turn:false,beat:false,src:''}); esSave(); renderEarn(); }
+});
+document.addEventListener('change',function(e){
+  var el=e.target.closest('#earnHead [data-ek]'); if(!el) return;
+  var k=el.dataset.ek; ES[k]= el.type==='checkbox'? el.checked : el.value; esSave(); renderEarn();
+});
+document.addEventListener('input',function(e){
+  var el=e.target.closest('#earnHead input[data-ek="q"]'); if(!el) return;
+  ES.q=el.value; esSave(); clearTimeout(window._eqT); window._eqT=setTimeout(function(){ renderEarn(); var n=document.querySelector('#earnHead input[data-ek="q"]'); if(n){ n.focus(); n.setSelectionRange(n.value.length,n.value.length); } },250);
+});
+
 /* ───────── 탭 ───────── */
 function setupTabs(){
   document.querySelectorAll('.tab-btn').forEach(function(btn){
@@ -871,6 +1059,7 @@ function setupTabs(){
       if(CURRENT_TAB==='swing') loadSwing();
       if(CURRENT_TAB==='high52') loadHigh();
       if(CURRENT_TAB==='value') renderValue();
+      if(CURRENT_TAB==='earn') loadEarn();
     });
   });
 }
@@ -964,6 +1153,7 @@ function renderAll(){
   renderStockCards();
   updateFavBadge();
   if(CURRENT_TAB==='value') renderValue();
+  if(CURRENT_TAB==='earn' && EARN) renderEarn();
 }
 
 function renderTopbar(){
@@ -1073,6 +1263,7 @@ function renderFavPanel(){
     return a.ticker.localeCompare(b.ticker);
   });
 
+  otherEntries = [];   // 사용자 요청(2026-11-04): 해당 일자 즐겨찾기만 표시
   if(inThisDate.length===0 && otherEntries.length===0){
     grid.innerHTML = '<div class="empty-state"><div class="icon">⭐</div><h3>즐겨찾기한 종목이 없습니다</h3><p>종목 카드 옆 ☆ 버튼을 눌러 추가하세요</p></div>';
     return;
@@ -1080,7 +1271,7 @@ function renderFavPanel(){
 
   var html = '';
   if(inThisDate.length>0){
-    html += '<h2 style="font-size:14px;color:var(--gold);margin-bottom:10px;font-weight:700;">⭐ 이 일자 즐겨찾기 ('+inThisDate.length+')</h2>';
+    html += '<h2 style="font-size:14px;color:var(--gold);margin-bottom:10px;font-weight:700;">⭐ '+escHtml(CURRENT_DATE||'')+' 즐겨찾기 ('+inThisDate.length+')</h2>';
     html += inThisDate.map(function(s){return renderStockCard(s);}).join('');
   }
   if(otherEntries.length>0){
