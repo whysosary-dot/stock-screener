@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-04T07:27:52.361429",
+  "updated_at": "2026-11-04T15:47:26.236372",
   "latest_date": "2026-11-04",
   "count": 107,
   "dates": [
@@ -12,9 +12,9 @@
       "kosdaq_count": 1831,
       "total_kospi": 940,
       "total_kosdaq": 1831,
-      "limit_up": 5,
+      "limit_up": 6,
       "limit_down": 0,
-      "generated_at": "2026-11-04T07:27:51.889135",
+      "generated_at": "2026-11-04T15:47:25.813104",
       "new": true
     },
     {
