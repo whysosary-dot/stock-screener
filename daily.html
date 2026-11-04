@@ -95,6 +95,15 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;hei
 .tab-btn.tab-fav.active{color:var(--gold);border-bottom-color:var(--gold)}
 .tab-btn.tab-swing.active{color:#16a34a;border-bottom-color:#16a34a}
 .tab-btn.tab-high.active{color:#b45309;border-bottom-color:#b45309}
+.tab-btn.tab-value.active{color:#7c3aed;border-bottom-color:#7c3aed}
+.val-badges{display:flex;flex-wrap:wrap;gap:4px;margin:-2px 0 6px}
+.vb{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(124,58,237,.1);color:#7c3aed}
+.vb.g{background:rgba(22,163,74,.1);color:#16a34a}.vb.w{background:rgba(220,38,38,.1);color:#dc2626}.vb.n{background:rgba(100,116,139,.12);color:#64748b}
+.vnote{background:rgba(124,58,237,.05);border:1px solid rgba(124,58,237,.25);border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:13px;line-height:1.7}
+.vnote b{color:#7c3aed}
+.vnote .vin{display:inline-flex;align-items:center;gap:4px;margin:4px 10px 0 0;font-size:12px;color:var(--text-dim)}
+.vnote .vin input{width:76px;padding:3px 6px;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--text);font-size:12px}
+
 .val{display:grid;grid-template-columns:repeat(4,1fr);gap:4px 8px;font-size:11px;color:var(--text-dim);border-top:1px dashed var(--border);padding-top:7px;margin-top:6px}
 .val div span{display:block;font-size:12.5px;font-weight:700;color:var(--text)}
 .val .u{color:var(--up)} .val .d{color:var(--down)}
@@ -288,6 +297,7 @@ button.date-nav-btn{cursor:pointer;font:inherit}
     <button class="tab-btn active" data-tab="main">전체</button>
     <button class="tab-btn tab-swing" data-tab="swing" title="당일 등락률로는 안 보이는, 한 달에 걸쳐 조용히 오르는 종목">1개월 추세</button>
     <button class="tab-btn tab-high" data-tab="high52" title="52주(252거래일) 종가 기준 신고가 · 근접(-3% 이내)">신고가</button>
+    <button class="tab-btn tab-value" data-tab="value" title="이익·성장성 대비 저평가 — 증권사 추정치 기반(A), 실적 기준 저PER·저PBR·배당(B), ROE 대비 저PBR(C)">💎 저평가</button>
     <button class="tab-btn tab-fav" data-tab="fav">즐겨찾기 <span class="fav-tab-badge" id="favTabBadge" style="display:none"></span></button>
   </div>
 
@@ -342,6 +352,24 @@ button.date-nav-btn{cursor:pointer;font:inherit}
     <div id="highGrid" class="stock-grid">
       <div class="loading"><div class="spinner"></div><span>스캔 결과 로딩 중…</span></div>
     </div>
+  </div>
+
+  <div class="panel" id="panel-value">
+    <div id="valueHead"></div>
+    <div class="sort-bar" id="valueSort">
+      <button class="sort-btn active" data-vm="A">A 이익성장 대비</button>
+      <button class="sort-btn" data-vm="B">B 저PER·저PBR·배당</button>
+      <button class="sort-btn" data-vm="C">C ROE 대비 저PBR</button>
+      <button class="sort-btn" data-vm="ALL">A∪B∪C 전체</button>
+      <span style="width:12px"></span>
+      <button class="sort-btn active" data-vs="score">종합점수순</button>
+      <button class="sort-btn" data-vs="cns_per">추정PER순</button>
+      <button class="sort-btn" data-vs="growth">이익증가순</button>
+      <button class="sort-btn" data-vs="pbr">PBR순</button>
+      <button class="sort-btn" data-vs="div">배당순</button>
+      <button class="sort-btn" data-vs="return_3m">3개월 낙폭순</button>
+    </div>
+    <div id="valueGrid" class="stock-grid"></div>
   </div>
 
   <div class="panel" id="panel-fav">
@@ -583,7 +611,7 @@ function setupFilters(){
   var tvN=document.getElementById('filterTVNum'),crN=document.getElementById('filterCRNum'),mcN=document.getElementById('filterMCNum');
   function uTV(v){ document.getElementById('tvLabel').textContent=Number(v).toLocaleString()+'억'; applyFilters(); renderStockCards(); renderHeader(); }
   function uCR(v){ var n=Number(v); document.getElementById('crLabel').textContent=(n>=0?'+':'')+n+'%'; applyFilters(); renderStockCards(); renderHeader(); }
-  function uMC(v){ var n=Number(v); document.getElementById('mcLabel').textContent=n>=10000?Math.round(n/10000).toLocaleString()+'조':n.toLocaleString()+'억'; applyFilters(); renderStockCards(); renderHeader(); }
+  function uMC(v){ var n=Number(v); document.getElementById('mcLabel').textContent=n>=10000?Math.round(n/10000).toLocaleString()+'조':n.toLocaleString()+'억'; applyFilters(); renderStockCards(); renderHeader(); if(typeof CURRENT_TAB!=='undefined'&&CURRENT_TAB==='value') renderValue(); }
   uTV(tvS.value); uCR(crS.value); uMC(mcS.value);
   tvS.oninput=function(){ tvN.value=tvS.value; uTV(tvS.value); };
   crS.oninput=function(){ crN.value=crS.value; uCR(crS.value); };
@@ -754,6 +782,82 @@ document.addEventListener('click', function(e){
   renderHigh();
 });
 
+
+/* ───────── 💎 저평가 (이익·성장성 대비) ─────────
+   데이터: daily JSON(네이버 금융) per(최근 4분기)·cns_per(증권사 추정)·pbr·div·return_3m.
+   A 이익성장 대비 : 추정PER ≤ V.aPer, 추정 이익증가(=PER÷추정PER−1) ≥ V.aG%
+   B 실적 기준     : 0 < PER ≤ V.bPer, PBR ≤ V.bPbr, 배당 ≥ V.bDiv%
+   C ROE 대비 저PBR : 흑자, ROE(=PBR÷PER) ≥ V.cRoe%, PBR ≤ V.cPbr
+   공통 : 우선주·스팩·리츠 제외, 시총 ≥ max(V.mc, 상단 '시총 최소') 그리고 ≤ V.mx(기본 2조, 0이면 상한 없음), 당일 거래대금 ≥ V.tv억, 3개월 수익률 ≤ V.r3%  */
+var VALUE_MODE='A', VALUE_SORT='score';
+var V=(function(){ try{ return Object.assign({aPer:9,aG:15,bPer:6,bPbr:0.8,bDiv:2.5,cRoe:10,cPbr:0.6,mc:500,mx:20000,tv:1,r3:10}, JSON.parse(localStorage.getItem('screener_value_opts')||'{}')); }catch(_){ return {aPer:9,aG:15,bPer:6,bPbr:0.8,bDiv:2.5,cRoe:10,cPbr:0.6,mc:500,mx:20000,tv:1,r3:10}; } })();
+function vSave(){ try{ localStorage.setItem('screener_value_opts', JSON.stringify(V)); }catch(_){} }
+function vScan(){
+  var src=(RAW_DATA&&RAW_DATA.stocks)||[];
+  var gmc=Number((document.getElementById('filterMCNum')||{}).value)||0, mcMin=Math.max(V.mc,gmc);
+  var out=[];
+  src.forEach(function(s){
+    if(/우$|우B$|우C$|\d우|스팩|리츠/.test(s.name||'')) return;
+    if((s.market_cap||0)<mcMin || (V.mx>0 && (s.market_cap||0)>V.mx) || (s.trading_value||0)<V.tv) return;
+    if(s.return_3m!=null && s.return_3m>V.r3) return;
+    var per=s.per>0?s.per:null, cp=s.cns_per>0?s.cns_per:null, pbr=s.pbr>0?s.pbr:null, dv=s.div||0;
+    var g=(per&&cp)?(per/cp-1)*100:null, roe=(per&&pbr)?pbr/per*100:null;
+    var A=!!(cp && cp<=V.aPer && g!=null && g>=V.aG);
+    var B=!!(per && per<=V.bPer && pbr && pbr<=V.bPbr && dv>=V.bDiv);
+    var C=!!(roe!=null && roe>=V.cRoe && pbr<=V.cPbr);
+    if(!(A||B||C)) return;
+    // 종합점수 : 이익수익률(1/추정PER 우선) + 성장 + 자산할인 + 배당 + 소외 (각 항목 상한)
+    var ey=cp?100/cp:(per?100/per:0);
+    var sc=Math.min(ey,40)*1.0 + Math.min(Math.max(g||0,0),100)*0.15 + (pbr?Math.min(1/pbr,5)*3:0) + Math.min(dv,8)*1.0 + (s.return_3m!=null&&s.return_3m<0?Math.min(-s.return_3m,40)*0.1:0);
+    if(per && per<2) sc*=0.5;   // 일회성 이익 의심 감점
+    out.push(Object.assign({},s,{_A:A,_B:B,_C:C,_g:g,_roe:roe,_score:sc}));
+  });
+  return out;
+}
+function vCard(s){
+  var b='';
+  if(s._A) b+='<span class="vb">A 이익성장 '+(s._g>=0?'+':'')+s._g.toFixed(0)+'%</span>';
+  if(s._B) b+='<span class="vb">B 저PER·배당</span>';
+  if(s._C) b+='<span class="vb">C ROE '+s._roe.toFixed(0)+'%</span>';
+  b+='<span class="vb n">점수 '+s._score.toFixed(0)+'</span>';
+  if(s.per && s.per<2) b+='<span class="vb w">⚠ PER '+s.per.toFixed(1)+' — 일회성 이익 의심</span>';
+  if(s.return_3m!=null && s.return_3m<=-20) b+='<span class="vb g">3개월 '+s.return_3m+'% 소외</span>';
+  if(s.cns_per==null) b+='<span class="vb n">추정치 없음</span>';
+  return '<div><div class="val-badges">'+b+'</div>'+renderStockCard(s)+'</div>';
+}
+function renderValue(){
+  if(!RAW_DATA){ document.getElementById('valueGrid').innerHTML='<div class="loading"><span>데이터 로딩 중…</span></div>'; return; }
+  var all=vScan();
+  var nA=all.filter(function(x){return x._A;}).length, nB=all.filter(function(x){return x._B;}).length, nC=all.filter(function(x){return x._C;}).length;
+  var items=VALUE_MODE==='ALL'?all:all.filter(function(x){return x['_'+VALUE_MODE];});
+  var key={score:'_score',growth:'_g'}[VALUE_SORT]||VALUE_SORT;
+  var asc=(VALUE_SORT==='cns_per'||VALUE_SORT==='pbr'||VALUE_SORT==='return_3m');
+  items.sort(function(a,b){ var av=a[key],bv=b[key]; if(av==null) return 1; if(bv==null) return -1; return asc?av-bv:bv-av; });
+  var cov=((RAW_DATA.stocks||[]).filter(function(s){return s.cns_per>0;})).length;
+  function inp(k,lab,unit,step){ return '<span class="vin">'+lab+' <input type="number" step="'+(step||1)+'" value="'+V[k]+'" data-vk="'+k+'">'+unit+'</span>'; }
+  document.getElementById('valueHead').innerHTML='<div class="vnote">'+
+    '<b>💎 이익·성장성 대비 저평가</b> — 반도체 쏠림으로 소외된 종목 중 숫자로 싼 곳을 찾는 스크린입니다.<br>'+
+    '<b>A 이익성장 대비</b> 증권사 추정 PER이 낮고, 추정 이익이 최근 실적보다 늘어나는 종목 (추정 이익증가 = PER ÷ 추정PER − 1). 추정치가 있는 '+cov+'개 종목만 대상.<br>'+
+    '<b>B 저PER·저PBR·배당</b> 최근 4분기 실적 기준. 추정치가 없는 스몰캡을 잡는 용도.<br>'+
+    '<b>C ROE 대비 저PBR</b> 수익성(ROE = PBR ÷ PER)은 높은데 순자산보다 싸게 거래되는 종목.<br>'+
+    '공통: 우선주·스팩·리츠 제외, 시총 500억~2조(스몰·미드캡, 입력칸에서 변경 가능, 상한 0 = 제한 없음), 3개월 수익률이 기준 이하(이미 오른 종목 제외). 종합점수 = 이익수익률 + 성장 + 자산할인 + 배당 + 소외 가중합(PER 2배 미만은 일회성 의심으로 감점).'+
+    '<div style="margin-top:6px">'+inp('aPer','A 추정PER ≤','배',0.5)+inp('aG','A 이익증가 ≥','%',5)+inp('bPer','B PER ≤','배',0.5)+inp('bPbr','B PBR ≤','배',0.1)+inp('bDiv','B 배당 ≥','%',0.5)+inp('cRoe','C ROE ≥','%',1)+inp('cPbr','C PBR ≤','배',0.1)+inp('mc','시총 ≥','억',100)+inp('mx','시총 ≤','억',1000)+inp('tv','거래대금 ≥','억',1)+inp('r3','3개월 ≤','%',5)+'</div>'+
+    '<div style="margin-top:8px;font-size:11.5px;color:var(--text-dim)">기준일 '+(CURRENT_DATE||'')+' · A '+nA+' · B '+nB+' · C '+nC+' · 합계 '+all.length+'종목 · PER·추정PER·PBR은 네이버 금융 시장 데이터(공시 아님). 상단 「시총 최소」 필터도 함께 적용됩니다. ⚠️ 투자 참고용</div></div>';
+  var g=document.getElementById('valueGrid');
+  g.innerHTML=items.length?items.slice(0,200).map(vCard).join(''):'<div class="loading"><span>조건에 맞는 종목이 없습니다.</span></div>';
+  autoResizeMemos(g);
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('#valueSort .sort-btn'); if(!b) return;
+  if(b.dataset.vm){ document.querySelectorAll('#valueSort [data-vm]').forEach(function(x){x.classList.remove('active');}); b.classList.add('active'); VALUE_MODE=b.dataset.vm; }
+  if(b.dataset.vs){ document.querySelectorAll('#valueSort [data-vs]').forEach(function(x){x.classList.remove('active');}); b.classList.add('active'); VALUE_SORT=b.dataset.vs; }
+  renderValue();
+});
+document.addEventListener('change',function(e){
+  var i=e.target.closest('#valueHead input[data-vk]'); if(!i) return;
+  var v=Number(i.value); if(isNaN(v)) return; V[i.dataset.vk]=v; vSave(); renderValue();
+});
+
 /* ───────── 탭 ───────── */
 function setupTabs(){
   document.querySelectorAll('.tab-btn').forEach(function(btn){
@@ -766,6 +870,7 @@ function setupTabs(){
       if(CURRENT_TAB==='fav') renderFavPanel();
       if(CURRENT_TAB==='swing') loadSwing();
       if(CURRENT_TAB==='high52') loadHigh();
+      if(CURRENT_TAB==='value') renderValue();
     });
   });
 }
@@ -858,6 +963,7 @@ function renderAll(){
   renderHighlights();
   renderStockCards();
   updateFavBadge();
+  if(CURRENT_TAB==='value') renderValue();
 }
 
 function renderTopbar(){
