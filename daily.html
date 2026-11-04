@@ -796,7 +796,10 @@ document.addEventListener('click', function(e){
    시즌: 1Q 실적 = 4/1~6/30 공시, 2Q = 7/1~9/30, 3Q = 10/1~12/31, 4Q(연간) = 이듬해 1/1~3/31.
    밸류에이션(PER·추정PER·PBR·배당·시총)은 선택한 일자의 스크리너 데이터(네이버 금융)를 붙인다. */
 var EARN=null, EARN_LOADING=false, EXPANDED={};
-var ES=(function(){ var d={mode:'season',season:'',period:'',year:'',sort:'d',asc:false,q:'',mkt:'',mc:0,rg:'',og:'',opm:'',tper:'',aper:'',pbr:'',dv:'',turn:false,beat:false,src:'',cper:'',eg:'',roe:'',r3:''};
+var LS_EARN_FAVS='screener_earn_favs';
+function getEarnFavs(){ try{ return JSON.parse(localStorage.getItem(LS_EARN_FAVS)||'{}'); }catch(_){ return {}; } }
+function saveEarnFavs(o){ try{ localStorage.setItem(LS_EARN_FAVS, JSON.stringify(o)); }catch(_){} }
+var ES=(function(){ var d={mode:'season',season:'',period:'',year:'',sort:'d',asc:false,q:'',mkt:'',mc:0,rg:'',og:'',opm:'',tper:'',aper:'',pbr:'',dv:'',turn:false,beat:false,src:'',cper:'',eg:'',roe:'',r3:'',fav:false};
   try{ return Object.assign(d, JSON.parse(localStorage.getItem('screener_earn_opts')||'{}')); }catch(_){ return d; } })();
 function esSave(){ try{ localStorage.setItem('screener_earn_opts', JSON.stringify(ES)); }catch(_){} }
 function qIdx(p){ var m=/^(\d{4})\.([1-4])Q$/.exec(p||''); return m? (+m[1])*4+(+m[2]-1) : null; }
@@ -872,7 +875,7 @@ function earnRows(){
       rows.push(r); });
   }
   // 필터
-  var q=(ES.q||'').trim();
+  var q=(ES.q||'').trim(); var EFAV=getEarnFavs();
   function ge(v,t){ if(t===''||t==null) return true; v=gnum(v); return v!=null&&v>=+t; }
   function le(v,t){ if(t===''||t==null) return true; return v!=null&&v>0&&v<=+t; }
   rows=rows.filter(function(r){
@@ -884,6 +887,7 @@ function earnRows(){
     if(ES.dv!==''&&!(r.dv>=+ES.dv)) return false;
     if(!le(r.cper,ES.cper)||!ge(r.eg,ES.eg)||!ge(r.roe,ES.roe)) return false;
     if(ES.r3!==''&&!(r.r3!=null&&r.r3<=+ES.r3)) return false;
+    if(ES.fav && !EFAV[r.code]) return false;
     if(ES.turn && r.turn!=='흑전') return false;
     if(ES.beat && !(r.sur>0)) return false;
     if(ES.src && r.src!==ES.src) return false;
@@ -911,7 +915,7 @@ function renderEarn(){
     '<select data-ek="mkt"><option value="">전체 시장</option><option'+(ES.mkt==='KOSPI'?' selected':'')+'>KOSPI</option><option'+(ES.mkt==='KOSDAQ'?' selected':'')+'>KOSDAQ</option></select>'+
     '<select data-ek="src"><option value="">잠정+정기+추이</option><option value="P"'+(ES.src==='P'?' selected':'')+'>잠정만</option><option value="R"'+(ES.src==='R'?' selected':'')+'>정기보고서만</option></select></div>'+
     '<div class="ebar">'+ni('mc','시총 ≥','억',80)+ni('rg','매출 YoY ≥','%')+ni('og','영업익 YoY ≥','%')+ni('opm','영업이익률 ≥','%')+ni('tper','TTM PER ≤','배')+ni('aper','연환산 PER ≤','배')+ni('pbr','PBR ≤','배')+ni('dv','배당 ≥','%')+ni('cper','추정PER ≤','배')+ni('eg','추정 이익증가 ≥','%')+ni('roe','ROE ≥','%')+ni('r3','3개월 수익률 ≤','%')+
-    '<label><input type="checkbox" data-ek="turn"'+(ES.turn?' checked':'')+'> 흑자전환</label><label><input type="checkbox" data-ek="beat"'+(ES.beat?' checked':'')+'> 영업익 컨센 상회</label>'+
+    '<label style="color:#d97706;font-weight:700"><input type="checkbox" data-ek="fav"'+(ES.fav?' checked':'')+'> ⭐ 즐겨찾기만 ('+Object.keys(getEarnFavs()).length+')</label><label><input type="checkbox" data-ek="turn"'+(ES.turn?' checked':'')+'> 흑자전환</label><label><input type="checkbox" data-ek="beat"'+(ES.beat?' checked':'')+'> 영업익 컨센 상회</label>'+
     '<button class="sort-btn" id="earnReset">필터 초기화</button></div>'+
     '<div class="ebar"><span style="font-size:12px;color:var(--text-dim)">💎 저평가 프리셋:</span>'+
     '<button class="sort-btn" data-preset="A" title="추정PER ≤9 · 추정 이익증가 ≥15% · 시총 ≥500억 · 3개월 ≤10%">A 이익성장 대비</button>'+
@@ -925,9 +929,10 @@ function renderEarn(){
   if(ES.mode==='annual') cols=cols.filter(function(c){return ['rq','oq','tr','to','tn','topm','aper'].indexOf(c[0])<0;});
   var th='<tr>'+cols.map(function(c){ return '<th class="'+(c[2]||'')+(ES.sort===c[0]?' on':'')+'" data-es="'+c[0]+'">'+c[1]+(ES.sort===c[0]?(ES.asc?' ▲':' ▼'):'')+'</th>'; }).join('')+'</tr>';
   var shown=rows.slice(0,500);
+  var EF=getEarnFavs();
   var tb=shown.map(function(r){
     var tds=cols.map(function(c){ var k=c[0], v=r[k];
-      if(k==='name') return '<td class="l"><b>'+escHtml(r.name)+'</b> <span style="color:var(--text-dim);font-size:11px">'+r.code+' '+(r.mkt==='KOSDAQ'?'Q':r.mkt==='KOSPI'?'P':'')+'</span>'+(r.turn==='흑전'?'<span class="tag2 tp">흑전</span>':r.turn==='적전'?'<span class="tag2 cm">적전</span>':'')+(r.fs==='별도'?'<span class="tag2 cm">별도</span>':'')+'</td>';
+      if(k==='name') return '<td class="l"><button class="efav" data-efav="'+r.code+'" title="즐겨찾기" style="border:none;background:none;cursor:pointer;font-size:15px;padding:0 4px 0 0;color:'+(EF[r.code]?'#f59e0b':'#cbd5e1')+'">'+(EF[r.code]?'★':'☆')+'</button><b>'+escHtml(r.name)+'</b> <span style="color:var(--text-dim);font-size:11px">'+r.code+' '+(r.mkt==='KOSDAQ'?'Q':r.mkt==='KOSPI'?'P':'')+'</span>'+(r.turn==='흑전'?'<span class="tag2 tp">흑전</span>':r.turn==='적전'?'<span class="tag2 cm">적전</span>':'')+(r.fs==='별도'?'<span class="tag2 cm">별도</span>':'')+'</td>';
       if(k==='d') return '<td class="l">'+(r.ed||r.d||'').slice(5,16).replace('T',' ')+' <span class="src '+r.src+'">'+({P:'잠정',R:'정기',H:'추이'})[r.src]+'</span></td>';
       if(k==='per_') return '<td class="l">'+r.per_+'</td>';
       if(k==='eg') return '<td class="'+eCls(v)+'">'+(v==null?'-':ePct(v))+'</td>';
@@ -959,13 +964,15 @@ function earnHist(code){
 document.addEventListener('click',function(e){
   var th=e.target.closest('#earnBody th[data-es]');
   if(th){ var k=th.dataset.es; if(ES.sort===k) ES.asc=!ES.asc; else { ES.sort=k; ES.asc=(['tper','aper','per','cper','pbr','name'].indexOf(k)>=0); } esSave(); renderEarn(); return; }
+  var fb=e.target.closest('#earnBody .efav');
+  if(fb){ var f=getEarnFavs(), c0=fb.dataset.efav; if(f[c0]) delete f[c0]; else f[c0]=1; saveEarnFavs(f); localStorage.setItem('screener_fav_ts', Date.now()); renderEarn(); return; }
   var tr=e.target.closest('#earnBody tr.er');
   if(tr && !e.target.closest('a')){ var c=tr.dataset.ec; EXPANDED[c]=!EXPANDED[c]; renderEarn(); return; }
   var pb=e.target.closest('#earnHead [data-preset]');
   if(pb){ var base={q:'',mkt:'',rg:'',og:'',opm:'',tper:'',aper:'',pbr:'',dv:'',turn:false,beat:false,src:'',cper:'',eg:'',roe:'',mc:500,r3:10};
     var P={A:{cper:9,eg:15,sort:'cper',asc:true},B:{tper:6,pbr:0.8,dv:2.5,sort:'tper',asc:true},C:{roe:10,pbr:0.6,tper:999,sort:'roe',asc:false}}[pb.dataset.preset]; P.mode='latest';
     Object.assign(ES,base,P); esSave(); renderEarn(); return; }
-  if(e.target.id==='earnReset'){ Object.assign(ES,{q:'',mkt:'',mc:0,rg:'',og:'',opm:'',tper:'',aper:'',pbr:'',dv:'',turn:false,beat:false,src:'',cper:'',eg:'',roe:'',r3:''}); esSave(); renderEarn(); }
+  if(e.target.id==='earnReset'){ Object.assign(ES,{q:'',mkt:'',mc:0,rg:'',og:'',opm:'',tper:'',aper:'',pbr:'',dv:'',turn:false,beat:false,src:'',cper:'',eg:'',roe:'',r3:'',fav:false}); esSave(); renderEarn(); }
 });
 document.addEventListener('change',function(e){
   var el=e.target.closest('#earnHead [data-ek]'); if(!el) return;
@@ -1315,6 +1322,7 @@ async function ghCommitFavsCore(){
     favs_v2: favsV2,
     meta_v2: metaV2,
     memos_v2: memosV2,
+    earn_favs: getEarnFavs(),
     favs: {}, meta: {}, memos: {},
     updatedAt: now
   }, null, 2);
@@ -1389,7 +1397,9 @@ async function loadFavsFromGitHub(){
     saveAllFavs(favsV2);
     saveAllMeta(metaV2);
     saveAllMemos(memosV2);
+    if(data.earn_favs) saveEarnFavs(data.earn_favs);
     localStorage.setItem(LS_TS_KEY, ghTs);
+    if(CURRENT_TAB==='earn' && EARN) renderEarn();
     // UI 갱신
     updateFavBadge();
     if(CURRENT_TAB==='fav') renderFavPanel();
