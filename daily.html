@@ -517,7 +517,7 @@ function toggleFav(ticker, btnEl, date){
   if(Object.keys(mDate).length>0) allM[date]=mDate; else delete allM[date];
   saveAllFavs(allF);
   saveAllMeta(allM);
-  localStorage.setItem('screener_fav_ts', Date.now());
+  localStorage.setItem('screener_fav_ts', Date.now()); scheduleFavPush();
 
   // 현재 페이지(CURRENT_DATE)에 속한 카드들만 UI 업데이트
   if(date === CURRENT_DATE){
@@ -550,7 +550,7 @@ function saveMemo(ticker, val, date){
   else delete m[ticker];
   if(Object.keys(m).length>0) all[date]=m; else delete all[date];
   saveAllMemos(all);
-  localStorage.setItem('screener_fav_ts', Date.now());
+  localStorage.setItem('screener_fav_ts', Date.now()); scheduleFavPush();
 }
 
 function updateFavBadge(){
@@ -971,7 +971,7 @@ document.addEventListener('click',function(e){
   var th=e.target.closest('#earnBody th[data-es]');
   if(th){ var k=th.dataset.es; if(ES.sort===k) ES.asc=!ES.asc; else { ES.sort=k; ES.asc=(['tper','aper','per','cper','pbr','name'].indexOf(k)>=0); } esSave(); renderEarn(); return; }
   var fb=e.target.closest('#earnBody .efav');
-  if(fb){ var f=getEarnFavs(), c0=fb.dataset.efav; if(f[c0]) delete f[c0]; else f[c0]=1; saveEarnFavs(f); localStorage.setItem('screener_fav_ts', Date.now()); renderEarn(); return; }
+  if(fb){ var f=getEarnFavs(), c0=fb.dataset.efav; if(f[c0]) delete f[c0]; else f[c0]=1; saveEarnFavs(f); localStorage.setItem('screener_fav_ts', Date.now()); scheduleFavPush(); renderEarn(); return; }
   var tr=e.target.closest('#earnBody tr.er');
   if(tr && !e.target.closest('a')){ var c=tr.dataset.ec; EXPANDED[c]=!EXPANDED[c]; renderEarn(); return; }
   var pb=e.target.closest('#earnHead [data-preset]');
@@ -1258,7 +1258,9 @@ function renderFavPanel(){
 }
 
 /* ───────── GitHub 동기화 ───────── */
-const GH_SYNC = { OWNER:'whysosary-dot', REPO:'stock-screener', PATH:'screener_favs.json', BRANCH:'main' };
+// 즐겨찾기·메모·실적 즐겨찾기 저장소. 2026-07 에 비공개 invest-private 로 옮겨졌는데 여기 주소가 옛 공개 리포(파일 없음)로 남아 있어
+// 2026-11-06 까지 어느 기기도 실제로 저장·동기화되지 않았음 → 수정. 저장은 토글 후 자동(2초 묶음), 읽기는 페이지 열 때.
+const GH_SYNC = { OWNER:'whysosary-dot', REPO:'invest-private', PATH:'screener/screener_favs.json', BRANCH:'main' };
 const LS_PAT_KEY = 'screener_gh_pat';
 const LS_TS_KEY = 'screener_fav_ts';
 
@@ -1339,6 +1341,19 @@ async function ghCommitFavsCore(){
   localStorage.setItem(LS_TS_KEY, now);
 }
 
+/* 토글 2초 뒤 자동 저장(여러 번 눌러도 한 번). PAT 없으면 이 기기에만 남음 */
+var _favPushT=null, _favPushBusy=false, _favPushAgain=false;
+function scheduleFavPush(){
+  if(!getPatFromLS()) return;
+  clearTimeout(_favPushT);
+  _favPushT=setTimeout(async function(){
+    if(_favPushBusy){ _favPushAgain=true; return; }
+    _favPushBusy=true;
+    try{ await ghCommitFavsCore(); toast('☁️ 즐겨찾기 저장됨'); }
+    catch(e){ toast('❌ 즐겨찾기 저장 실패: '+e.message, false); }
+    finally{ _favPushBusy=false; if(_favPushAgain){ _favPushAgain=false; scheduleFavPush(); } }
+  }, 2000);
+}
 async function ghCommitFavs(){
   if(!confirm('즐겨찾기·메모를 GitHub에 저장할까요?\n모든 기기의 데이터가 현재 기기 기준으로 덮어씌워집니다.')) return;
   var pat=getPatFromLS();
@@ -1385,7 +1400,11 @@ async function loadFavsFromGitHub(){
     if(!file) return;
     var data=JSON.parse(decodeURIComponent(escape(atob(file.content.replace(/\n/g,'')))));
     var ghTs=data.updatedAt||0;
-    if(ghTs<=localTs) return;
+    if(ghTs<=localTs){
+      // 이 기기가 더 새것(저장이 안 되던 시절에 누른 즐겨찾기 포함) → 올려서 다른 기기와 맞춤
+      if(ghTs<localTs && !sessionStorage.getItem('screener_fav_pushed')){ sessionStorage.setItem('screener_fav_pushed','1'); scheduleFavPush(); }
+      return;
+    }
 
     var favsV2, metaV2, memosV2;
     if(data.schema === 2 || data.favs_v2){
@@ -1431,7 +1450,7 @@ async function loadFavsFromGitHub(){
 }
 
 // 즐겨찾기 토글/메모 저장 후 자동으로 timestamp 갱신 (자동 동기화는 X — 수동 ☁️ 버튼)
-function bumpFavTs(){ localStorage.setItem(LS_TS_KEY, Date.now()); }
+function bumpFavTs(){ localStorage.setItem(LS_TS_KEY, Date.now()); scheduleFavPush(); }
 
 function openPatModal(){
   document.getElementById('pat-modal-overlay').style.display='flex';
