@@ -111,6 +111,7 @@ table.et th{position:sticky;top:0;background:var(--card,#fff);color:var(--text-d
 table.et th.l,table.et td.l{text-align:left}
 table.et th.on{color:#0f766e}
 table.et tr.er:hover{background:rgba(15,118,110,.05);cursor:pointer}
+table.et tr.er.isread td{opacity:.55}table.et tr.er.isread td:first-child b{text-decoration:line-through;text-decoration-color:#9ca3af}
 table.et tr>th:first-child,table.et tr.er>td:first-child{position:sticky;left:0;z-index:2;background:var(--card,#fff);box-shadow:1px 0 0 var(--border)}
 table.et tr>th:first-child{z-index:5}
 table.et tr.er:hover>td:first-child{background:#f3f8f7}
@@ -790,9 +791,15 @@ document.addEventListener('click', function(e){
    밸류에이션(PER·추정PER·PBR·배당·시총)은 선택한 일자의 스크리너 데이터(네이버 금융)를 붙인다. */
 var EARN=null, EARN_LOADING=false, EXPANDED={};
 var LS_EARN_FAVS='screener_earn_favs';
+/* 읽음 체크 (2026-11-08): {code: 체크 당시 최신 공시일} — 새 공시가 나오면 날짜가 달라져 자동으로 '안 읽음'으로 돌아온다. 즐겨찾기와 같이 GitHub 동기화 */
+var LS_EARN_READ='screener_earn_read';
+function getEarnRead(){ try{ return JSON.parse(localStorage.getItem(LS_EARN_READ)||'{}'); }catch(_){ return {}; } }
+function saveEarnRead(o){ try{ localStorage.setItem(LS_EARN_READ, JSON.stringify(o)); }catch(_){} }
+function earnReadKey(r){ return (r.ed||r.d||''); }
+function isEarnRead(r, R){ return !!(R[r.code] && R[r.code]===earnReadKey(r)); }
 function getEarnFavs(){ try{ return JSON.parse(localStorage.getItem(LS_EARN_FAVS)||'{}'); }catch(_){ return {}; } }
 function saveEarnFavs(o){ try{ localStorage.setItem(LS_EARN_FAVS, JSON.stringify(o)); }catch(_){} }
-var ES=(function(){ var d={mode:'season',season:'',period:'',year:'',sort:'d',asc:false,q:'',mkt:'',mc:0,rg:'',og:'',opm:'',tper:'',aper:'',pbr:'',dv:'',turn:false,beat:false,src:'',cper:'',eg:'',roe:'',r3:'',fav:false};
+var ES=(function(){ var d={mode:'season',season:'',period:'',year:'',sort:'d',asc:false,q:'',mkt:'',mc:0,rg:'',og:'',opm:'',tper:'',aper:'',pbr:'',dv:'',turn:false,beat:false,src:'',cper:'',eg:'',roe:'',r3:'',fav:false,hideRead:false};
   try{ return Object.assign(d, JSON.parse(localStorage.getItem('screener_earn_opts')||'{}')); }catch(_){ return d; } })();
 function esSave(){ try{ localStorage.setItem('screener_earn_opts', JSON.stringify(ES)); }catch(_){} }
 function qIdx(p){ var m=/^(\d{4})\.([1-4])Q$/.exec(p||''); return m? (+m[1])*4+(+m[2]-1) : null; }
@@ -868,7 +875,7 @@ function earnRows(){
       rows.push(r); });
   }
   // 필터
-  var q=(ES.q||'').trim(); var EFAV=getEarnFavs();
+  var q=(ES.q||'').trim(); var EFAV=getEarnFavs(), ERD=getEarnRead();
   function ge(v,t){ if(t===''||t==null) return true; v=gnum(v); return v!=null&&v>=+t; }
   function le(v,t){ if(t===''||t==null) return true; return v!=null&&v>0&&v<=+t; }
   rows=rows.filter(function(r){
@@ -881,6 +888,7 @@ function earnRows(){
     if(!le(r.cper,ES.cper)||!ge(r.eg,ES.eg)||!ge(r.roe,ES.roe)) return false;
     if(ES.r3!==''&&!(r.r3!=null&&r.r3<=+ES.r3)) return false;
     if(ES.fav && !EFAV[r.code]) return false;
+    if(ES.hideRead && isEarnRead(r, ERD)) return false;
     if(ES.turn && r.turn!=='흑전') return false;
     if(ES.beat && !(r.sur>0)) return false;
     if(ES.src && r.src!==ES.src) return false;
@@ -908,7 +916,7 @@ function renderEarn(){
     '<select data-ek="mkt"><option value="">전체 시장</option><option'+(ES.mkt==='KOSPI'?' selected':'')+'>KOSPI</option><option'+(ES.mkt==='KOSDAQ'?' selected':'')+'>KOSDAQ</option></select>'+
     '<select data-ek="src"><option value="">잠정+정기+추이</option><option value="P"'+(ES.src==='P'?' selected':'')+'>잠정만</option><option value="R"'+(ES.src==='R'?' selected':'')+'>정기보고서만</option></select></div>'+
     '<div class="ebar">'+ni('mc','시총 ≥','억',80)+ni('rg','매출 YoY ≥','%')+ni('og','영업익 YoY ≥','%')+ni('opm','영업이익률 ≥','%')+ni('tper','TTM PER ≤','배')+ni('aper','연환산 PER ≤','배')+ni('pbr','PBR ≤','배')+ni('dv','배당 ≥','%')+ni('cper','추정PER ≤','배')+ni('eg','추정 이익증가 ≥','%')+ni('roe','ROE ≥','%')+ni('r3','3개월 수익률 ≤','%')+
-    '<label style="color:#d97706;font-weight:700"><input type="checkbox" data-ek="fav"'+(ES.fav?' checked':'')+'> ⭐ 즐겨찾기만 ('+Object.keys(getEarnFavs()).length+')</label><label><input type="checkbox" data-ek="turn"'+(ES.turn?' checked':'')+'> 흑자전환</label><label><input type="checkbox" data-ek="beat"'+(ES.beat?' checked':'')+'> 영업익 컨센 상회</label>'+
+    '<label style="color:#d97706;font-weight:700"><input type="checkbox" data-ek="fav"'+(ES.fav?' checked':'')+'> ⭐ 즐겨찾기만 ('+Object.keys(getEarnFavs()).length+')</label><label><input type="checkbox" data-ek="turn"'+(ES.turn?' checked':'')+'> 흑자전환</label><label><input type="checkbox" data-ek="beat"'+(ES.beat?' checked':'')+'> 영업익 컨센 상회</label><label title="읽음 체크한 종목 숨기기"><input type="checkbox" data-ek="hideRead"'+(ES.hideRead?' checked':'')+'> ✓ 읽은 것 숨기기</label>'+
     '<button class="sort-btn" id="earnReset">필터 초기화</button></div>'+
     '<div class="ebar"><span style="font-size:12px;color:var(--text-dim)">💎 저평가 프리셋:</span>'+
     '<button class="sort-btn" data-preset="A" title="추정PER ≤9 · 추정 이익증가 ≥15% · 시총 ≥500억 · 3개월 ≤10%">A 이익성장 대비</button>'+
@@ -922,10 +930,10 @@ function renderEarn(){
   if(ES.mode==='annual') cols=cols.filter(function(c){return ['rq','oq','tr','to','tn','topm','aper'].indexOf(c[0])<0;});
   var th='<tr>'+cols.map(function(c){ return '<th class="'+(c[2]||'')+(ES.sort===c[0]?' on':'')+'" data-es="'+c[0]+'">'+c[1]+(ES.sort===c[0]?(ES.asc?' ▲':' ▼'):'')+'</th>'; }).join('')+'</tr>';
   var shown=rows.slice(0,500);
-  var EF=getEarnFavs();
+  var EF=getEarnFavs(), RD=getEarnRead();
   var tb=shown.map(function(r){
     var tds=cols.map(function(c){ var k=c[0], v=r[k];
-      if(k==='name') return '<td class="l"><button class="efav" data-efav="'+r.code+'" title="즐겨찾기" style="border:none;background:none;cursor:pointer;font-size:15px;padding:0 4px 0 0;color:'+(EF[r.code]?'#f59e0b':'#cbd5e1')+'">'+(EF[r.code]?'★':'☆')+'</button><b>'+escHtml(r.name)+'</b> <span style="color:var(--text-dim);font-size:11px">'+r.code+' '+(r.mkt==='KOSDAQ'?'Q':r.mkt==='KOSPI'?'P':'')+'</span><a class="nvl" href="https://m.stock.naver.com/domestic/stock/'+r.code+'/total" target="_blank" rel="noopener" title="네이버 증권">N</a>'+(r.turn==='흑전'?'<span class="tag2 tp">흑전</span>':r.turn==='적전'?'<span class="tag2 cm">적전</span>':'')+(r.fs==='별도'?'<span class="tag2 cm">별도</span>':'')+'</td>';
+      if(k==='name') return '<td class="l"><button class="efav" data-efav="'+r.code+'" title="즐겨찾기" style="border:none;background:none;cursor:pointer;font-size:15px;padding:0 4px 0 0;color:'+(EF[r.code]?'#f59e0b':'#cbd5e1')+'">'+(EF[r.code]?'★':'☆')+'</button><b>'+escHtml(r.name)+'</b> <span style="color:var(--text-dim);font-size:11px">'+r.code+' '+(r.mkt==='KOSDAQ'?'Q':r.mkt==='KOSPI'?'P':'')+'</span><a class="nvl" href="https://m.stock.naver.com/domestic/stock/'+r.code+'/total" target="_blank" rel="noopener" title="네이버 증권">N</a>'+(r.turn==='흑전'?'<span class="tag2 tp">흑전</span>':r.turn==='적전'?'<span class="tag2 cm">적전</span>':'')+(r.fs==='별도'?'<span class="tag2 cm">별도</span>':'')+'<input type="checkbox" class="eread" data-eread="'+r.code+'" data-ekey="'+escHtml(earnReadKey(r))+'" title="읽음 표시 (새 공시가 나오면 자동 해제)"'+(isEarnRead(r,RD)?' checked':'')+' style="float:right;margin:2px 0 0 10px;width:15px;height:15px;accent-color:#16a34a;cursor:pointer">'+'</td>';
       if(k==='d') return '<td class="l">'+(r.ed||r.d||'').slice(5,16).replace('T',' ')+' <span class="src '+r.src+'">'+({P:'잠정',R:'정기',H:'추이'})[r.src]+'</span></td>';
       if(k==='per_') return '<td class="l">'+r.per_+'</td>';
       if(k==='eg') return '<td class="'+eCls(v)+'">'+(v==null?'-':ePct(v))+'</td>';
@@ -938,7 +946,7 @@ function renderEarn(){
       if(k==='dv') return '<td>'+(v==null?'-':v.toFixed(2)+'%')+'</td>';
       if(k==='mc') return '<td>'+(v==null?'-':eokStr(v))+'</td>';
       return '<td class="'+(v<0?'d':'')+'">'+eFmt(v)+'</td>'; }).join('');
-    var row='<tr class="er" data-ec="'+r.code+'">'+tds+'</tr>';
+    var row='<tr class="er'+(isEarnRead(r,RD)?' isread':'')+'" data-ec="'+r.code+'">'+tds+'</tr>';
     if(EXPANDED[r.code]) row+='<tr class="ex"><td colspan="'+cols.length+'" style="text-align:left;padding:8px 0"><div class="exin">'+earnHist(r.code)+'</div></td></tr>';
     return row; }).join('');
   var _ow=document.querySelector('#earnBody .etw'), _sl=_ow?_ow.scrollLeft:0, _st=_ow?_ow.scrollTop:0, _sy=window.scrollY;
@@ -957,6 +965,9 @@ function earnHist(code){
 document.addEventListener('click',function(e){
   var th=e.target.closest('#earnBody th[data-es]');
   if(th){ var k=th.dataset.es; if(ES.sort===k) ES.asc=!ES.asc; else { ES.sort=k; ES.asc=(['tper','aper','per','cper','pbr','name'].indexOf(k)>=0); } esSave(); renderEarn(); return; }
+  var rb=e.target.closest('#earnBody .eread');
+  if(rb){ e.stopPropagation(); var R=getEarnRead(), c1=rb.dataset.eread, key=rb.dataset.ekey||''; if(rb.checked) R[c1]=key; else delete R[c1]; saveEarnRead(R); localStorage.setItem('screener_fav_ts', Date.now()); scheduleFavPush();
+    var tr=rb.closest('tr'); if(tr) tr.classList.toggle('isread', rb.checked); if(ES.hideRead && rb.checked) renderEarn(); return; }
   var fb=e.target.closest('#earnBody .efav');
   if(fb){ var f=getEarnFavs(), c0=fb.dataset.efav; if(f[c0]) delete f[c0]; else f[c0]=1; saveEarnFavs(f); localStorage.setItem('screener_fav_ts', Date.now()); scheduleFavPush(); renderEarn(); return; }
   var tr=e.target.closest('#earnBody tr.er');
@@ -1318,6 +1329,7 @@ async function ghCommitFavsCore(){
     meta_v2: metaV2,
     memos_v2: memosV2,
     earn_favs: getEarnFavs(),
+    earn_read: getEarnRead(),
     favs: {}, meta: {}, memos: {},
     updatedAt: now
   }, null, 2);
@@ -1410,6 +1422,7 @@ async function loadFavsFromGitHub(){
     saveAllMeta(metaV2);
     saveAllMemos(memosV2);
     if(data.earn_favs) saveEarnFavs(data.earn_favs);
+    if(data.earn_read) saveEarnRead(data.earn_read);
     localStorage.setItem(LS_TS_KEY, ghTs);
     if(CURRENT_TAB==='earn' && EARN) renderEarn();
     // UI 갱신
