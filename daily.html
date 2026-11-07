@@ -292,7 +292,7 @@ button.date-nav-btn{cursor:pointer;font:inherit}
 
   <div class="tab-bar">
     <button class="tab-btn active" data-tab="main">전체</button>
-    <button class="tab-btn tab-swing" data-tab="swing" title="당일 등락률로는 안 보이는, 한 달에 걸쳐 조용히 오르는 종목">1개월 추세</button>
+    <!-- 「1개월 추세」 탭은 2026-11-08 사용자 요청으로 화면에서 제거. 데이터(swing/latest.json)는 52주 신고가 탭이 같이 쓰므로 스캔은 유지 -->
     <button class="tab-btn tab-high" data-tab="high52" title="52주(252거래일) 종가 기준 신고가 · 근접(-3% 이내)">신고가</button>
     <button class="tab-btn tab-earn" data-tab="earn" title="AWAKE 실시간 공시 채널의 잠정실적·정기보고서를 분기·연간으로 누적">📊 실적</button>
     <button class="tab-btn tab-fav" data-tab="fav">즐겨찾기 <span class="fav-tab-badge" id="favTabBadge" style="display:none"></span></button>
@@ -348,19 +348,6 @@ button.date-nav-btn{cursor:pointer;font:inherit}
     <div id="stockGrid" class="stock-grid">
       <div class="loading"><div class="spinner"></div><span>데이터 로딩 중…</span></div>
     </div>
-  </div>
-
-  <div class="panel" id="panel-swing">
-    <div id="swingHead"></div>
-    <div class="sort-bar" id="swingSort">
-      <button class="sort-btn" data-sw="val20" title="20일 평균 거래대금">거래대금순</button>
-      <button class="sort-btn" data-sw="chg">등락률순</button>
-      <button class="sort-btn" data-sw="mcap">시총순</button>
-    </div>
-    <div id="swingGrid" class="stock-grid">
-      <div class="loading"><div class="spinner"></div><span>스캔 결과 로딩 중…</span></div>
-    </div>
-    <div id="swingChase"></div>
   </div>
 
   <div class="panel" id="panel-high52">
