@@ -1280,8 +1280,9 @@ function toast(msg, ok){
 async function ghApiGet(path){
   var pat=getPatFromLS();
   if(!pat) return null;
-  var url='https://api.github.com/repos/'+GH_SYNC.OWNER+'/'+GH_SYNC.REPO+'/contents/'+path+'?ref='+GH_SYNC.BRANCH;
-  var r=await fetch(url,{headers:{'Authorization':'token '+pat,'Accept':'application/vnd.github.v3+json'}});
+  // t= 캐시 우회 + no-store: 브라우저가 이전 GET 응답(옛 sha)을 재사용하면 PUT 이 409 "does not match" 로 실패한다 (2026-11-08)
+  var url='https://api.github.com/repos/'+GH_SYNC.OWNER+'/'+GH_SYNC.REPO+'/contents/'+path+'?ref='+GH_SYNC.BRANCH+'&t='+Date.now();
+  var r=await fetch(url,{cache:'no-store',headers:{'Authorization':'token '+pat,'Accept':'application/vnd.github.v3+json'}});
   if(r.status===404) return null;
   if(!r.ok) throw new Error('GH GET '+r.status);
   return r.json();
@@ -1334,9 +1335,12 @@ async function ghCommitFavsCore(){
     updatedAt: now
   }, null, 2);
   var b64=btoa(unescape(encodeURIComponent(payload)));
-  var existing=await ghApiGet(GH_SYNC.PATH);
-  var sha=existing?existing.sha:undefined;
-  await ghApiPut(GH_SYNC.PATH, b64, sha, '⭐ 즐겨찾기 동기화 (날짜별)');
+  for(var attempt=0;attempt<3;attempt++){
+    var existing=await ghApiGet(GH_SYNC.PATH);
+    var sha=existing?existing.sha:undefined;
+    try{ await ghApiPut(GH_SYNC.PATH, b64, sha, '⭐ 즐겨찾기 동기화 (날짜별)'); break; }
+    catch(e){ if(attempt<2 && /does not match|409|conflict/i.test(e.message||'')){ await new Promise(function(r){setTimeout(r,800*(attempt+1));}); continue; } throw e; }
+  }
   localStorage.setItem(LS_TS_KEY, now);
 }
 
