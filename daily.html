@@ -1344,19 +1344,9 @@ async function ghCommitFavsCore(){
   localStorage.setItem(LS_TS_KEY, now);
 }
 
-/* 토글 2초 뒤 자동 저장(여러 번 눌러도 한 번). PAT 없으면 이 기기에만 남음 */
-var _favPushT=null, _favPushBusy=false, _favPushAgain=false;
-function scheduleFavPush(){
-  if(!getPatFromLS()) return;
-  clearTimeout(_favPushT);
-  _favPushT=setTimeout(async function(){
-    if(_favPushBusy){ _favPushAgain=true; return; }
-    _favPushBusy=true;
-    try{ await ghCommitFavsCore(); toast('☁️ 즐겨찾기 저장됨'); }
-    catch(e){ toast('❌ 즐겨찾기 저장 실패: '+e.message, false); }
-    finally{ _favPushBusy=false; if(_favPushAgain){ _favPushAgain=false; scheduleFavPush(); } }
-  }, 2000);
-}
+/* 2026-11-08 사용자 요청: 자동 저장 안 함. 변경 표시(screener_fav_dirty)만 남기면 대시보드 「☁️ 커밋 & 푸시」가 다른 탭들과 함께 올린다.
+   (같은 출처라 localStorage 공유. 단독 페이지(daily.html 직접 열었을 때)는 ☁️ 동기화 버튼으로 수동 저장) */
+function scheduleFavPush(){ try{ localStorage.setItem('screener_fav_dirty','1'); }catch(_){} }
 async function ghCommitFavs(){
   if(!confirm('즐겨찾기·메모를 GitHub에 저장할까요?\n모든 기기의 데이터가 현재 기기 기준으로 덮어씌워집니다.')) return;
   var pat=getPatFromLS();
@@ -1364,7 +1354,7 @@ async function ghCommitFavs(){
   var btn=document.getElementById('gh-commit-btn');
   if(btn){ btn.disabled=true; btn.textContent='⏳ 저장 중...'; }
   try {
-    await ghCommitFavsCore();
+    await ghCommitFavsCore(); try{ localStorage.removeItem('screener_fav_dirty'); }catch(_){}
     toast('✅ GitHub에 저장됐어요!');
   } catch(e){
     toast('❌ '+e.message, false);
@@ -1382,7 +1372,7 @@ async function ghCommitFavs(){
     if (e.data.type === 'sv-ping'){ e.source.postMessage({type:'sv-pong', repo:'stock-screener'}, e.origin); return; }
     if (e.data.type !== 'sv-commit') return;
     var ok=true, msg='커밋 완료';
-    try { await ghCommitFavsCore(); }
+    try { await ghCommitFavsCore(); try{ localStorage.removeItem('screener_fav_dirty'); }catch(_){} }
     catch(err){ ok=false; msg=err.message||String(err); }
     e.source.postMessage({type:'sv-commit-result', repo:'stock-screener', ok:ok, msg:msg}, e.origin);
   });
@@ -1405,8 +1395,7 @@ async function loadFavsFromGitHub(){
     var ghTs=data.updatedAt||0;
     if(ghTs<=localTs){
       // 이 기기가 더 새것(저장이 안 되던 시절에 누른 즐겨찾기 포함) → 올려서 다른 기기와 맞춤
-      if(ghTs<localTs && !sessionStorage.getItem('screener_fav_pushed')){ sessionStorage.setItem('screener_fav_pushed','1'); scheduleFavPush(); }
-      return;
+      return;   // 이 기기가 더 새것 → 그대로 두고, 커밋 & 푸시 때 올라간다
     }
 
     var favsV2, metaV2, memosV2;
