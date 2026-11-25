@@ -799,7 +799,7 @@ function earnReadKey(r){ return (r.ed||r.d||''); }
 function isEarnRead(r, R){ return !!(R[r.code] && R[r.code]===earnReadKey(r)); }
 function getEarnFavs(){ try{ return JSON.parse(localStorage.getItem(LS_EARN_FAVS)||'{}'); }catch(_){ return {}; } }
 function saveEarnFavs(o){ try{ localStorage.setItem(LS_EARN_FAVS, JSON.stringify(o)); }catch(_){} }
-var ES=(function(){ var d={mode:'season',season:'',period:'',year:'',sort:'d',asc:false,q:'',mkt:'',mc:0,rg:'',og:'',opm:'',tper:'',aper:'',pbr:'',dv:'',turn:false,beat:false,src:'',cper:'',eg:'',roe:'',r3:'',fav:false,hideRead:false};
+var ES=(function(){ var d={mode:'season',season:'',period:'',year:'',sort:'d',asc:false,q:'',mkt:'',mc:0,rg:'',og:'',opm:'',tper:'',aper:'',pbr:'',dv:'',turn:false,beat:false,src:'',cper:'',eg:'',roe:'',r3:'',fav:false,hideRead:false,grow:''};
   try{ return Object.assign(d, JSON.parse(localStorage.getItem('screener_earn_opts')||'{}')); }catch(_){ return d; } })();
 function esSave(){ try{ localStorage.setItem('screener_earn_opts', JSON.stringify(ES)); }catch(_){} }
 function qIdx(p){ var m=/^(\d{4})\.([1-4])Q$/.exec(p||''); return m? (+m[1])*4+(+m[2]-1) : null; }
@@ -892,6 +892,8 @@ function earnRows(){
     if(ES.turn && r.turn!=='흑전') return false;
     if(ES.beat && !(r.sur>0)) return false;
     if(ES.src && r.src!==ES.src) return false;
+    if(ES.grow){ var up=function(v){ v=gnum(v); return v!=null&&v>0; }, y=up(r.rg)||up(r.og), qq=up(r.rq)||up(r.oq);
+      if(ES.grow==='yoy'&&!y) return false; if(ES.grow==='qoq'&&!qq) return false; if(ES.grow==='yq'&&!(y||qq)) return false; }
     return true; });
   var k=ES.sort, as=ES.asc?1:-1;
   rows.sort(function(a,b){ var x=a[k], y=b[k]; if(k==='rg'||k==='og'||k==='ng'||k==='rq'||k==='oq'){ x=gnum(x); y=gnum(y); }
@@ -918,11 +920,11 @@ function renderEarn(){
     '<div class="ebar">'+ni('mc','시총 ≥','억',80)+ni('rg','매출 YoY ≥','%')+ni('og','영업익 YoY ≥','%')+ni('opm','영업이익률 ≥','%')+ni('tper','TTM PER ≤','배')+ni('aper','연환산 PER ≤','배')+ni('pbr','PBR ≤','배')+ni('dv','배당 ≥','%')+ni('cper','추정PER ≤','배')+ni('eg','추정 이익증가 ≥','%')+ni('roe','ROE ≥','%')+ni('r3','3개월 수익률 ≤','%')+
     '<label style="color:#d97706;font-weight:700"><input type="checkbox" data-ek="fav"'+(ES.fav?' checked':'')+'> ⭐ 즐겨찾기만 ('+Object.keys(getEarnFavs()).length+')</label><label><input type="checkbox" data-ek="turn"'+(ES.turn?' checked':'')+'> 흑자전환</label><label><input type="checkbox" data-ek="beat"'+(ES.beat?' checked':'')+'> 영업익 컨센 상회</label><label title="읽음 체크한 종목 숨기기"><input type="checkbox" data-ek="hideRead"'+(ES.hideRead?' checked':'')+'> ✓ 읽은 것 숨기기</label>'+
     '<button class="sort-btn" id="earnReset">필터 초기화</button></div>'+
-    '<div class="ebar"><span style="font-size:12px;color:var(--text-dim)">💎 저평가 프리셋:</span>'+
-    '<button class="sort-btn" data-preset="A" title="추정PER ≤9 · 추정 이익증가 ≥15% · 시총 ≥500억 · 3개월 ≤10%">A 이익성장 대비</button>'+
-    '<button class="sort-btn" data-preset="B" title="TTM PER ≤6 · PBR ≤0.8 · 배당 ≥2.5% · 시총 ≥500억 · 3개월 ≤10%">B 저PER·저PBR·배당</button>'+
-    '<button class="sort-btn" data-preset="C" title="ROE ≥10% · PBR ≤0.6 · TTM 흑자 · 시총 ≥500억 · 3개월 ≤10%">C ROE 대비 저PBR</button>'+
-    '<span style="font-size:11px;color:var(--text-dim)">추정 이익증가 = PER ÷ 추정PER − 1 · ROE = PBR ÷ TTM PER (Claude 계산, 시세 기반)</span></div>';
+    '<div class="ebar"><span style="font-size:12px;color:var(--text-dim)">📈 성장 프리셋:</span>'+
+    '<button class="sort-btn'+(ES.grow==='yoy'?' active':'')+'" data-grow="yoy" title="해당 분기 매출 또는 영업이익이 전년 같은 분기보다 증가(흑자전환 포함)">YoY 매출 or 영업익 증가</button>'+
+    '<button class="sort-btn'+(ES.grow==='qoq'?' active':'')+'" data-grow="qoq" title="해당 분기 매출 또는 영업이익이 직전 분기보다 증가(흑자전환 포함)">QoQ 매출 or 영업익 증가</button>'+
+    '<button class="sort-btn'+(ES.grow==='yq'?' active':'')+'" data-grow="yq" title="YoY 조건 또는 QoQ 조건 중 하나라도 충족">YoY 또는 QoQ 증가</button>'+
+    '<span style="font-size:11px;color:var(--text-dim)">다시 누르면 해제 · 증가 = 증가율 &gt; 0 또는 흑자전환 (적자 축소는 제외) · 연간 보기에서는 QoQ 없음</span></div>';
   var rows=earnRows();
   var cols=[['name','종목','l'],['d','공시일','l'],['per_',ES.mode==='annual'?'연도':'분기','l'],['rev','매출'],['rg','YoY'],['rq','QoQ'],['op','영업이익'],['og','YoY'],['oq','QoQ'],['opm','이익률'],['ni','순이익'],['ng','YoY'],['sur','컨센 대비'],
     ['tr','TTM 매출'],['to','TTM 영업익'],['tn','TTM 순익'],['topm','TTM 이익률'],['mc','시총'],['tper','TTM PER'],['aper','연환산 PER(분기×4)'],['per','PER'],['cper','추정 PER'],['eg','추정 이익증가'],['pbr','PBR'],['roe','ROE'],['dv','배당'],['r3','3개월']];
@@ -972,11 +974,9 @@ document.addEventListener('click',function(e){
   if(fb){ var f=getEarnFavs(), c0=fb.dataset.efav; if(f[c0]) delete f[c0]; else f[c0]=1; saveEarnFavs(f); localStorage.setItem('screener_fav_ts', Date.now()); scheduleFavPush(); renderEarn(); return; }
   var tr=e.target.closest('#earnBody tr.er');
   if(tr && !e.target.closest('a')){ var c=tr.dataset.ec; EXPANDED[c]=!EXPANDED[c]; renderEarn(); return; }
-  var pb=e.target.closest('#earnHead [data-preset]');
-  if(pb){ var base={q:'',mkt:'',rg:'',og:'',opm:'',tper:'',aper:'',pbr:'',dv:'',turn:false,beat:false,src:'',cper:'',eg:'',roe:'',mc:500,r3:10};
-    var P={A:{cper:9,eg:15,sort:'cper',asc:true},B:{tper:6,pbr:0.8,dv:2.5,sort:'tper',asc:true},C:{roe:10,pbr:0.6,tper:999,sort:'roe',asc:false}}[pb.dataset.preset]; P.mode='latest';
-    Object.assign(ES,base,P); esSave(); renderEarn(); return; }
-  if(e.target.id==='earnReset'){ Object.assign(ES,{q:'',mkt:'',mc:0,rg:'',og:'',opm:'',tper:'',aper:'',pbr:'',dv:'',turn:false,beat:false,src:'',cper:'',eg:'',roe:'',r3:'',fav:false}); esSave(); renderEarn(); }
+  var gb=e.target.closest('#earnHead [data-grow]');
+  if(gb){ ES.grow=(ES.grow===gb.dataset.grow)?'':gb.dataset.grow; esSave(); renderEarn(); return; }
+  if(e.target.id==='earnReset'){ Object.assign(ES,{q:'',mkt:'',mc:0,rg:'',og:'',opm:'',tper:'',aper:'',pbr:'',dv:'',turn:false,beat:false,src:'',cper:'',eg:'',roe:'',r3:'',fav:false,grow:''}); esSave(); renderEarn(); }
 });
 document.addEventListener('change',function(e){
   var el=e.target.closest('#earnHead [data-ek]'); if(!el) return;
